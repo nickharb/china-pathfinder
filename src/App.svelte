@@ -1,7 +1,6 @@
 <script>
-    import D3_js from './js/d3.js';
-    
-    let d3 = D3_js;
+    import * as d3 from 'd3';
+    import * as _ from 'lodash';
 
     let name = 'world';
 </script>
