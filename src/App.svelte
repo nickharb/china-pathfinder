@@ -1,18 +1,50 @@
 <script>
-    import D3_js from './js/d3.js';
-    
-    let d3 = D3_js;
+    import Landing from './views/Landing.svelte';
+    import Indicators from './views/Indicators.svelte';
+    import Quarterly from './views/Quarterly.svelte';
+    import News from './views/News.svelte';
 
-    let name = 'world';
+    let view = 'main';
+    let showQuarterly = false;
+    let showNews = true; 
+    
+
 </script>
 
 <style>
-    h1 {
-        color: blue;
-    }
 </style>
 
 
+<main>
+    <section id='intro'>
+        <h1>Where is China’s economy in the world?</h1>
+        <p>China makes up a large share of the global economy... </p>
+        <p>More copy...</p>
+    
+    </section>
 
-<h1>Hello {name}!</h1>
+    <section class='latest'>
 
+        {#if showNews}
+            <News/>
+        {/if}
+        {#if showQuarterly}
+            <Quarterly/>
+        {/if}
+
+    </section>
+
+
+    <section>
+        
+        <!-- to implement browser check / mobile check -->
+
+        {#if view == 'main'}
+            <Landing/>
+        {:else if view == 'indicators'}
+            <Indicators/>
+        {/if}
+
+    </section>
+
+</main>
