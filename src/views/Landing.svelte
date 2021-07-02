@@ -1,5 +1,6 @@
 <script>
-    import d3 from '../js/d3.js';
+    import * as d3 from 'd3';
+    import * as _ from 'lodash';
     import {onMount} from "svelte";
     
     export let showPrevious = false;
