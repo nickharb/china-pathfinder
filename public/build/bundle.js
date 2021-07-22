@@ -45,6 +45,10 @@ var app = (function () {
     function null_to_empty(value) {
         return value == null ? '' : value;
     }
+    function set_store_value(store, ret, value = ret) {
+        store.set(value);
+        return ret;
+    }
 
     function append(target, node) {
         target.appendChild(node);
@@ -76,6 +80,13 @@ var app = (function () {
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
+    }
+    function self$1(fn) {
+        return function (event) {
+            // @ts-ignore
+            if (event.target === this)
+                fn.call(this, event);
+        };
     }
     function attr(node, attribute, value) {
         if (value == null)
@@ -223,6 +234,19 @@ var app = (function () {
     }
     const outroing = new Set();
     let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
     function transition_in(block, local) {
         if (block && block.i) {
             outroing.delete(block);
@@ -37729,10 +37753,18 @@ var app = (function () {
     // const parseDate = timeParse('%m/%d/%Y');
 
     const loadData = async () => {
+
       const data = await csv(dataPath);
-      let areas = Object.keys(data[0]);
-      areas.pop();
+
+      // create an array of objects for the six areas
+      // ... China appears as the last country
+
+      let areas = ['growth','competition','innovation','trade','fdi','portfolio'];
+
+      data.sort((a,b)=> a.country == 'China' ? 1 : -1);
+
       let output=[];
+      
       areas.forEach( (x) => { 
         output.push({
           area: x, 
@@ -37740,15 +37772,17 @@ var app = (function () {
           countries: data.map(n=> n["country"])
         });
       });
+
+
       return({countries: data, areas: output});
     };
 
-    var copyData = [{"label":"trade","name":"Trade Openness","definition":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures."},
-    {"label":"portfolio","name":"Portfolio Investment Openness","definition":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt, and other financial instruments. Portfolio investment openness is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","context":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets."},
-    {"label":"FDI","name":"Direct Investment Openness","definition":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","context":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016."},
-    {"label":"Innovation","name":"Modern and Open Innovation System","definition":"Market economies rely on innovation to drive competition, increase productivity, and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights, and encourage collaboration with and participation of foreign firms and researchers.","context":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run."},
-    {"label":"competition","name":"Market Competition","definition":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market."},
-    {"label":"financial","name":"Financial System Development","definition":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China.  By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders."}];
+    var copyData = [{"label":"growth","name":"Financial System Development","definition":"quantifies the prominence of market-driven credit pricing, the availability of financial instruments, and the absence of distortive controls on debt.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China.  By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders."},
+    {"label":"competition","name":"Market Competition","definition":"quantifies economic dynamism by assessing the entry and exit barriers firms face, government response to market power abuses, and government participation in the marketplace.","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market."},
+    {"label":"innovation","name":"Modern and Open Innovation System","definition":"quantifies the prevalence of a market-based innovation system by analyzing the levels of public and private sector investment, the protection of intellectual property rights, and collaboration with foreign firms.","context":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run."},
+    {"label":"trade","name":"Trade Openness","definition":"quantifies an economy’s trade restrictiveness through measures such as tariff rates, non-tariff barriers, and the overall cross-border flow of goods and services.","context":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures."},
+    {"label":"FDI","name":"Direct Investment Openness","definition":"quantifies the level of freedom a country’s domestic companies have to invest abroad without restrictions or political mandates, and access for foreign firms to invest in its domestic markets. ","context":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016."},
+    {"label":"portfolio","name":"Portfolio Investment Openness","definition":"quantifies a country’s controls on cross-border investment through measures of equities, bonds, debt, foreign exchange, and other financial instruments.","context":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets."}];
 
     const subscriber_queue = [];
     /**
@@ -37856,7 +37890,7 @@ var app = (function () {
     const width = writable();
     const height = writable();
     const margin = derived(width, ($width) => ($width/100));
-    const scaleFactor = derived(width, ($width) => ($width/200));
+    const scaleFactor = derived(width, ($width) => ($width/150));
 
     // Modified from https://observablehq.com/@harrystevens/cubic-bezier-curve
 
@@ -37883,42 +37917,124 @@ var app = (function () {
         // return o;
       }
 
+      function noOverlap(input_array, space) {
+
+        let overlapped=[];
+        const arrayLen = input_array.length;
+        let gap = space;
+
+        input_array.sort((a,b)=> a.x - b.x);
+
+        adjustPosition(input_array.map((d,i)=>i));
+
+        function adjustPosition(index_array) {
+          overlapped=[];
+          index_array.forEach((i) => {
+            if (i>0 && i< arrayLen -1) {
+              if (index_array.length < arrayLen || (input_array[i]['x'] - input_array[i-1]['x'] < gap)) { //if overlapping with the previous one
+                if (input_array[i+1]['x'] - input_array[i-1]['x'] > 2*gap ) {
+                  // move the current one to the right
+                  input_array[i]['x'] = input_array[i-1]['x'] + gap;
+                } else if ((i>1) && (input_array[i]['x']-input_array[i-2]['x'] > 2*gap)) {
+                  // move the previous one to the left
+                  input_array[i-1]['x'] = input_array[i]['x'] - gap;
+                } else {
+                  if (input_array[i+1]['x'] - input_array[i]['x'] > gap) {
+                    input_array[i]['x'] = input_array[i-1]['x'] + gap;
+                    if (overlapped.indexOf(i+1)==-1) {
+                      overlapped.push(i+1);
+                    }
+                  } else if ((i>1) && (input_array[i-1]['x'] - input_array[i-2]['x'] > gap)) {
+                    input_array[i-1]['x'] = input_array[i]['x'] - gap;
+                    if (overlapped.indexOf(i-1)==-1) {
+                      overlapped.push(i-1);
+                    }
+
+                  } else { //overlapping on both sides
+                    console.log(i);
+                    if (overlapped.indexOf(i-1)==-1) {
+                      overlapped.push(i-1);
+                    }
+                    if (overlapped.indexOf(i+1)==-1) {
+                      overlapped.push(i+1);
+                    }
+                  }
+
+                  if (overlapped.indexOf(i)==-1) {
+                    overlapped.push(i);
+                  }
+                }
+              }
+
+
+            }
+          });
+
+          
+          // console.log(overlapped)
+
+          if (overlapped.length>0) ;
+
+
+
+        }
+
+        return input_array;
+
+      }
+
+    var utils = {cubicBezier, noOverlap};
+
+    const view = writable();
+    const areaInView = writable();
+
     /* src/components/composite-vis.svelte generated by Svelte v3.38.2 */
+    const file$4 = "src/components/composite-vis.svelte";
 
-    const { console: console_1 } = globals;
-    const file$2 = "src/components/composite-vis.svelte";
-
-    function get_each_context$1(ctx, list, i) {
+    function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[8] = list[i];
-    	child_ctx[10] = i;
+    	child_ctx[13] = list[i];
+    	child_ctx[15] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[11] = list[i];
-    	child_ctx[10] = i;
+    	child_ctx[16] = list[i];
+    	child_ctx[15] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[8] = list[i];
+    	child_ctx[13] = list[i];
     	return child_ctx;
     }
 
-    // (42:4) {#each copyData as area}
+    // (59:4) {#each copyData as area}
     function create_each_block_2(ctx) {
     	let div1;
     	let h2;
-    	let t0_value = /*area*/ ctx[8].name + "";
+    	let t0_value = /*area*/ ctx[13].name + "";
     	let t0;
     	let t1;
     	let div0;
-    	let t2_value = /*area*/ ctx[8].definition + "";
+    	let t2_value = /*area*/ ctx[13].definition + "";
     	let t2;
     	let t3;
+    	let span;
+    	let t5;
+    	let div1_class_value;
+    	let mounted;
+    	let dispose;
+
+    	function click_handler() {
+    		return /*click_handler*/ ctx[7](/*area*/ ctx[13]);
+    	}
+
+    	function click_handler_1() {
+    		return /*click_handler_1*/ ctx[8](/*area*/ ctx[13]);
+    	}
 
     	const block = {
     		c: function create() {
@@ -37929,11 +38045,17 @@ var app = (function () {
     			div0 = element("div");
     			t2 = text$1(t2_value);
     			t3 = space();
-    			add_location(h2, file$2, 43, 12, 1264);
-    			attr_dev(div0, "class", "description");
-    			add_location(div0, file$2, 44, 12, 1297);
-    			attr_dev(div1, "class", "area");
-    			add_location(div1, file$2, 42, 8, 1233);
+    			span = element("span");
+    			span.textContent = "Click for details";
+    			t5 = space();
+    			attr_dev(h2, "class", "svelte-nm1qto");
+    			add_location(h2, file$4, 60, 12, 1939);
+    			attr_dev(span, "class", "svelte-nm1qto");
+    			add_location(span, file$4, 63, 16, 2119);
+    			attr_dev(div0, "class", "description svelte-nm1qto");
+    			add_location(div0, file$4, 61, 12, 2043);
+    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[13].label.toLowerCase()) + " svelte-nm1qto"));
+    			add_location(div1, file$4, 59, 8, 1880);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -37942,14 +38064,32 @@ var app = (function () {
     			append_dev(div1, t1);
     			append_dev(div1, div0);
     			append_dev(div0, t2);
-    			append_dev(div1, t3);
+    			append_dev(div0, t3);
+    			append_dev(div0, span);
+    			append_dev(div1, t5);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(h2, "click", self$1(click_handler), false, false, false),
+    					listen_dev(span, "click", self$1(click_handler_1), false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*copyData*/ 2 && t0_value !== (t0_value = /*area*/ ctx[8].name + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*copyData*/ 2 && t2_value !== (t2_value = /*area*/ ctx[8].definition + "")) set_data_dev(t2, t2_value);
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+    			if (dirty & /*copyData*/ 2 && t0_value !== (t0_value = /*area*/ ctx[13].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*copyData*/ 2 && t2_value !== (t2_value = /*area*/ ctx[13].definition + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[13].label.toLowerCase()) + " svelte-nm1qto"))) {
+    				attr_dev(div1, "class", div1_class_value);
+    			}
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div1);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -37957,14 +38097,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(42:4) {#each copyData as area}",
+    		source: "(59:4) {#each copyData as area}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (59:16) {#each area.graphData as graph,i}
+    // (81:16) {#each area.graphData as graph,i}
     function create_each_block_1(ctx) {
     	let g;
     	let path;
@@ -37972,7 +38112,7 @@ var app = (function () {
     	let circle;
     	let circle_r_value;
     	let text_1;
-    	let t_value = /*graph*/ ctx[11].country + "";
+    	let t_value = /*graph*/ ctx[16].country + "";
     	let t;
     	let g_class_value;
     	let g_transform_value;
@@ -37984,18 +38124,18 @@ var app = (function () {
     			circle = svg_element("circle");
     			text_1 = svg_element("text");
     			t = text$1(t_value);
-    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[11].path);
-    			attr_dev(path, "class", "svelte-1uqad3s");
-    			add_location(path, file$2, 60, 24, 1932);
-    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[11].r);
-    			attr_dev(circle, "class", "country-circle svelte-1uqad3s");
-    			add_location(circle, file$2, 61, 24, 1985);
+    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[16].path);
+    			attr_dev(path, "class", "svelte-nm1qto");
+    			add_location(path, file$4, 82, 24, 2978);
+    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[16].r);
+    			attr_dev(circle, "class", "country-circle svelte-nm1qto");
+    			add_location(circle, file$4, 83, 24, 3031);
     			attr_dev(text_1, "y", "-10px");
-    			attr_dev(text_1, "class", "svelte-1uqad3s");
-    			add_location(text_1, file$2, 62, 24, 2062);
-    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[11].country + " svelte-1uqad3s");
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[11].x + "," + /*graph*/ ctx[11].y + ")");
-    			add_location(g, file$2, 59, 20, 1829);
+    			attr_dev(text_1, "class", "svelte-nm1qto");
+    			add_location(text_1, file$4, 84, 24, 3108);
+    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[16].country + " svelte-nm1qto");
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[16].x + "," + /*graph*/ ctx[16].y + ")");
+    			add_location(g, file$4, 81, 20, 2875);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38005,21 +38145,21 @@ var app = (function () {
     			append_dev(text_1, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[11].path)) {
+    			if (dirty & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[16].path)) {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[11].r)) {
+    			if (dirty & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[16].r)) {
     				attr_dev(circle, "r", circle_r_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && t_value !== (t_value = /*graph*/ ctx[11].country + "")) set_data_dev(t, t_value);
+    			if (dirty & /*areaData*/ 1 && t_value !== (t_value = /*graph*/ ctx[16].country + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[11].country + " svelte-1uqad3s")) {
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[16].country + " svelte-nm1qto")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[11].x + "," + /*graph*/ ctx[11].y + ")")) {
+    			if (dirty & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[16].x + "," + /*graph*/ ctx[16].y + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
     		},
@@ -38032,19 +38172,20 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(59:16) {#each area.graphData as graph,i}",
+    		source: "(81:16) {#each area.graphData as graph,i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (57:8) {#each areaData as area,i}
-    function create_each_block$1(ctx) {
+    // (77:8) {#each areaData as area,i}
+    function create_each_block$2(ctx) {
     	let g;
+    	let line;
     	let g_class_value;
     	let g_transform_value;
-    	let each_value_1 = /*area*/ ctx[8].graphData;
+    	let each_value_1 = /*area*/ ctx[13].graphData;
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -38055,25 +38196,34 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			g = svg_element("g");
+    			line = svg_element("line");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[8].area) + " svelte-1uqad3s"));
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + ((/*$height*/ ctx[4] - /*$margin*/ ctx[2] * 5) / 5 * /*i*/ ctx[10] + /*$margin*/ ctx[2] * 2) + ")");
-    			add_location(g, file$2, 57, 12, 1664);
+    			attr_dev(line, "class", "gridline svelte-nm1qto");
+    			attr_dev(line, "x2", /*$width*/ ctx[3]);
+    			add_location(line, file$4, 78, 16, 2646);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[13].area) + " svelte-nm1qto"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[13].offsetY + ")");
+    			add_location(g, file$4, 77, 12, 2558);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
+    			append_dev(g, line);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(g, null);
     			}
     		},
     		p: function update(ctx, dirty) {
+    			if (dirty & /*$width*/ 8) {
+    				attr_dev(line, "x2", /*$width*/ ctx[3]);
+    			}
+
     			if (dirty & /*areaData*/ 1) {
-    				each_value_1 = /*area*/ ctx[8].graphData;
+    				each_value_1 = /*area*/ ctx[13].graphData;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -38096,11 +38246,11 @@ var app = (function () {
     				each_blocks.length = each_value_1.length;
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[8].area) + " svelte-1uqad3s"))) {
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[13].area) + " svelte-nm1qto"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*$margin, $height*/ 20 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + ((/*$height*/ ctx[4] - /*$margin*/ ctx[2] * 5) / 5 * /*i*/ ctx[10] + /*$margin*/ ctx[2] * 2) + ")")) {
+    			if (dirty & /*$margin, areaData*/ 5 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[13].offsetY + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
     		},
@@ -38112,16 +38262,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$1.name,
+    		id: create_each_block$2.name,
     		type: "each",
-    		source: "(57:8) {#each areaData as area,i}",
+    		source: "(77:8) {#each areaData as area,i}",
     		ctx
     	});
 
     	return block;
     }
 
-    function create_fragment$5(ctx) {
+    function create_fragment$6(ctx) {
     	let div0;
     	let div0_resize_listener;
     	let t;
@@ -38143,7 +38293,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
     	}
 
     	const block = {
@@ -38163,22 +38313,22 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "text-wrapper svelte-1uqad3s");
-    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[6].call(div0));
-    			add_location(div0, file$2, 40, 0, 1140);
+    			attr_dev(div0, "class", "text-wrapper svelte-nm1qto");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[9].call(div0));
+    			add_location(div0, file$4, 57, 0, 1787);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[3]);
     			attr_dev(rect, "height", /*$height*/ ctx[4]);
-    			add_location(rect, file$2, 55, 8, 1559);
+    			add_location(rect, file$4, 75, 8, 2453);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[4]);
     			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", /*$height*/ ctx[4]);
-    			attr_dev(svg, "class", "svelte-1uqad3s");
-    			add_location(svg, file$2, 51, 4, 1438);
-    			attr_dev(div1, "class", "vis-wrapper svelte-1uqad3s");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[7].call(div1));
-    			add_location(div1, file$2, 49, 0, 1381);
+    			attr_dev(svg, "class", "svelte-nm1qto");
+    			add_location(svg, file$4, 71, 4, 2332);
+    			attr_dev(div1, "class", "vis-wrapper svelte-nm1qto");
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[10].call(div1));
+    			add_location(div1, file$4, 69, 0, 2275);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38190,7 +38340,7 @@ var app = (function () {
     				each_blocks_1[i].m(div0, null);
     			}
 
-    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[6].bind(div0));
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[9].bind(div0));
     			insert_dev(target, t, anchor);
     			insert_dev(target, div1, anchor);
     			append_dev(div1, svg);
@@ -38200,10 +38350,10 @@ var app = (function () {
     				each_blocks[i].m(svg, null);
     			}
 
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[7].bind(div1));
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[10].bind(div1));
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*copyData*/ 2) {
+    			if (dirty & /*copyData, switchView*/ 34) {
     				each_value_2 = /*copyData*/ ctx[1];
     				validate_each_argument(each_value_2);
     				let i;
@@ -38235,18 +38385,18 @@ var app = (function () {
     				attr_dev(rect, "height", /*$height*/ ctx[4]);
     			}
 
-    			if (dirty & /*areaData, $margin, $height*/ 21) {
+    			if (dirty & /*areaData, $margin, $width*/ 13) {
     				each_value = /*areaData*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$1(ctx, each_value, i);
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i] = create_each_block$2(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(svg, null);
     					}
@@ -38286,7 +38436,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$5.name,
+    		id: create_fragment$6.name,
     		type: "component",
     		source: "",
     		ctx
@@ -38295,28 +38445,43 @@ var app = (function () {
     	return block;
     }
 
-    function instance$5($$self, $$props, $$invalidate) {
+    function instance$6($$self, $$props, $$invalidate) {
+    	let $view;
+    	let $areaInView;
     	let $margin;
     	let $width;
-    	let $height;
     	let $scaleFactor;
+    	let $height;
+    	validate_store(view, "view");
+    	component_subscribe($$self, view, $$value => $$invalidate(11, $view = $$value));
+    	validate_store(areaInView, "areaInView");
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(12, $areaInView = $$value));
     	validate_store(margin, "margin");
     	component_subscribe($$self, margin, $$value => $$invalidate(2, $margin = $$value));
     	validate_store(width, "width");
     	component_subscribe($$self, width, $$value => $$invalidate(3, $width = $$value));
+    	validate_store(scaleFactor, "scaleFactor");
+    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(6, $scaleFactor = $$value));
     	validate_store(height, "height");
     	component_subscribe($$self, height, $$value => $$invalidate(4, $height = $$value));
-    	validate_store(scaleFactor, "scaleFactor");
-    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(5, $scaleFactor = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Composite_vis", slots, []);
     	let { areaData } = $$props;
     	let { copyData } = $$props;
+
+    	function switchView(targetView, area) {
+    		set_store_value(view, $view = targetView, $view);
+    		set_store_value(areaInView, $areaInView = area, $areaInView);
+    	}
+
     	const writable_props = ["areaData", "copyData"];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Composite_vis> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Composite_vis> was created with unknown prop '${key}'`);
     	});
+
+    	const click_handler = area => switchView("indicators", area.label.toLowerCase());
+    	const click_handler_1 = area => switchView("indicators", area.label.toLowerCase());
 
     	function div0_elementresize_handler() {
     		$height = this.clientHeight;
@@ -38339,13 +38504,18 @@ var app = (function () {
     		height,
     		margin,
     		scaleFactor,
-    		cubicBezier,
+    		utils,
     		areaData,
     		copyData,
+    		areaInView,
+    		view,
+    		switchView,
+    		$view,
+    		$areaInView,
     		$margin,
     		$width,
-    		$height,
-    		$scaleFactor
+    		$scaleFactor,
+    		$height
     	});
 
     	$$self.$inject_state = $$props => {
@@ -38358,35 +38528,37 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*areaData, $margin, $width, $height, $scaleFactor*/ 61) {
-    			// const curve = d3.line(d=>d[0], d=>d[1]).curve(d3.curveCatmullRom.alpha(0.5));
+    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 77) {
     			if (areaData) {
     				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
 
     				areaData.forEach((d, i) => {
-    					d.graphData = d.comps.map((m, n) => {
-    						let distance = i < 5
-    						? xScale(areaData[i + 1]["comps"][n]) - xScale(m)
-    						: 0;
+    					if (select(".text-wrapper ." + d.area).size() > 0) {
+    						const textRect = select(".text-wrapper ." + d.area).node().getBoundingClientRect();
+    						d.offsetY = textRect.top - select(".text-wrapper").node().getBoundingClientRect().top + $margin * 2;
 
-    						let points = i < 5
-    						? [[0, 0], [distance, ($height - $margin * 5) / 5]]
-    						: [[0, 0], [0, 0]];
+    						d.graphData = d.comps.map((m, n) => {
+    							let distance = i < 5
+    							? xScale(areaData[i + 1]["comps"][n]) - xScale(m)
+    							: 0;
 
-    						let path = cubicBezier(points[0], points[1], 0);
+    							let points = i < 5
+    							? [[0, 0], [distance, textRect.bottom - textRect.top + $margin * 2]]
+    							: [[0, 0], [0, 0]]; // [distance, ($height-$margin*5)/5]
 
-    						return {
-    							x: xScale(m),
-    							y: 0,
-    							r: $scaleFactor,
-    							country: d.countries[n],
-    							path, //curve(pts)
-    							
-    						};
-    					});
-    				});
+    							let path = utils.cubicBezier(points[0], points[1], 20);
 
-    				console.log(areaData);
+    							return {
+    								x: xScale(m),
+    								y: 0,
+    								r: $scaleFactor,
+    								country: d.countries[n],
+    								path
+    							};
+    						});
+    					}
+    				}); // remove overlaps -- needs to be refined
+    				// utils.noOverlap(d.graphData, $scaleFactor*2);
     			}
     		}
     	};
@@ -38397,7 +38569,10 @@ var app = (function () {
     		$margin,
     		$width,
     		$height,
+    		switchView,
     		$scaleFactor,
+    		click_handler,
+    		click_handler_1,
     		div0_elementresize_handler,
     		div1_elementresize_handler
     	];
@@ -38406,24 +38581,24 @@ var app = (function () {
     class Composite_vis extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { areaData: 0, copyData: 1 });
+    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, { areaData: 0, copyData: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "Composite_vis",
     			options,
-    			id: create_fragment$5.name
+    			id: create_fragment$6.name
     		});
 
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
     		if (/*areaData*/ ctx[0] === undefined && !("areaData" in props)) {
-    			console_1.warn("<Composite_vis> was created without expected prop 'areaData'");
+    			console.warn("<Composite_vis> was created without expected prop 'areaData'");
     		}
 
     		if (/*copyData*/ ctx[1] === undefined && !("copyData" in props)) {
-    			console_1.warn("<Composite_vis> was created without expected prop 'copyData'");
+    			console.warn("<Composite_vis> was created without expected prop 'copyData'");
     		}
     	}
 
@@ -38444,19 +38619,20 @@ var app = (function () {
     	}
     }
 
-    /* src/views/Landing.svelte generated by Svelte v3.38.2 */
-    const file$1 = "src/views/Landing.svelte";
+    /* src/components/country-select.svelte generated by Svelte v3.38.2 */
 
-    function get_each_context(ctx, list, i) {
+    const file$3 = "src/components/country-select.svelte";
+
+    function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[5] = list[i];
+    	child_ctx[1] = list[i];
     	return child_ctx;
     }
 
-    // (24:12) {#each countryNames as country}
-    function create_each_block(ctx) {
+    // (10:12) {#each countryNames as country}
+    function create_each_block$1(ctx) {
     	let option;
-    	let t_value = /*country*/ ctx[5].country + "";
+    	let t_value = /*country*/ ctx[1].country + "";
     	let t;
     	let option_value_value;
 
@@ -38464,18 +38640,18 @@ var app = (function () {
     		c: function create() {
     			option = element("option");
     			t = text$1(t_value);
-    			option.__value = option_value_value = /*country*/ ctx[5].country;
+    			option.__value = option_value_value = /*country*/ ctx[1].country;
     			option.value = option.__value;
-    			add_location(option, file$1, 24, 16, 716);
+    			add_location(option, file$3, 10, 16, 222);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
     			append_dev(option, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*countryNames*/ 2 && t_value !== (t_value = /*country*/ ctx[5].country + "")) set_data_dev(t, t_value);
+    			if (dirty & /*countryNames*/ 1 && t_value !== (t_value = /*country*/ ctx[1].country + "")) set_data_dev(t, t_value);
 
-    			if (dirty & /*countryNames*/ 2 && option_value_value !== (option_value_value = /*country*/ ctx[5].country)) {
+    			if (dirty & /*countryNames*/ 1 && option_value_value !== (option_value_value = /*country*/ ctx[1].country)) {
     				prop_dev(option, "__value", option_value_value);
     				option.value = option.__value;
     			}
@@ -38487,49 +38663,32 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block.name,
+    		id: create_each_block$1.name,
     		type: "each",
-    		source: "(24:12) {#each countryNames as country}",
+    		source: "(10:12) {#each countryNames as country}",
     		ctx
     	});
 
     	return block;
     }
 
-    function create_fragment$4(ctx) {
+    function create_fragment$5(ctx) {
     	let div1;
-    	let t0;
+    	let t;
     	let div0;
     	let select;
-    	let t1;
-    	let button;
-    	let t3;
-    	let label;
-    	let input;
-    	let t4;
-    	let t5;
-    	let div2;
-    	let compositevis;
-    	let current;
-    	let mounted;
-    	let dispose;
-    	let each_value = /*countryNames*/ ctx[1];
+    	let each_value = /*countryNames*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
     	}
-
-    	compositevis = new Composite_vis({
-    			props: { areaData: /*areaData*/ ctx[2], copyData },
-    			$$inline: true
-    		});
 
     	const block = {
     		c: function create() {
     			div1 = element("div");
-    			t0 = text$1("How China compares with \n    ");
+    			t = text$1("How China compares with \n    ");
     			div0 = element("div");
     			select = element("select");
 
@@ -38537,72 +38696,38 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t1 = space();
-    			button = element("button");
-    			button.textContent = "Share this view";
-    			t3 = space();
-    			label = element("label");
-    			input = element("input");
-    			t4 = text$1("\n            Show China’s change since 2010");
-    			t5 = space();
-    			div2 = element("div");
-    			create_component(compositevis.$$.fragment);
-    			add_location(select, file$1, 22, 8, 647);
+    			add_location(select, file$3, 8, 8, 153);
     			attr_dev(div0, "class", "country-toggle-box");
-    			add_location(div0, file$1, 20, 4, 605);
-    			add_location(button, file$1, 29, 4, 805);
-    			attr_dev(input, "type", "checkbox");
-    			add_location(input, file$1, 31, 12, 886);
-    			attr_dev(label, "class", "time-toggle-box");
-    			add_location(label, file$1, 30, 4, 842);
-    			attr_dev(div1, "class", "control-area");
-    			add_location(div1, file$1, 18, 0, 545);
-    			attr_dev(div2, "class", "vis-container svelte-5j4aat");
-    			add_location(div2, file$1, 37, 0, 1001);
+    			add_location(div0, file$3, 6, 4, 111);
+    			attr_dev(div1, "class", "country-select");
+    			add_location(div1, file$3, 4, 0, 49);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
-    			append_dev(div1, t0);
+    			append_dev(div1, t);
     			append_dev(div1, div0);
     			append_dev(div0, select);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(select, null);
     			}
-
-    			append_dev(div1, t1);
-    			append_dev(div1, button);
-    			append_dev(div1, t3);
-    			append_dev(div1, label);
-    			append_dev(label, input);
-    			input.checked = /*showPrevious*/ ctx[0];
-    			append_dev(label, t4);
-    			insert_dev(target, t5, anchor);
-    			insert_dev(target, div2, anchor);
-    			mount_component(compositevis, div2, null);
-    			current = true;
-
-    			if (!mounted) {
-    				dispose = listen_dev(input, "change", /*input_change_handler*/ ctx[3]);
-    				mounted = true;
-    			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*countryNames*/ 2) {
-    				each_value = /*countryNames*/ ctx[1];
+    			if (dirty & /*countryNames*/ 1) {
+    				each_value = /*countryNames*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i] = create_each_block$1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(select, null);
     					}
@@ -38614,6 +38739,162 @@ var app = (function () {
 
     				each_blocks.length = each_value.length;
     			}
+    		},
+    		i: noop$4,
+    		o: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div1);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$5.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$5($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Country_select", slots, []);
+    	let { countryNames } = $$props;
+    	const writable_props = ["countryNames"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Country_select> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("countryNames" in $$props) $$invalidate(0, countryNames = $$props.countryNames);
+    	};
+
+    	$$self.$capture_state = () => ({ countryNames });
+
+    	$$self.$inject_state = $$props => {
+    		if ("countryNames" in $$props) $$invalidate(0, countryNames = $$props.countryNames);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [countryNames];
+    }
+
+    class Country_select extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { countryNames: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Country_select",
+    			options,
+    			id: create_fragment$5.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*countryNames*/ ctx[0] === undefined && !("countryNames" in props)) {
+    			console.warn("<Country_select> was created without expected prop 'countryNames'");
+    		}
+    	}
+
+    	get countryNames() {
+    		throw new Error("<Country_select>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set countryNames(value) {
+    		throw new Error("<Country_select>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/views/Landing.svelte generated by Svelte v3.38.2 */
+    const file$2 = "src/views/Landing.svelte";
+
+    function create_fragment$4(ctx) {
+    	let div0;
+    	let countryselect;
+    	let t0;
+    	let button;
+    	let t2;
+    	let label;
+    	let input;
+    	let t3;
+    	let t4;
+    	let div1;
+    	let compositevis;
+    	let current;
+    	let mounted;
+    	let dispose;
+
+    	countryselect = new Country_select({
+    			props: { countryNames: /*countryNames*/ ctx[1] },
+    			$$inline: true
+    		});
+
+    	compositevis = new Composite_vis({
+    			props: { areaData: /*areaData*/ ctx[2], copyData },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div0 = element("div");
+    			create_component(countryselect.$$.fragment);
+    			t0 = space();
+    			button = element("button");
+    			button.textContent = "Share this view";
+    			t2 = space();
+    			label = element("label");
+    			input = element("input");
+    			t3 = text$1("\n            Show China’s change since 2010");
+    			t4 = space();
+    			div1 = element("div");
+    			create_component(compositevis.$$.fragment);
+    			add_location(button, file$2, 22, 4, 682);
+    			attr_dev(input, "type", "checkbox");
+    			add_location(input, file$2, 25, 12, 768);
+    			attr_dev(label, "class", "time-toggle-box");
+    			add_location(label, file$2, 24, 4, 724);
+    			attr_dev(div0, "class", "control-area");
+    			add_location(div0, file$2, 19, 0, 614);
+    			attr_dev(div1, "class", "vis-container svelte-bgvlxt");
+    			add_location(div1, file$2, 31, 0, 883);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div0, anchor);
+    			mount_component(countryselect, div0, null);
+    			append_dev(div0, t0);
+    			append_dev(div0, button);
+    			append_dev(div0, t2);
+    			append_dev(div0, label);
+    			append_dev(label, input);
+    			input.checked = /*showPrevious*/ ctx[0];
+    			append_dev(label, t3);
+    			insert_dev(target, t4, anchor);
+    			insert_dev(target, div1, anchor);
+    			mount_component(compositevis, div1, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(input, "change", /*input_change_handler*/ ctx[3]);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			const countryselect_changes = {};
+    			if (dirty & /*countryNames*/ 2) countryselect_changes.countryNames = /*countryNames*/ ctx[1];
+    			countryselect.$set(countryselect_changes);
 
     			if (dirty & /*showPrevious*/ 1) {
     				input.checked = /*showPrevious*/ ctx[0];
@@ -38625,18 +38906,20 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
+    			transition_in(countryselect.$$.fragment, local);
     			transition_in(compositevis.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
+    			transition_out(countryselect.$$.fragment, local);
     			transition_out(compositevis.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div0);
+    			destroy_component(countryselect);
+    			if (detaching) detach_dev(t4);
     			if (detaching) detach_dev(div1);
-    			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(div2);
     			destroy_component(compositevis);
     			mounted = false;
     			dispose();
@@ -38687,6 +38970,7 @@ var app = (function () {
     		loadData,
     		copyData,
     		CompositeVis: Composite_vis,
+    		CountrySelect: Country_select,
     		showPrevious,
     		data,
     		countryNames,
@@ -38731,17 +39015,248 @@ var app = (function () {
 
     /* src/views/Indicators.svelte generated by Svelte v3.38.2 */
 
-    function create_fragment$3(ctx) {
+    const { console: console_1 } = globals;
+    const file$1 = "src/views/Indicators.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[10] = list[i];
+    	child_ctx[12] = i;
+    	return child_ctx;
+    }
+
+    // (56:24) {#each graphData as graph,i}
+    function create_each_block(ctx) {
+    	let g;
+    	let circle;
+    	let text_1;
+    	let t_value = /*graph*/ ctx[10].country + "";
+    	let t;
+
     	const block = {
-    		c: noop$4,
+    		c: function create() {
+    			g = svg_element("g");
+    			circle = svg_element("circle");
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(circle, "r", /*graph*/ ctx[10].r);
+    			attr_dev(circle, "class", "country-circle");
+    			add_location(circle, file$1, 57, 28, 1909);
+    			attr_dev(text_1, "y", "-10px");
+    			add_location(text_1, file$1, 58, 28, 1990);
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[10].country + " svelte-1r9l06s");
+    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[10].x + "," + /*graph*/ ctx[10].y + ")");
+    			add_location(g, file$1, 56, 24, 1802);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			append_dev(g, circle);
+    			append_dev(g, text_1);
+    			append_dev(text_1, t);
+    		},
+    		p: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(56:24) {#each graphData as graph,i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let div3;
+    	let button;
+    	let t1;
+    	let div1;
+    	let h20;
+    	let t3;
+    	let div0;
+    	let svg;
+    	let g;
+    	let line;
+    	let g_class_value;
+    	let g_transform_value;
+    	let svg_viewBox_value;
+    	let div0_resize_listener;
+    	let t4;
+    	let div2;
+    	let t6;
+    	let div4;
+    	let h21;
+    	let t9;
+    	let countryselect;
+    	let current;
+    	let each_value = /*graphData*/ ctx[4];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	countryselect = new Country_select({
+    			props: { countryNames: /*countryNames*/ ctx[3] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			button = element("button");
+    			button.textContent = "Back";
+    			t1 = space();
+    			div1 = element("div");
+    			h20 = element("h2");
+    			h20.textContent = `${/*currentArea*/ ctx[5].name}`;
+    			t3 = space();
+    			div0 = element("div");
+    			svg = svg_element("svg");
+    			g = svg_element("g");
+    			line = svg_element("line");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t4 = space();
+    			div2 = element("div");
+    			div2.textContent = `${/*currentArea*/ ctx[5].context}`;
+    			t6 = space();
+    			div4 = element("div");
+    			h21 = element("h2");
+    			h21.textContent = `Assessing ${/*currentArea*/ ctx[5].name.toLowerCase()}`;
+    			t9 = space();
+    			create_component(countryselect.$$.fragment);
+    			attr_dev(button, "class", "svelte-1r9l06s");
+    			add_location(button, file$1, 45, 4, 1273);
+    			attr_dev(h20, "class", "svelte-1r9l06s");
+    			add_location(h20, file$1, 47, 8, 1331);
+    			attr_dev(line, "class", "gridline svelte-1r9l06s");
+    			attr_dev(line, "x2", /*$width*/ ctx[2]);
+    			add_location(line, file$1, 54, 24, 1682);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1r9l06s"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 2 + ")");
+    			add_location(g, file$1, 53, 20, 1585);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100}");
+    			attr_dev(svg, "width", /*$width*/ ctx[2]);
+    			attr_dev(svg, "height", "100");
+    			add_location(svg, file$1, 49, 12, 1428);
+    			attr_dev(div0, "class", "area-vis svelte-1r9l06s");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[7].call(div0));
+    			add_location(div0, file$1, 48, 8, 1367);
+    			attr_dev(div1, "class", "area-text svelte-1r9l06s");
+    			add_location(div1, file$1, 46, 4, 1299);
+    			attr_dev(div2, "class", "description svelte-1r9l06s");
+    			add_location(div2, file$1, 66, 4, 2199);
+    			attr_dev(div3, "class", "area-summary svelte-1r9l06s");
+    			add_location(div3, file$1, 44, 0, 1242);
+    			add_location(h21, file$1, 71, 4, 2294);
+    			attr_dev(div4, "class", "indicators");
+    			add_location(div4, file$1, 70, 0, 2265);
+    		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
-    		m: noop$4,
-    		p: noop$4,
-    		i: noop$4,
-    		o: noop$4,
-    		d: noop$4
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, button);
+    			append_dev(div3, t1);
+    			append_dev(div3, div1);
+    			append_dev(div1, h20);
+    			append_dev(div1, t3);
+    			append_dev(div1, div0);
+    			append_dev(div0, svg);
+    			append_dev(svg, g);
+    			append_dev(g, line);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(g, null);
+    			}
+
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[7].bind(div0));
+    			append_dev(div3, t4);
+    			append_dev(div3, div2);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, h21);
+    			append_dev(div4, t9);
+    			mount_component(countryselect, div4, null);
+    			current = true;
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (!current || dirty & /*$width*/ 4) {
+    				attr_dev(line, "x2", /*$width*/ ctx[2]);
+    			}
+
+    			if (dirty & /*graphData*/ 16) {
+    				each_value = /*graphData*/ ctx[4];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(g, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+
+    			if (!current || dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1r9l06s"))) {
+    				attr_dev(g, "class", g_class_value);
+    			}
+
+    			if (!current || dirty & /*$margin*/ 2 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 2 + ")")) {
+    				attr_dev(g, "transform", g_transform_value);
+    			}
+
+    			if (!current || dirty & /*$width*/ 4 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100}")) {
+    				attr_dev(svg, "viewBox", svg_viewBox_value);
+    			}
+
+    			if (!current || dirty & /*$width*/ 4) {
+    				attr_dev(svg, "width", /*$width*/ ctx[2]);
+    			}
+
+    			const countryselect_changes = {};
+    			if (dirty & /*countryNames*/ 8) countryselect_changes.countryNames = /*countryNames*/ ctx[3];
+    			countryselect.$set(countryselect_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(countryselect.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(countryselect.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div3);
+    			destroy_each(each_blocks, detaching);
+    			div0_resize_listener();
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(div4);
+    			destroy_component(countryselect);
+    		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
@@ -38755,16 +39270,109 @@ var app = (function () {
     	return block;
     }
 
-    function instance$3($$self, $$props) {
+    function instance$3($$self, $$props, $$invalidate) {
+    	let $areaInView;
+    	let $margin;
+    	let $width;
+    	let $scaleFactor;
+    	validate_store(areaInView, "areaInView");
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(9, $areaInView = $$value));
+    	validate_store(margin, "margin");
+    	component_subscribe($$self, margin, $$value => $$invalidate(1, $margin = $$value));
+    	validate_store(width, "width");
+    	component_subscribe($$self, width, $$value => $$invalidate(2, $width = $$value));
+    	validate_store(scaleFactor, "scaleFactor");
+    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(6, $scaleFactor = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Indicators", slots, []);
+    	let data = [], countryNames = [], areaData, graphData = [];
+
+    	//set default area view for dev purpose only
+    	if (!$areaInView) {
+    		set_store_value(areaInView, $areaInView = "growth", $areaInView);
+    	}
+
+    	const currentArea = copyData.filter(d => d.label == $areaInView)[0];
+
+    	onMount(async () => {
+    		data = await loadData();
+    		$$invalidate(3, countryNames = data["countries"].filter(d => d.country !== "China"));
+    		$$invalidate(0, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
+    	});
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Indicators> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Indicators> was created with unknown prop '${key}'`);
     	});
 
-    	return [];
+    	function div0_elementresize_handler() {
+    		$width = this.clientWidth;
+    		width.set($width);
+    	}
+
+    	$$self.$capture_state = () => ({
+    		d3,
+    		onMount,
+    		loadData,
+    		view,
+    		areaInView,
+    		width,
+    		margin,
+    		scaleFactor,
+    		copyData,
+    		CountrySelect: Country_select,
+    		data,
+    		countryNames,
+    		areaData,
+    		graphData,
+    		currentArea,
+    		$areaInView,
+    		$margin,
+    		$width,
+    		$scaleFactor
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("data" in $$props) data = $$props.data;
+    		if ("countryNames" in $$props) $$invalidate(3, countryNames = $$props.countryNames);
+    		if ("areaData" in $$props) $$invalidate(0, areaData = $$props.areaData);
+    		if ("graphData" in $$props) $$invalidate(4, graphData = $$props.graphData);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 71) {
+    			if (areaData) {
+    				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
+
+    				areaData.comps.forEach((d, i) => {
+    					graphData.push({
+    						x: xScale(d),
+    						y: 0,
+    						r: $scaleFactor,
+    						country: areaData.countries[i]
+    					});
+    				});
+
+    				console.log(areaData);
+    			}
+    		}
+    	};
+
+    	return [
+    		areaData,
+    		$margin,
+    		$width,
+    		countryNames,
+    		graphData,
+    		currentArea,
+    		$scaleFactor,
+    		div0_elementresize_handler
+    	];
     }
 
     class Indicators extends SvelteComponentDev {
@@ -38888,8 +39496,62 @@ var app = (function () {
     /* src/App.svelte generated by Svelte v3.38.2 */
     const file = "src/App.svelte";
 
-    // (28:8) {#if showNews}
-    function create_if_block_3(ctx) {
+    // (39:4) {#if $view == 'main'}
+    function create_if_block_2(ctx) {
+    	let section;
+    	let t;
+    	let current;
+    	let if_block0 = /*showNews*/ ctx[2] && create_if_block_4(ctx);
+    	let if_block1 = /*showQuarterly*/ ctx[1] && create_if_block_3(ctx);
+
+    	const block = {
+    		c: function create() {
+    			section = element("section");
+    			if (if_block0) if_block0.c();
+    			t = space();
+    			if (if_block1) if_block1.c();
+    			attr_dev(section, "class", "latest svelte-1bt3in2");
+    			add_location(section, file, 40, 8, 1106);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, section, anchor);
+    			if (if_block0) if_block0.m(section, null);
+    			append_dev(section, t);
+    			if (if_block1) if_block1.m(section, null);
+    			current = true;
+    		},
+    		p: noop$4,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block0);
+    			transition_in(if_block1);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block0);
+    			transition_out(if_block1);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(section);
+    			if (if_block0) if_block0.d();
+    			if (if_block1) if_block1.d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(39:4) {#if $view == 'main'}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (43:12) {#if showNews}
+    function create_if_block_4(ctx) {
     	let news;
     	let current;
     	news = new News({ $$inline: true });
@@ -38918,17 +39580,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_3.name,
+    		id: create_if_block_4.name,
     		type: "if",
-    		source: "(28:8) {#if showNews}",
+    		source: "(43:12) {#if showNews}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (31:8) {#if showQuarterly}
-    function create_if_block_2(ctx) {
+    // (46:12) {#if showQuarterly}
+    function create_if_block_3(ctx) {
     	let quarterly;
     	let current;
     	quarterly = new Quarterly({ $$inline: true });
@@ -38957,16 +39619,16 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_2.name,
+    		id: create_if_block_3.name,
     		type: "if",
-    		source: "(31:8) {#if showQuarterly}",
+    		source: "(46:12) {#if showQuarterly}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (44:39) 
+    // (60:40) 
     function create_if_block_1(ctx) {
     	let indicators;
     	let current;
@@ -38998,14 +39660,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(44:39) ",
+    		source: "(60:40) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (42:8) {#if view == 'main'}
+    // (58:8) {#if $view == 'main'}
     function create_if_block(ctx) {
     	let landing;
     	let current;
@@ -39037,7 +39699,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(42:8) {#if view == 'main'}",
+    		source: "(58:8) {#if $view == 'main'}",
     		ctx
     	});
 
@@ -39049,30 +39711,25 @@ var app = (function () {
     	let section0;
     	let h1;
     	let t1;
-    	let p0;
+    	let p;
     	let t3;
-    	let p1;
-    	let t5;
+    	let t4;
     	let section1;
-    	let t6;
-    	let t7;
-    	let section2;
     	let current_block_type_index;
-    	let if_block2;
+    	let if_block1;
     	let current;
-    	let if_block0 = /*showNews*/ ctx[2] && create_if_block_3(ctx);
-    	let if_block1 = /*showQuarterly*/ ctx[1] && create_if_block_2(ctx);
+    	let if_block0 = /*$view*/ ctx[0] == "main" && create_if_block_2(ctx);
     	const if_block_creators = [create_if_block, create_if_block_1];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*view*/ ctx[0] == "main") return 0;
-    		if (/*view*/ ctx[0] == "indicators") return 1;
+    		if (/*$view*/ ctx[0] == "main") return 0;
+    		if (/*$view*/ ctx[0] == "indicators") return 1;
     		return -1;
     	}
 
     	if (~(current_block_type_index = select_block_type(ctx))) {
-    		if_block2 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    		if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     	}
 
     	const block = {
@@ -39082,28 +39739,21 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "Where is China’s economy in the world?";
     			t1 = space();
-    			p0 = element("p");
-    			p0.textContent = "China makes up a large share of the global economy...";
+    			p = element("p");
+    			p.textContent = "China is a global economic powerhouse, but its system remains dangerously opaque. Policymakers and financial experts dispute basic facts about what is happening inside China. To create a shared language on China’s economy, the China Pathfinder project scores China and other economies across six areas and presents an objective picture of China’s economy relative to the world.";
     			t3 = space();
-    			p1 = element("p");
-    			p1.textContent = "More copy...";
-    			t5 = space();
-    			section1 = element("section");
     			if (if_block0) if_block0.c();
-    			t6 = space();
+    			t4 = space();
+    			section1 = element("section");
     			if (if_block1) if_block1.c();
-    			t7 = space();
-    			section2 = element("section");
-    			if (if_block2) if_block2.c();
-    			add_location(h1, file, 19, 8, 370);
-    			add_location(p0, file, 20, 8, 426);
-    			add_location(p1, file, 21, 8, 496);
+    			add_location(h1, file, 33, 8, 601);
+    			add_location(p, file, 34, 8, 657);
     			attr_dev(section0, "id", "intro");
-    			add_location(section0, file, 18, 4, 341);
-    			attr_dev(section1, "class", "latest");
-    			add_location(section1, file, 25, 4, 541);
-    			add_location(section2, file, 37, 4, 713);
-    			add_location(main, file, 17, 0, 330);
+    			attr_dev(section0, "class", "svelte-1bt3in2");
+    			add_location(section0, file, 32, 4, 572);
+    			attr_dev(section1, "class", "svelte-1bt3in2");
+    			add_location(section1, file, 53, 4, 1316);
+    			add_location(main, file, 31, 0, 561);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39113,41 +39763,85 @@ var app = (function () {
     			append_dev(main, section0);
     			append_dev(section0, h1);
     			append_dev(section0, t1);
-    			append_dev(section0, p0);
-    			append_dev(section0, t3);
-    			append_dev(section0, p1);
-    			append_dev(main, t5);
+    			append_dev(section0, p);
+    			append_dev(main, t3);
+    			if (if_block0) if_block0.m(main, null);
+    			append_dev(main, t4);
     			append_dev(main, section1);
-    			if (if_block0) if_block0.m(section1, null);
-    			append_dev(section1, t6);
-    			if (if_block1) if_block1.m(section1, null);
-    			append_dev(main, t7);
-    			append_dev(main, section2);
 
     			if (~current_block_type_index) {
-    				if_blocks[current_block_type_index].m(section2, null);
+    				if_blocks[current_block_type_index].m(section1, null);
     			}
 
     			current = true;
     		},
-    		p: noop$4,
+    		p: function update(ctx, [dirty]) {
+    			if (/*$view*/ ctx[0] == "main") {
+    				if (if_block0) {
+    					if_block0.p(ctx, dirty);
+
+    					if (dirty & /*$view*/ 1) {
+    						transition_in(if_block0, 1);
+    					}
+    				} else {
+    					if_block0 = create_if_block_2(ctx);
+    					if_block0.c();
+    					transition_in(if_block0, 1);
+    					if_block0.m(main, t4);
+    				}
+    			} else if (if_block0) {
+    				group_outros();
+
+    				transition_out(if_block0, 1, 1, () => {
+    					if_block0 = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index !== previous_block_index) {
+    				if (if_block1) {
+    					group_outros();
+
+    					transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    						if_blocks[previous_block_index] = null;
+    					});
+
+    					check_outros();
+    				}
+
+    				if (~current_block_type_index) {
+    					if_block1 = if_blocks[current_block_type_index];
+
+    					if (!if_block1) {
+    						if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    						if_block1.c();
+    					}
+
+    					transition_in(if_block1, 1);
+    					if_block1.m(section1, null);
+    				} else {
+    					if_block1 = null;
+    				}
+    			}
+    		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(if_block0);
     			transition_in(if_block1);
-    			transition_in(if_block2);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(if_block0);
     			transition_out(if_block1);
-    			transition_out(if_block2);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(main);
     			if (if_block0) if_block0.d();
-    			if (if_block1) if_block1.d();
 
     			if (~current_block_type_index) {
     				if_blocks[current_block_type_index].d();
@@ -39167,10 +39861,16 @@ var app = (function () {
     }
 
     function instance($$self, $$props, $$invalidate) {
+    	let $view;
+    	validate_store(view, "view");
+    	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	let view = "main";
+    	set_store_value(view, $view = "main", $view);
+
+    	// $view = 'indicators';
     	let showQuarterly = false;
+
     	let showNews = true;
     	const writable_props = [];
 
@@ -39185,11 +39885,11 @@ var app = (function () {
     		News,
     		view,
     		showQuarterly,
-    		showNews
+    		showNews,
+    		$view
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("view" in $$props) $$invalidate(0, view = $$props.view);
     		if ("showQuarterly" in $$props) $$invalidate(1, showQuarterly = $$props.showQuarterly);
     		if ("showNews" in $$props) $$invalidate(2, showNews = $$props.showNews);
     	};
@@ -39198,7 +39898,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [view, showQuarterly, showNews];
+    	return [$view, showQuarterly, showNews];
     }
 
     class App extends SvelteComponentDev {

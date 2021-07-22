@@ -5,6 +5,7 @@
     import loadData from "../data/load-data.js";
     import copyData from "../data/copy";
     import CompositeVis from "../components/composite-vis.svelte";
+    import CountrySelect from '../components/country-select.svelte';
     export let showPrevious = false;
     let data = [], countryNames = [], areaData = [];
 
@@ -17,17 +18,10 @@
 </script>
 
 <div class='control-area'>
-    How China compares with 
-    <div class='country-toggle-box'>
+    <CountrySelect {countryNames}/>
 
-        <select>
-            {#each countryNames as country}
-                <option>{country.country}</option>
-            {/each}
-        </select>
-
-    </div>
     <button>Share this view</button>
+    
     <label class='time-toggle-box'>
             <input type=checkbox bind:checked={showPrevious}>
             Show China’s change since 2010
@@ -42,7 +36,9 @@
 
 <style>
     .vis-container {
+        max-width:1000px;
         display: flex;
+        text-align:left;
         margin: 1em auto;
         padding: 1em 0;
     }

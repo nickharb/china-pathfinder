@@ -4,17 +4,27 @@ const dataPath = './data/composite-score.csv';
 // const parseDate = timeParse('%m/%d/%Y');
 
 const loadData = async () => {
+
   const data = await csv(dataPath);
-  let areas = Object.keys(data[0]);
-  areas.pop();
+
+  // create an array of objects for the six areas
+  // ... China appears as the last country
+
+  let areas = ['growth','competition','innovation','trade','fdi','portfolio'];
+
+  data.sort((a,b)=> a.country == 'China' ? 1 : -1);
+
   let output=[];
+  
   areas.forEach( (x) => { 
     output.push({
       area: x, 
       comps: data.map(n => n[x]), 
       countries: data.map(n=> n["country"])
     })
-  })
+  });
+
+
   return({countries: data, areas: output});
 };
 
