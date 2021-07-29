@@ -1,6 +1,6 @@
 // Modified from https://observablehq.com/@harrystevens/cubic-bezier-curve
 
-import { indexOf, over } from "lodash";
+// import { indexOf, over } from "lodash";
 
 function cubicBezier(pt1, pt2, xSwing, p){
 
@@ -27,73 +27,73 @@ function cubicBezier(pt1, pt2, xSwing, p){
   };
 
 
-  function noOverlap(input_array, space) {
+function noOverlap(input_array, space) {
 
-    let overlapped=[],output_array = [];
-    const arrayLen = input_array.length;
-    let gap = space;
+  let overlapped=[],output_array = [];
+  const arrayLen = input_array.length;
+  let gap = space;
 
-    input_array.sort((a,b)=> a.x - b.x);
+  input_array.sort((a,b)=> a.x - b.x);
 
-    adjustPosition(input_array.map((d,i)=>i));
+  adjustPosition(input_array.map((d,i)=>i));
 
-    function adjustPosition(index_array) {
-      overlapped=[];
-      index_array.forEach((i) => {
-        if (i>0 && i< arrayLen -1) {
-          if (index_array.length < arrayLen || (input_array[i]['x'] - input_array[i-1]['x'] < gap)) { //if overlapping with the previous one
-            if (input_array[i+1]['x'] - input_array[i-1]['x'] > 2*gap ) {
-              // move the current one to the right
+  function adjustPosition(index_array) {
+    overlapped=[];
+    index_array.forEach((i) => {
+      if (i>0 && i< arrayLen -1) {
+        if (index_array.length < arrayLen || (input_array[i]['x'] - input_array[i-1]['x'] < gap)) { //if overlapping with the previous one
+          if (input_array[i+1]['x'] - input_array[i-1]['x'] > 2*gap ) {
+            // move the current one to the right
+            input_array[i]['x'] = input_array[i-1]['x'] + gap;
+          } else if ((i>1) && (input_array[i]['x']-input_array[i-2]['x'] > 2*gap)) {
+            // move the previous one to the left
+            input_array[i-1]['x'] = input_array[i]['x'] - gap;
+          } else {
+            if (input_array[i+1]['x'] - input_array[i]['x'] > gap) {
               input_array[i]['x'] = input_array[i-1]['x'] + gap;
-            } else if ((i>1) && (input_array[i]['x']-input_array[i-2]['x'] > 2*gap)) {
-              // move the previous one to the left
+              if (overlapped.indexOf(i+1)==-1) {
+                overlapped.push(i+1);
+              }
+            } else if ((i>1) && (input_array[i-1]['x'] - input_array[i-2]['x'] > gap)) {
               input_array[i-1]['x'] = input_array[i]['x'] - gap;
-            } else {
-              if (input_array[i+1]['x'] - input_array[i]['x'] > gap) {
-                input_array[i]['x'] = input_array[i-1]['x'] + gap;
-                if (overlapped.indexOf(i+1)==-1) {
-                  overlapped.push(i+1);
-                }
-              } else if ((i>1) && (input_array[i-1]['x'] - input_array[i-2]['x'] > gap)) {
-                input_array[i-1]['x'] = input_array[i]['x'] - gap;
-                if (overlapped.indexOf(i-1)==-1) {
-                  overlapped.push(i-1);
-                }
-
-              } else { //overlapping on both sides
-                console.log(i);
-                if (overlapped.indexOf(i-1)==-1) {
-                  overlapped.push(i-1);
-                }
-                if (overlapped.indexOf(i+1)==-1) {
-                  overlapped.push(i+1);
-                }
+              if (overlapped.indexOf(i-1)==-1) {
+                overlapped.push(i-1);
               }
 
-              if (overlapped.indexOf(i)==-1) {
-                overlapped.push(i)
+            } else { //overlapping on both sides
+              console.log(i);
+              if (overlapped.indexOf(i-1)==-1) {
+                overlapped.push(i-1);
+              }
+              if (overlapped.indexOf(i+1)==-1) {
+                overlapped.push(i+1);
               }
             }
+
+            if (overlapped.indexOf(i)==-1) {
+              overlapped.push(i)
+            }
           }
-
-
         }
-      })
+
+
+      }
+    })
 
       
-      // console.log(overlapped)
+    // console.log(overlapped)
 
-      if (overlapped.length>0) {
-        // adjustPosition(overlapped.sort((a,b)=> a-b));
-      }
-
-
-
+    if (overlapped.length>0) {
+      // adjustPosition(overlapped.sort((a,b)=> a-b));
     }
 
-    return input_array;
+
 
   }
+
+  return input_array;
+
+}
 
 export default {cubicBezier, noOverlap};
 

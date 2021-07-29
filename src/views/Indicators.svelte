@@ -8,7 +8,6 @@
 
     import CountrySelect from '../components/country-select.svelte';
 
-
     let data = [], countryNames = [], areaData, graphData=[];
 
     //set default area view for dev purpose only
@@ -40,18 +39,24 @@
 
     }
 
+    function switchView(targetView, area) {
+        $view = targetView;
+        $areaInView = area;
+    }
+
+
 </script>
 
 <div class='area-summary'>
-    <button>Back</button>
+    <button on:click|self={()=> switchView('main')}>Back</button>
     <div class='area-text'>
         <h2>{currentArea.name}</h2>
         <div class='area-vis' bind:clientWidth={$width}>
-            <svg viewBox="0 0 {$width} 100}"
+            <svg viewBox="0 0 {$width} 100"
                 width={$width}
                 height='100'>
-                <!-- {#await areaData} -->
-                    <g class="{areaData.area}" transform='translate({$margin},{$margin*2})'>
+                {#if areaData}
+                    <g class="{areaData.area}" transform='translate({$margin},{$margin*4})'>
                         <line class='gridline' x2={$width}></line>
                         {#each graphData as graph,i}
                         <g class='country {graph.country}' transform='translate({graph.x},{graph.y})'>
@@ -60,7 +65,8 @@
                         </g>
                         {/each} 
                     </g>
-                <!-- {/await} -->
+                {/if}
+            
             </svg>
         </div>
     </div>
@@ -111,5 +117,28 @@
         stroke:#eeeeee;
 
     }
+
+    svg {
+        position: absolute;
+        /* fill: #f9f9f9; */
+        fill:white;
+        
+    }
+    circle.country-circle {
+        fill:#666666;
+        stroke:#f9f9f9;
+        fill-opacity:0.5;
+    }
+
+    text {
+        fill:#444444;
+        text-anchor:middle;
+        fill-opacity: 0;
+    }
+
+    g.China text {
+        fill-opacity: 1;
+    }
+
     
 </style>

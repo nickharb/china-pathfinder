@@ -37894,6 +37894,8 @@ var app = (function () {
 
     // Modified from https://observablehq.com/@harrystevens/cubic-bezier-curve
 
+    // import { indexOf, over } from "lodash";
+
     function cubicBezier(pt1, pt2, xSwing, p){
 
         let a = pt1;
@@ -37917,71 +37919,71 @@ var app = (function () {
         // return o;
       }
 
-      function noOverlap(input_array, space) {
+    function noOverlap(input_array, space) {
 
-        let overlapped=[];
-        const arrayLen = input_array.length;
-        let gap = space;
+      let overlapped=[];
+      const arrayLen = input_array.length;
+      let gap = space;
 
-        input_array.sort((a,b)=> a.x - b.x);
+      input_array.sort((a,b)=> a.x - b.x);
 
-        adjustPosition(input_array.map((d,i)=>i));
+      adjustPosition(input_array.map((d,i)=>i));
 
-        function adjustPosition(index_array) {
-          overlapped=[];
-          index_array.forEach((i) => {
-            if (i>0 && i< arrayLen -1) {
-              if (index_array.length < arrayLen || (input_array[i]['x'] - input_array[i-1]['x'] < gap)) { //if overlapping with the previous one
-                if (input_array[i+1]['x'] - input_array[i-1]['x'] > 2*gap ) {
-                  // move the current one to the right
+      function adjustPosition(index_array) {
+        overlapped=[];
+        index_array.forEach((i) => {
+          if (i>0 && i< arrayLen -1) {
+            if (index_array.length < arrayLen || (input_array[i]['x'] - input_array[i-1]['x'] < gap)) { //if overlapping with the previous one
+              if (input_array[i+1]['x'] - input_array[i-1]['x'] > 2*gap ) {
+                // move the current one to the right
+                input_array[i]['x'] = input_array[i-1]['x'] + gap;
+              } else if ((i>1) && (input_array[i]['x']-input_array[i-2]['x'] > 2*gap)) {
+                // move the previous one to the left
+                input_array[i-1]['x'] = input_array[i]['x'] - gap;
+              } else {
+                if (input_array[i+1]['x'] - input_array[i]['x'] > gap) {
                   input_array[i]['x'] = input_array[i-1]['x'] + gap;
-                } else if ((i>1) && (input_array[i]['x']-input_array[i-2]['x'] > 2*gap)) {
-                  // move the previous one to the left
+                  if (overlapped.indexOf(i+1)==-1) {
+                    overlapped.push(i+1);
+                  }
+                } else if ((i>1) && (input_array[i-1]['x'] - input_array[i-2]['x'] > gap)) {
                   input_array[i-1]['x'] = input_array[i]['x'] - gap;
-                } else {
-                  if (input_array[i+1]['x'] - input_array[i]['x'] > gap) {
-                    input_array[i]['x'] = input_array[i-1]['x'] + gap;
-                    if (overlapped.indexOf(i+1)==-1) {
-                      overlapped.push(i+1);
-                    }
-                  } else if ((i>1) && (input_array[i-1]['x'] - input_array[i-2]['x'] > gap)) {
-                    input_array[i-1]['x'] = input_array[i]['x'] - gap;
-                    if (overlapped.indexOf(i-1)==-1) {
-                      overlapped.push(i-1);
-                    }
-
-                  } else { //overlapping on both sides
-                    console.log(i);
-                    if (overlapped.indexOf(i-1)==-1) {
-                      overlapped.push(i-1);
-                    }
-                    if (overlapped.indexOf(i+1)==-1) {
-                      overlapped.push(i+1);
-                    }
+                  if (overlapped.indexOf(i-1)==-1) {
+                    overlapped.push(i-1);
                   }
 
-                  if (overlapped.indexOf(i)==-1) {
-                    overlapped.push(i);
+                } else { //overlapping on both sides
+                  console.log(i);
+                  if (overlapped.indexOf(i-1)==-1) {
+                    overlapped.push(i-1);
+                  }
+                  if (overlapped.indexOf(i+1)==-1) {
+                    overlapped.push(i+1);
                   }
                 }
+
+                if (overlapped.indexOf(i)==-1) {
+                  overlapped.push(i);
+                }
               }
-
-
             }
-          });
+
+
+          }
+        });
 
           
-          // console.log(overlapped)
+        // console.log(overlapped)
 
-          if (overlapped.length>0) ;
+        if (overlapped.length>0) ;
 
 
-
-        }
-
-        return input_array;
 
       }
+
+      return input_array;
+
+    }
 
     var utils = {cubicBezier, noOverlap};
 
@@ -39020,80 +39022,17 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[10] = list[i];
-    	child_ctx[12] = i;
+    	child_ctx[13] = list[i];
+    	child_ctx[15] = i;
     	return child_ctx;
     }
 
-    // (56:24) {#each graphData as graph,i}
-    function create_each_block(ctx) {
-    	let g;
-    	let circle;
-    	let text_1;
-    	let t_value = /*graph*/ ctx[10].country + "";
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			g = svg_element("g");
-    			circle = svg_element("circle");
-    			text_1 = svg_element("text");
-    			t = text$1(t_value);
-    			attr_dev(circle, "r", /*graph*/ ctx[10].r);
-    			attr_dev(circle, "class", "country-circle");
-    			add_location(circle, file$1, 57, 28, 1909);
-    			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$1, 58, 28, 1990);
-    			attr_dev(g, "class", "country " + /*graph*/ ctx[10].country + " svelte-1r9l06s");
-    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[10].x + "," + /*graph*/ ctx[10].y + ")");
-    			add_location(g, file$1, 56, 24, 1802);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, g, anchor);
-    			append_dev(g, circle);
-    			append_dev(g, text_1);
-    			append_dev(text_1, t);
-    		},
-    		p: noop$4,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(g);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block.name,
-    		type: "each",
-    		source: "(56:24) {#each graphData as graph,i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment$3(ctx) {
-    	let div3;
-    	let button;
-    	let t1;
-    	let div1;
-    	let h20;
-    	let t3;
-    	let div0;
-    	let svg;
+    // (58:16) {#if areaData}
+    function create_if_block$1(ctx) {
     	let g;
     	let line;
     	let g_class_value;
     	let g_transform_value;
-    	let svg_viewBox_value;
-    	let div0_resize_listener;
-    	let t4;
-    	let div2;
-    	let t6;
-    	let div4;
-    	let h21;
-    	let t9;
-    	let countryselect;
-    	let current;
     	let each_value = /*graphData*/ ctx[4];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -39102,23 +39041,8 @@ var app = (function () {
     		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
 
-    	countryselect = new Country_select({
-    			props: { countryNames: /*countryNames*/ ctx[3] },
-    			$$inline: true
-    		});
-
     	const block = {
     		c: function create() {
-    			div3 = element("div");
-    			button = element("button");
-    			button.textContent = "Back";
-    			t1 = space();
-    			div1 = element("div");
-    			h20 = element("h2");
-    			h20.textContent = `${/*currentArea*/ ctx[5].name}`;
-    			t3 = space();
-    			div0 = element("div");
-    			svg = svg_element("svg");
     			g = svg_element("g");
     			line = svg_element("line");
 
@@ -39126,73 +39050,23 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t4 = space();
-    			div2 = element("div");
-    			div2.textContent = `${/*currentArea*/ ctx[5].context}`;
-    			t6 = space();
-    			div4 = element("div");
-    			h21 = element("h2");
-    			h21.textContent = `Assessing ${/*currentArea*/ ctx[5].name.toLowerCase()}`;
-    			t9 = space();
-    			create_component(countryselect.$$.fragment);
-    			attr_dev(button, "class", "svelte-1r9l06s");
-    			add_location(button, file$1, 45, 4, 1273);
-    			attr_dev(h20, "class", "svelte-1r9l06s");
-    			add_location(h20, file$1, 47, 8, 1331);
-    			attr_dev(line, "class", "gridline svelte-1r9l06s");
+    			attr_dev(line, "class", "gridline svelte-1fn0a55");
     			attr_dev(line, "x2", /*$width*/ ctx[2]);
-    			add_location(line, file$1, 54, 24, 1682);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1r9l06s"));
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 2 + ")");
-    			add_location(g, file$1, 53, 20, 1585);
-    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100}");
-    			attr_dev(svg, "width", /*$width*/ ctx[2]);
-    			attr_dev(svg, "height", "100");
-    			add_location(svg, file$1, 49, 12, 1428);
-    			attr_dev(div0, "class", "area-vis svelte-1r9l06s");
-    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[7].call(div0));
-    			add_location(div0, file$1, 48, 8, 1367);
-    			attr_dev(div1, "class", "area-text svelte-1r9l06s");
-    			add_location(div1, file$1, 46, 4, 1299);
-    			attr_dev(div2, "class", "description svelte-1r9l06s");
-    			add_location(div2, file$1, 66, 4, 2199);
-    			attr_dev(div3, "class", "area-summary svelte-1r9l06s");
-    			add_location(div3, file$1, 44, 0, 1242);
-    			add_location(h21, file$1, 71, 4, 2294);
-    			attr_dev(div4, "class", "indicators");
-    			add_location(div4, file$1, 70, 0, 2265);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    			add_location(line, file$1, 59, 24, 1816);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1fn0a55"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 4 + ")");
+    			add_location(g, file$1, 58, 20, 1719);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div3, anchor);
-    			append_dev(div3, button);
-    			append_dev(div3, t1);
-    			append_dev(div3, div1);
-    			append_dev(div1, h20);
-    			append_dev(div1, t3);
-    			append_dev(div1, div0);
-    			append_dev(div0, svg);
-    			append_dev(svg, g);
+    			insert_dev(target, g, anchor);
     			append_dev(g, line);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(g, null);
     			}
-
-    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[7].bind(div0));
-    			append_dev(div3, t4);
-    			append_dev(div3, div2);
-    			insert_dev(target, t6, anchor);
-    			insert_dev(target, div4, anchor);
-    			append_dev(div4, h21);
-    			append_dev(div4, t9);
-    			mount_component(countryselect, div4, null);
-    			current = true;
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (!current || dirty & /*$width*/ 4) {
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*$width*/ 4) {
     				attr_dev(line, "x2", /*$width*/ ctx[2]);
     			}
 
@@ -39220,15 +39094,193 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (!current || dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1r9l06s"))) {
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1fn0a55"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (!current || dirty & /*$margin*/ 2 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 2 + ")")) {
+    			if (dirty & /*$margin*/ 2 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 4 + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
 
-    			if (!current || dirty & /*$width*/ 4 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100}")) {
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(58:16) {#if areaData}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (61:24) {#each graphData as graph,i}
+    function create_each_block(ctx) {
+    	let g;
+    	let circle;
+    	let text_1;
+    	let t_value = /*graph*/ ctx[13].country + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			g = svg_element("g");
+    			circle = svg_element("circle");
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(circle, "r", /*graph*/ ctx[13].r);
+    			attr_dev(circle, "class", "country-circle svelte-1fn0a55");
+    			add_location(circle, file$1, 62, 28, 2043);
+    			attr_dev(text_1, "y", "-10px");
+    			attr_dev(text_1, "class", "svelte-1fn0a55");
+    			add_location(text_1, file$1, 63, 28, 2124);
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[13].country + " svelte-1fn0a55");
+    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[13].x + "," + /*graph*/ ctx[13].y + ")");
+    			add_location(g, file$1, 61, 24, 1936);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			append_dev(g, circle);
+    			append_dev(g, text_1);
+    			append_dev(text_1, t);
+    		},
+    		p: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(61:24) {#each graphData as graph,i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let div3;
+    	let button;
+    	let t1;
+    	let div1;
+    	let h20;
+    	let t3;
+    	let div0;
+    	let svg;
+    	let svg_viewBox_value;
+    	let div0_resize_listener;
+    	let t4;
+    	let div2;
+    	let t6;
+    	let div4;
+    	let h21;
+    	let t9;
+    	let countryselect;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let if_block = /*areaData*/ ctx[0] && create_if_block$1(ctx);
+
+    	countryselect = new Country_select({
+    			props: { countryNames: /*countryNames*/ ctx[3] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			button = element("button");
+    			button.textContent = "Back";
+    			t1 = space();
+    			div1 = element("div");
+    			h20 = element("h2");
+    			h20.textContent = `${/*currentArea*/ ctx[5].name}`;
+    			t3 = space();
+    			div0 = element("div");
+    			svg = svg_element("svg");
+    			if (if_block) if_block.c();
+    			t4 = space();
+    			div2 = element("div");
+    			div2.textContent = `${/*currentArea*/ ctx[5].context}`;
+    			t6 = space();
+    			div4 = element("div");
+    			h21 = element("h2");
+    			h21.textContent = `Assessing ${/*currentArea*/ ctx[5].name.toLowerCase()}`;
+    			t9 = space();
+    			create_component(countryselect.$$.fragment);
+    			attr_dev(button, "class", "svelte-1fn0a55");
+    			add_location(button, file$1, 50, 4, 1380);
+    			attr_dev(h20, "class", "svelte-1fn0a55");
+    			add_location(h20, file$1, 52, 8, 1478);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100");
+    			attr_dev(svg, "width", /*$width*/ ctx[2]);
+    			attr_dev(svg, "height", "100");
+    			attr_dev(svg, "class", "svelte-1fn0a55");
+    			add_location(svg, file$1, 54, 12, 1575);
+    			attr_dev(div0, "class", "area-vis svelte-1fn0a55");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[9].call(div0));
+    			add_location(div0, file$1, 53, 8, 1514);
+    			attr_dev(div1, "class", "area-text svelte-1fn0a55");
+    			add_location(div1, file$1, 51, 4, 1446);
+    			attr_dev(div2, "class", "description svelte-1fn0a55");
+    			add_location(div2, file$1, 72, 4, 2334);
+    			attr_dev(div3, "class", "area-summary svelte-1fn0a55");
+    			add_location(div3, file$1, 49, 0, 1349);
+    			add_location(h21, file$1, 77, 4, 2429);
+    			attr_dev(div4, "class", "indicators");
+    			add_location(div4, file$1, 76, 0, 2400);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, button);
+    			append_dev(div3, t1);
+    			append_dev(div3, div1);
+    			append_dev(div1, h20);
+    			append_dev(div1, t3);
+    			append_dev(div1, div0);
+    			append_dev(div0, svg);
+    			if (if_block) if_block.m(svg, null);
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[9].bind(div0));
+    			append_dev(div3, t4);
+    			append_dev(div3, div2);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, h21);
+    			append_dev(div4, t9);
+    			mount_component(countryselect, div4, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", self$1(/*click_handler*/ ctx[8]), false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (/*areaData*/ ctx[0]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					if_block.m(svg, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (!current || dirty & /*$width*/ 4 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100")) {
     				attr_dev(svg, "viewBox", svg_viewBox_value);
     			}
 
@@ -39251,11 +39303,13 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div3);
-    			destroy_each(each_blocks, detaching);
+    			if (if_block) if_block.d();
     			div0_resize_listener();
     			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(div4);
     			destroy_component(countryselect);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -39275,14 +39329,17 @@ var app = (function () {
     	let $margin;
     	let $width;
     	let $scaleFactor;
+    	let $view;
     	validate_store(areaInView, "areaInView");
-    	component_subscribe($$self, areaInView, $$value => $$invalidate(9, $areaInView = $$value));
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(11, $areaInView = $$value));
     	validate_store(margin, "margin");
     	component_subscribe($$self, margin, $$value => $$invalidate(1, $margin = $$value));
     	validate_store(width, "width");
     	component_subscribe($$self, width, $$value => $$invalidate(2, $width = $$value));
     	validate_store(scaleFactor, "scaleFactor");
-    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(6, $scaleFactor = $$value));
+    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(7, $scaleFactor = $$value));
+    	validate_store(view, "view");
+    	component_subscribe($$self, view, $$value => $$invalidate(12, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Indicators", slots, []);
     	let data = [], countryNames = [], areaData, graphData = [];
@@ -39300,11 +39357,18 @@ var app = (function () {
     		$$invalidate(0, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
     	});
 
+    	function switchView(targetView, area) {
+    		set_store_value(view, $view = targetView, $view);
+    		set_store_value(areaInView, $areaInView = area, $areaInView);
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Indicators> was created with unknown prop '${key}'`);
     	});
+
+    	const click_handler = () => switchView("main");
 
     	function div0_elementresize_handler() {
     		$width = this.clientWidth;
@@ -39327,10 +39391,12 @@ var app = (function () {
     		areaData,
     		graphData,
     		currentArea,
+    		switchView,
     		$areaInView,
     		$margin,
     		$width,
-    		$scaleFactor
+    		$scaleFactor,
+    		$view
     	});
 
     	$$self.$inject_state = $$props => {
@@ -39345,7 +39411,7 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 71) {
+    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 135) {
     			if (areaData) {
     				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
 
@@ -39370,7 +39436,9 @@ var app = (function () {
     		countryNames,
     		graphData,
     		currentArea,
+    		switchView,
     		$scaleFactor,
+    		click_handler,
     		div0_elementresize_handler
     	];
     }
@@ -39866,11 +39934,8 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "main", $view);
-
-    	// $view = 'indicators';
+    	set_store_value(view, $view = "indicators", $view);
     	let showQuarterly = false;
-
     	let showNews = true;
     	const writable_props = [];
 

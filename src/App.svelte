@@ -6,8 +6,8 @@
     import {view} from './stores/view';
     // import {writable} from "svelte/store";
 
-    $view = 'main';
-    // $view = 'indicators';
+    // $view = 'main';
+    $view = 'indicators';
     let showQuarterly = false;
     let showNews = true; 
     
