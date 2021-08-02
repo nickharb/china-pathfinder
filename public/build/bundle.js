@@ -97,6 +97,9 @@ var app = (function () {
     function children$1(element) {
         return Array.from(element.childNodes);
     }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
     // unfortunately this can't be a constant as that wouldn't be tree-shakeable
     // so we cache the result instead
     let crossorigin;
@@ -269,12 +272,6 @@ var app = (function () {
             block.o(local);
         }
     }
-
-    const globals = (typeof window !== 'undefined'
-        ? window
-        : typeof globalThis !== 'undefined'
-            ? globalThis
-            : global);
     function create_component(block) {
         block && block.c();
     }
@@ -37748,13 +37745,13 @@ var app = (function () {
         ZoomTransform: Transform
     });
 
-    const dataPath = './data/composite-score.csv';
+    const dataPath$1 = './data/composite-score.csv';
     // const parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
     // const parseDate = timeParse('%m/%d/%Y');
 
     const loadData = async () => {
 
-      const data = await csv(dataPath);
+      const data = await csv(dataPath$1);
 
       // create an array of objects for the six areas
       // ... China appears as the last country
@@ -37777,12 +37774,41 @@ var app = (function () {
       return({countries: data, areas: output});
     };
 
-    var copyData = [{"label":"growth","name":"Financial System Development","definition":"quantifies the prominence of market-driven credit pricing, the availability of financial instruments, and the absence of distortive controls on debt.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China.  By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders."},
-    {"label":"competition","name":"Market Competition","definition":"quantifies economic dynamism by assessing the entry and exit barriers firms face, government response to market power abuses, and government participation in the marketplace.","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market."},
-    {"label":"innovation","name":"Modern and Open Innovation System","definition":"quantifies the prevalence of a market-based innovation system by analyzing the levels of public and private sector investment, the protection of intellectual property rights, and collaboration with foreign firms.","context":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run."},
-    {"label":"trade","name":"Trade Openness","definition":"quantifies an economy’s trade restrictiveness through measures such as tariff rates, non-tariff barriers, and the overall cross-border flow of goods and services.","context":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures."},
-    {"label":"FDI","name":"Direct Investment Openness","definition":"quantifies the level of freedom a country’s domestic companies have to invest abroad without restrictions or political mandates, and access for foreign firms to invest in its domestic markets. ","context":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016."},
-    {"label":"portfolio","name":"Portfolio Investment Openness","definition":"quantifies a country’s controls on cross-border investment through measures of equities, bonds, debt, foreign exchange, and other financial instruments.","context":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets."}];
+    var copyData = [{"label":"growth","name":"Financial System Development","definition":"quantifies the prominence of market-driven credit pricing, the availability of financial instruments, and the absence of distortive controls on debt.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","category":"main"},
+    {"label":"competition","name":"Market Competition","definition":"quantifies economic dynamism by assessing the entry and exit barriers firms face, government response to market power abuses, and government participation in the marketplace.","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","category":"main"},
+    {"label":"innovation","name":"Modern and Open Innovation System","definition":"quantifies the prevalence of a market-based innovation system by analyzing the levels of public and private sector investment, the protection of intellectual property rights, and collaboration with foreign firms.","context":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","category":"main"},
+    {"label":"trade","name":"Trade Openness","definition":"quantifies an economy’s trade restrictiveness through measures such as tariff rates, non-tariff barriers, and the overall cross-border flow of goods and services.","context":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","category":"main"},
+    {"label":"FDI","name":"Direct Investment Openness","definition":"quantifies the level of freedom a country’s domestic companies have to invest abroad without restrictions or political mandates, and access for foreign firms to invest in its domestic markets.","context":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","category":"main"},
+    {"label":"portfolio","name":"Portfolio Investment Openness","definition":"quantifies a country’s controls on cross-border investment through measures of equities, bonds, debt, foreign exchange, and other financial instruments.","context":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","category":"main"},
+    {"label":"1","name":"Inward FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","context":"","category":"FDI"},
+    {"label":"2","name":"Outbound FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","context":"","category":"FDI"},
+    {"label":"3","name":"Barriers to Inward FDI: OECD FDI Restrictiveness Index (2019)","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","context":"","category":"FDI"},
+    {"label":"4","name":"Capital Controls: FDI Inflow and Outflow Restrictions (2017)","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset and adapted from the IMF Annual Report on Exchange Arrangements and Exchange Restrictions, measures regulatory restrictions on inbound and outbound FDI flows on a scale of 0 (low) to 1 (high).","context":"","category":"FDI"},
+    {"label":"1","name":"Cross-Border Debt Assets and Liabilities / GDP, 2020","definition":"Cross-border debt assets and liabilities measure the value of domestic debt owned by foreigners and foreign debt owned by residents. It is represented as a ratio to GDP.","context":"","category":"portfolio"},
+    {"label":"2","name":"Cross-Border Equity Assets and Liabilities / GDP, 2020","definition":"Cross-border equity assets and liabilities measure the value of domestic equity owned by foreigners and foreign equity owned by residents. It is represented as a ratio to GDP.","context":"","category":"portfolio"},
+    {"label":"3","name":"Bond inflow and outflow restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in bond markets on a scale from 0 (open) to 1 (closed).","context":"","category":"portfolio"},
+    {"label":"4","name":"Equity inflow and outflow restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in equity markets on a scale from 0 (open) to 1 (closed).","context":"","category":"portfolio"},
+    {"label":"1","name":"Gross two-way goods trade/total two-way goods trade","definition":"This measure shows the total value of imports and exports of goods trade with share of global trade as a denominator. It reflects the size of goods trade in the country's economy.","context":"","category":"trade"},
+    {"label":"2","name":"Gross two-way services trade/total two-way services trade","definition":"This measure shows the total value of imports and exports of a country’s services trade divided by the share of global trade. It reflects the size of services trade in the country's economy.","context":"","category":"trade"},
+    {"label":"3","name":"Tariff Rates: Most Favored Nation (MFN), Weighted Mean, All Products","definition":"","context":"","category":"trade"},
+    {"label":"4","name":"Non-Tariff Measures, 2021","definition":"","context":"","category":"trade"},
+    {"label":"5","name":"Services Trade Restrictiveness Index","definition":"","context":"","category":"trade"},
+    {"label":"6","name":"Digital Services Trade Restrictiveness Index","definition":"","context":"","category":"trade"},
+    {"label":"1","name":"Difference Between Average Annual Interest rate and Nominal GDP Growth","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","context":"","category":"growth"},
+    {"label":"2","name":"Credit-to-GDP Gap","definition":"The credit-to-GDP gap (“credit gap”) is defined as the difference between the credit-to-GDP ratio and its long-term trend. It reflects the degree to which credit growth exceeds or lags output growth.","context":"","category":"growth"},
+    {"label":"3","name":"Stock Market Capitalization as a Share of GDP","definition":"","context":"","category":"growth"},
+    {"label":"4","name":"Incremental Capital Output Ratio, China vs. Best Practice","definition":"","context":"","category":"growth"},
+    {"label":"5","name":"Foreign Competition: Banking System's Assets in Foreign-Controlled Banks","definition":"","context":"","category":"growth"},
+    {"label":"1","name":"Overall Market Concentration Across All Industries","definition":"The Herfindahl-Hirschman Index is a measure of market concentration and provides insight into market competition. It is measured on a scale of 0 (less concentration and thus highly competitive) to 1 (single firm dominance).","context":"","category":"competition"},
+    {"label":"2","name":"Combined SOE Company Value","definition":"Total combined value of State-Owned Enterprises denoted in USD.","context":"","category":"competition"},
+    {"label":"3","name":"Total Number of SOEs","definition":"","context":"","category":"competition"},
+    {"label":"4","name":"Scope of State-Owned Enterprises (SOEs) Index","definition":"","context":"","category":"competition"},
+    {"label":"5","name":"Unbiased Enforcement of Market Rules: Rule of Law","definition":"","context":"","category":"competition"},
+    {"label":"1","name":"R&D Expenditures / Annual GDP","definition":"This ratio measures gross domestic research and development expenditures as a percentage of GDP. R&D includes capital and current expenditures on basic research, applied research, and experimental development across business, government, academia, and non-profits.","context":"","category":"innovation"},
+    {"label":"2","name":"Ratio of Business Enterprise Spending to Government Spending on Domestic R&D","definition":"This indicator measures the ratio between business enterprise and government R&D spending","context":"","category":"innovation"},
+    {"label":"3","name":"Total Triadic Patent Families Filed","definition":"","context":"","category":"innovation"},
+    {"label":"4","name":"Receipts of payments from abroad for the use of intellectual property","definition":"","context":"","category":"innovation"},
+    {"label":"5","name":"Intellectual Property Protection Index","definition":"","context":"","category":"innovation"}];
 
     const subscriber_queue = [];
     /**
@@ -37892,6 +37918,11 @@ var app = (function () {
     const margin = derived(width, ($width) => ($width/100));
     const scaleFactor = derived(width, ($width) => ($width/150));
 
+
+    // for sunburst charts
+    const chartWidth = writable();
+    const innerR = derived(chartWidth, ($chartWidth) => ($chartWidth/6));
+
     // Modified from https://observablehq.com/@harrystevens/cubic-bezier-curve
 
     // import { indexOf, over } from "lodash";
@@ -37991,16 +38022,16 @@ var app = (function () {
     const areaInView = writable();
 
     /* src/components/composite-vis.svelte generated by Svelte v3.38.2 */
-    const file$4 = "src/components/composite-vis.svelte";
+    const file$5 = "src/components/composite-vis.svelte";
 
-    function get_each_context$2(ctx, list, i) {
+    function get_each_context$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[13] = list[i];
     	child_ctx[15] = i;
     	return child_ctx;
     }
 
-    function get_each_context_1(ctx, list, i) {
+    function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[16] = list[i];
     	child_ctx[15] = i;
@@ -38051,13 +38082,13 @@ var app = (function () {
     			span.textContent = "Click for details";
     			t5 = space();
     			attr_dev(h2, "class", "svelte-nm1qto");
-    			add_location(h2, file$4, 60, 12, 1939);
+    			add_location(h2, file$5, 60, 12, 1939);
     			attr_dev(span, "class", "svelte-nm1qto");
-    			add_location(span, file$4, 63, 16, 2119);
+    			add_location(span, file$5, 63, 16, 2119);
     			attr_dev(div0, "class", "description svelte-nm1qto");
-    			add_location(div0, file$4, 61, 12, 2043);
+    			add_location(div0, file$5, 61, 12, 2043);
     			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[13].label.toLowerCase()) + " svelte-nm1qto"));
-    			add_location(div1, file$4, 59, 8, 1880);
+    			add_location(div1, file$5, 59, 8, 1880);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -38106,8 +38137,8 @@ var app = (function () {
     	return block;
     }
 
-    // (81:16) {#each area.graphData as graph,i}
-    function create_each_block_1(ctx) {
+    // (80:16) {#each area.graphData as graph,i}
+    function create_each_block_1$1(ctx) {
     	let g;
     	let path;
     	let path_d_value;
@@ -38128,16 +38159,16 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[16].path);
     			attr_dev(path, "class", "svelte-nm1qto");
-    			add_location(path, file$4, 82, 24, 2978);
+    			add_location(path, file$5, 81, 24, 2862);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[16].r);
     			attr_dev(circle, "class", "country-circle svelte-nm1qto");
-    			add_location(circle, file$4, 83, 24, 3031);
+    			add_location(circle, file$5, 82, 24, 2915);
     			attr_dev(text_1, "y", "-10px");
     			attr_dev(text_1, "class", "svelte-nm1qto");
-    			add_location(text_1, file$4, 84, 24, 3108);
+    			add_location(text_1, file$5, 83, 24, 2992);
     			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[16].country + " svelte-nm1qto");
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[16].x + "," + /*graph*/ ctx[16].y + ")");
-    			add_location(g, file$4, 81, 20, 2875);
+    			add_location(g, file$5, 80, 20, 2759);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38172,9 +38203,9 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_1.name,
+    		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(81:16) {#each area.graphData as graph,i}",
+    		source: "(80:16) {#each area.graphData as graph,i}",
     		ctx
     	});
 
@@ -38182,7 +38213,7 @@ var app = (function () {
     }
 
     // (77:8) {#each areaData as area,i}
-    function create_each_block$2(ctx) {
+    function create_each_block$3(ctx) {
     	let g;
     	let line;
     	let g_class_value;
@@ -38192,7 +38223,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
     	}
 
     	const block = {
@@ -38206,10 +38237,10 @@ var app = (function () {
 
     			attr_dev(line, "class", "gridline svelte-nm1qto");
     			attr_dev(line, "x2", /*$width*/ ctx[3]);
-    			add_location(line, file$4, 78, 16, 2646);
+    			add_location(line, file$5, 78, 16, 2646);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[13].area) + " svelte-nm1qto"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[13].offsetY + ")");
-    			add_location(g, file$4, 77, 12, 2558);
+    			add_location(g, file$5, 77, 12, 2558);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38230,12 +38261,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i] = create_each_block_1$1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(g, null);
     					}
@@ -38264,7 +38295,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$2.name,
+    		id: create_each_block$3.name,
     		type: "each",
     		source: "(77:8) {#each areaData as area,i}",
     		ctx
@@ -38273,7 +38304,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$6(ctx) {
+    function create_fragment$7(ctx) {
     	let div0;
     	let div0_resize_listener;
     	let t;
@@ -38295,7 +38326,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
     	}
 
     	const block = {
@@ -38317,20 +38348,20 @@ var app = (function () {
 
     			attr_dev(div0, "class", "text-wrapper svelte-nm1qto");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[9].call(div0));
-    			add_location(div0, file$4, 57, 0, 1787);
+    			add_location(div0, file$5, 57, 0, 1787);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[3]);
     			attr_dev(rect, "height", /*$height*/ ctx[4]);
-    			add_location(rect, file$4, 75, 8, 2453);
+    			add_location(rect, file$5, 75, 8, 2453);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[4]);
     			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", /*$height*/ ctx[4]);
     			attr_dev(svg, "class", "svelte-nm1qto");
-    			add_location(svg, file$4, 71, 4, 2332);
+    			add_location(svg, file$5, 71, 4, 2332);
     			attr_dev(div1, "class", "vis-wrapper svelte-nm1qto");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[10].call(div1));
-    			add_location(div1, file$4, 69, 0, 2275);
+    			add_location(div1, file$5, 69, 0, 2275);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38393,12 +38424,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$2(ctx, each_value, i);
+    					const child_ctx = get_each_context$3(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block$2(child_ctx);
+    						each_blocks[i] = create_each_block$3(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(svg, null);
     					}
@@ -38438,7 +38469,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$6.name,
+    		id: create_fragment$7.name,
     		type: "component",
     		source: "",
     		ctx
@@ -38447,7 +38478,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$6($$self, $$props, $$invalidate) {
+    function instance$7($$self, $$props, $$invalidate) {
     	let $view;
     	let $areaInView;
     	let $margin;
@@ -38583,13 +38614,13 @@ var app = (function () {
     class Composite_vis extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, { areaData: 0, copyData: 1 });
+    		init$1(this, options, instance$7, create_fragment$7, safe_not_equal, { areaData: 0, copyData: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "Composite_vis",
     			options,
-    			id: create_fragment$6.name
+    			id: create_fragment$7.name
     		});
 
     		const { ctx } = this.$$;
@@ -38623,16 +38654,16 @@ var app = (function () {
 
     /* src/components/country-select.svelte generated by Svelte v3.38.2 */
 
-    const file$3 = "src/components/country-select.svelte";
+    const file$4 = "src/components/country-select.svelte";
 
-    function get_each_context$1(ctx, list, i) {
+    function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[1] = list[i];
     	return child_ctx;
     }
 
     // (10:12) {#each countryNames as country}
-    function create_each_block$1(ctx) {
+    function create_each_block$2(ctx) {
     	let option;
     	let t_value = /*country*/ ctx[1].country + "";
     	let t;
@@ -38644,7 +38675,7 @@ var app = (function () {
     			t = text$1(t_value);
     			option.__value = option_value_value = /*country*/ ctx[1].country;
     			option.value = option.__value;
-    			add_location(option, file$3, 10, 16, 222);
+    			add_location(option, file$4, 10, 16, 222);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -38665,7 +38696,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block$1.name,
+    		id: create_each_block$2.name,
     		type: "each",
     		source: "(10:12) {#each countryNames as country}",
     		ctx
@@ -38674,7 +38705,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$5(ctx) {
+    function create_fragment$6(ctx) {
     	let div1;
     	let t;
     	let div0;
@@ -38684,7 +38715,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
     	}
 
     	const block = {
@@ -38698,11 +38729,11 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(select, file$3, 8, 8, 153);
-    			attr_dev(div0, "class", "country-toggle-box");
-    			add_location(div0, file$3, 6, 4, 111);
+    			add_location(select, file$4, 8, 8, 153);
+    			attr_dev(div0, "class", "country-toggle-box svelte-2bys6");
+    			add_location(div0, file$4, 6, 4, 111);
     			attr_dev(div1, "class", "country-select");
-    			add_location(div1, file$3, 4, 0, 49);
+    			add_location(div1, file$4, 4, 0, 49);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38724,12 +38755,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$1(ctx, each_value, i);
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i] = create_each_block$2(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(select, null);
     					}
@@ -38752,7 +38783,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$5.name,
+    		id: create_fragment$6.name,
     		type: "component",
     		source: "",
     		ctx
@@ -38761,7 +38792,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$5($$self, $$props, $$invalidate) {
+    function instance$6($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Country_select", slots, []);
     	let { countryNames } = $$props;
@@ -38791,13 +38822,13 @@ var app = (function () {
     class Country_select extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { countryNames: 0 });
+    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, { countryNames: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "Country_select",
     			options,
-    			id: create_fragment$5.name
+    			id: create_fragment$6.name
     		});
 
     		const { ctx } = this.$$;
@@ -38818,9 +38849,9 @@ var app = (function () {
     }
 
     /* src/views/Landing.svelte generated by Svelte v3.38.2 */
-    const file$2 = "src/views/Landing.svelte";
+    const file$3 = "src/views/Landing.svelte";
 
-    function create_fragment$4(ctx) {
+    function create_fragment$5(ctx) {
     	let div0;
     	let countryselect;
     	let t0;
@@ -38842,7 +38873,10 @@ var app = (function () {
     		});
 
     	compositevis = new Composite_vis({
-    			props: { areaData: /*areaData*/ ctx[2], copyData },
+    			props: {
+    				areaData: /*areaData*/ ctx[2],
+    				copyData: copyData.filter(func)
+    			},
     			$$inline: true
     		});
 
@@ -38860,15 +38894,15 @@ var app = (function () {
     			t4 = space();
     			div1 = element("div");
     			create_component(compositevis.$$.fragment);
-    			add_location(button, file$2, 22, 4, 682);
+    			add_location(button, file$3, 22, 4, 682);
     			attr_dev(input, "type", "checkbox");
-    			add_location(input, file$2, 25, 12, 768);
+    			add_location(input, file$3, 25, 12, 768);
     			attr_dev(label, "class", "time-toggle-box");
-    			add_location(label, file$2, 24, 4, 724);
+    			add_location(label, file$3, 24, 4, 724);
     			attr_dev(div0, "class", "control-area");
-    			add_location(div0, file$2, 19, 0, 614);
+    			add_location(div0, file$3, 19, 0, 614);
     			attr_dev(div1, "class", "vis-container svelte-bgvlxt");
-    			add_location(div1, file$2, 31, 0, 883);
+    			add_location(div1, file$3, 31, 0, 883);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38930,7 +38964,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$4.name,
+    		id: create_fragment$5.name,
     		type: "component",
     		source: "",
     		ctx
@@ -38939,7 +38973,9 @@ var app = (function () {
     	return block;
     }
 
-    function instance$4($$self, $$props, $$invalidate) {
+    const func = d => d.category == "main";
+
+    function instance$5($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Landing", slots, []);
     	let { showPrevious = false } = $$props;
@@ -38996,13 +39032,13 @@ var app = (function () {
     class Landing extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, { showPrevious: 0 });
+    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { showPrevious: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "Landing",
     			options,
-    			id: create_fragment$4.name
+    			id: create_fragment$5.name
     		});
     	}
 
@@ -39015,30 +39051,355 @@ var app = (function () {
     	}
     }
 
-    /* src/views/Indicators.svelte generated by Svelte v3.38.2 */
+    const dataPath = './data/indicators';
 
-    const { console: console_1 } = globals;
-    const file$1 = "src/views/Indicators.svelte";
+    const loadIndicatorsData = async (indicatorName) => {
 
-    function get_each_context(ctx, list, i) {
+        const data = await csv(dataPath + '/' + indicatorName + '.csv');
+        let indicators = Object.keys(data[0]).filter(d=> d!=='countries');
+        let output = [];
+        indicators.forEach((d)=>{
+
+            let countries = [];
+
+            data.forEach((x)=>{
+                countries.push({country: x.countries, value: x[d]});
+            });
+
+            countries.sort((a,b)=> b.value - a.value);
+
+            output.push({indicator: d, values: countries});
+        });
+        return(output);
+    };
+
+    /* src/components/indicator-vis.svelte generated by Svelte v3.38.2 */
+    const file$2 = "src/components/indicator-vis.svelte";
+
+    function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[13] = list[i];
-    	child_ctx[15] = i;
+    	child_ctx[5] = list[i];
     	return child_ctx;
     }
 
-    // (58:16) {#if areaData}
-    function create_if_block$1(ctx) {
+    // (47:8) {#each indicator.values as country}
+    function create_each_block$1(ctx) {
+    	let g1;
+    	let path;
+    	let path_d_value;
+    	let g0;
+    	let text_1;
+    	let t0_value = /*country*/ ctx[5].country + "";
+    	let t0;
+    	let t1;
+    	let t2_value = Math.round(/*country*/ ctx[5].value * 10) / 10 + "";
+    	let t2;
+    	let text_1_transform_value;
+    	let g0_transform_value;
+    	let g1_class_value;
+
+    	const block = {
+    		c: function create() {
+    			g1 = svg_element("g");
+    			path = svg_element("path");
+    			g0 = svg_element("g");
+    			text_1 = svg_element("text");
+    			t0 = text$1(t0_value);
+    			t1 = text$1(": ");
+    			t2 = text$1(t2_value);
+    			attr_dev(path, "d", path_d_value = /*country*/ ctx[5].path);
+    			add_location(path, file$2, 48, 16, 1418);
+    			attr_dev(text_1, "transform", text_1_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel * -1 + ")");
+    			set_style(text_1, "text-anchor", /*country*/ ctx[5].textAnchor);
+    			attr_dev(text_1, "class", "svelte-1u3z53u");
+    			add_location(text_1, file$2, 50, 20, 1563);
+    			attr_dev(g0, "transform", g0_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel + ")translate(" + /*country*/ ctx[5].barLength + ",0)");
+    			add_location(g0, file$2, 49, 16, 1465);
+    			attr_dev(g1, "class", g1_class_value = "country " + /*country*/ ctx[5].country + " svelte-1u3z53u");
+    			add_location(g1, file$2, 47, 12, 1364);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g1, anchor);
+    			append_dev(g1, path);
+    			append_dev(g1, g0);
+    			append_dev(g0, text_1);
+    			append_dev(text_1, t0);
+    			append_dev(text_1, t1);
+    			append_dev(text_1, t2);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*indicator*/ 1 && path_d_value !== (path_d_value = /*country*/ ctx[5].path)) {
+    				attr_dev(path, "d", path_d_value);
+    			}
+
+    			if (dirty & /*indicator*/ 1 && t0_value !== (t0_value = /*country*/ ctx[5].country + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*indicator*/ 1 && t2_value !== (t2_value = Math.round(/*country*/ ctx[5].value * 10) / 10 + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*indicator*/ 1 && text_1_transform_value !== (text_1_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel * -1 + ")")) {
+    				attr_dev(text_1, "transform", text_1_transform_value);
+    			}
+
+    			if (dirty & /*indicator*/ 1) {
+    				set_style(text_1, "text-anchor", /*country*/ ctx[5].textAnchor);
+    			}
+
+    			if (dirty & /*indicator*/ 1 && g0_transform_value !== (g0_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel + ")translate(" + /*country*/ ctx[5].barLength + ",0)")) {
+    				attr_dev(g0, "transform", g0_transform_value);
+    			}
+
+    			if (dirty & /*indicator*/ 1 && g1_class_value !== (g1_class_value = "country " + /*country*/ ctx[5].country + " svelte-1u3z53u")) {
+    				attr_dev(g1, "class", g1_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$1.name,
+    		type: "each",
+    		source: "(47:8) {#each indicator.values as country}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	let div;
+    	let svg;
     	let g;
-    	let line;
-    	let g_class_value;
+    	let text_1;
+    	let t_value = /*indicator*/ ctx[0].indicator + "";
+    	let t;
     	let g_transform_value;
-    	let each_value = /*graphData*/ ctx[4];
+    	let svg_viewBox_value;
+    	let each_value = /*indicator*/ ctx[0].values;
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			svg = svg_element("svg");
+    			g = svg_element("g");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(text_1, "dy", "5");
+    			attr_dev(text_1, "class", "middle-text svelte-1u3z53u");
+    			add_location(text_1, file$2, 59, 8, 1854);
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")");
+    			add_location(g, file$2, 45, 4, 1249);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1]);
+    			add_location(svg, file$2, 44, 0, 1196);
+    			attr_dev(div, "class", "indicator-vis svelte-1u3z53u");
+    			add_location(div, file$2, 43, 0, 1168);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, svg);
+    			append_dev(svg, g);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(g, null);
+    			}
+
+    			append_dev(g, text_1);
+    			append_dev(text_1, t);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*indicator, Math*/ 1) {
+    				each_value = /*indicator*/ ctx[0].values;
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(g, text_1);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+
+    			if (dirty & /*indicator*/ 1 && t_value !== (t_value = /*indicator*/ ctx[0].indicator + "")) set_data_dev(t, t_value);
+
+    			if (dirty & /*$chartWidth*/ 2 && g_transform_value !== (g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")")) {
+    				attr_dev(g, "transform", g_transform_value);
+    			}
+
+    			if (dirty & /*$chartWidth*/ 2 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1])) {
+    				attr_dev(svg, "viewBox", svg_viewBox_value);
+    			}
+    		},
+    		i: noop$4,
+    		o: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$4.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let $chartWidth;
+    	let $innerR;
+    	validate_store(chartWidth, "chartWidth");
+    	component_subscribe($$self, chartWidth, $$value => $$invalidate(1, $chartWidth = $$value));
+    	validate_store(innerR, "innerR");
+    	component_subscribe($$self, innerR, $$value => $$invalidate(2, $innerR = $$value));
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Indicator_vis", slots, []);
+    	let { indicator } = $$props;
+    	set_store_value(chartWidth, $chartWidth = window.innerWidth * 0.5, $chartWidth);
+    	let x = band().range([0, 2 * Math.PI]).align(0).domain(indicator.values.map(d => d.country));
+
+    	let y = pow(2).// d3.scaleSqrt() makes less dramatic effect
+    	domain(extent$1(indicator.values.map(d => d.value))).range([$innerR + 20, $chartWidth / 2 - 50]);
+
+    	indicator.values.forEach((d, i) => {
+    		d.path = arc().innerRadius($innerR).outerRadius(y(d.value)).// .outerRadius($innerR+50)
+    		startAngle(x(d.country)).endAngle(x(d.country) + x.bandwidth()).padAngle(0.04).padRadius($innerR)();
+
+    		d.rotateAngel = (x(d.country) + x.bandwidth() / 2) * 180 / Math.PI - 90;
+
+    		if (i >= indicator.values.length / 2) {
+    			d.textRotate = 180;
+    			d.textAnchor = "end";
+    		} else {
+    			d.textRotate = 0;
+    			d.textAnchor = "start";
+    		}
+
+    		d.barLength = y(d.value) + 10;
+    	});
+
+    	const writable_props = ["indicator"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Indicator_vis> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("indicator" in $$props) $$invalidate(0, indicator = $$props.indicator);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		d3,
+    		chartWidth,
+    		innerR,
+    		indicator,
+    		x,
+    		y,
+    		$chartWidth,
+    		$innerR
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("indicator" in $$props) $$invalidate(0, indicator = $$props.indicator);
+    		if ("x" in $$props) x = $$props.x;
+    		if ("y" in $$props) y = $$props.y;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [indicator, $chartWidth];
+    }
+
+    class Indicator_vis extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, { indicator: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Indicator_vis",
+    			options,
+    			id: create_fragment$4.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*indicator*/ ctx[0] === undefined && !("indicator" in props)) {
+    			console.warn("<Indicator_vis> was created without expected prop 'indicator'");
+    		}
+    	}
+
+    	get indicator() {
+    		throw new Error("<Indicator_vis>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set indicator(value) {
+    		throw new Error("<Indicator_vis>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/views/Indicators.svelte generated by Svelte v3.38.2 */
+    const file$1 = "src/views/Indicators.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[15] = list[i];
+    	child_ctx[17] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[18] = list[i];
+    	child_ctx[17] = i;
+    	return child_ctx;
+    }
+
+    // (71:16) {#if areaData}
+    function create_if_block_1$1(ctx) {
+    	let g;
+    	let line;
+    	let g_class_value;
+    	let g_transform_value;
+    	let each_value_1 = /*graphData*/ ctx[6];
+    	validate_each_argument(each_value_1);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
     	const block = {
@@ -39050,12 +39411,12 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(line, "class", "gridline svelte-1fn0a55");
-    			attr_dev(line, "x2", /*$width*/ ctx[2]);
-    			add_location(line, file$1, 59, 24, 1816);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1fn0a55"));
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 4 + ")");
-    			add_location(g, file$1, 58, 20, 1719);
+    			attr_dev(line, "class", "gridline svelte-1icv13l");
+    			attr_dev(line, "x2", /*$width*/ ctx[3]);
+    			add_location(line, file$1, 72, 24, 2592);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1icv13l"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*$margin*/ ctx[2] * 4 + ")");
+    			add_location(g, file$1, 71, 20, 2495);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -39066,22 +39427,22 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*$width*/ 4) {
-    				attr_dev(line, "x2", /*$width*/ ctx[2]);
+    			if (dirty & /*$width*/ 8) {
+    				attr_dev(line, "x2", /*$width*/ ctx[3]);
     			}
 
-    			if (dirty & /*graphData*/ 16) {
-    				each_value = /*graphData*/ ctx[4];
-    				validate_each_argument(each_value);
+    			if (dirty & /*graphData*/ 64) {
+    				each_value_1 = /*graphData*/ ctx[6];
+    				validate_each_argument(each_value_1);
     				let i;
 
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i] = create_each_block_1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(g, null);
     					}
@@ -39091,14 +39452,14 @@ var app = (function () {
     					each_blocks[i].d(1);
     				}
 
-    				each_blocks.length = each_value.length;
+    				each_blocks.length = each_value_1.length;
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[0].area) + " svelte-1fn0a55"))) {
+    			if (dirty & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1icv13l"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*$margin*/ 2 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[1] + "," + /*$margin*/ ctx[1] * 4 + ")")) {
+    			if (dirty & /*$margin*/ 4 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*$margin*/ ctx[2] * 4 + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
     		},
@@ -39110,21 +39471,21 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$1.name,
+    		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(58:16) {#if areaData}",
+    		source: "(71:16) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (61:24) {#each graphData as graph,i}
-    function create_each_block(ctx) {
+    // (74:24) {#each graphData as graph,i}
+    function create_each_block_1(ctx) {
     	let g;
     	let circle;
     	let text_1;
-    	let t_value = /*graph*/ ctx[13].country + "";
+    	let t_value = /*graph*/ ctx[18].country + "";
     	let t;
 
     	const block = {
@@ -39133,15 +39494,15 @@ var app = (function () {
     			circle = svg_element("circle");
     			text_1 = svg_element("text");
     			t = text$1(t_value);
-    			attr_dev(circle, "r", /*graph*/ ctx[13].r);
-    			attr_dev(circle, "class", "country-circle svelte-1fn0a55");
-    			add_location(circle, file$1, 62, 28, 2043);
+    			attr_dev(circle, "r", /*graph*/ ctx[18].r);
+    			attr_dev(circle, "class", "country-circle svelte-1icv13l");
+    			add_location(circle, file$1, 75, 28, 2819);
     			attr_dev(text_1, "y", "-10px");
-    			attr_dev(text_1, "class", "svelte-1fn0a55");
-    			add_location(text_1, file$1, 63, 28, 2124);
-    			attr_dev(g, "class", "country " + /*graph*/ ctx[13].country + " svelte-1fn0a55");
-    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[13].x + "," + /*graph*/ ctx[13].y + ")");
-    			add_location(g, file$1, 61, 24, 1936);
+    			attr_dev(text_1, "class", "svelte-1icv13l");
+    			add_location(text_1, file$1, 76, 28, 2900);
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[18].country + " svelte-1icv13l");
+    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[18].x + "," + /*graph*/ ctx[18].y + ")");
+    			add_location(g, file$1, 74, 24, 2712);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -39157,9 +39518,276 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(74:24) {#each graphData as graph,i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (106:8) {:else}
+    function create_else_block(ctx) {
+    	let div2;
+    	let div1;
+    	let h3;
+    	let t0_value = /*indicator*/ ctx[15].copy.name + "";
+    	let t0;
+    	let t1;
+    	let div0;
+    	let t2_value = /*indicator*/ ctx[15].copy.definition + "";
+    	let t2;
+    	let t3;
+    	let button;
+    	let t5;
+    	let indicatorvis;
+    	let current;
+
+    	indicatorvis = new Indicator_vis({
+    			props: { indicator: /*indicator*/ ctx[15] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div2 = element("div");
+    			div1 = element("div");
+    			h3 = element("h3");
+    			t0 = text$1(t0_value);
+    			t1 = space();
+    			div0 = element("div");
+    			t2 = text$1(t2_value);
+    			t3 = space();
+    			button = element("button");
+    			button.textContent = "Share this chart";
+    			t5 = space();
+    			create_component(indicatorvis.$$.fragment);
+    			attr_dev(h3, "class", "svelte-1icv13l");
+    			add_location(h3, file$1, 108, 20, 4103);
+    			attr_dev(div0, "class", "description svelte-1icv13l");
+    			add_location(div0, file$1, 109, 20, 4154);
+    			attr_dev(button, "class", "svelte-1icv13l");
+    			add_location(button, file$1, 110, 20, 4233);
+    			set_style(div1, "float", "right");
+    			set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			set_style(div1, "padding-right", "20px");
+    			set_style(div1, "border-right", "1px solid #eee");
+    			attr_dev(div1, "class", "inner-container svelte-1icv13l");
+    			add_location(div1, file$1, 107, 16, 3952);
+    			attr_dev(div2, "class", "indicator-text svelte-1icv13l");
+    			add_location(div2, file$1, 106, 12, 3907);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div1);
+    			append_dev(div1, h3);
+    			append_dev(h3, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, div0);
+    			append_dev(div0, t2);
+    			append_dev(div1, t3);
+    			append_dev(div1, button);
+    			insert_dev(target, t5, anchor);
+    			mount_component(indicatorvis, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t0_value !== (t0_value = /*indicator*/ ctx[15].copy.name + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t2_value !== (t2_value = /*indicator*/ ctx[15].copy.definition + "")) set_data_dev(t2, t2_value);
+
+    			if (!current || dirty & /*$chartWidth*/ 32) {
+    				set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			}
+
+    			const indicatorvis_changes = {};
+    			if (dirty & /*indicatorsData*/ 1) indicatorvis_changes.indicator = /*indicator*/ ctx[15];
+    			indicatorvis.$set(indicatorvis_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicatorvis.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicatorvis.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(t5);
+    			destroy_component(indicatorvis, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(106:8) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (97:8) {#if i%2 == 0}
+    function create_if_block$1(ctx) {
+    	let indicatorvis;
+    	let t0;
+    	let div2;
+    	let div1;
+    	let h3;
+    	let t1_value = /*indicator*/ ctx[15].copy.name + "";
+    	let t1;
+    	let t2;
+    	let div0;
+    	let t3_value = /*indicator*/ ctx[15].copy.definition + "";
+    	let t3;
+    	let t4;
+    	let button;
+    	let current;
+
+    	indicatorvis = new Indicator_vis({
+    			props: { indicator: /*indicator*/ ctx[15] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(indicatorvis.$$.fragment);
+    			t0 = space();
+    			div2 = element("div");
+    			div1 = element("div");
+    			h3 = element("h3");
+    			t1 = text$1(t1_value);
+    			t2 = space();
+    			div0 = element("div");
+    			t3 = text$1(t3_value);
+    			t4 = space();
+    			button = element("button");
+    			button.textContent = "Share this chart";
+    			attr_dev(h3, "class", "svelte-1icv13l");
+    			add_location(h3, file$1, 100, 20, 3673);
+    			attr_dev(div0, "class", "description svelte-1icv13l");
+    			add_location(div0, file$1, 101, 20, 3724);
+    			attr_dev(button, "class", "svelte-1icv13l");
+    			add_location(button, file$1, 102, 20, 3803);
+    			set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			set_style(div1, "padding-left", "20px");
+    			set_style(div1, "border-left", "1px solid #eee");
+    			attr_dev(div1, "class", "inner-container svelte-1icv13l");
+    			add_location(div1, file$1, 99, 16, 3536);
+    			attr_dev(div2, "class", "indicator-text svelte-1icv13l");
+    			add_location(div2, file$1, 98, 12, 3491);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(indicatorvis, target, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div1);
+    			append_dev(div1, h3);
+    			append_dev(h3, t1);
+    			append_dev(div1, t2);
+    			append_dev(div1, div0);
+    			append_dev(div0, t3);
+    			append_dev(div1, t4);
+    			append_dev(div1, button);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const indicatorvis_changes = {};
+    			if (dirty & /*indicatorsData*/ 1) indicatorvis_changes.indicator = /*indicator*/ ctx[15];
+    			indicatorvis.$set(indicatorvis_changes);
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t1_value !== (t1_value = /*indicator*/ ctx[15].copy.name + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t3_value !== (t3_value = /*indicator*/ ctx[15].copy.definition + "")) set_data_dev(t3, t3_value);
+
+    			if (!current || dirty & /*$chartWidth*/ 32) {
+    				set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicatorvis.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicatorvis.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(indicatorvis, detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div2);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(97:8) {#if i%2 == 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (95:4) {#each indicatorsData as indicator, i}
+    function create_each_block(ctx) {
+    	let div;
+    	let current_block_type_index;
+    	let if_block;
+    	let t;
+    	let current;
+    	const if_block_creators = [create_if_block$1, create_else_block];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*i*/ ctx[17] % 2 == 0) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if_block.c();
+    			t = space();
+    			attr_dev(div, "class", "indicator-container svelte-1icv13l");
+    			add_location(div, file$1, 95, 8, 3382);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if_blocks[current_block_type_index].m(div, null);
+    			append_dev(div, t);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if_block.p(ctx, dirty);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if_blocks[current_block_type_index].d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(61:24) {#each graphData as graph,i}",
+    		source: "(95:4) {#each indicatorsData as indicator, i}",
     		ctx
     	});
 
@@ -39168,7 +39796,7 @@ var app = (function () {
 
     function create_fragment$3(ctx) {
     	let div3;
-    	let button;
+    	let button0;
     	let t1;
     	let div1;
     	let h20;
@@ -39184,66 +39812,92 @@ var app = (function () {
     	let h21;
     	let t9;
     	let countryselect;
+    	let t10;
+    	let button1;
+    	let t12;
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block = /*areaData*/ ctx[0] && create_if_block$1(ctx);
+    	let if_block = /*areaData*/ ctx[1] && create_if_block_1$1(ctx);
 
     	countryselect = new Country_select({
-    			props: { countryNames: /*countryNames*/ ctx[3] },
+    			props: { countryNames: /*countryNames*/ ctx[4] },
     			$$inline: true
     		});
+
+    	let each_value = /*indicatorsData*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
 
     	const block = {
     		c: function create() {
     			div3 = element("div");
-    			button = element("button");
-    			button.textContent = "Back";
+    			button0 = element("button");
+    			button0.textContent = "Back";
     			t1 = space();
     			div1 = element("div");
     			h20 = element("h2");
-    			h20.textContent = `${/*currentArea*/ ctx[5].name}`;
+    			h20.textContent = `${/*currentArea*/ ctx[7].name}`;
     			t3 = space();
     			div0 = element("div");
     			svg = svg_element("svg");
     			if (if_block) if_block.c();
     			t4 = space();
     			div2 = element("div");
-    			div2.textContent = `${/*currentArea*/ ctx[5].context}`;
+    			div2.textContent = `${/*currentArea*/ ctx[7].context}`;
     			t6 = space();
     			div4 = element("div");
     			h21 = element("h2");
-    			h21.textContent = `Assessing ${/*currentArea*/ ctx[5].name.toLowerCase()}`;
+    			h21.textContent = `Assessing ${/*currentArea*/ ctx[7].name.toLowerCase()}`;
     			t9 = space();
     			create_component(countryselect.$$.fragment);
-    			attr_dev(button, "class", "svelte-1fn0a55");
-    			add_location(button, file$1, 50, 4, 1380);
-    			attr_dev(h20, "class", "svelte-1fn0a55");
-    			add_location(h20, file$1, 52, 8, 1478);
-    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100");
-    			attr_dev(svg, "width", /*$width*/ ctx[2]);
+    			t10 = space();
+    			button1 = element("button");
+    			button1.textContent = "Share this view";
+    			t12 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(button0, "class", "svelte-1icv13l");
+    			add_location(button0, file$1, 63, 4, 2156);
+    			attr_dev(h20, "class", "svelte-1icv13l");
+    			add_location(h20, file$1, 65, 8, 2254);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " 100");
+    			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", "100");
-    			attr_dev(svg, "class", "svelte-1fn0a55");
-    			add_location(svg, file$1, 54, 12, 1575);
-    			attr_dev(div0, "class", "area-vis svelte-1fn0a55");
-    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[9].call(div0));
-    			add_location(div0, file$1, 53, 8, 1514);
-    			attr_dev(div1, "class", "area-text svelte-1fn0a55");
-    			add_location(div1, file$1, 51, 4, 1446);
-    			attr_dev(div2, "class", "description svelte-1fn0a55");
-    			add_location(div2, file$1, 72, 4, 2334);
-    			attr_dev(div3, "class", "area-summary svelte-1fn0a55");
-    			add_location(div3, file$1, 49, 0, 1349);
-    			add_location(h21, file$1, 77, 4, 2429);
-    			attr_dev(div4, "class", "indicators");
-    			add_location(div4, file$1, 76, 0, 2400);
+    			attr_dev(svg, "class", "svelte-1icv13l");
+    			add_location(svg, file$1, 67, 12, 2351);
+    			attr_dev(div0, "class", "area-vis svelte-1icv13l");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[12].call(div0));
+    			add_location(div0, file$1, 66, 8, 2290);
+    			attr_dev(div1, "class", "area-text svelte-1icv13l");
+    			add_location(div1, file$1, 64, 4, 2222);
+    			attr_dev(div2, "class", "description svelte-1icv13l");
+    			add_location(div2, file$1, 85, 4, 3110);
+    			attr_dev(div3, "class", "area-summary svelte-1icv13l");
+    			add_location(div3, file$1, 62, 0, 2125);
+    			add_location(h21, file$1, 90, 4, 3205);
+    			attr_dev(button1, "class", "svelte-1icv13l");
+    			add_location(button1, file$1, 92, 4, 3297);
+    			attr_dev(div4, "class", "indicators svelte-1icv13l");
+    			add_location(div4, file$1, 89, 0, 3176);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div3, anchor);
-    			append_dev(div3, button);
+    			append_dev(div3, button0);
     			append_dev(div3, t1);
     			append_dev(div3, div1);
     			append_dev(div1, h20);
@@ -39251,7 +39905,7 @@ var app = (function () {
     			append_dev(div1, div0);
     			append_dev(div0, svg);
     			if (if_block) if_block.m(svg, null);
-    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[9].bind(div0));
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[12].bind(div0));
     			append_dev(div3, t4);
     			append_dev(div3, div2);
     			insert_dev(target, t6, anchor);
@@ -39259,19 +39913,27 @@ var app = (function () {
     			append_dev(div4, h21);
     			append_dev(div4, t9);
     			mount_component(countryselect, div4, null);
+    			append_dev(div4, t10);
+    			append_dev(div4, button1);
+    			append_dev(div4, t12);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div4, null);
+    			}
+
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", self$1(/*click_handler*/ ctx[8]), false, false, false);
+    				dispose = listen_dev(button0, "click", self$1(/*click_handler*/ ctx[11]), false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*areaData*/ ctx[0]) {
+    			if (/*areaData*/ ctx[1]) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block$1(ctx);
+    					if_block = create_if_block_1$1(ctx);
     					if_block.c();
     					if_block.m(svg, null);
     				}
@@ -39280,25 +39942,64 @@ var app = (function () {
     				if_block = null;
     			}
 
-    			if (!current || dirty & /*$width*/ 4 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[2] + " 100")) {
+    			if (!current || dirty & /*$width*/ 8 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " 100")) {
     				attr_dev(svg, "viewBox", svg_viewBox_value);
     			}
 
-    			if (!current || dirty & /*$width*/ 4) {
-    				attr_dev(svg, "width", /*$width*/ ctx[2]);
+    			if (!current || dirty & /*$width*/ 8) {
+    				attr_dev(svg, "width", /*$width*/ ctx[3]);
     			}
 
     			const countryselect_changes = {};
-    			if (dirty & /*countryNames*/ 8) countryselect_changes.countryNames = /*countryNames*/ ctx[3];
+    			if (dirty & /*countryNames*/ 16) countryselect_changes.countryNames = /*countryNames*/ ctx[4];
     			countryselect.$set(countryselect_changes);
+
+    			if (dirty & /*$chartWidth, indicatorsData*/ 33) {
+    				each_value = /*indicatorsData*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(div4, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(countryselect.$$.fragment, local);
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(countryselect.$$.fragment, local);
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -39308,6 +40009,7 @@ var app = (function () {
     			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(div4);
     			destroy_component(countryselect);
+    			destroy_each(each_blocks, detaching);
     			mounted = false;
     			dispose();
     		}
@@ -39330,31 +40032,35 @@ var app = (function () {
     	let $width;
     	let $scaleFactor;
     	let $view;
+    	let $chartWidth;
     	validate_store(areaInView, "areaInView");
-    	component_subscribe($$self, areaInView, $$value => $$invalidate(11, $areaInView = $$value));
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(9, $areaInView = $$value));
     	validate_store(margin, "margin");
-    	component_subscribe($$self, margin, $$value => $$invalidate(1, $margin = $$value));
+    	component_subscribe($$self, margin, $$value => $$invalidate(2, $margin = $$value));
     	validate_store(width, "width");
-    	component_subscribe($$self, width, $$value => $$invalidate(2, $width = $$value));
+    	component_subscribe($$self, width, $$value => $$invalidate(3, $width = $$value));
     	validate_store(scaleFactor, "scaleFactor");
-    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(7, $scaleFactor = $$value));
+    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(10, $scaleFactor = $$value));
     	validate_store(view, "view");
-    	component_subscribe($$self, view, $$value => $$invalidate(12, $view = $$value));
+    	component_subscribe($$self, view, $$value => $$invalidate(14, $view = $$value));
+    	validate_store(chartWidth, "chartWidth");
+    	component_subscribe($$self, chartWidth, $$value => $$invalidate(5, $chartWidth = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Indicators", slots, []);
-    	let data = [], countryNames = [], areaData, graphData = [];
+    	let data = [], indicatorsData = [], countryNames = [], areaData, graphData = [];
 
     	//set default area view for dev purpose only
     	if (!$areaInView) {
     		set_store_value(areaInView, $areaInView = "growth", $areaInView);
     	}
 
-    	const currentArea = copyData.filter(d => d.label == $areaInView)[0];
+    	const currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0];
 
     	onMount(async () => {
     		data = await loadData();
-    		$$invalidate(3, countryNames = data["countries"].filter(d => d.country !== "China"));
-    		$$invalidate(0, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
+    		$$invalidate(0, indicatorsData = await loadIndicatorsData($areaInView));
+    		$$invalidate(4, countryNames = data["countries"].filter(d => d.country !== "China"));
+    		$$invalidate(1, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
     	});
 
     	function switchView(targetView, area) {
@@ -39365,7 +40071,7 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Indicators> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Indicators> was created with unknown prop '${key}'`);
     	});
 
     	const click_handler = () => switchView("main");
@@ -39379,14 +40085,18 @@ var app = (function () {
     		d3,
     		onMount,
     		loadData,
+    		loadIndicatorsData,
     		view,
     		areaInView,
     		width,
     		margin,
     		scaleFactor,
+    		chartWidth,
     		copyData,
     		CountrySelect: Country_select,
+    		IndicatorVis: Indicator_vis,
     		data,
+    		indicatorsData,
     		countryNames,
     		areaData,
     		graphData,
@@ -39396,14 +40106,16 @@ var app = (function () {
     		$margin,
     		$width,
     		$scaleFactor,
-    		$view
+    		$view,
+    		$chartWidth
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("data" in $$props) data = $$props.data;
-    		if ("countryNames" in $$props) $$invalidate(3, countryNames = $$props.countryNames);
-    		if ("areaData" in $$props) $$invalidate(0, areaData = $$props.areaData);
-    		if ("graphData" in $$props) $$invalidate(4, graphData = $$props.graphData);
+    		if ("indicatorsData" in $$props) $$invalidate(0, indicatorsData = $$props.indicatorsData);
+    		if ("countryNames" in $$props) $$invalidate(4, countryNames = $$props.countryNames);
+    		if ("areaData" in $$props) $$invalidate(1, areaData = $$props.areaData);
+    		if ("graphData" in $$props) $$invalidate(6, graphData = $$props.graphData);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -39411,7 +40123,7 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 135) {
+    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 1038) {
     			if (areaData) {
     				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
 
@@ -39423,20 +40135,41 @@ var app = (function () {
     						country: areaData.countries[i]
     					});
     				});
+    			}
+    		}
 
-    				console.log(areaData);
+    		if ($$self.$$.dirty & /*indicatorsData, $areaInView*/ 513) {
+    			if (indicatorsData) {
+    				// match indicators copy with the indicators data
+    				// it's not currently matching for a lack of real indicators data
+    				indicatorsData.forEach((d, i) => {
+    					let indicatorCopy = copyData.filter(x => x.category == $areaInView);
+
+    					if (i >= indicatorCopy.length) {
+    						d.copy = {
+    							name: "Placeholder indicator",
+    							definition: "This will be finalized when data comes in.",
+    							context: ""
+    						};
+    					} else {
+    						d.copy = indicatorCopy[i];
+    					}
+    				});
     			}
     		}
     	};
 
     	return [
+    		indicatorsData,
     		areaData,
     		$margin,
     		$width,
     		countryNames,
+    		$chartWidth,
     		graphData,
     		currentArea,
     		switchView,
+    		$areaInView,
     		$scaleFactor,
     		click_handler,
     		div0_elementresize_handler

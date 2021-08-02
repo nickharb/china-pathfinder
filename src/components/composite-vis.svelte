@@ -77,7 +77,6 @@
         {#each areaData as area,i}
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
                 <line class='gridline' x2={$width}></line>
-            <!-- <g class="{area.area}" transform='translate({$margin},{($height-$margin*5)/5*i + $margin*2})'> -->
                 {#each area.graphData as graph,i}
                     <g class='country {graph.country}' transform='translate({graph.x},{graph.y})'>
                         <path d={graph.path}></path>

@@ -15,3 +15,10 @@
     </div>
 
 </div>
+
+<style>
+    .country-toggle-box {
+        display:inline-block;
+        
+    }
+</style>

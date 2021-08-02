@@ -30,7 +30,7 @@
 </div>
 
 <div class='vis-container'>
-    <CompositeVis areaData={areaData} copyData={copyData}/>
+    <CompositeVis areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
 
 </div>
 

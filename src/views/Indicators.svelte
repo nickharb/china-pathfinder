@@ -2,23 +2,25 @@
     import * as d3 from 'd3';
     import { onMount } from "svelte";
     import loadData from "../data/load-data.js";
+    import loadIndicatorsData from "../data/load-indicators-data.js";
     import {view, areaInView} from '../stores/view';
-    import {width, margin, scaleFactor} from '../stores/dimensions';
+    import {width, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import copyData from "../data/copy";
-
     import CountrySelect from '../components/country-select.svelte';
+    import IndicatorVis from '../components/indicator-vis.svelte';
 
-    let data = [], countryNames = [], areaData, graphData=[];
+    let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[];
 
     //set default area view for dev purpose only
     if (!$areaInView) { 
         $areaInView = 'growth';
     }
 
-    const currentArea = copyData.filter(d=> d.label == $areaInView)[0];
+    const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
 
     onMount(async()=>{
         data = await loadData();
+        indicatorsData = await loadIndicatorsData($areaInView);
         countryNames = data['countries'].filter(d=> d.country!=='China');
         areaData = (data['areas']).filter(d=> d.area == $areaInView)[0];
     });
@@ -34,16 +36,27 @@
                     country : areaData.countries[i]
                 });
         });
-        console.log(areaData)
-
-
     }
+
+    $: if (indicatorsData) {
+        // match indicators copy with the indicators data
+        // it's not currently matching for a lack of real indicators data
+        indicatorsData.forEach((d,i) => {
+
+            let indicatorCopy = copyData.filter(x=> x.category == $areaInView);
+            if (i >= indicatorCopy.length) {
+                d.copy = {name: 'Placeholder indicator', definition:'This will be finalized when data comes in.',context:''};
+            } else {
+                d.copy = indicatorCopy[i];
+            }
+        })
+    }
+
 
     function switchView(targetView, area) {
         $view = targetView;
         $areaInView = area;
     }
-
 
 </script>
 
@@ -77,12 +90,38 @@
 <div class='indicators'>
     <h2>Assessing {currentArea.name.toLowerCase()}</h2>
     <CountrySelect {countryNames}/>
+    <button>Share this view</button>
+
+    {#each indicatorsData as indicator, i}
+        <div class='indicator-container'>
+        {#if i%2 == 0}
+            <IndicatorVis {indicator}/>
+            <div class='indicator-text'>
+                <div style='margin-top:{$chartWidth*0.3}px; padding-left:20px; border-left:1px solid #eee;' class='inner-container'>
+                    <h3>{indicator.copy.name}</h3>
+                    <div class='description'>{indicator.copy.definition}</div>
+                    <button>Share this chart</button>
+                </div>
+            </div>
+        {:else}
+            <div class='indicator-text'>
+                <div style='float:right;margin-top:{$chartWidth*0.3}px; padding-right:20px; border-right:1px solid #eee;' class='inner-container'>
+                    <h3>{indicator.copy.name}</h3>
+                    <div class='description'>{indicator.copy.definition}</div>
+                    <button>Share this chart</button>
+                </div>
+            </div>
+            <IndicatorVis {indicator}/>
+        {/if}
+        </div>
+    {/each}
+
 </div>
 
 
 
 <style>
-    .area-summary {
+    .area-summary,.indicators {
         max-width:1000px;
         text-align:left;
         margin: 1em auto;
@@ -92,9 +131,12 @@
     button {
         display:block;
     }
+
     .area-text {
         display: flex;
+        padding-bottom:1em;
     }
+
     .area-text h2 {
         position: relative;
         width:30%;
@@ -118,6 +160,23 @@
 
     }
 
+    .indicator-container {
+        display:flex;
+    }
+
+    .indicator-container h3 {
+        margin-top:0;
+    }
+    .indicator-container .indicator-text {
+        width:40%;
+    }
+
+    .indicator-container .indicator-text .inner-container {
+        display:inline-block;
+    }
+    
+
+
     svg {
         position: absolute;
         /* fill: #f9f9f9; */
@@ -138,7 +197,21 @@
 
     g.China text {
         fill-opacity: 1;
+        fill:#b90000;
+        font-weight:bold;
     }
+
+    g.China circle {
+        fill:white;
+        stroke:#b90000;
+        stroke-width:2px;
+        fill-opacity:1;
+    }
+
+    button {
+        margin-top:1em;
+    }
+
 
     
 </style>
