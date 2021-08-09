@@ -10,14 +10,16 @@
     let data = [], countryNames = [], areaData = [];
 
     onMount(async()=>{
-        data = await loadData();
-        countryNames = data['countries'].filter(d=> d.country!=='China');
+        data = await loadData(); // pulled from load-data.js - loads primary indicator composite scores
+        countryNames = data['countries'].filter(d=> d.country!=='China'); // all countries but China to use for comparison dropdown
         areaData = data['areas'];
     });
 
 </script>
 
+<!-- where events happen -->
 <div class='control-area'>
+    <!-- imported from country-select in components -->
     <CountrySelect {countryNames}/>
 
     <button>Share this view</button>
@@ -29,9 +31,10 @@
 
 </div>
 
+<!-- main vis container - imports from composite-vis in components -->
+<!-- takes area data (from landing.svelte) and copy data -->
 <div class='vis-container'>
     <CompositeVis areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
-
 </div>
 
 <style>

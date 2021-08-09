@@ -15,6 +15,8 @@
         .domain(d3.extent(indicator.values.map(d=>d.value)))
         .range([$innerR+20, $chartWidth/2-50])
 
+    // uses d3 arc function, rotates 360 degrees
+    // each sunburst bar is its own g element
 
     indicator.values.forEach((d,i)=>{
         d.path = d3.arc()
@@ -28,6 +30,7 @@
         
         d.rotateAngel = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
 
+        // computes if the text should be on the right or left of the bar
         if (i>=indicator.values.length/2){
             d.textRotate = 180; 
             d.textAnchor = 'end';

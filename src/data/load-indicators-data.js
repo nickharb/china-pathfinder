@@ -14,7 +14,7 @@ const loadIndicatorsData = async (indicatorName) => {
             countries.push({country: x.countries, value: x[d]});
         })
 
-        countries.sort((a,b)=> b.value - a.value);
+        countries.sort((a,b)=> b.value - a.value); // sorts data from highest to lowest
 
         output.push({indicator: d, values: countries});
     })

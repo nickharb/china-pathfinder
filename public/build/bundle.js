@@ -37751,11 +37751,13 @@ var app = (function () {
 
     const loadData = async () => {
 
-      const data = await csv(dataPath$1);
+      const data = await csv(dataPath$1); // d3 load csv function
 
       // create an array of objects for the six areas
       // ... China appears as the last country
 
+      // growth is financial system development
+      // these are referenced across the program
       let areas = ['growth','competition','innovation','trade','fdi','portfolio'];
 
       data.sort((a,b)=> a.country == 'China' ? 1 : -1);
@@ -37773,6 +37775,8 @@ var app = (function () {
 
       return({countries: data, areas: output});
     };
+
+    // exported from raw Excel "Copy data for China Pathfinder" using Mr. Data Converter
 
     var copyData = [{"label":"growth","name":"Financial System Development","definition":"quantifies the prominence of market-driven credit pricing, the availability of financial instruments, and the absence of distortive controls on debt.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","category":"main"},
     {"label":"competition","name":"Market Competition","definition":"quantifies economic dynamism by assessing the entry and exit barriers firms face, government response to market power abuses, and government participation in the marketplace.","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","category":"main"},
@@ -37927,6 +37931,7 @@ var app = (function () {
 
     // import { indexOf, over } from "lodash";
 
+    // xSwing determines the swerve of the curve
     function cubicBezier(pt1, pt2, xSwing, p){
 
         let a = pt1;
@@ -37949,7 +37954,7 @@ var app = (function () {
         // if (l !== n) o.push(d);
         // return o;
       }
-
+    // removes overlap in composite-vis
     function noOverlap(input_array, space) {
 
       let overlapped=[];
@@ -38018,6 +38023,8 @@ var app = (function () {
 
     var utils = {cubicBezier, noOverlap};
 
+    // global vars available from all pages
+
     const view = writable();
     const areaInView = writable();
 
@@ -38044,7 +38051,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (59:4) {#each copyData as area}
+    // (66:4) {#each copyData as area}
     function create_each_block_2(ctx) {
     	let div1;
     	let h2;
@@ -38082,13 +38089,13 @@ var app = (function () {
     			span.textContent = "Click for details";
     			t5 = space();
     			attr_dev(h2, "class", "svelte-nm1qto");
-    			add_location(h2, file$5, 60, 12, 1939);
+    			add_location(h2, file$5, 67, 12, 2545);
     			attr_dev(span, "class", "svelte-nm1qto");
-    			add_location(span, file$5, 63, 16, 2119);
+    			add_location(span, file$5, 70, 16, 2725);
     			attr_dev(div0, "class", "description svelte-nm1qto");
-    			add_location(div0, file$5, 61, 12, 2043);
+    			add_location(div0, file$5, 68, 12, 2649);
     			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[13].label.toLowerCase()) + " svelte-nm1qto"));
-    			add_location(div1, file$5, 59, 8, 1880);
+    			add_location(div1, file$5, 66, 8, 2486);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -38130,14 +38137,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(59:4) {#each copyData as area}",
+    		source: "(66:4) {#each copyData as area}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (80:16) {#each area.graphData as graph,i}
+    // (92:16) {#each area.graphData as graph,i}
     function create_each_block_1$1(ctx) {
     	let g;
     	let path;
@@ -38159,16 +38166,16 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[16].path);
     			attr_dev(path, "class", "svelte-nm1qto");
-    			add_location(path, file$5, 81, 24, 2862);
+    			add_location(path, file$5, 93, 24, 3656);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[16].r);
     			attr_dev(circle, "class", "country-circle svelte-nm1qto");
-    			add_location(circle, file$5, 82, 24, 2915);
+    			add_location(circle, file$5, 94, 24, 3709);
     			attr_dev(text_1, "y", "-10px");
     			attr_dev(text_1, "class", "svelte-nm1qto");
-    			add_location(text_1, file$5, 83, 24, 2992);
+    			add_location(text_1, file$5, 95, 24, 3786);
     			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[16].country + " svelte-nm1qto");
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[16].x + "," + /*graph*/ ctx[16].y + ")");
-    			add_location(g, file$5, 80, 20, 2759);
+    			add_location(g, file$5, 92, 20, 3553);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38205,14 +38212,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(80:16) {#each area.graphData as graph,i}",
+    		source: "(92:16) {#each area.graphData as graph,i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:8) {#each areaData as area,i}
+    // (84:8) {#each areaData as area,i}
     function create_each_block$3(ctx) {
     	let g;
     	let line;
@@ -38237,10 +38244,10 @@ var app = (function () {
 
     			attr_dev(line, "class", "gridline svelte-nm1qto");
     			attr_dev(line, "x2", /*$width*/ ctx[3]);
-    			add_location(line, file$5, 78, 16, 2646);
+    			add_location(line, file$5, 87, 16, 3306);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[13].area) + " svelte-nm1qto"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[13].offsetY + ")");
-    			add_location(g, file$5, 77, 12, 2558);
+    			add_location(g, file$5, 86, 12, 3218);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38297,7 +38304,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(77:8) {#each areaData as area,i}",
+    		source: "(84:8) {#each areaData as area,i}",
     		ctx
     	});
 
@@ -38348,20 +38355,20 @@ var app = (function () {
 
     			attr_dev(div0, "class", "text-wrapper svelte-nm1qto");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[9].call(div0));
-    			add_location(div0, file$5, 57, 0, 1787);
+    			add_location(div0, file$5, 64, 0, 2393);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[3]);
     			attr_dev(rect, "height", /*$height*/ ctx[4]);
-    			add_location(rect, file$5, 75, 8, 2453);
+    			add_location(rect, file$5, 82, 8, 3059);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[4]);
     			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", /*$height*/ ctx[4]);
     			attr_dev(svg, "class", "svelte-nm1qto");
-    			add_location(svg, file$5, 71, 4, 2332);
+    			add_location(svg, file$5, 78, 4, 2938);
     			attr_dev(div1, "class", "vis-wrapper svelte-nm1qto");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[10].call(div1));
-    			add_location(div1, file$5, 69, 0, 2275);
+    			add_location(div1, file$5, 76, 0, 2881);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38562,14 +38569,21 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 77) {
+    			// country.Denmark - grab class on mouse over state to add styles and highlight color
+    			// each row has a g element
+    			// each country has its own element
     			if (areaData) {
     				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
 
     				areaData.forEach((d, i) => {
     					if (select(".text-wrapper ." + d.area).size() > 0) {
+    						// get offset for each text box, position text to vis rows
+    						// svg height of each vis row is determined by the height of each text block
     						const textRect = select(".text-wrapper ." + d.area).node().getBoundingClientRect();
+
     						d.offsetY = textRect.top - select(".text-wrapper").node().getBoundingClientRect().top + $margin * 2;
 
+    						// 
     						d.graphData = d.comps.map((m, n) => {
     							let distance = i < 5
     							? xScale(areaData[i + 1]["comps"][n]) - xScale(m)
@@ -38579,8 +38593,9 @@ var app = (function () {
     							? [[0, 0], [distance, textRect.bottom - textRect.top + $margin * 2]]
     							: [[0, 0], [0, 0]]; // [distance, ($height-$margin*5)/5]
 
-    							let path = utils.cubicBezier(points[0], points[1], 20);
+    							let path = utils.cubicBezier(points[0], points[1], 20); // compute path for each country using cubic bezier - pulls from utils
 
+    							// computes the circle location for each country - primary composite score attribute
     							return {
     								x: xScale(m),
     								y: 0,
@@ -38591,6 +38606,7 @@ var app = (function () {
     						});
     					}
     				}); // remove overlaps -- needs to be refined
+    				// uncommonent this out for production if you can figure out overlap
     				// utils.noOverlap(d.graphData, $scaleFactor*2);
     			}
     		}
@@ -38894,15 +38910,15 @@ var app = (function () {
     			t4 = space();
     			div1 = element("div");
     			create_component(compositevis.$$.fragment);
-    			add_location(button, file$3, 22, 4, 682);
+    			add_location(button, file$3, 24, 4, 896);
     			attr_dev(input, "type", "checkbox");
-    			add_location(input, file$3, 25, 12, 768);
+    			add_location(input, file$3, 27, 12, 982);
     			attr_dev(label, "class", "time-toggle-box");
-    			add_location(label, file$3, 24, 4, 724);
+    			add_location(label, file$3, 26, 4, 938);
     			attr_dev(div0, "class", "control-area");
-    			add_location(div0, file$3, 19, 0, 614);
+    			add_location(div0, file$3, 20, 0, 772);
     			attr_dev(div1, "class", "vis-container svelte-bgvlxt");
-    			add_location(div1, file$3, 31, 0, 883);
+    			add_location(div1, file$3, 35, 0, 1229);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38982,8 +38998,8 @@ var app = (function () {
     	let data = [], countryNames = [], areaData = [];
 
     	onMount(async () => {
-    		data = await loadData();
-    		$$invalidate(1, countryNames = data["countries"].filter(d => d.country !== "China"));
+    		data = await loadData(); // pulled from load-data.js - loads primary indicator composite scores
+    		$$invalidate(1, countryNames = data["countries"].filter(d => d.country !== "China")); // all countries but China to use for comparison dropdown
     		$$invalidate(2, areaData = data["areas"]);
     	});
 
@@ -39066,7 +39082,7 @@ var app = (function () {
                 countries.push({country: x.countries, value: x[d]});
             });
 
-            countries.sort((a,b)=> b.value - a.value);
+            countries.sort((a,b)=> b.value - a.value); // sorts data from highest to lowest
 
             output.push({indicator: d, values: countries});
         });
@@ -39082,7 +39098,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (47:8) {#each indicator.values as country}
+    // (50:8) {#each indicator.values as country}
     function create_each_block$1(ctx) {
     	let g1;
     	let path;
@@ -39108,15 +39124,15 @@ var app = (function () {
     			t1 = text$1(": ");
     			t2 = text$1(t2_value);
     			attr_dev(path, "d", path_d_value = /*country*/ ctx[5].path);
-    			add_location(path, file$2, 48, 16, 1418);
+    			add_location(path, file$2, 51, 16, 1587);
     			attr_dev(text_1, "transform", text_1_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel * -1 + ")");
     			set_style(text_1, "text-anchor", /*country*/ ctx[5].textAnchor);
     			attr_dev(text_1, "class", "svelte-1u3z53u");
-    			add_location(text_1, file$2, 50, 20, 1563);
+    			add_location(text_1, file$2, 53, 20, 1732);
     			attr_dev(g0, "transform", g0_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel + ")translate(" + /*country*/ ctx[5].barLength + ",0)");
-    			add_location(g0, file$2, 49, 16, 1465);
+    			add_location(g0, file$2, 52, 16, 1634);
     			attr_dev(g1, "class", g1_class_value = "country " + /*country*/ ctx[5].country + " svelte-1u3z53u");
-    			add_location(g1, file$2, 47, 12, 1364);
+    			add_location(g1, file$2, 50, 12, 1533);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g1, anchor);
@@ -39160,7 +39176,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(47:8) {#each indicator.values as country}",
+    		source: "(50:8) {#each indicator.values as country}",
     		ctx
     	});
 
@@ -39198,13 +39214,13 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(text_1, "dy", "5");
     			attr_dev(text_1, "class", "middle-text svelte-1u3z53u");
-    			add_location(text_1, file$2, 59, 8, 1854);
+    			add_location(text_1, file$2, 62, 8, 2023);
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")");
-    			add_location(g, file$2, 45, 4, 1249);
+    			add_location(g, file$2, 48, 4, 1418);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1]);
-    			add_location(svg, file$2, 44, 0, 1196);
+    			add_location(svg, file$2, 47, 0, 1365);
     			attr_dev(div, "class", "indicator-vis svelte-1u3z53u");
-    			add_location(div, file$2, 43, 0, 1168);
+    			add_location(div, file$2, 46, 0, 1337);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39291,12 +39307,15 @@ var app = (function () {
     	let y = pow(2).// d3.scaleSqrt() makes less dramatic effect
     	domain(extent$1(indicator.values.map(d => d.value))).range([$innerR + 20, $chartWidth / 2 - 50]);
 
+    	// uses d3 arc function, rotates 360 degrees
+    	// each sunburst bar is its own g element
     	indicator.values.forEach((d, i) => {
     		d.path = arc().innerRadius($innerR).outerRadius(y(d.value)).// .outerRadius($innerR+50)
     		startAngle(x(d.country)).endAngle(x(d.country) + x.bandwidth()).padAngle(0.04).padRadius($innerR)();
 
     		d.rotateAngel = (x(d.country) + x.bandwidth() / 2) * 180 / Math.PI - 90;
 
+    		// computes if the text should be on the right or left of the bar
     		if (i >= indicator.values.length / 2) {
     			d.textRotate = 180;
     			d.textAnchor = "end";
@@ -39388,7 +39407,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (71:16) {#if areaData}
+    // (73:16) {#if areaData}
     function create_if_block_1$1(ctx) {
     	let g;
     	let line;
@@ -39413,10 +39432,10 @@ var app = (function () {
 
     			attr_dev(line, "class", "gridline svelte-1icv13l");
     			attr_dev(line, "x2", /*$width*/ ctx[3]);
-    			add_location(line, file$1, 72, 24, 2592);
+    			add_location(line, file$1, 74, 24, 2765);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1icv13l"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*$margin*/ ctx[2] * 4 + ")");
-    			add_location(g, file$1, 71, 20, 2495);
+    			add_location(g, file$1, 73, 20, 2668);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -39473,14 +39492,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(71:16) {#if areaData}",
+    		source: "(73:16) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:24) {#each graphData as graph,i}
+    // (76:24) {#each graphData as graph,i}
     function create_each_block_1(ctx) {
     	let g;
     	let circle;
@@ -39496,13 +39515,13 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(circle, "r", /*graph*/ ctx[18].r);
     			attr_dev(circle, "class", "country-circle svelte-1icv13l");
-    			add_location(circle, file$1, 75, 28, 2819);
+    			add_location(circle, file$1, 77, 28, 2992);
     			attr_dev(text_1, "y", "-10px");
     			attr_dev(text_1, "class", "svelte-1icv13l");
-    			add_location(text_1, file$1, 76, 28, 2900);
+    			add_location(text_1, file$1, 78, 28, 3073);
     			attr_dev(g, "class", "country " + /*graph*/ ctx[18].country + " svelte-1icv13l");
     			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[18].x + "," + /*graph*/ ctx[18].y + ")");
-    			add_location(g, file$1, 74, 24, 2712);
+    			add_location(g, file$1, 76, 24, 2885);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -39520,14 +39539,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(74:24) {#each graphData as graph,i}",
+    		source: "(76:24) {#each graphData as graph,i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (106:8) {:else}
+    // (108:8) {:else}
     function create_else_block(ctx) {
     	let div2;
     	let div1;
@@ -39564,19 +39583,19 @@ var app = (function () {
     			t5 = space();
     			create_component(indicatorvis.$$.fragment);
     			attr_dev(h3, "class", "svelte-1icv13l");
-    			add_location(h3, file$1, 108, 20, 4103);
+    			add_location(h3, file$1, 110, 20, 4276);
     			attr_dev(div0, "class", "description svelte-1icv13l");
-    			add_location(div0, file$1, 109, 20, 4154);
+    			add_location(div0, file$1, 111, 20, 4327);
     			attr_dev(button, "class", "svelte-1icv13l");
-    			add_location(button, file$1, 110, 20, 4233);
+    			add_location(button, file$1, 112, 20, 4406);
     			set_style(div1, "float", "right");
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
     			set_style(div1, "padding-right", "20px");
     			set_style(div1, "border-right", "1px solid #eee");
     			attr_dev(div1, "class", "inner-container svelte-1icv13l");
-    			add_location(div1, file$1, 107, 16, 3952);
+    			add_location(div1, file$1, 109, 16, 4125);
     			attr_dev(div2, "class", "indicator-text svelte-1icv13l");
-    			add_location(div2, file$1, 106, 12, 3907);
+    			add_location(div2, file$1, 108, 12, 4080);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -39624,14 +39643,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(106:8) {:else}",
+    		source: "(108:8) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (97:8) {#if i%2 == 0}
+    // (99:8) {#if i%2 == 0}
     function create_if_block$1(ctx) {
     	let indicatorvis;
     	let t0;
@@ -39668,18 +39687,18 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Share this chart";
     			attr_dev(h3, "class", "svelte-1icv13l");
-    			add_location(h3, file$1, 100, 20, 3673);
+    			add_location(h3, file$1, 102, 20, 3846);
     			attr_dev(div0, "class", "description svelte-1icv13l");
-    			add_location(div0, file$1, 101, 20, 3724);
+    			add_location(div0, file$1, 103, 20, 3897);
     			attr_dev(button, "class", "svelte-1icv13l");
-    			add_location(button, file$1, 102, 20, 3803);
+    			add_location(button, file$1, 104, 20, 3976);
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
     			set_style(div1, "padding-left", "20px");
     			set_style(div1, "border-left", "1px solid #eee");
     			attr_dev(div1, "class", "inner-container svelte-1icv13l");
-    			add_location(div1, file$1, 99, 16, 3536);
+    			add_location(div1, file$1, 101, 16, 3709);
     			attr_dev(div2, "class", "indicator-text svelte-1icv13l");
-    			add_location(div2, file$1, 98, 12, 3491);
+    			add_location(div2, file$1, 100, 12, 3664);
     		},
     		m: function mount(target, anchor) {
     			mount_component(indicatorvis, target, anchor);
@@ -39726,14 +39745,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(97:8) {#if i%2 == 0}",
+    		source: "(99:8) {#if i%2 == 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (95:4) {#each indicatorsData as indicator, i}
+    // (97:4) {#each indicatorsData as indicator, i}
     function create_each_block(ctx) {
     	let div;
     	let current_block_type_index;
@@ -39757,7 +39776,7 @@ var app = (function () {
     			if_block.c();
     			t = space();
     			attr_dev(div, "class", "indicator-container svelte-1icv13l");
-    			add_location(div, file$1, 95, 8, 3382);
+    			add_location(div, file$1, 97, 8, 3555);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -39787,7 +39806,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(95:4) {#each indicatorsData as indicator, i}",
+    		source: "(97:4) {#each indicatorsData as indicator, i}",
     		ctx
     	});
 
@@ -39869,28 +39888,28 @@ var app = (function () {
     			}
 
     			attr_dev(button0, "class", "svelte-1icv13l");
-    			add_location(button0, file$1, 63, 4, 2156);
+    			add_location(button0, file$1, 65, 4, 2329);
     			attr_dev(h20, "class", "svelte-1icv13l");
-    			add_location(h20, file$1, 65, 8, 2254);
+    			add_location(h20, file$1, 67, 8, 2427);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " 100");
     			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", "100");
     			attr_dev(svg, "class", "svelte-1icv13l");
-    			add_location(svg, file$1, 67, 12, 2351);
+    			add_location(svg, file$1, 69, 12, 2524);
     			attr_dev(div0, "class", "area-vis svelte-1icv13l");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[12].call(div0));
-    			add_location(div0, file$1, 66, 8, 2290);
+    			add_location(div0, file$1, 68, 8, 2463);
     			attr_dev(div1, "class", "area-text svelte-1icv13l");
-    			add_location(div1, file$1, 64, 4, 2222);
+    			add_location(div1, file$1, 66, 4, 2395);
     			attr_dev(div2, "class", "description svelte-1icv13l");
-    			add_location(div2, file$1, 85, 4, 3110);
+    			add_location(div2, file$1, 87, 4, 3283);
     			attr_dev(div3, "class", "area-summary svelte-1icv13l");
-    			add_location(div3, file$1, 62, 0, 2125);
-    			add_location(h21, file$1, 90, 4, 3205);
+    			add_location(div3, file$1, 64, 0, 2298);
+    			add_location(h21, file$1, 92, 4, 3378);
     			attr_dev(button1, "class", "svelte-1icv13l");
-    			add_location(button1, file$1, 92, 4, 3297);
+    			add_location(button1, file$1, 94, 4, 3470);
     			attr_dev(div4, "class", "indicators svelte-1icv13l");
-    			add_location(div4, file$1, 89, 0, 3176);
+    			add_location(div4, file$1, 91, 0, 3349);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -40049,9 +40068,11 @@ var app = (function () {
     	validate_slots("Indicators", slots, []);
     	let data = [], indicatorsData = [], countryNames = [], areaData, graphData = [];
 
-    	//set default area view for dev purpose only
+    	// set default area view for dev purpose only
+    	// set to start with a specific indicator for dev
+    	// delete these lines for production
     	if (!$areaInView) {
-    		set_store_value(areaInView, $areaInView = "growth", $areaInView);
+    		set_store_value(areaInView, $areaInView = "growth", $areaInView); // pulled from /stores/view
     	}
 
     	const currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0];
@@ -40312,7 +40333,7 @@ var app = (function () {
     			t = space();
     			if (if_block1) if_block1.c();
     			attr_dev(section, "class", "latest svelte-1bt3in2");
-    			add_location(section, file, 39, 8, 1060);
+    			add_location(section, file, 39, 8, 1195);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -40547,14 +40568,14 @@ var app = (function () {
     			t4 = space();
     			section1 = element("section");
     			if (if_block1) if_block1.c();
-    			add_location(h1, file, 32, 8, 555);
-    			add_location(p, file, 33, 8, 611);
+    			add_location(h1, file, 32, 8, 690);
+    			add_location(p, file, 33, 8, 746);
     			attr_dev(section0, "id", "intro");
     			attr_dev(section0, "class", "svelte-1bt3in2");
-    			add_location(section0, file, 31, 4, 526);
+    			add_location(section0, file, 31, 4, 661);
     			attr_dev(section1, "class", "svelte-1bt3in2");
-    			add_location(section1, file, 52, 4, 1270);
-    			add_location(main, file, 30, 0, 515);
+    			add_location(section1, file, 52, 4, 1405);
+    			add_location(main, file, 30, 0, 650);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -40667,12 +40688,12 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "main", $view);
+    	set_store_value(view, $view = "main", $view); // defines primary view - set this for production (do not delete)
 
     	// $view = 'indicators';
-    	let showQuarterly = false;
+    	let showQuarterly = false; // set to true if you want to show
 
-    	let showNews = true;
+    	let showNews = true; // set to true if you want to show
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {

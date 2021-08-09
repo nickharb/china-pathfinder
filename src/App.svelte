@@ -5,10 +5,10 @@
     import News from './views/News.svelte';
     import {view} from './stores/view';
 
-    $view = 'main';
+    $view = 'main'; // defines primary view - set this for production (do not delete)
     // $view = 'indicators';
-    let showQuarterly = false;
-    let showNews = true; 
+    let showQuarterly = false; // set to true if you want to show
+    let showNews = true; // set to true if you want to show
     
 
 </script>

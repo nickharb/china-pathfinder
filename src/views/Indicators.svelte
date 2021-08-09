@@ -1,7 +1,7 @@
 <script>
     import * as d3 from 'd3';
     import { onMount } from "svelte";
-    import loadData from "../data/load-data.js";
+    import loadData from "../data/load-data.js"; // needed for the top dots vis (composite score)
     import loadIndicatorsData from "../data/load-indicators-data.js";
     import {view, areaInView} from '../stores/view';
     import {width, margin, scaleFactor, chartWidth} from '../stores/dimensions';
@@ -11,9 +11,11 @@
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[];
 
-    //set default area view for dev purpose only
+    // set default area view for dev purpose only
+    // set to start with a specific indicator for dev
+    // delete these lines for production
     if (!$areaInView) { 
-        $areaInView = 'growth';
+        $areaInView = 'growth'; // pulled from /stores/view
     }
 
     const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];

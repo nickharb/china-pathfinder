@@ -2,6 +2,7 @@
 
 // import { indexOf, over } from "lodash";
 
+// xSwing determines the swerve of the curve
 function cubicBezier(pt1, pt2, xSwing, p){
 
     let a = pt1;
@@ -26,7 +27,7 @@ function cubicBezier(pt1, pt2, xSwing, p){
     // return o;
   };
 
-
+// removes overlap in composite-vis
 function noOverlap(input_array, space) {
 
   let overlapped=[],output_array = [];

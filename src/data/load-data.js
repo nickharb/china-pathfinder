@@ -5,11 +5,13 @@ const dataPath = './data/composite-score.csv';
 
 const loadData = async () => {
 
-  const data = await csv(dataPath);
+  const data = await csv(dataPath); // d3 load csv function
 
   // create an array of objects for the six areas
   // ... China appears as the last country
 
+  // growth is financial system development
+  // these are referenced across the program
   let areas = ['growth','competition','innovation','trade','fdi','portfolio'];
 
   data.sort((a,b)=> a.country == 'China' ? 1 : -1);
