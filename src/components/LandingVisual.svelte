@@ -1,14 +1,25 @@
 <script>
     import * as d3 from 'd3';
-    import { width, height, margin, scaleFactor} from '../stores/dimensions';
+    import {width, height, margin, scaleFactor} from '../stores/dimensions';
     import utils from "../utils";
     export let areaData;
     export let copyData;
     import {areaInView, view} from '../stores/view';
 
+    let hoveredCountry;
+
     function switchView(targetView, area) {
         $view = targetView;
         $areaInView = area;
+    }
+
+    function circleMouseOver(e) {
+        hoveredCountry = e.path[1].classList[1];
+        console.log(hoveredCountry);
+    }
+
+    function circleMouseOut(e) {
+        hoveredCountry = '';
     }
 
     // country.Denmark - grab class on mouse over state to add styles and highlight color
@@ -36,7 +47,8 @@
                         // [distance, ($height-$margin*5)/5]
                     ]) : ([[0,0],[0,0]]);
                     
-                    let path = utils.cubicBezier(points[0],points[1],20); // compute path for each country using cubic bezier - pulls from utils
+                    // third argument is swerve of the curve
+                    let path = utils.cubicBezier(points[0], points[1], 0.5); // compute path for each country using cubic bezier - pulls from utils
 
                     // computes the circle location for each country - primary composite score attribute
                     return {
@@ -48,12 +60,8 @@
                     };
                 });
             }
-
         });
-
     }
-
-
 </script>
 
 
@@ -69,34 +77,38 @@
     {/each}
 
 </div>
-<div class='vis-wrapper' bind:clientWidth={$width}>
 
+
+<div class='vis-wrapper' bind:clientWidth={$width}>
     <svg viewBox="0 0 {$width} {$height}"
         width={$width}
         height={$height}>
+
         <!-- <Defs /> -->
         <rect x="0" y="0" width={$width} height={$height}></rect>
+
         {#each areaData as area,i}
 
             <!-- each row gets its own g element -->
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
+
                 <line class='gridline' x2={$width}></line>
 
                 <!-- each country gets its own g element -->
                 <!-- pre-computed values get fed into the g element -->
-                {#each area.graphData as graph,i}
-                    <g class='country {graph.country}' transform='translate({graph.x},{graph.y})'>
+                {#each area.graphData as graph, i}
+                    <!-- {console.log(graph.country)} -->
+                    <g class='country {graph.country}' transform='translate({graph.x},{graph.y})' class:hovered='{graph.country == hoveredCountry}'>
                         <path d={graph.path}></path>
-                        <circle r={graph.r} class='country-circle'></circle>
-                        <text y='-10px'>{graph.country}</text>
+                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut}></circle>
+                        <!-- <text y='-10px'>{graph.country}</text> -->
                     </g>
-                {/each} 
+                {/each}
+
             </g>
+
         {/each}
-
     </svg>
-
-
 </div>
 
 
@@ -130,10 +142,12 @@
         height:25px;
         background-image: url('../assets/sunburst-01.svg');
     }*/
+
     .area .description {
         font-size:0.9em;
         display:inline;
     }
+
     .area .description span {
         color: steelblue; /*placeholder color*/
         font-style:italic;
@@ -145,6 +159,7 @@
         position: relative;
         width:99%;
     }
+
     svg {
         position: absolute;
         /* fill: #f9f9f9; */
@@ -152,15 +167,17 @@
         
     }
     circle.country-circle {
-        fill:#666666;
-        stroke:#f9f9f9;
-        fill-opacity:0.5;
+        /*fill:#666666;*/
+        /*stroke:#f9f9f9;*/
+        /*fill-opacity:0.5;*/
     }
+
     text {
         fill:#444444;
         text-anchor:middle;
         fill-opacity: 0;
     }
+
     path {
         stroke:#cccccc;
         fill:none;
@@ -168,21 +185,41 @@
         mix-blend-mode: multiply;
         stroke-opacity: 0.5;
     }
-    g.China circle {
-        fill:white;
-        stroke:red;
-        stroke-width:2px;
+
+    g.Greece circle {
+        fill: white;
+        stroke: blue;
+        stroke-width: 2px;
         fill-opacity:1;
     }
+
+    g.hovered path {
+        stroke: blue;
+        stroke-width: 2px;
+        stroke-opacity: 1;
+    }
+
+    g.hovered circle {
+        fill: white;
+        stroke: red;
+        stroke-width: 2px;
+        fill-opacity:1;
+    }
+
     g.China path {
-        stroke:red;
-        stroke-width:2px;
+        stroke: red;
+        stroke-width: 2px;
         stroke-opacity: 1;
     }
 
     .gridline {
-        stroke:#eeeeee;
+        stroke: #eeeeee;
 
     }
 
 </style>
+
+
+
+
+
