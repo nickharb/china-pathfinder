@@ -6,8 +6,8 @@
     import {view, areaInView} from '../stores/view';
     import {width, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import copyData from "../data/copy";
-    import CountrySelect from '../components/country-select.svelte';
-    import IndicatorVis from '../components/indicator-vis.svelte';
+    import CountrySelect from '../components/CountrySelect.svelte';
+    import IndicatorVisual from '../components/IndicatorVisual.svelte';
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[];
 
@@ -97,7 +97,7 @@
     {#each indicatorsData as indicator, i}
         <div class='indicator-container'>
         {#if i%2 == 0}
-            <IndicatorVis {indicator}/>
+            <IndicatorVisual {indicator}/>
             <div class='indicator-text'>
                 <div style='margin-top:{$chartWidth*0.3}px; padding-left:20px; border-left:1px solid #eee;' class='inner-container'>
                     <h3>{indicator.copy.name}</h3>
@@ -113,7 +113,7 @@
                     <button>Share this chart</button>
                 </div>
             </div>
-            <IndicatorVis {indicator}/>
+            <IndicatorVisual {indicator}/>
         {/if}
         </div>
     {/each}

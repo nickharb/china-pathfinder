@@ -5,26 +5,26 @@
     import News from './views/News.svelte';
     import {view} from './stores/view';
 
+    // use dollar sign before a variable to access a store
     $view = 'main'; // defines primary view - set this for production (do not delete)
     // $view = 'indicators';
+
     let showQuarterly = false; // set to true if you want to show
     let showNews = true; // set to true if you want to show
     
 
 </script>
 
+
 <style>
     section {
         text-align: center;
-        margin:0 auto;
+        margin: 0 auto;
     }
 
     #intro {
-        max-width:800px;
+        max-width: 800px;
     }
-
-
-
 </style>
 
 
@@ -32,7 +32,6 @@
     <section id='intro'>
         <h1>Where is China’s economy in the world?</h1>
         <p>China is a global economic powerhouse, but its system remains dangerously opaque. Policymakers and financial experts dispute basic facts about what is happening inside China. To create a shared language on China’s economy, the China Pathfinder project scores China and other economies across six areas and presents an objective picture of China’s economy relative to the world.</p>
-    
     </section>
 
     {#if $view == 'main'}
@@ -61,7 +60,6 @@
         {/if}
 
     </section>
-
 </main>
 
 

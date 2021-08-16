@@ -4,8 +4,8 @@
     import { onMount } from "svelte";
     import loadData from "../data/load-data.js";
     import copyData from "../data/copy";
-    import CompositeVis from "../components/composite-vis.svelte";
-    import CountrySelect from '../components/country-select.svelte';
+    import LandingVisual from "../components/LandingVisual.svelte";
+    import CountrySelect from '../components/CountrySelect.svelte';
     export let showPrevious = false;
     let data = [], countryNames = [], areaData = [];
 
@@ -34,7 +34,7 @@
 <!-- main vis container - imports from composite-vis in components -->
 <!-- takes area data (from landing.svelte) and copy data -->
 <div class='vis-container'>
-    <CompositeVis areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
+    <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
 </div>
 
 <style>

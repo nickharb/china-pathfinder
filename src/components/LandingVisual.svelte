@@ -126,7 +126,7 @@
         cursor:pointer;
     }
 
-    .area h2:before {
+    /*.area h2:before {
         content:'';
         position:absolute;
         left:-24px;
@@ -134,7 +134,7 @@
         width:20px;
         height:25px;
         background-image: url('../assets/sunburst-01.svg');
-    }
+    }*/
     .area .description {
         font-size:0.9em;
         display:inline;
