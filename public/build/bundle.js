@@ -37953,74 +37953,8 @@ var app = (function () {
         // if (l !== n) o.push(d);
         // return o;
       }
-    // removes overlap in composite-vis
-    function noOverlap(input_array, space) {
 
-      let overlapped=[];
-      const arrayLen = input_array.length;
-      let gap = space;
-
-      input_array.sort((a,b)=> a.x - b.x);
-
-      adjustPosition(input_array.map((d,i)=>i));
-
-      function adjustPosition(index_array) {
-        overlapped=[];
-        index_array.forEach((i) => {
-          if (i>0 && i< arrayLen -1) {
-            if (index_array.length < arrayLen || (input_array[i]['x'] - input_array[i-1]['x'] < gap)) { //if overlapping with the previous one
-              if (input_array[i+1]['x'] - input_array[i-1]['x'] > 2*gap ) {
-                // move the current one to the right
-                input_array[i]['x'] = input_array[i-1]['x'] + gap;
-              } else if ((i>1) && (input_array[i]['x']-input_array[i-2]['x'] > 2*gap)) {
-                // move the previous one to the left
-                input_array[i-1]['x'] = input_array[i]['x'] - gap;
-              } else {
-                if (input_array[i+1]['x'] - input_array[i]['x'] > gap) {
-                  input_array[i]['x'] = input_array[i-1]['x'] + gap;
-                  if (overlapped.indexOf(i+1)==-1) {
-                    overlapped.push(i+1);
-                  }
-                } else if ((i>1) && (input_array[i-1]['x'] - input_array[i-2]['x'] > gap)) {
-                  input_array[i-1]['x'] = input_array[i]['x'] - gap;
-                  if (overlapped.indexOf(i-1)==-1) {
-                    overlapped.push(i-1);
-                  }
-
-                } else { //overlapping on both sides
-                  console.log(i);
-                  if (overlapped.indexOf(i-1)==-1) {
-                    overlapped.push(i-1);
-                  }
-                  if (overlapped.indexOf(i+1)==-1) {
-                    overlapped.push(i+1);
-                  }
-                }
-
-                if (overlapped.indexOf(i)==-1) {
-                  overlapped.push(i);
-                }
-              }
-            }
-
-
-          }
-        });
-
-          
-        // console.log(overlapped)
-
-        if (overlapped.length>0) ;
-
-
-
-      }
-
-      return input_array;
-
-    }
-
-    var utils = {cubicBezier, noOverlap};
+    var utils = {cubicBezier};
 
     // global vars available from all pages
 
@@ -38050,7 +37984,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (66:4) {#each copyData as area}
+    // (61:4) {#each copyData as area}
     function create_each_block_2(ctx) {
     	let div1;
     	let h2;
@@ -38088,13 +38022,13 @@ var app = (function () {
     			span.textContent = "Click for details";
     			t5 = space();
     			attr_dev(h2, "class", "svelte-eyae1a");
-    			add_location(h2, file$5, 67, 12, 2545);
+    			add_location(h2, file$5, 62, 12, 2336);
     			attr_dev(span, "class", "svelte-eyae1a");
-    			add_location(span, file$5, 70, 16, 2725);
+    			add_location(span, file$5, 65, 16, 2516);
     			attr_dev(div0, "class", "description svelte-eyae1a");
-    			add_location(div0, file$5, 68, 12, 2649);
+    			add_location(div0, file$5, 63, 12, 2440);
     			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[13].label.toLowerCase()) + " svelte-eyae1a"));
-    			add_location(div1, file$5, 66, 8, 2486);
+    			add_location(div1, file$5, 61, 8, 2277);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -38136,14 +38070,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(66:4) {#each copyData as area}",
+    		source: "(61:4) {#each copyData as area}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:16) {#each area.graphData as graph,i}
+    // (87:16) {#each area.graphData as graph,i}
     function create_each_block_1$1(ctx) {
     	let g;
     	let path;
@@ -38165,16 +38099,16 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[16].path);
     			attr_dev(path, "class", "svelte-eyae1a");
-    			add_location(path, file$5, 93, 24, 3656);
+    			add_location(path, file$5, 88, 24, 3447);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[16].r);
     			attr_dev(circle, "class", "country-circle svelte-eyae1a");
-    			add_location(circle, file$5, 94, 24, 3709);
+    			add_location(circle, file$5, 89, 24, 3500);
     			attr_dev(text_1, "y", "-10px");
     			attr_dev(text_1, "class", "svelte-eyae1a");
-    			add_location(text_1, file$5, 95, 24, 3786);
+    			add_location(text_1, file$5, 90, 24, 3577);
     			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[16].country + " svelte-eyae1a");
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[16].x + "," + /*graph*/ ctx[16].y + ")");
-    			add_location(g, file$5, 92, 20, 3553);
+    			add_location(g, file$5, 87, 20, 3344);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38211,14 +38145,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(92:16) {#each area.graphData as graph,i}",
+    		source: "(87:16) {#each area.graphData as graph,i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (84:8) {#each areaData as area,i}
+    // (79:8) {#each areaData as area,i}
     function create_each_block$3(ctx) {
     	let g;
     	let line;
@@ -38243,10 +38177,10 @@ var app = (function () {
 
     			attr_dev(line, "class", "gridline svelte-eyae1a");
     			attr_dev(line, "x2", /*$width*/ ctx[3]);
-    			add_location(line, file$5, 87, 16, 3306);
+    			add_location(line, file$5, 82, 16, 3097);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[13].area) + " svelte-eyae1a"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[13].offsetY + ")");
-    			add_location(g, file$5, 86, 12, 3218);
+    			add_location(g, file$5, 81, 12, 3009);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38303,7 +38237,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(84:8) {#each areaData as area,i}",
+    		source: "(79:8) {#each areaData as area,i}",
     		ctx
     	});
 
@@ -38354,20 +38288,20 @@ var app = (function () {
 
     			attr_dev(div0, "class", "text-wrapper svelte-eyae1a");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[9].call(div0));
-    			add_location(div0, file$5, 64, 0, 2393);
+    			add_location(div0, file$5, 59, 0, 2184);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[3]);
     			attr_dev(rect, "height", /*$height*/ ctx[4]);
-    			add_location(rect, file$5, 82, 8, 3059);
+    			add_location(rect, file$5, 77, 8, 2850);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[4]);
     			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", /*$height*/ ctx[4]);
     			attr_dev(svg, "class", "svelte-eyae1a");
-    			add_location(svg, file$5, 78, 4, 2938);
+    			add_location(svg, file$5, 73, 4, 2729);
     			attr_dev(div1, "class", "vis-wrapper svelte-eyae1a");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[10].call(div1));
-    			add_location(div1, file$5, 76, 0, 2881);
+    			add_location(div1, file$5, 71, 0, 2672);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38604,9 +38538,7 @@ var app = (function () {
     							};
     						});
     					}
-    				}); // remove overlaps -- needs to be refined
-    				// uncommonent this out for production if you can figure out overlap
-    				// utils.noOverlap(d.graphData, $scaleFactor*2);
+    				});
     			}
     		}
     	};

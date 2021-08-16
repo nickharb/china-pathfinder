@@ -49,12 +49,7 @@
                 });
             }
 
-            // remove overlaps -- needs to be refined
-            // uncommonent this out for production if you can figure out overlap
-            // utils.noOverlap(d.graphData, $scaleFactor*2);
-
-            
-        })
+        });
 
     }
 
