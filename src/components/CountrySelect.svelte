@@ -1,6 +1,6 @@
 <script>
     export let countryNames;
-    import selectedCountry from '../stores/country-store.js';
+    import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
 </script>
 
 <div class='country-select'>

@@ -5,24 +5,26 @@
     export let areaData;
     export let copyData;
     import {areaInView, view} from '../stores/view';
-    import selectedCountry from '../stores/country-store.js';
+    import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
 
-    let hoveredCountry;
+    let tipWidth = 80;
+    let tipHeight = 40;
 
     function switchView(targetView, area) {
         $view = targetView;
         $areaInView = area;
+
     }
 
     function circleMouseOver(e) {
-        hoveredCountry = e.path[1].dataset.id;
+        $hoveredCountry = e.path[1].dataset.id;
     }
 
     function circleMouseOut(e) {
-        hoveredCountry = '';
+        $hoveredCountry = '';
     }
 
-    function selectCountry(e) {
+    function circleClick(e) {
         $selectedCountry = e.path[1].dataset.id;
     }
 
@@ -62,7 +64,8 @@
                         y : 0,
                         r : $scaleFactor,
                         country : d.countries[n],
-                        path: path
+                        path: path,
+                        score: d.comps[n]
                     };
                 });
             }
@@ -104,11 +107,19 @@
                 <!-- pre-computed values get fed into the g element -->
                 {#each area.graphData as graph, i}
 
-                    <g class='country {graph.country}' data-id='{graph.id}' transform='translate({graph.x},{graph.y})' class:selected='{graph.id == $selectedCountry}'>
+                    <g class='country {graph.country}'
+                        data-id='{graph.id}'
+                        transform='translate({graph.x},{graph.y})'
+                        class:hovered='{graph.id == $hoveredCountry}'
+                        class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
+                    >
+                        
                         <path d={graph.path}></path>
-                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={selectCountry}></circle>
-                        <!-- <text y='-10px'>{graph.country}</text> -->
-                        <!-- <g class='tooltip'>{graph.country}</g> -->
+                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
+                        <g class='tooltip'>
+                            <rect width={tipWidth} height={tipHeight}></rect>
+                            <text>{graph.score} / 10</text>
+                        </g>
                     </g>
 
                 {/each}
@@ -148,14 +159,14 @@
 
     .area .description span {
         color: steelblue; /*placeholder color*/
-        font-style:italic;
+        font-style: italic;
         text-decoration: underline dotted;
         cursor:pointer;
     }
 
     .vis-wrapper {
         position: relative;
-        width:99%;
+        width: 99%;
     }
 
     svg {
@@ -164,15 +175,33 @@
     }
     
     circle.country-circle {
-        fill:#666666;
-        stroke:#f9f9f9;
-        fill-opacity:0.5;
+        fill: #666666;
+        stroke: #f9f9f9;
+        fill-opacity: 0.5;
     }
 
-    text {
-        fill:#444444;
-        text-anchor:middle;
+    .tooltip {
         fill-opacity: 0;
+        stroke-opacity: 0;
+        transform: translate(10px, -20px);
+        pointer-events: none;
+    }
+
+    .selected.hovered .tooltip {
+        fill-opacity: 1;
+        stroke-opacity: 1;
+    }
+
+    .tooltip rect {
+        stroke: #333;
+        fill: #fff;
+        stroke-width: 2px;
+    }
+
+    .tooltip text {
+        fill: #333;
+        transform: translate(10px, 20px);
+        alignment-baseline: middle;
     }
 
     path {
@@ -183,17 +212,30 @@
         stroke-opacity: 0.5;
     }
 
-    g.China circle {
+    g.China.selected circle {
         fill: white;
         stroke: red;
         stroke-width: 2px;
         fill-opacity:1;
     }
 
-    g.China path {
+    g.China.selected path {
         stroke: red;
         stroke-width: 2px;
         stroke-opacity: 1;
+    }
+
+    g.hovered path {
+        stroke: #333;
+        stroke-width: 2px;
+        stroke-opacity: 1;
+    }
+
+    g.hovered circle {
+        fill: white;
+        stroke: #333;
+        stroke-width: 2px;
+        fill-opacity:1;
     }
 
     g.selected path {
