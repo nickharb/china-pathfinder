@@ -5,6 +5,7 @@
     export let areaData;
     export let copyData;
     import {areaInView, view} from '../stores/view';
+    import selectedCountry from '../stores/country-store.js';
 
     let hoveredCountry;
 
@@ -14,12 +15,15 @@
     }
 
     function circleMouseOver(e) {
-        hoveredCountry = e.path[1].classList[1];
-        console.log(hoveredCountry);
+        hoveredCountry = e.path[1].dataset.id;
     }
 
     function circleMouseOut(e) {
         hoveredCountry = '';
+    }
+
+    function selectCountry(e) {
+        $selectedCountry = e.path[1].dataset.id;
     }
 
     // country.Denmark - grab class on mouse over state to add styles and highlight color
@@ -28,6 +32,7 @@
     $: if (areaData) {
 
         const xScale = d3.scaleLinear().domain([1,10]).range([$margin*3, $width-$margin*3]);
+
         areaData.forEach( (d,i) => {
             if (d3.select('.text-wrapper .'+d.area).size()>0) {
 
@@ -52,6 +57,7 @@
 
                     // computes the circle location for each country - primary composite score attribute
                     return {
+                        id : d.countries[n].trim().toLowerCase(),
                         x : xScale(m),
                         y : 0,
                         r : $scaleFactor,
@@ -87,7 +93,7 @@
         <!-- <Defs /> -->
         <rect x="0" y="0" width={$width} height={$height}></rect>
 
-        {#each areaData as area,i}
+        {#each areaData as area, i}
 
             <!-- each row gets its own g element -->
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
@@ -97,12 +103,14 @@
                 <!-- each country gets its own g element -->
                 <!-- pre-computed values get fed into the g element -->
                 {#each area.graphData as graph, i}
-                    <!-- {console.log(graph.country)} -->
-                    <g class='country {graph.country}' transform='translate({graph.x},{graph.y})' class:hovered='{graph.country == hoveredCountry}'>
+
+                    <g class='country {graph.country}' data-id='{graph.id}' transform='translate({graph.x},{graph.y})' class:selected='{graph.id == $selectedCountry}'>
                         <path d={graph.path}></path>
-                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut}></circle>
+                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={selectCountry}></circle>
                         <!-- <text y='-10px'>{graph.country}</text> -->
+                        <!-- <g class='tooltip'>{graph.country}</g> -->
                     </g>
+
                 {/each}
 
             </g>
@@ -133,16 +141,6 @@
         cursor:pointer;
     }
 
-    /*.area h2:before {
-        content:'';
-        position:absolute;
-        left:-24px;
-        top:0;
-        width:20px;
-        height:25px;
-        background-image: url('../assets/sunburst-01.svg');
-    }*/
-
     .area .description {
         font-size:0.9em;
         display:inline;
@@ -162,14 +160,13 @@
 
     svg {
         position: absolute;
-        /* fill: #f9f9f9; */
-        fill:white;
-        
+        fill: white;
     }
+    
     circle.country-circle {
-        /*fill:#666666;*/
-        /*stroke:#f9f9f9;*/
-        /*fill-opacity:0.5;*/
+        fill:#666666;
+        stroke:#f9f9f9;
+        fill-opacity:0.5;
     }
 
     text {
@@ -186,20 +183,7 @@
         stroke-opacity: 0.5;
     }
 
-    g.Greece circle {
-        fill: white;
-        stroke: blue;
-        stroke-width: 2px;
-        fill-opacity:1;
-    }
-
-    g.hovered path {
-        stroke: blue;
-        stroke-width: 2px;
-        stroke-opacity: 1;
-    }
-
-    g.hovered circle {
+    g.China circle {
         fill: white;
         stroke: red;
         stroke-width: 2px;
@@ -210,6 +194,19 @@
         stroke: red;
         stroke-width: 2px;
         stroke-opacity: 1;
+    }
+
+    g.selected path {
+        stroke: blue;
+        stroke-width: 2px;
+        stroke-opacity: 1;
+    }
+
+    g.selected circle {
+        fill: white;
+        stroke: blue;
+        stroke-width: 2px;
+        fill-opacity:1;
     }
 
     .gridline {

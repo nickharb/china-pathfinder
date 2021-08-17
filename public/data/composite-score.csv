@@ -1,35 +1,13 @@
-growth,innovation,competition,fdi,trade,portfolio,country
-2.9,2.5,1.333333333,1.7,1.85,1.7,China
-2,4.2,7.3,8.2,7.1,1.8,Colombia
-7.6,1.2,5.3,1.6,6.3,2.3,Iceland
-4,4.9,4.4,2.8,7.7,2.5,Turkey
-4.7,6.7,4.2,8.1,8.3,2.6,Poland
-2.2,2.2,2.8,5.6,7.1,2.7,OECD Low
-7.2,2.9,8.7,9.4,4.8,3.5,Mexico
-8.5,4.5,5.2,8.1,2.3,3.9,Greece
-2.8,9.5,8.6,7.6,5.3,4,Portugal
-1.8,9.4,3.8,3.8,6.9,4.5,Slovenia
-9.4,4.6,7.6,3,6.9,5.3,Chile
-6.9,1.3,3.3,4.5,2.3,5.7,Czech Rep.
-5.1,5,8.5,5.2,8,6.5,OECD Avg
-1.3,4.6,4.4,7.8,3.1,6.5,Austria
-4.2,9,4.6,5.3,4,6.7,Korea
-7,9.6,7.7,8.8,5.3,6.8,OECD High
-6.7,7.2,1.8,7,5.2,6.9,Sweden
-2,2.1,5.9,9.1,2.8,7,Ireland
-6.6,9.4,4,1.5,7.5,7.1,US
-2.4,6.4,8.8,5.8,2.8,7.1,Australia
-5.5,2,4.8,3.4,9.3,7.2,Hungary
-6.4,7.3,9.2,3.1,8.1,7.4,Israel
-8.7,6.7,7.5,3.1,4.2,7.5,Latvia
-10,4,8.8,5,7.3,7.5,Switzerland
-9.4,2.8,7.5,6.1,5.8,7.7,New Zealand
-9.7,9.5,1.8,2.6,1.7,7.8,Japan
-5.8,4.8,3.7,8.4,8.4,7.9,Spain
-2,3.7,7.9,9.9,5.8,7.9,Italy
-3.3,5.1,2.6,10,8,8.4,Canada
-7.2,5.6,6.9,4.5,5,8.5,UK
-7.7,9.7,5,2.1,7.7,8.8,Belgium
-3.6,8.4,2.5,6.3,9.2,8.9,Denmark
-7.1,5.5,1.3,7.6,8.4,9.6,Norway
-7.7,7.2,4.2,5.3,8.4,9.7,Netherlands
+﻿growth,innovation,competition,fdi,trade,portfolio,country,id
+2.9,2.5,1.333333333,7.3,1.85,1.7,Australia,australia
+2,4.2,7.3,7,7.1,1.8,Canada,canada
+7.6,1.2,5.3,7,6.3,2.3,France,france
+4,4.9,4.4,7.2,7.7,2.5,Germany,germany
+4.7,6.7,4.2,6.6,8.3,2.6,Italy,italy
+2.2,2.2,2.8,6.73,7.1,2.7,Average Ex-China,average ex-china
+7.2,2.9,8.7,6,4.8,3.5,Japan,japan
+8.5,4.5,5.2,5.8,2.3,3.9,South Korea,south korea
+2.8,9.5,8.6,6.6,5.3,4,Spain,spain
+1.8,9.4,3.8,6.8,6.9,4.5,United States,united states
+9.4,4.6,7.6,7,6.9,5.3,United Kingdom,united kingdom
+6.9,1.3,3.3,4,2.3,5.7,China,china
