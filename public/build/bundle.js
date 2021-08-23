@@ -77,9 +77,6 @@ var app = (function () {
     function space() {
         return text$1(' ');
     }
-    function empty$3() {
-        return text$1('');
-    }
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
@@ -25832,7 +25829,7 @@ var app = (function () {
       return response.json();
     }
 
-    function json$1(input, init) {
+    function json(input, init) {
       return fetch(input, init).then(responseJson);
     }
 
@@ -34319,31 +34316,31 @@ var app = (function () {
       return divergingPow.apply(null, arguments).exponent(0.5);
     }
 
-    function colors$1(specifier) {
+    function colors(specifier) {
       var n = specifier.length / 6 | 0, colors = new Array(n), i = 0;
       while (i < n) colors[i] = "#" + specifier.slice(i * 6, ++i * 6);
       return colors;
     }
 
-    var category10 = colors$1("1f77b4ff7f0e2ca02cd627289467bd8c564be377c27f7f7fbcbd2217becf");
+    var category10 = colors("1f77b4ff7f0e2ca02cd627289467bd8c564be377c27f7f7fbcbd2217becf");
 
-    var Accent = colors$1("7fc97fbeaed4fdc086ffff99386cb0f0027fbf5b17666666");
+    var Accent = colors("7fc97fbeaed4fdc086ffff99386cb0f0027fbf5b17666666");
 
-    var Dark2 = colors$1("1b9e77d95f027570b3e7298a66a61ee6ab02a6761d666666");
+    var Dark2 = colors("1b9e77d95f027570b3e7298a66a61ee6ab02a6761d666666");
 
-    var Paired = colors$1("a6cee31f78b4b2df8a33a02cfb9a99e31a1cfdbf6fff7f00cab2d66a3d9affff99b15928");
+    var Paired = colors("a6cee31f78b4b2df8a33a02cfb9a99e31a1cfdbf6fff7f00cab2d66a3d9affff99b15928");
 
-    var Pastel1 = colors$1("fbb4aeb3cde3ccebc5decbe4fed9a6ffffcce5d8bdfddaecf2f2f2");
+    var Pastel1 = colors("fbb4aeb3cde3ccebc5decbe4fed9a6ffffcce5d8bdfddaecf2f2f2");
 
-    var Pastel2 = colors$1("b3e2cdfdcdaccbd5e8f4cae4e6f5c9fff2aef1e2cccccccc");
+    var Pastel2 = colors("b3e2cdfdcdaccbd5e8f4cae4e6f5c9fff2aef1e2cccccccc");
 
-    var Set1 = colors$1("e41a1c377eb84daf4a984ea3ff7f00ffff33a65628f781bf999999");
+    var Set1 = colors("e41a1c377eb84daf4a984ea3ff7f00ffff33a65628f781bf999999");
 
-    var Set2 = colors$1("66c2a5fc8d628da0cbe78ac3a6d854ffd92fe5c494b3b3b3");
+    var Set2 = colors("66c2a5fc8d628da0cbe78ac3a6d854ffd92fe5c494b3b3b3");
 
-    var Set3 = colors$1("8dd3c7ffffb3bebadafb807280b1d3fdb462b3de69fccde5d9d9d9bc80bdccebc5ffed6f");
+    var Set3 = colors("8dd3c7ffffb3bebadafb807280b1d3fdb462b3de69fccde5d9d9d9bc80bdccebc5ffed6f");
 
-    var Tableau10 = colors$1("4e79a7f28e2ce1575976b7b259a14fedc949af7aa1ff9da79c755fbab0ab");
+    var Tableau10 = colors("4e79a7f28e2ce1575976b7b259a14fedc949af7aa1ff9da79c755fbab0ab");
 
     var ramp$1 = scheme => rgbBasis(scheme[scheme.length - 1]);
 
@@ -34357,7 +34354,7 @@ var app = (function () {
       "8c510abf812ddfc27df6e8c3f5f5f5c7eae580cdc135978f01665e",
       "5430058c510abf812ddfc27df6e8c3c7eae580cdc135978f01665e003c30",
       "5430058c510abf812ddfc27df6e8c3f5f5f5c7eae580cdc135978f01665e003c30"
-    ).map(colors$1);
+    ).map(colors);
 
     var BrBG = ramp$1(scheme$q);
 
@@ -34371,7 +34368,7 @@ var app = (function () {
       "762a839970abc2a5cfe7d4e8f7f7f7d9f0d3a6dba05aae611b7837",
       "40004b762a839970abc2a5cfe7d4e8d9f0d3a6dba05aae611b783700441b",
       "40004b762a839970abc2a5cfe7d4e8f7f7f7d9f0d3a6dba05aae611b783700441b"
-    ).map(colors$1);
+    ).map(colors);
 
     var PRGn = ramp$1(scheme$p);
 
@@ -34385,7 +34382,7 @@ var app = (function () {
       "c51b7dde77aef1b6dafde0eff7f7f7e6f5d0b8e1867fbc414d9221",
       "8e0152c51b7dde77aef1b6dafde0efe6f5d0b8e1867fbc414d9221276419",
       "8e0152c51b7dde77aef1b6dafde0eff7f7f7e6f5d0b8e1867fbc414d9221276419"
-    ).map(colors$1);
+    ).map(colors);
 
     var PiYG = ramp$1(scheme$o);
 
@@ -34399,7 +34396,7 @@ var app = (function () {
       "5427888073acb2abd2d8daebf7f7f7fee0b6fdb863e08214b35806",
       "2d004b5427888073acb2abd2d8daebfee0b6fdb863e08214b358067f3b08",
       "2d004b5427888073acb2abd2d8daebf7f7f7fee0b6fdb863e08214b358067f3b08"
-    ).map(colors$1);
+    ).map(colors);
 
     var PuOr = ramp$1(scheme$n);
 
@@ -34413,7 +34410,7 @@ var app = (function () {
       "b2182bd6604df4a582fddbc7f7f7f7d1e5f092c5de4393c32166ac",
       "67001fb2182bd6604df4a582fddbc7d1e5f092c5de4393c32166ac053061",
       "67001fb2182bd6604df4a582fddbc7f7f7f7d1e5f092c5de4393c32166ac053061"
-    ).map(colors$1);
+    ).map(colors);
 
     var RdBu = ramp$1(scheme$m);
 
@@ -34427,7 +34424,7 @@ var app = (function () {
       "b2182bd6604df4a582fddbc7ffffffe0e0e0bababa8787874d4d4d",
       "67001fb2182bd6604df4a582fddbc7e0e0e0bababa8787874d4d4d1a1a1a",
       "67001fb2182bd6604df4a582fddbc7ffffffe0e0e0bababa8787874d4d4d1a1a1a"
-    ).map(colors$1);
+    ).map(colors);
 
     var RdGy = ramp$1(scheme$l);
 
@@ -34441,7 +34438,7 @@ var app = (function () {
       "d73027f46d43fdae61fee090ffffbfe0f3f8abd9e974add14575b4",
       "a50026d73027f46d43fdae61fee090e0f3f8abd9e974add14575b4313695",
       "a50026d73027f46d43fdae61fee090ffffbfe0f3f8abd9e974add14575b4313695"
-    ).map(colors$1);
+    ).map(colors);
 
     var RdYlBu = ramp$1(scheme$k);
 
@@ -34455,7 +34452,7 @@ var app = (function () {
       "d73027f46d43fdae61fee08bffffbfd9ef8ba6d96a66bd631a9850",
       "a50026d73027f46d43fdae61fee08bd9ef8ba6d96a66bd631a9850006837",
       "a50026d73027f46d43fdae61fee08bffffbfd9ef8ba6d96a66bd631a9850006837"
-    ).map(colors$1);
+    ).map(colors);
 
     var RdYlGn = ramp$1(scheme$j);
 
@@ -34469,7 +34466,7 @@ var app = (function () {
       "d53e4ff46d43fdae61fee08bffffbfe6f598abdda466c2a53288bd",
       "9e0142d53e4ff46d43fdae61fee08be6f598abdda466c2a53288bd5e4fa2",
       "9e0142d53e4ff46d43fdae61fee08bffffbfe6f598abdda466c2a53288bd5e4fa2"
-    ).map(colors$1);
+    ).map(colors);
 
     var Spectral = ramp$1(scheme$i);
 
@@ -34481,7 +34478,7 @@ var app = (function () {
       "edf8fbccece699d8c966c2a441ae76238b45005824",
       "f7fcfde5f5f9ccece699d8c966c2a441ae76238b45005824",
       "f7fcfde5f5f9ccece699d8c966c2a441ae76238b45006d2c00441b"
-    ).map(colors$1);
+    ).map(colors);
 
     var BuGn = ramp$1(scheme$h);
 
@@ -34493,7 +34490,7 @@ var app = (function () {
       "edf8fbbfd3e69ebcda8c96c68c6bb188419d6e016b",
       "f7fcfde0ecf4bfd3e69ebcda8c96c68c6bb188419d6e016b",
       "f7fcfde0ecf4bfd3e69ebcda8c96c68c6bb188419d810f7c4d004b"
-    ).map(colors$1);
+    ).map(colors);
 
     var BuPu = ramp$1(scheme$g);
 
@@ -34505,7 +34502,7 @@ var app = (function () {
       "f0f9e8ccebc5a8ddb57bccc44eb3d32b8cbe08589e",
       "f7fcf0e0f3dbccebc5a8ddb57bccc44eb3d32b8cbe08589e",
       "f7fcf0e0f3dbccebc5a8ddb57bccc44eb3d32b8cbe0868ac084081"
-    ).map(colors$1);
+    ).map(colors);
 
     var GnBu = ramp$1(scheme$f);
 
@@ -34517,7 +34514,7 @@ var app = (function () {
       "fef0d9fdd49efdbb84fc8d59ef6548d7301f990000",
       "fff7ecfee8c8fdd49efdbb84fc8d59ef6548d7301f990000",
       "fff7ecfee8c8fdd49efdbb84fc8d59ef6548d7301fb300007f0000"
-    ).map(colors$1);
+    ).map(colors);
 
     var OrRd = ramp$1(scheme$e);
 
@@ -34529,7 +34526,7 @@ var app = (function () {
       "f6eff7d0d1e6a6bddb67a9cf3690c002818a016450",
       "fff7fbece2f0d0d1e6a6bddb67a9cf3690c002818a016450",
       "fff7fbece2f0d0d1e6a6bddb67a9cf3690c002818a016c59014636"
-    ).map(colors$1);
+    ).map(colors);
 
     var PuBuGn = ramp$1(scheme$d);
 
@@ -34541,7 +34538,7 @@ var app = (function () {
       "f1eef6d0d1e6a6bddb74a9cf3690c00570b0034e7b",
       "fff7fbece7f2d0d1e6a6bddb74a9cf3690c00570b0034e7b",
       "fff7fbece7f2d0d1e6a6bddb74a9cf3690c00570b0045a8d023858"
-    ).map(colors$1);
+    ).map(colors);
 
     var PuBu = ramp$1(scheme$c);
 
@@ -34553,7 +34550,7 @@ var app = (function () {
       "f1eef6d4b9dac994c7df65b0e7298ace125691003f",
       "f7f4f9e7e1efd4b9dac994c7df65b0e7298ace125691003f",
       "f7f4f9e7e1efd4b9dac994c7df65b0e7298ace125698004367001f"
-    ).map(colors$1);
+    ).map(colors);
 
     var PuRd = ramp$1(scheme$b);
 
@@ -34565,7 +34562,7 @@ var app = (function () {
       "feebe2fcc5c0fa9fb5f768a1dd3497ae017e7a0177",
       "fff7f3fde0ddfcc5c0fa9fb5f768a1dd3497ae017e7a0177",
       "fff7f3fde0ddfcc5c0fa9fb5f768a1dd3497ae017e7a017749006a"
-    ).map(colors$1);
+    ).map(colors);
 
     var RdPu = ramp$1(scheme$a);
 
@@ -34577,7 +34574,7 @@ var app = (function () {
       "ffffccc7e9b47fcdbb41b6c41d91c0225ea80c2c84",
       "ffffd9edf8b1c7e9b47fcdbb41b6c41d91c0225ea80c2c84",
       "ffffd9edf8b1c7e9b47fcdbb41b6c41d91c0225ea8253494081d58"
-    ).map(colors$1);
+    ).map(colors);
 
     var YlGnBu = ramp$1(scheme$9);
 
@@ -34589,7 +34586,7 @@ var app = (function () {
       "ffffccd9f0a3addd8e78c67941ab5d238443005a32",
       "ffffe5f7fcb9d9f0a3addd8e78c67941ab5d238443005a32",
       "ffffe5f7fcb9d9f0a3addd8e78c67941ab5d238443006837004529"
-    ).map(colors$1);
+    ).map(colors);
 
     var YlGn = ramp$1(scheme$8);
 
@@ -34601,7 +34598,7 @@ var app = (function () {
       "ffffd4fee391fec44ffe9929ec7014cc4c028c2d04",
       "ffffe5fff7bcfee391fec44ffe9929ec7014cc4c028c2d04",
       "ffffe5fff7bcfee391fec44ffe9929ec7014cc4c02993404662506"
-    ).map(colors$1);
+    ).map(colors);
 
     var YlOrBr = ramp$1(scheme$7);
 
@@ -34613,7 +34610,7 @@ var app = (function () {
       "ffffb2fed976feb24cfd8d3cfc4e2ae31a1cb10026",
       "ffffccffeda0fed976feb24cfd8d3cfc4e2ae31a1cb10026",
       "ffffccffeda0fed976feb24cfd8d3cfc4e2ae31a1cbd0026800026"
-    ).map(colors$1);
+    ).map(colors);
 
     var YlOrRd = ramp$1(scheme$6);
 
@@ -34625,7 +34622,7 @@ var app = (function () {
       "eff3ffc6dbef9ecae16baed64292c62171b5084594",
       "f7fbffdeebf7c6dbef9ecae16baed64292c62171b5084594",
       "f7fbffdeebf7c6dbef9ecae16baed64292c62171b508519c08306b"
-    ).map(colors$1);
+    ).map(colors);
 
     var Blues = ramp$1(scheme$5);
 
@@ -34637,7 +34634,7 @@ var app = (function () {
       "edf8e9c7e9c0a1d99b74c47641ab5d238b45005a32",
       "f7fcf5e5f5e0c7e9c0a1d99b74c47641ab5d238b45005a32",
       "f7fcf5e5f5e0c7e9c0a1d99b74c47641ab5d238b45006d2c00441b"
-    ).map(colors$1);
+    ).map(colors);
 
     var Greens = ramp$1(scheme$4);
 
@@ -34649,7 +34646,7 @@ var app = (function () {
       "f7f7f7d9d9d9bdbdbd969696737373525252252525",
       "fffffff0f0f0d9d9d9bdbdbd969696737373525252252525",
       "fffffff0f0f0d9d9d9bdbdbd969696737373525252252525000000"
-    ).map(colors$1);
+    ).map(colors);
 
     var Greys = ramp$1(scheme$3);
 
@@ -34661,7 +34658,7 @@ var app = (function () {
       "f2f0f7dadaebbcbddc9e9ac8807dba6a51a34a1486",
       "fcfbfdefedf5dadaebbcbddc9e9ac8807dba6a51a34a1486",
       "fcfbfdefedf5dadaebbcbddc9e9ac8807dba6a51a354278f3f007d"
-    ).map(colors$1);
+    ).map(colors);
 
     var Purples = ramp$1(scheme$2);
 
@@ -34673,7 +34670,7 @@ var app = (function () {
       "fee5d9fcbba1fc9272fb6a4aef3b2ccb181d99000d",
       "fff5f0fee0d2fcbba1fc9272fb6a4aef3b2ccb181d99000d",
       "fff5f0fee0d2fcbba1fc9272fb6a4aef3b2ccb181da50f1567000d"
-    ).map(colors$1);
+    ).map(colors);
 
     var Reds = ramp$1(scheme$1);
 
@@ -34685,7 +34682,7 @@ var app = (function () {
       "feeddefdd0a2fdae6bfd8d3cf16913d948018c2d04",
       "fff5ebfee6cefdd0a2fdae6bfd8d3cf16913d948018c2d04",
       "fff5ebfee6cefdd0a2fdae6bfd8d3cf16913d94801a636037f2704"
-    ).map(colors$1);
+    ).map(colors);
 
     var Oranges = ramp$1(scheme);
 
@@ -34744,13 +34741,13 @@ var app = (function () {
       };
     }
 
-    var viridis = ramp(colors$1("44015444025645045745055946075a46085c460a5d460b5e470d60470e6147106347116447136548146748166848176948186a481a6c481b6d481c6e481d6f481f70482071482173482374482475482576482677482878482979472a7a472c7a472d7b472e7c472f7d46307e46327e46337f463480453581453781453882443983443a83443b84433d84433e85423f854240864241864142874144874045884046883f47883f48893e49893e4a893e4c8a3d4d8a3d4e8a3c4f8a3c508b3b518b3b528b3a538b3a548c39558c39568c38588c38598c375a8c375b8d365c8d365d8d355e8d355f8d34608d34618d33628d33638d32648e32658e31668e31678e31688e30698e306a8e2f6b8e2f6c8e2e6d8e2e6e8e2e6f8e2d708e2d718e2c718e2c728e2c738e2b748e2b758e2a768e2a778e2a788e29798e297a8e297b8e287c8e287d8e277e8e277f8e27808e26818e26828e26828e25838e25848e25858e24868e24878e23888e23898e238a8d228b8d228c8d228d8d218e8d218f8d21908d21918c20928c20928c20938c1f948c1f958b1f968b1f978b1f988b1f998a1f9a8a1e9b8a1e9c891e9d891f9e891f9f881fa0881fa1881fa1871fa28720a38620a48621a58521a68522a78522a88423a98324aa8325ab8225ac8226ad8127ad8128ae8029af7f2ab07f2cb17e2db27d2eb37c2fb47c31b57b32b67a34b67935b77937b87838b9773aba763bbb753dbc743fbc7340bd7242be7144bf7046c06f48c16e4ac16d4cc26c4ec36b50c46a52c56954c56856c66758c7655ac8645cc8635ec96260ca6063cb5f65cb5e67cc5c69cd5b6ccd5a6ece5870cf5773d05675d05477d1537ad1517cd2507fd34e81d34d84d44b86d54989d5488bd6468ed64590d74393d74195d84098d83e9bd93c9dd93ba0da39a2da37a5db36a8db34aadc32addc30b0dd2fb2dd2db5de2bb8de29bade28bddf26c0df25c2df23c5e021c8e020cae11fcde11dd0e11cd2e21bd5e21ad8e219dae319dde318dfe318e2e418e5e419e7e419eae51aece51befe51cf1e51df4e61ef6e620f8e621fbe723fde725"));
+    var viridis = ramp(colors("44015444025645045745055946075a46085c460a5d460b5e470d60470e6147106347116447136548146748166848176948186a481a6c481b6d481c6e481d6f481f70482071482173482374482475482576482677482878482979472a7a472c7a472d7b472e7c472f7d46307e46327e46337f463480453581453781453882443983443a83443b84433d84433e85423f854240864241864142874144874045884046883f47883f48893e49893e4a893e4c8a3d4d8a3d4e8a3c4f8a3c508b3b518b3b528b3a538b3a548c39558c39568c38588c38598c375a8c375b8d365c8d365d8d355e8d355f8d34608d34618d33628d33638d32648e32658e31668e31678e31688e30698e306a8e2f6b8e2f6c8e2e6d8e2e6e8e2e6f8e2d708e2d718e2c718e2c728e2c738e2b748e2b758e2a768e2a778e2a788e29798e297a8e297b8e287c8e287d8e277e8e277f8e27808e26818e26828e26828e25838e25848e25858e24868e24878e23888e23898e238a8d228b8d228c8d228d8d218e8d218f8d21908d21918c20928c20928c20938c1f948c1f958b1f968b1f978b1f988b1f998a1f9a8a1e9b8a1e9c891e9d891f9e891f9f881fa0881fa1881fa1871fa28720a38620a48621a58521a68522a78522a88423a98324aa8325ab8225ac8226ad8127ad8128ae8029af7f2ab07f2cb17e2db27d2eb37c2fb47c31b57b32b67a34b67935b77937b87838b9773aba763bbb753dbc743fbc7340bd7242be7144bf7046c06f48c16e4ac16d4cc26c4ec36b50c46a52c56954c56856c66758c7655ac8645cc8635ec96260ca6063cb5f65cb5e67cc5c69cd5b6ccd5a6ece5870cf5773d05675d05477d1537ad1517cd2507fd34e81d34d84d44b86d54989d5488bd6468ed64590d74393d74195d84098d83e9bd93c9dd93ba0da39a2da37a5db36a8db34aadc32addc30b0dd2fb2dd2db5de2bb8de29bade28bddf26c0df25c2df23c5e021c8e020cae11fcde11dd0e11cd2e21bd5e21ad8e219dae319dde318dfe318e2e418e5e419e7e419eae51aece51befe51cf1e51df4e61ef6e620f8e621fbe723fde725"));
 
-    var magma = ramp(colors$1("00000401000501010601010802010902020b02020d03030f03031204041405041606051806051a07061c08071e0907200a08220b09240c09260d0a290e0b2b100b2d110c2f120d31130d34140e36150e38160f3b180f3d19103f1a10421c10441d11471e114920114b21114e22115024125325125527125829115a2a115c2c115f2d11612f116331116533106734106936106b38106c390f6e3b0f703d0f713f0f72400f74420f75440f764510774710784910784a10794c117a4e117b4f127b51127c52137c54137d56147d57157e59157e5a167e5c167f5d177f5f187f601880621980641a80651a80671b80681c816a1c816b1d816d1d816e1e81701f81721f817320817521817621817822817922827b23827c23827e24828025828125818326818426818627818827818928818b29818c29818e2a81902a81912b81932b80942c80962c80982d80992d809b2e7f9c2e7f9e2f7fa02f7fa1307ea3307ea5317ea6317da8327daa337dab337cad347cae347bb0357bb2357bb3367ab5367ab73779b83779ba3878bc3978bd3977bf3a77c03a76c23b75c43c75c53c74c73d73c83e73ca3e72cc3f71cd4071cf4070d0416fd2426fd3436ed5446dd6456cd8456cd9466bdb476adc4869de4968df4a68e04c67e24d66e34e65e44f64e55064e75263e85362e95462ea5661eb5760ec5860ed5a5fee5b5eef5d5ef05f5ef1605df2625df2645cf3655cf4675cf4695cf56b5cf66c5cf66e5cf7705cf7725cf8745cf8765cf9785df9795df97b5dfa7d5efa7f5efa815ffb835ffb8560fb8761fc8961fc8a62fc8c63fc8e64fc9065fd9266fd9467fd9668fd9869fd9a6afd9b6bfe9d6cfe9f6dfea16efea36ffea571fea772fea973feaa74feac76feae77feb078feb27afeb47bfeb67cfeb77efeb97ffebb81febd82febf84fec185fec287fec488fec68afec88cfeca8dfecc8ffecd90fecf92fed194fed395fed597fed799fed89afdda9cfddc9efddea0fde0a1fde2a3fde3a5fde5a7fde7a9fde9aafdebacfcecaefceeb0fcf0b2fcf2b4fcf4b6fcf6b8fcf7b9fcf9bbfcfbbdfcfdbf"));
+    var magma = ramp(colors("00000401000501010601010802010902020b02020d03030f03031204041405041606051806051a07061c08071e0907200a08220b09240c09260d0a290e0b2b100b2d110c2f120d31130d34140e36150e38160f3b180f3d19103f1a10421c10441d11471e114920114b21114e22115024125325125527125829115a2a115c2c115f2d11612f116331116533106734106936106b38106c390f6e3b0f703d0f713f0f72400f74420f75440f764510774710784910784a10794c117a4e117b4f127b51127c52137c54137d56147d57157e59157e5a167e5c167f5d177f5f187f601880621980641a80651a80671b80681c816a1c816b1d816d1d816e1e81701f81721f817320817521817621817822817922827b23827c23827e24828025828125818326818426818627818827818928818b29818c29818e2a81902a81912b81932b80942c80962c80982d80992d809b2e7f9c2e7f9e2f7fa02f7fa1307ea3307ea5317ea6317da8327daa337dab337cad347cae347bb0357bb2357bb3367ab5367ab73779b83779ba3878bc3978bd3977bf3a77c03a76c23b75c43c75c53c74c73d73c83e73ca3e72cc3f71cd4071cf4070d0416fd2426fd3436ed5446dd6456cd8456cd9466bdb476adc4869de4968df4a68e04c67e24d66e34e65e44f64e55064e75263e85362e95462ea5661eb5760ec5860ed5a5fee5b5eef5d5ef05f5ef1605df2625df2645cf3655cf4675cf4695cf56b5cf66c5cf66e5cf7705cf7725cf8745cf8765cf9785df9795df97b5dfa7d5efa7f5efa815ffb835ffb8560fb8761fc8961fc8a62fc8c63fc8e64fc9065fd9266fd9467fd9668fd9869fd9a6afd9b6bfe9d6cfe9f6dfea16efea36ffea571fea772fea973feaa74feac76feae77feb078feb27afeb47bfeb67cfeb77efeb97ffebb81febd82febf84fec185fec287fec488fec68afec88cfeca8dfecc8ffecd90fecf92fed194fed395fed597fed799fed89afdda9cfddc9efddea0fde0a1fde2a3fde3a5fde5a7fde7a9fde9aafdebacfcecaefceeb0fcf0b2fcf2b4fcf4b6fcf6b8fcf7b9fcf9bbfcfbbdfcfdbf"));
 
-    var inferno = ramp(colors$1("00000401000501010601010802010a02020c02020e03021004031204031405041706041907051b08051d09061f0a07220b07240c08260d08290e092b10092d110a30120a32140b34150b37160b39180c3c190c3e1b0c411c0c431e0c451f0c48210c4a230c4c240c4f260c51280b53290b552b0b572d0b592f0a5b310a5c320a5e340a5f3609613809623909633b09643d09653e0966400a67420a68440a68450a69470b6a490b6a4a0c6b4c0c6b4d0d6c4f0d6c510e6c520e6d540f6d550f6d57106e59106e5a116e5c126e5d126e5f136e61136e62146e64156e65156e67166e69166e6a176e6c186e6d186e6f196e71196e721a6e741a6e751b6e771c6d781c6d7a1d6d7c1d6d7d1e6d7f1e6c801f6c82206c84206b85216b87216b88226a8a226a8c23698d23698f24699025689225689326679526679727669827669a28659b29649d29649f2a63a02a63a22b62a32c61a52c60a62d60a82e5fa92e5eab2f5ead305dae305cb0315bb1325ab3325ab43359b63458b73557b93556ba3655bc3754bd3853bf3952c03a51c13a50c33b4fc43c4ec63d4dc73e4cc83f4bca404acb4149cc4248ce4347cf4446d04545d24644d34743d44842d54a41d74b3fd84c3ed94d3dda4e3cdb503bdd513ade5238df5337e05536e15635e25734e35933e45a31e55c30e65d2fe75e2ee8602de9612bea632aeb6429eb6628ec6726ed6925ee6a24ef6c23ef6e21f06f20f1711ff1731df2741cf3761bf37819f47918f57b17f57d15f67e14f68013f78212f78410f8850ff8870ef8890cf98b0bf98c0af98e09fa9008fa9207fa9407fb9606fb9706fb9906fb9b06fb9d07fc9f07fca108fca309fca50afca60cfca80dfcaa0ffcac11fcae12fcb014fcb216fcb418fbb61afbb81dfbba1ffbbc21fbbe23fac026fac228fac42afac62df9c72ff9c932f9cb35f8cd37f8cf3af7d13df7d340f6d543f6d746f5d949f5db4cf4dd4ff4df53f4e156f3e35af3e55df2e661f2e865f2ea69f1ec6df1ed71f1ef75f1f179f2f27df2f482f3f586f3f68af4f88ef5f992f6fa96f8fb9af9fc9dfafda1fcffa4"));
+    var inferno = ramp(colors("00000401000501010601010802010a02020c02020e03021004031204031405041706041907051b08051d09061f0a07220b07240c08260d08290e092b10092d110a30120a32140b34150b37160b39180c3c190c3e1b0c411c0c431e0c451f0c48210c4a230c4c240c4f260c51280b53290b552b0b572d0b592f0a5b310a5c320a5e340a5f3609613809623909633b09643d09653e0966400a67420a68440a68450a69470b6a490b6a4a0c6b4c0c6b4d0d6c4f0d6c510e6c520e6d540f6d550f6d57106e59106e5a116e5c126e5d126e5f136e61136e62146e64156e65156e67166e69166e6a176e6c186e6d186e6f196e71196e721a6e741a6e751b6e771c6d781c6d7a1d6d7c1d6d7d1e6d7f1e6c801f6c82206c84206b85216b87216b88226a8a226a8c23698d23698f24699025689225689326679526679727669827669a28659b29649d29649f2a63a02a63a22b62a32c61a52c60a62d60a82e5fa92e5eab2f5ead305dae305cb0315bb1325ab3325ab43359b63458b73557b93556ba3655bc3754bd3853bf3952c03a51c13a50c33b4fc43c4ec63d4dc73e4cc83f4bca404acb4149cc4248ce4347cf4446d04545d24644d34743d44842d54a41d74b3fd84c3ed94d3dda4e3cdb503bdd513ade5238df5337e05536e15635e25734e35933e45a31e55c30e65d2fe75e2ee8602de9612bea632aeb6429eb6628ec6726ed6925ee6a24ef6c23ef6e21f06f20f1711ff1731df2741cf3761bf37819f47918f57b17f57d15f67e14f68013f78212f78410f8850ff8870ef8890cf98b0bf98c0af98e09fa9008fa9207fa9407fb9606fb9706fb9906fb9b06fb9d07fc9f07fca108fca309fca50afca60cfca80dfcaa0ffcac11fcae12fcb014fcb216fcb418fbb61afbb81dfbba1ffbbc21fbbe23fac026fac228fac42afac62df9c72ff9c932f9cb35f8cd37f8cf3af7d13df7d340f6d543f6d746f5d949f5db4cf4dd4ff4df53f4e156f3e35af3e55df2e661f2e865f2ea69f1ec6df1ed71f1ef75f1f179f2f27df2f482f3f586f3f68af4f88ef5f992f6fa96f8fb9af9fc9dfafda1fcffa4"));
 
-    var plasma = ramp(colors$1("0d088710078813078916078a19068c1b068d1d068e20068f2206902406912605912805922a05932c05942e05952f059631059733059735049837049938049a3a049a3c049b3e049c3f049c41049d43039e44039e46039f48039f4903a04b03a14c02a14e02a25002a25102a35302a35502a45601a45801a45901a55b01a55c01a65e01a66001a66100a76300a76400a76600a76700a86900a86a00a86c00a86e00a86f00a87100a87201a87401a87501a87701a87801a87a02a87b02a87d03a87e03a88004a88104a78305a78405a78606a68707a68808a68a09a58b0aa58d0ba58e0ca48f0da4910ea3920fa39410a29511a19613a19814a099159f9a169f9c179e9d189d9e199da01a9ca11b9ba21d9aa31e9aa51f99a62098a72197a82296aa2395ab2494ac2694ad2793ae2892b02991b12a90b22b8fb32c8eb42e8db52f8cb6308bb7318ab83289ba3388bb3488bc3587bd3786be3885bf3984c03a83c13b82c23c81c33d80c43e7fc5407ec6417dc7427cc8437bc9447aca457acb4679cc4778cc4977cd4a76ce4b75cf4c74d04d73d14e72d24f71d35171d45270d5536fd5546ed6556dd7566cd8576bd9586ada5a6ada5b69db5c68dc5d67dd5e66de5f65de6164df6263e06363e16462e26561e26660e3685fe4695ee56a5de56b5de66c5ce76e5be76f5ae87059e97158e97257ea7457eb7556eb7655ec7754ed7953ed7a52ee7b51ef7c51ef7e50f07f4ff0804ef1814df1834cf2844bf3854bf3874af48849f48948f58b47f58c46f68d45f68f44f79044f79143f79342f89441f89540f9973ff9983ef99a3efa9b3dfa9c3cfa9e3bfb9f3afba139fba238fca338fca537fca636fca835fca934fdab33fdac33fdae32fdaf31fdb130fdb22ffdb42ffdb52efeb72dfeb82cfeba2cfebb2bfebd2afebe2afec029fdc229fdc328fdc527fdc627fdc827fdca26fdcb26fccd25fcce25fcd025fcd225fbd324fbd524fbd724fad824fada24f9dc24f9dd25f8df25f8e125f7e225f7e425f6e626f6e826f5e926f5eb27f4ed27f3ee27f3f027f2f227f1f426f1f525f0f724f0f921"));
+    var plasma = ramp(colors("0d088710078813078916078a19068c1b068d1d068e20068f2206902406912605912805922a05932c05942e05952f059631059733059735049837049938049a3a049a3c049b3e049c3f049c41049d43039e44039e46039f48039f4903a04b03a14c02a14e02a25002a25102a35302a35502a45601a45801a45901a55b01a55c01a65e01a66001a66100a76300a76400a76600a76700a86900a86a00a86c00a86e00a86f00a87100a87201a87401a87501a87701a87801a87a02a87b02a87d03a87e03a88004a88104a78305a78405a78606a68707a68808a68a09a58b0aa58d0ba58e0ca48f0da4910ea3920fa39410a29511a19613a19814a099159f9a169f9c179e9d189d9e199da01a9ca11b9ba21d9aa31e9aa51f99a62098a72197a82296aa2395ab2494ac2694ad2793ae2892b02991b12a90b22b8fb32c8eb42e8db52f8cb6308bb7318ab83289ba3388bb3488bc3587bd3786be3885bf3984c03a83c13b82c23c81c33d80c43e7fc5407ec6417dc7427cc8437bc9447aca457acb4679cc4778cc4977cd4a76ce4b75cf4c74d04d73d14e72d24f71d35171d45270d5536fd5546ed6556dd7566cd8576bd9586ada5a6ada5b69db5c68dc5d67dd5e66de5f65de6164df6263e06363e16462e26561e26660e3685fe4695ee56a5de56b5de66c5ce76e5be76f5ae87059e97158e97257ea7457eb7556eb7655ec7754ed7953ed7a52ee7b51ef7c51ef7e50f07f4ff0804ef1814df1834cf2844bf3854bf3874af48849f48948f58b47f58c46f68d45f68f44f79044f79143f79342f89441f89540f9973ff9983ef99a3efa9b3dfa9c3cfa9e3bfb9f3afba139fba238fca338fca537fca636fca835fca934fdab33fdac33fdae32fdaf31fdb130fdb22ffdb42ffdb52efeb72dfeb82cfeba2cfebb2bfebd2afebe2afec029fdc229fdc328fdc527fdc627fdc827fdca26fdcb26fccd25fcce25fcd025fcd225fbd324fbd524fbd724fad824fada24f9dc24f9dd25f8df25f8e125f7e225f7e425f6e626f6e826f5e926f5eb27f4ed27f3ee27f3f027f2f227f1f426f1f525f0f724f0f921"));
 
     function constant$1(x) {
       return function constant() {
@@ -37373,7 +37370,7 @@ var app = (function () {
         csv: csv,
         tsv: tsv,
         image: image,
-        json: json$1,
+        json: json,
         text: text,
         xml: xml,
         html: html,
@@ -37778,22 +37775,27 @@ var app = (function () {
 
         const data = await csv(dataPath$1); // d3 load csv function
 
-        let domains = ['growth','competition','innovation','trade','fdi','portfolio'];
+        // create an array of objects for the six areas
+        // ... China appears as the last country
 
-        data.sort((a,b) => a.country == 'China' ? 1 : -1);
+        // growth is financial system development
+        // these are referenced across the program
+        let areas = ['growth','competition','innovation','trade','fdi','portfolio'];
+
+        data.sort((a,b)=> a.country == 'China' ? 1 : -1);
 
         let output = [];
         
-        domains.forEach( (x) => { 
+        areas.forEach( (x) => { 
             output.push({
-                domain: x, 
+                area: x, 
                 comps: data.map(n => n[x]), 
                 countries: data.map(n => n["country"])
             });
         });
 
 
-        return({countries: data, domains: output});
+        return({countries: data, areas: output});
     };
 
     // exported from raw Excel "Copy data for China Pathfinder" using Mr. Data Converter
@@ -37944,7 +37946,7 @@ var app = (function () {
 
     // for sunburst charts
     const chartWidth = writable();
-    derived(chartWidth, ($chartWidth) => ($chartWidth/6));
+    const innerR = derived(chartWidth, ($chartWidth) => ($chartWidth/6));
 
     // Modified from https://observablehq.com/@harrystevens/cubic-bezier-curve
 
@@ -37979,7 +37981,7 @@ var app = (function () {
     // global vars available from all pages
 
     const view = writable();
-    const domainInView = writable();
+    const areaInView = writable();
 
     // call writable function to create a store, pass a default value as an argument
     const hoveredCountry = writable();
@@ -37988,51 +37990,37 @@ var app = (function () {
     /* src/components/LandingVisual.svelte generated by Svelte v3.38.2 */
 
     const { console: console_1 } = globals;
-    const file$3 = "src/components/LandingVisual.svelte";
+    const file$5 = "src/components/LandingVisual.svelte";
 
-    function get_each_context$1(ctx, list, i) {
+    function get_each_context$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	child_ctx[21] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
-    function get_each_context_1(ctx, list, i) {
+    function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[22] = list[i];
-    	child_ctx[21] = i;
+    	child_ctx[23] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	child_ctx[21] = i;
+    	child_ctx[20] = list[i];
     	return child_ctx;
     }
 
-    function get_each_context_3(ctx, list, i) {
-    	const child_ctx = ctx.slice();
-    	child_ctx[22] = list[i];
-    	child_ctx[21] = i;
-    	return child_ctx;
-    }
-
-    function get_each_context_4(ctx, list, i) {
-    	const child_ctx = ctx.slice();
-    	child_ctx[19] = list[i];
-    	return child_ctx;
-    }
-
-    // (136:4) {#each copyData as domain}
-    function create_each_block_4(ctx) {
+    // (82:4) {#each copyData as area}
+    function create_each_block_2(ctx) {
     	let div1;
     	let h2;
-    	let t0_value = /*domain*/ ctx[19].name + "";
+    	let t0_value = /*area*/ ctx[20].name + "";
     	let t0;
     	let t1;
     	let div0;
-    	let t2_value = /*domain*/ ctx[19].definition + "";
+    	let t2_value = /*area*/ ctx[20].definition + "";
     	let t2;
     	let t3;
     	let span;
@@ -38042,11 +38030,11 @@ var app = (function () {
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[11](/*domain*/ ctx[19]);
+    		return /*click_handler*/ ctx[14](/*area*/ ctx[20]);
     	}
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[12](/*domain*/ ctx[19]);
+    		return /*click_handler_1*/ ctx[15](/*area*/ ctx[20]);
     	}
 
     	const block = {
@@ -38061,14 +38049,14 @@ var app = (function () {
     			span = element("span");
     			span.textContent = "Click for details";
     			t5 = space();
-    			attr_dev(h2, "class", "svelte-15m93ra");
-    			add_location(h2, file$3, 137, 12, 5238);
-    			attr_dev(span, "class", "svelte-15m93ra");
-    			add_location(span, file$3, 140, 16, 5424);
-    			attr_dev(div0, "class", "description svelte-15m93ra");
-    			add_location(div0, file$3, 138, 12, 5346);
-    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("domain " + /*domain*/ ctx[19].label.toLowerCase()) + " svelte-15m93ra"));
-    			add_location(div1, file$3, 136, 8, 5175);
+    			attr_dev(h2, "class", "svelte-1nu22ps");
+    			add_location(h2, file$5, 83, 12, 2997);
+    			attr_dev(span, "class", "svelte-1nu22ps");
+    			add_location(span, file$5, 86, 16, 3177);
+    			attr_dev(div0, "class", "description svelte-1nu22ps");
+    			add_location(div0, file$5, 84, 12, 3101);
+    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[20].label.toLowerCase()) + " svelte-1nu22ps"));
+    			add_location(div1, file$5, 82, 8, 2938);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -38092,10 +38080,10 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*copyData*/ 2 && t0_value !== (t0_value = /*domain*/ ctx[19].name + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*copyData*/ 2 && t2_value !== (t2_value = /*domain*/ ctx[19].definition + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*copyData*/ 2 && t0_value !== (t0_value = /*area*/ ctx[20].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*copyData*/ 2 && t2_value !== (t2_value = /*area*/ ctx[20].definition + "")) set_data_dev(t2, t2_value);
 
-    			if (dirty & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("domain " + /*domain*/ ctx[19].label.toLowerCase()) + " svelte-15m93ra"))) {
+    			if (dirty & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[20].label.toLowerCase()) + " svelte-1nu22ps"))) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
@@ -38108,22 +38096,27 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_4.name,
+    		id: create_each_block_2.name,
     		type: "each",
-    		source: "(136:4) {#each copyData as domain}",
+    		source: "(82:4) {#each copyData as area}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (164:16) {#each domain.graphData as graph, i}
-    function create_each_block_3(ctx) {
+    // (112:16) {#each area.graphData as graph, i}
+    function create_each_block_1$1(ctx) {
     	let g;
     	let path;
     	let path_d_value;
     	let circle;
     	let circle_r_value;
+    	let foreignObject;
+    	let div;
+    	let t0_value = /*graph*/ ctx[23].score + "";
+    	let t0;
+    	let t1;
     	let g_class_value;
     	let g_data_id_value;
     	let g_transform_value;
@@ -38135,61 +38128,79 @@ var app = (function () {
     			g = svg_element("g");
     			path = svg_element("path");
     			circle = svg_element("circle");
-    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[22].path);
-    			attr_dev(path, "class", "svelte-15m93ra");
-    			add_location(path, file$3, 172, 24, 6562);
-    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[22].r);
-    			attr_dev(circle, "class", "country-circle svelte-15m93ra");
-    			add_location(circle, file$3, 173, 24, 6615);
-    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[22].country + " svelte-15m93ra");
-    			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[22].id);
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[22].x + "," + /*graph*/ ctx[22].y + ")");
-    			toggle_class(g, "hovered", /*graph*/ ctx[22].id == /*$hoveredCountry*/ ctx[4]);
-    			toggle_class(g, "selected", /*graph*/ ctx[22].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[22].id == "china");
-    			add_location(g, file$3, 165, 20, 6179);
+    			foreignObject = svg_element("foreignObject");
+    			div = element("div");
+    			t0 = text$1(t0_value);
+    			t1 = text$1(" / 10");
+    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[23].path);
+    			attr_dev(path, "class", "svelte-1nu22ps");
+    			add_location(path, file$5, 120, 24, 4395);
+    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[23].r);
+    			attr_dev(circle, "class", "country-circle svelte-1nu22ps");
+    			add_location(circle, file$5, 121, 24, 4448);
+    			attr_dev(div, "class", "tt svelte-1nu22ps");
+    			add_location(div, file$5, 131, 28, 5384);
+    			attr_dev(foreignObject, "x", "5");
+    			attr_dev(foreignObject, "y", -/*tipHeight*/ ctx[8] / 2);
+    			attr_dev(foreignObject, "width", /*tipWidth*/ ctx[7]);
+    			attr_dev(foreignObject, "height", /*tipHeight*/ ctx[8]);
+    			attr_dev(foreignObject, "class", "svelte-1nu22ps");
+    			add_location(foreignObject, file$5, 130, 24, 5275);
+    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[23].country + " svelte-1nu22ps");
+    			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[23].id);
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[23].x + "," + /*graph*/ ctx[23].y + ")");
+    			toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
+    			toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
+    			add_location(g, file$5, 113, 20, 4012);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
     			append_dev(g, path);
     			append_dev(g, circle);
+    			append_dev(g, foreignObject);
+    			append_dev(foreignObject, div);
+    			append_dev(div, t0);
+    			append_dev(div, t1);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(circle, "mouseover", /*circleMouseOver*/ ctx[8], false, false, false),
-    					listen_dev(circle, "mouseout", /*circleMouseOut*/ ctx[9], false, false, false),
-    					listen_dev(circle, "click", /*circleClick*/ ctx[10], false, false, false)
+    					listen_dev(circle, "mouseover", /*circleMouseOver*/ ctx[10], false, false, false),
+    					listen_dev(circle, "mouseout", /*circleMouseOut*/ ctx[11], false, false, false),
+    					listen_dev(circle, "click", /*circleClick*/ ctx[12], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*domainData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[22].path)) {
+    			if (dirty & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[23].path)) {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty & /*domainData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[22].r)) {
+    			if (dirty & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[23].r)) {
     				attr_dev(circle, "r", circle_r_value);
     			}
 
-    			if (dirty & /*domainData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[22].country + " svelte-15m93ra")) {
+    			if (dirty & /*areaData*/ 1 && t0_value !== (t0_value = /*graph*/ ctx[23].score + "")) set_data_dev(t0, t0_value);
+
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[23].country + " svelte-1nu22ps")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*domainData*/ 1 && g_data_id_value !== (g_data_id_value = /*graph*/ ctx[22].id)) {
+    			if (dirty & /*areaData*/ 1 && g_data_id_value !== (g_data_id_value = /*graph*/ ctx[23].id)) {
     				attr_dev(g, "data-id", g_data_id_value);
     			}
 
-    			if (dirty & /*domainData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[22].x + "," + /*graph*/ ctx[22].y + ")")) {
+    			if (dirty & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[23].x + "," + /*graph*/ ctx[23].y + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
 
-    			if (dirty & /*domainData, domainData, $hoveredCountry*/ 17) {
-    				toggle_class(g, "hovered", /*graph*/ ctx[22].id == /*$hoveredCountry*/ ctx[4]);
+    			if (dirty & /*areaData, areaData, $hoveredCountry*/ 17) {
+    				toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			}
 
-    			if (dirty & /*domainData, domainData, $selectedCountry*/ 33) {
-    				toggle_class(g, "selected", /*graph*/ ctx[22].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[22].id == "china");
+    			if (dirty & /*areaData, areaData, $selectedCountry*/ 33) {
+    				toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
     			}
     		},
     		d: function destroy(detaching) {
@@ -38201,27 +38212,27 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_3.name,
+    		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(164:16) {#each domain.graphData as graph, i}",
+    		source: "(112:16) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (156:8) {#each domainData as domain, i}
-    function create_each_block_2(ctx) {
+    // (103:8) {#each areaData as area, i}
+    function create_each_block$3(ctx) {
     	let g;
     	let line;
     	let g_class_value;
     	let g_transform_value;
-    	let each_value_3 = /*domain*/ ctx[19].graphData;
-    	validate_each_argument(each_value_3);
+    	let each_value_1 = /*area*/ ctx[20].graphData;
+    	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
-    	for (let i = 0; i < each_value_3.length; i += 1) {
-    		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
     	}
 
     	const block = {
@@ -38233,12 +38244,12 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(line, "class", "gridline svelte-15m93ra");
+    			attr_dev(line, "class", "gridline svelte-1nu22ps");
     			attr_dev(line, "x2", /*$width*/ ctx[3]);
-    			add_location(line, file$3, 161, 16, 6061);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*domain*/ ctx[19].domain) + " svelte-15m93ra"));
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + ",50)");
-    			add_location(g, file$3, 159, 12, 5980);
+    			add_location(line, file$5, 107, 16, 3763);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[20].area) + " svelte-1nu22ps"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[20].offsetY + ")");
+    			add_location(g, file$5, 105, 12, 3674);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38253,18 +38264,18 @@ var app = (function () {
     				attr_dev(line, "x2", /*$width*/ ctx[3]);
     			}
 
-    			if (dirty & /*domainData, $hoveredCountry, $selectedCountry, circleMouseOver, circleMouseOut, circleClick*/ 1841) {
-    				each_value_3 = /*domain*/ ctx[19].graphData;
-    				validate_each_argument(each_value_3);
+    			if (dirty & /*areaData, $hoveredCountry, $selectedCountry, tipHeight, tipWidth, circleMouseOver, circleMouseOut, circleClick*/ 7601) {
+    				each_value_1 = /*area*/ ctx[20].graphData;
+    				validate_each_argument(each_value_1);
     				let i;
 
-    				for (i = 0; i < each_value_3.length; i += 1) {
-    					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block_3(child_ctx);
+    						each_blocks[i] = create_each_block_1$1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(g, null);
     					}
@@ -38274,14 +38285,14 @@ var app = (function () {
     					each_blocks[i].d(1);
     				}
 
-    				each_blocks.length = each_value_3.length;
+    				each_blocks.length = each_value_1.length;
     			}
 
-    			if (dirty & /*domainData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*domain*/ ctx[19].domain) + " svelte-15m93ra"))) {
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[20].area) + " svelte-1nu22ps"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*$margin*/ 4 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[2] + ",50)")) {
+    			if (dirty & /*$margin, areaData*/ 5 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*area*/ ctx[20].offsetY + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
     		},
@@ -38293,166 +38304,25 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block_2.name,
+    		id: create_each_block$3.name,
     		type: "each",
-    		source: "(156:8) {#each domainData as domain, i}",
+    		source: "(103:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (183:12) {#each domain.graphData as graph, i}
-    function create_each_block_1(ctx) {
-    	let t0_value = console.log(/*graph*/ ctx[22]) + "";
-    	let t0;
-    	let t1;
-    	let div;
-    	let p;
-    	let t2_value = /*graph*/ ctx[22].score + "";
-    	let t2;
-    	let t3;
-    	let t4;
-    	let div_id_value;
-
-    	const block = {
-    		c: function create() {
-    			t0 = text$1(t0_value);
-    			t1 = space();
-    			div = element("div");
-    			p = element("p");
-    			t2 = text$1(t2_value);
-    			t3 = text$1(" / 10");
-    			t4 = space();
-    			add_location(p, file$3, 190, 20, 7232);
-    			attr_dev(div, "class", "tooltip svelte-15m93ra");
-    			attr_dev(div, "id", div_id_value = "tooltip-" + /*graph*/ ctx[22].score);
-    			set_style(div, "top", "500px");
-    			set_style(div, "left", "500px");
-    			add_location(div, file$3, 184, 16, 6984);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, div, anchor);
-    			append_dev(div, p);
-    			append_dev(p, t2);
-    			append_dev(p, t3);
-    			append_dev(div, t4);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*domainData*/ 1 && t0_value !== (t0_value = console.log(/*graph*/ ctx[22]) + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*domainData*/ 1 && t2_value !== (t2_value = /*graph*/ ctx[22].score + "")) set_data_dev(t2, t2_value);
-
-    			if (dirty & /*domainData*/ 1 && div_id_value !== (div_id_value = "tooltip-" + /*graph*/ ctx[22].score)) {
-    				attr_dev(div, "id", div_id_value);
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(div);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block_1.name,
-    		type: "each",
-    		source: "(183:12) {#each domain.graphData as graph, i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (181:4) {#each domainData as domain, i}
-    function create_each_block$1(ctx) {
-    	let each_1_anchor;
-    	let each_value_1 = /*domain*/ ctx[19].graphData;
-    	validate_each_argument(each_value_1);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
-    	}
-
-    	const block = {
-    		c: function create() {
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			each_1_anchor = empty$3();
-    		},
-    		m: function mount(target, anchor) {
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(target, anchor);
-    			}
-
-    			insert_dev(target, each_1_anchor, anchor);
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty & /*domainData, console*/ 1) {
-    				each_value_1 = /*domain*/ ctx[19].graphData;
-    				validate_each_argument(each_value_1);
-    				let i;
-
-    				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block_1(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
-    					}
-    				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value_1.length;
-    			}
-    		},
-    		d: function destroy(detaching) {
-    			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(each_1_anchor);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block$1.name,
-    		type: "each",
-    		source: "(181:4) {#each domainData as domain, i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment$5(ctx) {
+    function create_fragment$7(ctx) {
     	let div0;
     	let div0_resize_listener;
-    	let t0;
+    	let t;
     	let div1;
     	let svg;
     	let rect;
     	let svg_viewBox_value;
-    	let t1;
     	let div1_resize_listener;
-    	let each_value_4 = /*copyData*/ ctx[1];
-    	validate_each_argument(each_value_4);
-    	let each_blocks_2 = [];
-
-    	for (let i = 0; i < each_value_4.length; i += 1) {
-    		each_blocks_2[i] = create_each_block_4(get_each_context_4(ctx, each_value_4, i));
-    	}
-
-    	let each_value_2 = /*domainData*/ ctx[0];
+    	let each_value_2 = /*copyData*/ ctx[1];
     	validate_each_argument(each_value_2);
     	let each_blocks_1 = [];
 
@@ -38460,53 +38330,47 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
     	}
 
-    	let each_value = /*domainData*/ ctx[0];
+    	let each_value = /*areaData*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$3(get_each_context$3(ctx, each_value, i));
     	}
 
     	const block = {
     		c: function create() {
     			div0 = element("div");
 
-    			for (let i = 0; i < each_blocks_2.length; i += 1) {
-    				each_blocks_2[i].c();
-    			}
-
-    			t0 = space();
-    			div1 = element("div");
-    			svg = svg_element("svg");
-    			rect = svg_element("rect");
-
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				each_blocks_1[i].c();
     			}
 
-    			t1 = space();
+    			t = space();
+    			div1 = element("div");
+    			svg = svg_element("svg");
+    			rect = svg_element("rect");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "text-wrapper svelte-15m93ra");
-    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[13].call(div0));
-    			add_location(div0, file$3, 134, 0, 5080);
+    			attr_dev(div0, "class", "text-wrapper svelte-1nu22ps");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[16].call(div0));
+    			add_location(div0, file$5, 80, 0, 2845);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[3]);
     			attr_dev(rect, "height", /*$height*/ ctx[6]);
-    			add_location(rect, file$3, 153, 8, 5736);
+    			add_location(rect, file$5, 100, 8, 3513);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[6]);
     			attr_dev(svg, "width", /*$width*/ ctx[3]);
     			attr_dev(svg, "height", /*$height*/ ctx[6]);
-    			attr_dev(svg, "class", "svelte-15m93ra");
-    			add_location(svg, file$3, 149, 4, 5640);
-    			attr_dev(div1, "class", "vis-wrapper svelte-15m93ra");
-    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[14].call(div1));
-    			add_location(div1, file$3, 148, 0, 5584);
+    			attr_dev(svg, "class", "svelte-1nu22ps");
+    			add_location(svg, file$5, 95, 4, 3391);
+    			attr_dev(div1, "class", "vis-wrapper svelte-1nu22ps");
+    			add_render_callback(() => /*div1_elementresize_handler*/ ctx[17].call(div1));
+    			add_location(div1, file$5, 94, 0, 3335);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38514,63 +38378,25 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, div0, anchor);
 
-    			for (let i = 0; i < each_blocks_2.length; i += 1) {
-    				each_blocks_2[i].m(div0, null);
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].m(div0, null);
     			}
 
-    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[13].bind(div0));
-    			insert_dev(target, t0, anchor);
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[16].bind(div0));
+    			insert_dev(target, t, anchor);
     			insert_dev(target, div1, anchor);
     			append_dev(div1, svg);
     			append_dev(svg, rect);
 
-    			for (let i = 0; i < each_blocks_1.length; i += 1) {
-    				each_blocks_1[i].m(svg, null);
-    			}
-
-    			append_dev(div1, t1);
-
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div1, null);
+    				each_blocks[i].m(svg, null);
     			}
 
-    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[14].bind(div1));
+    			div1_resize_listener = add_resize_listener(div1, /*div1_elementresize_handler*/ ctx[17].bind(div1));
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*copyData, switchView*/ 130) {
-    				each_value_4 = /*copyData*/ ctx[1];
-    				validate_each_argument(each_value_4);
-    				let i;
-
-    				for (i = 0; i < each_value_4.length; i += 1) {
-    					const child_ctx = get_each_context_4(ctx, each_value_4, i);
-
-    					if (each_blocks_2[i]) {
-    						each_blocks_2[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks_2[i] = create_each_block_4(child_ctx);
-    						each_blocks_2[i].c();
-    						each_blocks_2[i].m(div0, null);
-    					}
-    				}
-
-    				for (; i < each_blocks_2.length; i += 1) {
-    					each_blocks_2[i].d(1);
-    				}
-
-    				each_blocks_2.length = each_value_4.length;
-    			}
-
-    			if (dirty & /*$width*/ 8) {
-    				attr_dev(rect, "width", /*$width*/ ctx[3]);
-    			}
-
-    			if (dirty & /*$height*/ 64) {
-    				attr_dev(rect, "height", /*$height*/ ctx[6]);
-    			}
-
-    			if (dirty & /*domainData, $margin, $hoveredCountry, $selectedCountry, circleMouseOver, circleMouseOut, circleClick, $width*/ 1853) {
-    				each_value_2 = /*domainData*/ ctx[0];
+    			if (dirty & /*copyData, switchView*/ 514) {
+    				each_value_2 = /*copyData*/ ctx[1];
     				validate_each_argument(each_value_2);
     				let i;
 
@@ -38582,7 +38408,7 @@ var app = (function () {
     					} else {
     						each_blocks_1[i] = create_each_block_2(child_ctx);
     						each_blocks_1[i].c();
-    						each_blocks_1[i].m(svg, null);
+    						each_blocks_1[i].m(div0, null);
     					}
     				}
 
@@ -38591,6 +38417,38 @@ var app = (function () {
     				}
 
     				each_blocks_1.length = each_value_2.length;
+    			}
+
+    			if (dirty & /*$width*/ 8) {
+    				attr_dev(rect, "width", /*$width*/ ctx[3]);
+    			}
+
+    			if (dirty & /*$height*/ 64) {
+    				attr_dev(rect, "height", /*$height*/ ctx[6]);
+    			}
+
+    			if (dirty & /*areaData, $margin, $hoveredCountry, $selectedCountry, tipHeight, tipWidth, circleMouseOver, circleMouseOut, circleClick, $width*/ 7613) {
+    				each_value = /*areaData*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$3(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$3(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(svg, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
     			}
 
     			if (dirty & /*$width, $height*/ 72 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[6])) {
@@ -38604,40 +38462,15 @@ var app = (function () {
     			if (dirty & /*$height*/ 64) {
     				attr_dev(svg, "height", /*$height*/ ctx[6]);
     			}
-
-    			if (dirty & /*domainData, console*/ 1) {
-    				each_value = /*domainData*/ ctx[0];
-    				validate_each_argument(each_value);
-    				let i;
-
-    				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context$1(ctx, each_value, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    					} else {
-    						each_blocks[i] = create_each_block$1(child_ctx);
-    						each_blocks[i].c();
-    						each_blocks[i].m(div1, null);
-    					}
-    				}
-
-    				for (; i < each_blocks.length; i += 1) {
-    					each_blocks[i].d(1);
-    				}
-
-    				each_blocks.length = each_value.length;
-    			}
     		},
     		i: noop$4,
     		o: noop$4,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div0);
-    			destroy_each(each_blocks_2, detaching);
-    			div0_resize_listener();
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks_1, detaching);
+    			div0_resize_listener();
+    			if (detaching) detach_dev(t);
+    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks, detaching);
     			div1_resize_listener();
     		}
@@ -38645,7 +38478,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$5.name,
+    		id: create_fragment$7.name,
     		type: "component",
     		source: "",
     		ctx
@@ -38654,111 +38487,47 @@ var app = (function () {
     	return block;
     }
 
-    function instance$5($$self, $$props, $$invalidate) {
+    function instance$7($$self, $$props, $$invalidate) {
     	let $view;
-    	let $domainInView;
-    	let $margin;
-    	let $width;
+    	let $areaInView;
     	let $hoveredCountry;
     	let $selectedCountry;
+    	let $margin;
+    	let $width;
+    	let $scaleFactor;
     	let $height;
     	validate_store(view, "view");
-    	component_subscribe($$self, view, $$value => $$invalidate(15, $view = $$value));
-    	validate_store(domainInView, "domainInView");
-    	component_subscribe($$self, domainInView, $$value => $$invalidate(16, $domainInView = $$value));
-    	validate_store(margin, "margin");
-    	component_subscribe($$self, margin, $$value => $$invalidate(2, $margin = $$value));
-    	validate_store(width, "width");
-    	component_subscribe($$self, width, $$value => $$invalidate(3, $width = $$value));
+    	component_subscribe($$self, view, $$value => $$invalidate(18, $view = $$value));
+    	validate_store(areaInView, "areaInView");
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(19, $areaInView = $$value));
     	validate_store(hoveredCountry, "hoveredCountry");
     	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(4, $hoveredCountry = $$value));
     	validate_store(selectedCountry, "selectedCountry");
     	component_subscribe($$self, selectedCountry, $$value => $$invalidate(5, $selectedCountry = $$value));
+    	validate_store(margin, "margin");
+    	component_subscribe($$self, margin, $$value => $$invalidate(2, $margin = $$value));
+    	validate_store(width, "width");
+    	component_subscribe($$self, width, $$value => $$invalidate(3, $width = $$value));
+    	validate_store(scaleFactor, "scaleFactor");
+    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(13, $scaleFactor = $$value));
     	validate_store(height, "height");
     	component_subscribe($$self, height, $$value => $$invalidate(6, $height = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("LandingVisual", slots, []);
-    	let { domainData } = $$props;
+    	let { areaData } = $$props;
     	let { copyData } = $$props;
 
-    	function switchView(targetView, domain) {
+    	// SVG basics
+    	// https://frontendmasters.com/courses/svg-essentials-animation/
+    	let tipWidth = 80;
+
+    	let tipHeight = 40;
+
+    	function switchView(targetView, area) {
     		set_store_value(view, $view = targetView, $view);
-    		set_store_value(domainInView, $domainInView = domain, $domainInView);
+    		set_store_value(areaInView, $areaInView = area, $areaInView);
     	}
 
-    	// parse raw data
-    	function parseData() {
-    		domainData.forEach((domain, i) => {
-    			console.log(domain);
-    		}); // d['graphData'] = d.comps.map((m, n)=>{
-    		//     let distance = i<5 ? (xScale(domainData[i+1]['comps'][n]) - xScale(m)) : 0;
-    		//     let points = i<5 ? ([
-    		//         [0 , 0],
-    	} //         [distance, textRect.bottom - textRect.top + $margin*2]
-    	//         // [distance, ($height-$margin*5)/5]
-
-    	//     ]) : ([[0,0],[0,0]]);
-    	//     // third argument is swerve of the curve
-    	//     let path = utils.cubicBezier(points[0], points[1], 0.5); // compute path for each country using cubic bezier - pulls from utils
-    	//     // computes the circle location for each country - primary composite score attribute
-    	//     return {
-    	//         id : d.countries[n].trim().toLowerCase(),
-    	//         x : xScale(m),
-    	//         y : 0,
-    	//         r : $scaleFactor,
-    	//         country : d.countries[n],
-    	//         path: path,
-    	//         score: d.comps[n]
-    	//     };
-    	// });
-    	// initialize visual
-    	// initVis();
-    	function initVis() {
-    		// 1 is min, 10 is max domain
-    		// TODO CHECK MIN HERE
-    		const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
-
-    		select("svg").selectAll("rect").data(movieData).enter().append("rect").attr("x", d => xScale(d)).attr("y", d => visHeight - yScale(d.rating)).attr("width", d => xScale.bandwidth()).attr("height", d => yScale(d.rating)).attr("fill", (d, i) => colors[d.genres[0]] || colors["Other"]).on("mouseover", function (e, d) {
-    			let xPosition = parseFloat(select(this).attr("x") + xScale.bandwidth() / 2);
-    			let yPosition = parseFloat(select(this).attr("y") / 2 + visHeight / 2);
-    			select("#tooltip-" + d.id).style("left", xPosition + "px").style("top", yPosition + "px").classed("hidden", false);
-    		}).on("mouseout", function (e, d) {
-    			select("#tooltip-" + d.id).classed("hidden", true);
-    		});
-    	}
-
-    	// function test() {
-    	//     domainData.forEach( (d,i) => {
-    	//         if (d3.select('.text-wrapper .'+d.domain).size()>0) {
-    	//             // get offset for each text box, position text to vis rows
-    	//             // svg height of each vis row is determined by the height of each text block
-    	//             const textRect = d3.select('.text-wrapper .'+d.domain).node().getBoundingClientRect();
-    	//             d.offsetY = textRect.top 
-    	//                 - d3.select('.text-wrapper').node().getBoundingClientRect().top
-    	//                 + $margin*2;
-    	//             d.graphData = d.comps.map((m, n)=>{
-    	//                 let distance = i<5 ? (xScale(domainData[i+1]['comps'][n]) - xScale(m)) : 0;
-    	//                 let points = i<5 ? ([
-    	//                     [0 , 0],
-    	//                     [distance, textRect.bottom - textRect.top + $margin*2]
-    	//                     // [distance, ($height-$margin*5)/5]
-    	//                 ]) : ([[0,0],[0,0]]);
-    	//                 // third argument is swerve of the curve
-    	//                 let path = utils.cubicBezier(points[0], points[1], 0.5); // compute path for each country using cubic bezier - pulls from utils
-    	//                 // computes the circle location for each country - primary composite score attribute
-    	//                 return {
-    	//                     id : d.countries[n].trim().toLowerCase(),
-    	//                     x : xScale(m),
-    	//                     y : 0,
-    	//                     r : $scaleFactor,
-    	//                     country : d.countries[n],
-    	//                     path: path,
-    	//                     score: d.comps[n]
-    	//                 };
-    	//             });
-    	//         }
-    	//     });
-    	// }
     	function circleMouseOver(e) {
     		set_store_value(hoveredCountry, $hoveredCountry = e.path[1].dataset.id, $hoveredCountry);
     	}
@@ -38771,14 +38540,14 @@ var app = (function () {
     		set_store_value(selectedCountry, $selectedCountry = e.path[1].dataset.id, $selectedCountry);
     	}
 
-    	const writable_props = ["domainData", "copyData"];
+    	const writable_props = ["areaData", "copyData"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<LandingVisual> was created with unknown prop '${key}'`);
     	});
 
-    	const click_handler = domain => switchView("indicators", domain.label.toLowerCase());
-    	const click_handler_1 = domain => switchView("indicators", domain.label.toLowerCase());
+    	const click_handler = area => switchView("indicators", area.label.toLowerCase());
+    	const click_handler_1 = area => switchView("indicators", area.label.toLowerCase());
 
     	function div0_elementresize_handler() {
     		$height = this.clientHeight;
@@ -38791,7 +38560,7 @@ var app = (function () {
     	}
 
     	$$self.$$set = $$props => {
-    		if ("domainData" in $$props) $$invalidate(0, domainData = $$props.domainData);
+    		if ("areaData" in $$props) $$invalidate(0, areaData = $$props.areaData);
     		if ("copyData" in $$props) $$invalidate(1, copyData = $$props.copyData);
     	};
 
@@ -38802,30 +38571,33 @@ var app = (function () {
     		margin,
     		scaleFactor,
     		utils,
-    		domainInView,
+    		areaData,
+    		copyData,
+    		areaInView,
     		view,
     		hoveredCountry,
     		selectedCountry,
-    		domainData,
-    		copyData,
+    		tipWidth,
+    		tipHeight,
     		switchView,
-    		parseData,
-    		initVis,
     		circleMouseOver,
     		circleMouseOut,
     		circleClick,
     		$view,
-    		$domainInView,
-    		$margin,
-    		$width,
+    		$areaInView,
     		$hoveredCountry,
     		$selectedCountry,
+    		$margin,
+    		$width,
+    		$scaleFactor,
     		$height
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("domainData" in $$props) $$invalidate(0, domainData = $$props.domainData);
+    		if ("areaData" in $$props) $$invalidate(0, areaData = $$props.areaData);
     		if ("copyData" in $$props) $$invalidate(1, copyData = $$props.copyData);
+    		if ("tipWidth" in $$props) $$invalidate(7, tipWidth = $$props.tipWidth);
+    		if ("tipHeight" in $$props) $$invalidate(8, tipHeight = $$props.tipHeight);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -38833,26 +38605,67 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*domainData*/ 1) {
-    			// init visual as soon as data variable is loaded
-    			if (domainData) {
-    				parseData();
+    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 8205) {
+    			// country.Denmark - grab class on mouse over state to add styles and highlight color
+    			// each row has a g element
+    			// each country has its own element
+    			if (areaData) {
+    				console.log(areaData);
+    				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
+
+    				areaData.forEach((d, i) => {
+    					if (select(".text-wrapper ." + d.area).size() > 0) {
+    						// get offset for each text box, position text to vis rows
+    						// svg height of each vis row is determined by the height of each text block
+    						const textRect = select(".text-wrapper ." + d.area).node().getBoundingClientRect();
+
+    						d.offsetY = textRect.top - select(".text-wrapper").node().getBoundingClientRect().top + $margin * 2;
+
+    						// 
+    						d.graphData = d.comps.map((m, n) => {
+    							let distance = i < 5
+    							? xScale(areaData[i + 1]["comps"][n]) - xScale(m)
+    							: 0;
+
+    							let points = i < 5
+    							? [[0, 0], [distance, textRect.bottom - textRect.top + $margin * 2]]
+    							: [[0, 0], [0, 0]]; // [distance, ($height-$margin*5)/5]
+
+    							// third argument is swerve of the curve
+    							let path = utils.cubicBezier(points[0], points[1], 0.5); // compute path for each country using cubic bezier - pulls from utils
+
+    							// computes the circle location for each country - primary composite score attribute
+    							return {
+    								id: d.countries[n].trim().toLowerCase(),
+    								x: xScale(m),
+    								y: 0,
+    								r: $scaleFactor,
+    								country: d.countries[n],
+    								path,
+    								score: d.comps[n]
+    							};
+    						});
+    					}
+    				});
     			}
     		}
     	};
 
     	return [
-    		domainData,
+    		areaData,
     		copyData,
     		$margin,
     		$width,
     		$hoveredCountry,
     		$selectedCountry,
     		$height,
+    		tipWidth,
+    		tipHeight,
     		switchView,
     		circleMouseOver,
     		circleMouseOut,
     		circleClick,
+    		$scaleFactor,
     		click_handler,
     		click_handler_1,
     		div0_elementresize_handler,
@@ -38863,20 +38676,20 @@ var app = (function () {
     class LandingVisual extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { domainData: 0, copyData: 1 });
+    		init$1(this, options, instance$7, create_fragment$7, safe_not_equal, { areaData: 0, copyData: 1 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "LandingVisual",
     			options,
-    			id: create_fragment$5.name
+    			id: create_fragment$7.name
     		});
 
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*domainData*/ ctx[0] === undefined && !("domainData" in props)) {
-    			console_1.warn("<LandingVisual> was created without expected prop 'domainData'");
+    		if (/*areaData*/ ctx[0] === undefined && !("areaData" in props)) {
+    			console_1.warn("<LandingVisual> was created without expected prop 'areaData'");
     		}
 
     		if (/*copyData*/ ctx[1] === undefined && !("copyData" in props)) {
@@ -38884,11 +38697,11 @@ var app = (function () {
     		}
     	}
 
-    	get domainData() {
+    	get areaData() {
     		throw new Error("<LandingVisual>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
-    	set domainData(value) {
+    	set areaData(value) {
     		throw new Error("<LandingVisual>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
@@ -38902,16 +38715,16 @@ var app = (function () {
     }
 
     /* src/components/CountrySelect.svelte generated by Svelte v3.38.2 */
-    const file$2 = "src/components/CountrySelect.svelte";
+    const file$4 = "src/components/CountrySelect.svelte";
 
-    function get_each_context(ctx, list, i) {
+    function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[3] = list[i];
     	return child_ctx;
     }
 
     // (10:12) {#each countryNames as country}
-    function create_each_block(ctx) {
+    function create_each_block$2(ctx) {
     	let option;
     	let t_value = /*country*/ ctx[3].country + "";
     	let t;
@@ -38923,7 +38736,7 @@ var app = (function () {
     			t = text$1(t_value);
     			option.__value = option_value_value = /*country*/ ctx[3].id;
     			option.value = option.__value;
-    			add_location(option, file$2, 10, 16, 331);
+    			add_location(option, file$4, 10, 16, 331);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -38944,7 +38757,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_each_block.name,
+    		id: create_each_block$2.name,
     		type: "each",
     		source: "(10:12) {#each countryNames as country}",
     		ctx
@@ -38953,7 +38766,7 @@ var app = (function () {
     	return block;
     }
 
-    function create_fragment$4(ctx) {
+    function create_fragment$6(ctx) {
     	let div1;
     	let t0;
     	let div0;
@@ -38969,7 +38782,7 @@ var app = (function () {
     	let each_blocks = [];
 
     	for (let i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
     	}
 
     	const block = {
@@ -38988,12 +38801,12 @@ var app = (function () {
     			t2 = text$1("Selected ");
     			t3 = text$1(/*$selectedCountry*/ ctx[1]);
     			if (/*$selectedCountry*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
-    			add_location(select, file$2, 8, 8, 232);
-    			add_location(p, file$2, 13, 8, 431);
+    			add_location(select, file$4, 8, 8, 232);
+    			add_location(p, file$4, 13, 8, 431);
     			attr_dev(div0, "class", "country-toggle-box svelte-1uigpzs");
-    			add_location(div0, file$2, 7, 4, 191);
+    			add_location(div0, file$4, 7, 4, 191);
     			attr_dev(div1, "class", "country-select");
-    			add_location(div1, file$2, 5, 0, 129);
+    			add_location(div1, file$4, 5, 0, 129);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39026,12 +38839,12 @@ var app = (function () {
     				let i;
 
     				for (i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
+    					const child_ctx = get_each_context$2(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(child_ctx, dirty);
     					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i] = create_each_block$2(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].m(select, null);
     					}
@@ -39062,7 +38875,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$4.name,
+    		id: create_fragment$6.name,
     		type: "component",
     		source: "",
     		ctx
@@ -39071,7 +38884,7 @@ var app = (function () {
     	return block;
     }
 
-    function instance$4($$self, $$props, $$invalidate) {
+    function instance$6($$self, $$props, $$invalidate) {
     	let $selectedCountry;
     	validate_store(selectedCountry, "selectedCountry");
     	component_subscribe($$self, selectedCountry, $$value => $$invalidate(1, $selectedCountry = $$value));
@@ -39115,13 +38928,13 @@ var app = (function () {
     class CountrySelect extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, { countryNames: 0 });
+    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, { countryNames: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "CountrySelect",
     			options,
-    			id: create_fragment$4.name
+    			id: create_fragment$6.name
     		});
 
     		const { ctx } = this.$$;
@@ -39142,9 +38955,9 @@ var app = (function () {
     }
 
     /* src/views/Landing.svelte generated by Svelte v3.38.2 */
-    const file$1 = "src/views/Landing.svelte";
+    const file$3 = "src/views/Landing.svelte";
 
-    function create_fragment$3(ctx) {
+    function create_fragment$5(ctx) {
     	let div0;
     	let countryselect;
     	let t0;
@@ -39167,7 +38980,7 @@ var app = (function () {
 
     	landingvisual = new LandingVisual({
     			props: {
-    				domainData: /*domainData*/ ctx[2],
+    				areaData: /*areaData*/ ctx[2],
     				copyData: copyData.filter(func)
     			},
     			$$inline: true
@@ -39183,19 +38996,19 @@ var app = (function () {
     			t2 = space();
     			label = element("label");
     			input = element("input");
-    			t3 = text$1("\n        Show China’s change since 2010");
+    			t3 = text$1("\n            Show China’s change since 2010");
     			t4 = space();
     			div1 = element("div");
     			create_component(landingvisual.$$.fragment);
-    			add_location(button, file$1, 47, 4, 1320);
+    			add_location(button, file$3, 24, 4, 896);
     			attr_dev(input, "type", "checkbox");
-    			add_location(input, file$1, 50, 8, 1402);
+    			add_location(input, file$3, 27, 12, 982);
     			attr_dev(label, "class", "time-toggle-box");
-    			add_location(label, file$1, 49, 4, 1362);
+    			add_location(label, file$3, 26, 4, 938);
     			attr_dev(div0, "class", "control-area");
-    			add_location(div0, file$1, 43, 0, 1251);
+    			add_location(div0, file$3, 20, 0, 772);
     			attr_dev(div1, "class", "vis-container svelte-6sncrf");
-    			add_location(div1, file$1, 56, 0, 1513);
+    			add_location(div1, file$3, 35, 0, 1229);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39230,7 +39043,7 @@ var app = (function () {
     			}
 
     			const landingvisual_changes = {};
-    			if (dirty & /*domainData*/ 4) landingvisual_changes.domainData = /*domainData*/ ctx[2];
+    			if (dirty & /*areaData*/ 4) landingvisual_changes.areaData = /*areaData*/ ctx[2];
     			landingvisual.$set(landingvisual_changes);
     		},
     		i: function intro(local) {
@@ -39257,7 +39070,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment$3.name,
+    		id: create_fragment$5.name,
     		type: "component",
     		source: "",
     		ctx
@@ -39266,37 +39079,18 @@ var app = (function () {
     	return block;
     }
 
-    const dataPath = "./data/composite-score.csv";
     const func = d => d.category == "main";
 
-    function instance$3($$self, $$props, $$invalidate) {
+    function instance$5($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Landing", slots, []);
     	let { showPrevious = false } = $$props;
-    	let data = [], countryNames = [], domainData = [];
+    	let data = [], countryNames = [], areaData = [];
 
     	onMount(async () => {
-    		data = await csv(dataPath);
-    		let domains = ["growth", "competition", "innovation", "trade", "fdi", "portfolio"];
-    		data.sort((a, b) => a.country == "China" ? 1 : -1);
-    		let output = [];
-
-    		domains.forEach(x => {
-    			output.push({
-    				domain: x,
-    				comps: data.map(n => n[x]),
-    				countries: data.map(n => n["country"])
-    			});
-    		});
-
-    		$$invalidate(2, domainData = { countries: data, domains: output });
-    		$$invalidate(1, countryNames = data.filter(d => d.country !== "China"));
-    		$$invalidate(2, domainData = output);
-    	});
-
-    	onMount(async () => {
-    		data = await json("./data/movies.json");
-    		movieData = data;
+    		data = await loadData(); // pulled from load-data.js - loads primary indicator composite scores
+    		$$invalidate(1, countryNames = data["countries"].filter(d => d.country !== "China")); // all countries but China to use for comparison dropdown
+    		$$invalidate(2, areaData = data["areas"]);
     	});
 
     	const writable_props = ["showPrevious"];
@@ -39324,35 +39118,33 @@ var app = (function () {
     		showPrevious,
     		data,
     		countryNames,
-    		domainData,
-    		csv,
-    		dataPath
+    		areaData
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("showPrevious" in $$props) $$invalidate(0, showPrevious = $$props.showPrevious);
     		if ("data" in $$props) data = $$props.data;
     		if ("countryNames" in $$props) $$invalidate(1, countryNames = $$props.countryNames);
-    		if ("domainData" in $$props) $$invalidate(2, domainData = $$props.domainData);
+    		if ("areaData" in $$props) $$invalidate(2, areaData = $$props.areaData);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [showPrevious, countryNames, domainData, input_change_handler];
+    	return [showPrevious, countryNames, areaData, input_change_handler];
     }
 
     class Landing extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal, { showPrevious: 0 });
+    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { showPrevious: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
     			tagName: "Landing",
     			options,
-    			id: create_fragment$3.name
+    			id: create_fragment$5.name
     		});
     	}
 
@@ -39362,6 +39154,1150 @@ var app = (function () {
 
     	set showPrevious(value) {
     		throw new Error("<Landing>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    const dataPath = './data/indicators';
+
+    const loadIndicatorsData = async (indicatorName) => {
+
+        const data = await csv(dataPath + '/' + indicatorName + '.csv');
+        let indicators = Object.keys(data[0]).filter(d=> d!=='countries');
+        let output = [];
+        indicators.forEach((d)=>{
+
+            let countries = [];
+
+            data.forEach((x)=>{
+                countries.push({country: x.countries, value: x[d]});
+            });
+
+            countries.sort((a,b)=> b.value - a.value); // sorts data from highest to lowest
+
+            output.push({indicator: d, values: countries});
+        });
+        return(output);
+    };
+
+    /* src/components/IndicatorVisual.svelte generated by Svelte v3.38.2 */
+    const file$2 = "src/components/IndicatorVisual.svelte";
+
+    function get_each_context$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[5] = list[i];
+    	return child_ctx;
+    }
+
+    // (50:8) {#each indicator.values as country}
+    function create_each_block$1(ctx) {
+    	let g1;
+    	let path;
+    	let path_d_value;
+    	let g0;
+    	let text_1;
+    	let t0_value = /*country*/ ctx[5].country + "";
+    	let t0;
+    	let t1;
+    	let t2_value = Math.round(/*country*/ ctx[5].value * 10) / 10 + "";
+    	let t2;
+    	let text_1_transform_value;
+    	let g0_transform_value;
+    	let g1_class_value;
+
+    	const block = {
+    		c: function create() {
+    			g1 = svg_element("g");
+    			path = svg_element("path");
+    			g0 = svg_element("g");
+    			text_1 = svg_element("text");
+    			t0 = text$1(t0_value);
+    			t1 = text$1(": ");
+    			t2 = text$1(t2_value);
+    			attr_dev(path, "d", path_d_value = /*country*/ ctx[5].path);
+    			add_location(path, file$2, 51, 16, 1587);
+    			attr_dev(text_1, "transform", text_1_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel * -1 + ")");
+    			set_style(text_1, "text-anchor", /*country*/ ctx[5].textAnchor);
+    			attr_dev(text_1, "class", "svelte-1u3z53u");
+    			add_location(text_1, file$2, 53, 20, 1732);
+    			attr_dev(g0, "transform", g0_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel + ")translate(" + /*country*/ ctx[5].barLength + ",0)");
+    			add_location(g0, file$2, 52, 16, 1634);
+    			attr_dev(g1, "class", g1_class_value = "country " + /*country*/ ctx[5].country + " svelte-1u3z53u");
+    			add_location(g1, file$2, 50, 12, 1533);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g1, anchor);
+    			append_dev(g1, path);
+    			append_dev(g1, g0);
+    			append_dev(g0, text_1);
+    			append_dev(text_1, t0);
+    			append_dev(text_1, t1);
+    			append_dev(text_1, t2);
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*indicator*/ 1 && path_d_value !== (path_d_value = /*country*/ ctx[5].path)) {
+    				attr_dev(path, "d", path_d_value);
+    			}
+
+    			if (dirty & /*indicator*/ 1 && t0_value !== (t0_value = /*country*/ ctx[5].country + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*indicator*/ 1 && t2_value !== (t2_value = Math.round(/*country*/ ctx[5].value * 10) / 10 + "")) set_data_dev(t2, t2_value);
+
+    			if (dirty & /*indicator*/ 1 && text_1_transform_value !== (text_1_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel * -1 + ")")) {
+    				attr_dev(text_1, "transform", text_1_transform_value);
+    			}
+
+    			if (dirty & /*indicator*/ 1) {
+    				set_style(text_1, "text-anchor", /*country*/ ctx[5].textAnchor);
+    			}
+
+    			if (dirty & /*indicator*/ 1 && g0_transform_value !== (g0_transform_value = "rotate(" + /*country*/ ctx[5].rotateAngel + ")translate(" + /*country*/ ctx[5].barLength + ",0)")) {
+    				attr_dev(g0, "transform", g0_transform_value);
+    			}
+
+    			if (dirty & /*indicator*/ 1 && g1_class_value !== (g1_class_value = "country " + /*country*/ ctx[5].country + " svelte-1u3z53u")) {
+    				attr_dev(g1, "class", g1_class_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block$1.name,
+    		type: "each",
+    		source: "(50:8) {#each indicator.values as country}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$4(ctx) {
+    	let div;
+    	let svg;
+    	let g;
+    	let text_1;
+    	let t_value = /*indicator*/ ctx[0].indicator + "";
+    	let t;
+    	let g_transform_value;
+    	let svg_viewBox_value;
+    	let each_value = /*indicator*/ ctx[0].values;
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			svg = svg_element("svg");
+    			g = svg_element("g");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(text_1, "dy", "5");
+    			attr_dev(text_1, "class", "middle-text svelte-1u3z53u");
+    			add_location(text_1, file$2, 62, 8, 2023);
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")");
+    			add_location(g, file$2, 48, 4, 1418);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1]);
+    			add_location(svg, file$2, 47, 0, 1365);
+    			attr_dev(div, "class", "indicator-vis svelte-1u3z53u");
+    			add_location(div, file$2, 46, 0, 1337);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, svg);
+    			append_dev(svg, g);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(g, null);
+    			}
+
+    			append_dev(g, text_1);
+    			append_dev(text_1, t);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*indicator, Math*/ 1) {
+    				each_value = /*indicator*/ ctx[0].values;
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block$1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(g, text_1);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value.length;
+    			}
+
+    			if (dirty & /*indicator*/ 1 && t_value !== (t_value = /*indicator*/ ctx[0].indicator + "")) set_data_dev(t, t_value);
+
+    			if (dirty & /*$chartWidth*/ 2 && g_transform_value !== (g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")")) {
+    				attr_dev(g, "transform", g_transform_value);
+    			}
+
+    			if (dirty & /*$chartWidth*/ 2 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1])) {
+    				attr_dev(svg, "viewBox", svg_viewBox_value);
+    			}
+    		},
+    		i: noop$4,
+    		o: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$4.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$4($$self, $$props, $$invalidate) {
+    	let $chartWidth;
+    	let $innerR;
+    	validate_store(chartWidth, "chartWidth");
+    	component_subscribe($$self, chartWidth, $$value => $$invalidate(1, $chartWidth = $$value));
+    	validate_store(innerR, "innerR");
+    	component_subscribe($$self, innerR, $$value => $$invalidate(2, $innerR = $$value));
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("IndicatorVisual", slots, []);
+    	let { indicator } = $$props;
+    	set_store_value(chartWidth, $chartWidth = window.innerWidth * 0.5, $chartWidth);
+    	let x = band().range([0, 2 * Math.PI]).align(0).domain(indicator.values.map(d => d.country));
+
+    	let y = pow(2).// d3.scaleSqrt() makes less dramatic effect
+    	domain(extent$1(indicator.values.map(d => d.value))).range([$innerR + 20, $chartWidth / 2 - 50]);
+
+    	// uses d3 arc function, rotates 360 degrees
+    	// each sunburst bar is its own g element
+    	indicator.values.forEach((d, i) => {
+    		d.path = arc().innerRadius($innerR).outerRadius(y(d.value)).// .outerRadius($innerR+50)
+    		startAngle(x(d.country)).endAngle(x(d.country) + x.bandwidth()).padAngle(0.04).padRadius($innerR)();
+
+    		d.rotateAngel = (x(d.country) + x.bandwidth() / 2) * 180 / Math.PI - 90;
+
+    		// computes if the text should be on the right or left of the bar
+    		if (i >= indicator.values.length / 2) {
+    			d.textRotate = 180;
+    			d.textAnchor = "end";
+    		} else {
+    			d.textRotate = 0;
+    			d.textAnchor = "start";
+    		}
+
+    		d.barLength = y(d.value) + 10;
+    	});
+
+    	const writable_props = ["indicator"];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<IndicatorVisual> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$$set = $$props => {
+    		if ("indicator" in $$props) $$invalidate(0, indicator = $$props.indicator);
+    	};
+
+    	$$self.$capture_state = () => ({
+    		d3,
+    		chartWidth,
+    		innerR,
+    		indicator,
+    		x,
+    		y,
+    		$chartWidth,
+    		$innerR
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("indicator" in $$props) $$invalidate(0, indicator = $$props.indicator);
+    		if ("x" in $$props) x = $$props.x;
+    		if ("y" in $$props) y = $$props.y;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [indicator, $chartWidth];
+    }
+
+    class IndicatorVisual extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, { indicator: 0 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "IndicatorVisual",
+    			options,
+    			id: create_fragment$4.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*indicator*/ ctx[0] === undefined && !("indicator" in props)) {
+    			console.warn("<IndicatorVisual> was created without expected prop 'indicator'");
+    		}
+    	}
+
+    	get indicator() {
+    		throw new Error("<IndicatorVisual>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set indicator(value) {
+    		throw new Error("<IndicatorVisual>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/views/Indicators.svelte generated by Svelte v3.38.2 */
+    const file$1 = "src/views/Indicators.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[15] = list[i];
+    	child_ctx[17] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[18] = list[i];
+    	child_ctx[17] = i;
+    	return child_ctx;
+    }
+
+    // (73:16) {#if areaData}
+    function create_if_block_1$1(ctx) {
+    	let g;
+    	let line;
+    	let g_class_value;
+    	let g_transform_value;
+    	let each_value_1 = /*graphData*/ ctx[6];
+    	validate_each_argument(each_value_1);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			g = svg_element("g");
+    			line = svg_element("line");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(line, "class", "gridline svelte-1icv13l");
+    			attr_dev(line, "x2", /*$width*/ ctx[3]);
+    			add_location(line, file$1, 74, 24, 2769);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1icv13l"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*$margin*/ ctx[2] * 4 + ")");
+    			add_location(g, file$1, 73, 20, 2672);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			append_dev(g, line);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(g, null);
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*$width*/ 8) {
+    				attr_dev(line, "x2", /*$width*/ ctx[3]);
+    			}
+
+    			if (dirty & /*graphData*/ 64) {
+    				each_value_1 = /*graphData*/ ctx[6];
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(g, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+
+    				each_blocks.length = each_value_1.length;
+    			}
+
+    			if (dirty & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1icv13l"))) {
+    				attr_dev(g, "class", g_class_value);
+    			}
+
+    			if (dirty & /*$margin*/ 4 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[2] + "," + /*$margin*/ ctx[2] * 4 + ")")) {
+    				attr_dev(g, "transform", g_transform_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(73:16) {#if areaData}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (76:24) {#each graphData as graph,i}
+    function create_each_block_1(ctx) {
+    	let g;
+    	let circle;
+    	let text_1;
+    	let t_value = /*graph*/ ctx[18].country + "";
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			g = svg_element("g");
+    			circle = svg_element("circle");
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(circle, "r", /*graph*/ ctx[18].r);
+    			attr_dev(circle, "class", "country-circle svelte-1icv13l");
+    			add_location(circle, file$1, 77, 28, 2996);
+    			attr_dev(text_1, "y", "-10px");
+    			attr_dev(text_1, "class", "svelte-1icv13l");
+    			add_location(text_1, file$1, 78, 28, 3077);
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[18].country + " svelte-1icv13l");
+    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[18].x + "," + /*graph*/ ctx[18].y + ")");
+    			add_location(g, file$1, 76, 24, 2889);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			append_dev(g, circle);
+    			append_dev(g, text_1);
+    			append_dev(text_1, t);
+    		},
+    		p: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(76:24) {#each graphData as graph,i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (108:8) {:else}
+    function create_else_block(ctx) {
+    	let div2;
+    	let div1;
+    	let h3;
+    	let t0_value = /*indicator*/ ctx[15].copy.name + "";
+    	let t0;
+    	let t1;
+    	let div0;
+    	let t2_value = /*indicator*/ ctx[15].copy.definition + "";
+    	let t2;
+    	let t3;
+    	let button;
+    	let t5;
+    	let indicatorvisual;
+    	let current;
+
+    	indicatorvisual = new IndicatorVisual({
+    			props: { indicator: /*indicator*/ ctx[15] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div2 = element("div");
+    			div1 = element("div");
+    			h3 = element("h3");
+    			t0 = text$1(t0_value);
+    			t1 = space();
+    			div0 = element("div");
+    			t2 = text$1(t2_value);
+    			t3 = space();
+    			button = element("button");
+    			button.textContent = "Share this chart";
+    			t5 = space();
+    			create_component(indicatorvisual.$$.fragment);
+    			attr_dev(h3, "class", "svelte-1icv13l");
+    			add_location(h3, file$1, 110, 20, 4283);
+    			attr_dev(div0, "class", "description svelte-1icv13l");
+    			add_location(div0, file$1, 111, 20, 4334);
+    			attr_dev(button, "class", "svelte-1icv13l");
+    			add_location(button, file$1, 112, 20, 4413);
+    			set_style(div1, "float", "right");
+    			set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			set_style(div1, "padding-right", "20px");
+    			set_style(div1, "border-right", "1px solid #eee");
+    			attr_dev(div1, "class", "inner-container svelte-1icv13l");
+    			add_location(div1, file$1, 109, 16, 4132);
+    			attr_dev(div2, "class", "indicator-text svelte-1icv13l");
+    			add_location(div2, file$1, 108, 12, 4087);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div1);
+    			append_dev(div1, h3);
+    			append_dev(h3, t0);
+    			append_dev(div1, t1);
+    			append_dev(div1, div0);
+    			append_dev(div0, t2);
+    			append_dev(div1, t3);
+    			append_dev(div1, button);
+    			insert_dev(target, t5, anchor);
+    			mount_component(indicatorvisual, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t0_value !== (t0_value = /*indicator*/ ctx[15].copy.name + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t2_value !== (t2_value = /*indicator*/ ctx[15].copy.definition + "")) set_data_dev(t2, t2_value);
+
+    			if (!current || dirty & /*$chartWidth*/ 32) {
+    				set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			}
+
+    			const indicatorvisual_changes = {};
+    			if (dirty & /*indicatorsData*/ 1) indicatorvisual_changes.indicator = /*indicator*/ ctx[15];
+    			indicatorvisual.$set(indicatorvisual_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicatorvisual.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicatorvisual.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(t5);
+    			destroy_component(indicatorvisual, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(108:8) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (99:8) {#if i%2 == 0}
+    function create_if_block$1(ctx) {
+    	let indicatorvisual;
+    	let t0;
+    	let div2;
+    	let div1;
+    	let h3;
+    	let t1_value = /*indicator*/ ctx[15].copy.name + "";
+    	let t1;
+    	let t2;
+    	let div0;
+    	let t3_value = /*indicator*/ ctx[15].copy.definition + "";
+    	let t3;
+    	let t4;
+    	let button;
+    	let current;
+
+    	indicatorvisual = new IndicatorVisual({
+    			props: { indicator: /*indicator*/ ctx[15] },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(indicatorvisual.$$.fragment);
+    			t0 = space();
+    			div2 = element("div");
+    			div1 = element("div");
+    			h3 = element("h3");
+    			t1 = text$1(t1_value);
+    			t2 = space();
+    			div0 = element("div");
+    			t3 = text$1(t3_value);
+    			t4 = space();
+    			button = element("button");
+    			button.textContent = "Share this chart";
+    			attr_dev(h3, "class", "svelte-1icv13l");
+    			add_location(h3, file$1, 102, 20, 3853);
+    			attr_dev(div0, "class", "description svelte-1icv13l");
+    			add_location(div0, file$1, 103, 20, 3904);
+    			attr_dev(button, "class", "svelte-1icv13l");
+    			add_location(button, file$1, 104, 20, 3983);
+    			set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			set_style(div1, "padding-left", "20px");
+    			set_style(div1, "border-left", "1px solid #eee");
+    			attr_dev(div1, "class", "inner-container svelte-1icv13l");
+    			add_location(div1, file$1, 101, 16, 3716);
+    			attr_dev(div2, "class", "indicator-text svelte-1icv13l");
+    			add_location(div2, file$1, 100, 12, 3671);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(indicatorvisual, target, anchor);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div1);
+    			append_dev(div1, h3);
+    			append_dev(h3, t1);
+    			append_dev(div1, t2);
+    			append_dev(div1, div0);
+    			append_dev(div0, t3);
+    			append_dev(div1, t4);
+    			append_dev(div1, button);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const indicatorvisual_changes = {};
+    			if (dirty & /*indicatorsData*/ 1) indicatorvisual_changes.indicator = /*indicator*/ ctx[15];
+    			indicatorvisual.$set(indicatorvisual_changes);
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t1_value !== (t1_value = /*indicator*/ ctx[15].copy.name + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*indicatorsData*/ 1) && t3_value !== (t3_value = /*indicator*/ ctx[15].copy.definition + "")) set_data_dev(t3, t3_value);
+
+    			if (!current || dirty & /*$chartWidth*/ 32) {
+    				set_style(div1, "margin-top", /*$chartWidth*/ ctx[5] * 0.3 + "px");
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicatorvisual.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicatorvisual.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(indicatorvisual, detaching);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(div2);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(99:8) {#if i%2 == 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (97:4) {#each indicatorsData as indicator, i}
+    function create_each_block(ctx) {
+    	let div;
+    	let current_block_type_index;
+    	let if_block;
+    	let t;
+    	let current;
+    	const if_block_creators = [create_if_block$1, create_else_block];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*i*/ ctx[17] % 2 == 0) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			if_block.c();
+    			t = space();
+    			attr_dev(div, "class", "indicator-container svelte-1icv13l");
+    			add_location(div, file$1, 97, 8, 3559);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			if_blocks[current_block_type_index].m(div, null);
+    			append_dev(div, t);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if_block.p(ctx, dirty);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if_blocks[current_block_type_index].d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(97:4) {#each indicatorsData as indicator, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$3(ctx) {
+    	let div3;
+    	let button0;
+    	let t1;
+    	let div1;
+    	let h20;
+    	let t3;
+    	let div0;
+    	let svg;
+    	let svg_viewBox_value;
+    	let div0_resize_listener;
+    	let t4;
+    	let div2;
+    	let t6;
+    	let div4;
+    	let h21;
+    	let t9;
+    	let countryselect;
+    	let t10;
+    	let button1;
+    	let t12;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let if_block = /*areaData*/ ctx[1] && create_if_block_1$1(ctx);
+
+    	countryselect = new CountrySelect({
+    			props: { countryNames: /*countryNames*/ ctx[4] },
+    			$$inline: true
+    		});
+
+    	let each_value = /*indicatorsData*/ ctx[0];
+    	validate_each_argument(each_value);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			div3 = element("div");
+    			button0 = element("button");
+    			button0.textContent = "Back";
+    			t1 = space();
+    			div1 = element("div");
+    			h20 = element("h2");
+    			h20.textContent = `${/*currentArea*/ ctx[7].name}`;
+    			t3 = space();
+    			div0 = element("div");
+    			svg = svg_element("svg");
+    			if (if_block) if_block.c();
+    			t4 = space();
+    			div2 = element("div");
+    			div2.textContent = `${/*currentArea*/ ctx[7].context}`;
+    			t6 = space();
+    			div4 = element("div");
+    			h21 = element("h2");
+    			h21.textContent = `Assessing ${/*currentArea*/ ctx[7].name.toLowerCase()}`;
+    			t9 = space();
+    			create_component(countryselect.$$.fragment);
+    			t10 = space();
+    			button1 = element("button");
+    			button1.textContent = "Share this view";
+    			t12 = space();
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(button0, "class", "svelte-1icv13l");
+    			add_location(button0, file$1, 65, 4, 2333);
+    			attr_dev(h20, "class", "svelte-1icv13l");
+    			add_location(h20, file$1, 67, 8, 2431);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " 100");
+    			attr_dev(svg, "width", /*$width*/ ctx[3]);
+    			attr_dev(svg, "height", "100");
+    			attr_dev(svg, "class", "svelte-1icv13l");
+    			add_location(svg, file$1, 69, 12, 2528);
+    			attr_dev(div0, "class", "area-vis svelte-1icv13l");
+    			add_render_callback(() => /*div0_elementresize_handler*/ ctx[12].call(div0));
+    			add_location(div0, file$1, 68, 8, 2467);
+    			attr_dev(div1, "class", "area-text svelte-1icv13l");
+    			add_location(div1, file$1, 66, 4, 2399);
+    			attr_dev(div2, "class", "description svelte-1icv13l");
+    			add_location(div2, file$1, 87, 4, 3287);
+    			attr_dev(div3, "class", "area-summary svelte-1icv13l");
+    			add_location(div3, file$1, 64, 0, 2302);
+    			add_location(h21, file$1, 92, 4, 3382);
+    			attr_dev(button1, "class", "svelte-1icv13l");
+    			add_location(button1, file$1, 94, 4, 3474);
+    			attr_dev(div4, "class", "indicators svelte-1icv13l");
+    			add_location(div4, file$1, 91, 0, 3353);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div3, anchor);
+    			append_dev(div3, button0);
+    			append_dev(div3, t1);
+    			append_dev(div3, div1);
+    			append_dev(div1, h20);
+    			append_dev(div1, t3);
+    			append_dev(div1, div0);
+    			append_dev(div0, svg);
+    			if (if_block) if_block.m(svg, null);
+    			div0_resize_listener = add_resize_listener(div0, /*div0_elementresize_handler*/ ctx[12].bind(div0));
+    			append_dev(div3, t4);
+    			append_dev(div3, div2);
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, h21);
+    			append_dev(div4, t9);
+    			mount_component(countryselect, div4, null);
+    			append_dev(div4, t10);
+    			append_dev(div4, button1);
+    			append_dev(div4, t12);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div4, null);
+    			}
+
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(button0, "click", self$1(/*click_handler*/ ctx[11]), false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (/*areaData*/ ctx[1]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+    				} else {
+    					if_block = create_if_block_1$1(ctx);
+    					if_block.c();
+    					if_block.m(svg, null);
+    				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
+    			}
+
+    			if (!current || dirty & /*$width*/ 8 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " 100")) {
+    				attr_dev(svg, "viewBox", svg_viewBox_value);
+    			}
+
+    			if (!current || dirty & /*$width*/ 8) {
+    				attr_dev(svg, "width", /*$width*/ ctx[3]);
+    			}
+
+    			const countryselect_changes = {};
+    			if (dirty & /*countryNames*/ 16) countryselect_changes.countryNames = /*countryNames*/ ctx[4];
+    			countryselect.$set(countryselect_changes);
+
+    			if (dirty & /*$chartWidth, indicatorsData*/ 33) {
+    				each_value = /*indicatorsData*/ ctx[0];
+    				validate_each_argument(each_value);
+    				let i;
+
+    				for (i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(div4, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(countryselect.$$.fragment, local);
+
+    			for (let i = 0; i < each_value.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(countryselect.$$.fragment, local);
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div3);
+    			if (if_block) if_block.d();
+    			div0_resize_listener();
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(div4);
+    			destroy_component(countryselect);
+    			destroy_each(each_blocks, detaching);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$3.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$3($$self, $$props, $$invalidate) {
+    	let $areaInView;
+    	let $margin;
+    	let $width;
+    	let $scaleFactor;
+    	let $view;
+    	let $chartWidth;
+    	validate_store(areaInView, "areaInView");
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(9, $areaInView = $$value));
+    	validate_store(margin, "margin");
+    	component_subscribe($$self, margin, $$value => $$invalidate(2, $margin = $$value));
+    	validate_store(width, "width");
+    	component_subscribe($$self, width, $$value => $$invalidate(3, $width = $$value));
+    	validate_store(scaleFactor, "scaleFactor");
+    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(10, $scaleFactor = $$value));
+    	validate_store(view, "view");
+    	component_subscribe($$self, view, $$value => $$invalidate(14, $view = $$value));
+    	validate_store(chartWidth, "chartWidth");
+    	component_subscribe($$self, chartWidth, $$value => $$invalidate(5, $chartWidth = $$value));
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots("Indicators", slots, []);
+    	let data = [], indicatorsData = [], countryNames = [], areaData, graphData = [];
+
+    	// set default area view for dev purpose only
+    	// set to start with a specific indicator for dev
+    	// delete these lines for production
+    	if (!$areaInView) {
+    		set_store_value(areaInView, $areaInView = "growth", $areaInView); // pulled from /stores/view
+    	}
+
+    	const currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0];
+
+    	onMount(async () => {
+    		data = await loadData();
+    		$$invalidate(0, indicatorsData = await loadIndicatorsData($areaInView));
+    		$$invalidate(4, countryNames = data["countries"].filter(d => d.country !== "China"));
+    		$$invalidate(1, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
+    	});
+
+    	function switchView(targetView, area) {
+    		set_store_value(view, $view = targetView, $view);
+    		set_store_value(areaInView, $areaInView = area, $areaInView);
+    	}
+
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Indicators> was created with unknown prop '${key}'`);
+    	});
+
+    	const click_handler = () => switchView("main");
+
+    	function div0_elementresize_handler() {
+    		$width = this.clientWidth;
+    		width.set($width);
+    	}
+
+    	$$self.$capture_state = () => ({
+    		d3,
+    		onMount,
+    		loadData,
+    		loadIndicatorsData,
+    		view,
+    		areaInView,
+    		width,
+    		margin,
+    		scaleFactor,
+    		chartWidth,
+    		copyData,
+    		CountrySelect,
+    		IndicatorVisual,
+    		data,
+    		indicatorsData,
+    		countryNames,
+    		areaData,
+    		graphData,
+    		currentArea,
+    		switchView,
+    		$areaInView,
+    		$margin,
+    		$width,
+    		$scaleFactor,
+    		$view,
+    		$chartWidth
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ("data" in $$props) data = $$props.data;
+    		if ("indicatorsData" in $$props) $$invalidate(0, indicatorsData = $$props.indicatorsData);
+    		if ("countryNames" in $$props) $$invalidate(4, countryNames = $$props.countryNames);
+    		if ("areaData" in $$props) $$invalidate(1, areaData = $$props.areaData);
+    		if ("graphData" in $$props) $$invalidate(6, graphData = $$props.graphData);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	$$self.$$.update = () => {
+    		if ($$self.$$.dirty & /*areaData, $margin, $width, $scaleFactor*/ 1038) {
+    			if (areaData) {
+    				const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
+
+    				areaData.comps.forEach((d, i) => {
+    					graphData.push({
+    						x: xScale(d),
+    						y: 0,
+    						r: $scaleFactor,
+    						country: areaData.countries[i]
+    					});
+    				});
+    			}
+    		}
+
+    		if ($$self.$$.dirty & /*indicatorsData, $areaInView*/ 513) {
+    			if (indicatorsData) {
+    				// match indicators copy with the indicators data
+    				// it's not currently matching for a lack of real indicators data
+    				indicatorsData.forEach((d, i) => {
+    					let indicatorCopy = copyData.filter(x => x.category == $areaInView);
+
+    					if (i >= indicatorCopy.length) {
+    						d.copy = {
+    							name: "Placeholder indicator",
+    							definition: "This will be finalized when data comes in.",
+    							context: ""
+    						};
+    					} else {
+    						d.copy = indicatorCopy[i];
+    					}
+    				});
+    			}
+    		}
+    	};
+
+    	return [
+    		indicatorsData,
+    		areaData,
+    		$margin,
+    		$width,
+    		countryNames,
+    		$chartWidth,
+    		graphData,
+    		currentArea,
+    		switchView,
+    		$areaInView,
+    		$scaleFactor,
+    		click_handler,
+    		div0_elementresize_handler
+    	];
+    }
+
+    class Indicators extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init$1(this, options, instance$3, create_fragment$3, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "Indicators",
+    			options,
+    			id: create_fragment$3.name
+    		});
     	}
     }
 
@@ -39487,7 +40423,7 @@ var app = (function () {
     			t = space();
     			if (if_block1) if_block1.c();
     			attr_dev(section, "class", "latest svelte-e3gtka");
-    			add_location(section, file, 38, 8, 1253);
+    			add_location(section, file, 38, 8, 1250);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -39606,12 +40542,30 @@ var app = (function () {
 
     // (58:40) 
     function create_if_block_1(ctx) {
+    	let indicators;
+    	let current;
+    	indicators = new Indicators({ $$inline: true });
+
     	const block = {
-    		c: noop$4,
-    		m: noop$4,
-    		i: noop$4,
-    		o: noop$4,
-    		d: noop$4
+    		c: function create() {
+    			create_component(indicators.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(indicators, target, anchor);
+    			current = true;
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicators.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicators.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(indicators, detaching);
+    		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
@@ -39704,14 +40658,14 @@ var app = (function () {
     			t4 = space();
     			section1 = element("section");
     			if (if_block1) if_block1.c();
-    			add_location(h1, file, 32, 8, 753);
-    			add_location(p, file, 33, 8, 809);
+    			add_location(h1, file, 32, 8, 750);
+    			add_location(p, file, 33, 8, 806);
     			attr_dev(section0, "id", "intro");
     			attr_dev(section0, "class", "svelte-e3gtka");
-    			add_location(section0, file, 31, 4, 724);
+    			add_location(section0, file, 31, 4, 721);
     			attr_dev(section1, "class", "svelte-e3gtka");
-    			add_location(section1, file, 51, 4, 1463);
-    			add_location(main, file, 30, 0, 713);
+    			add_location(section1, file, 51, 4, 1460);
+    			add_location(main, file, 30, 0, 710);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39838,6 +40792,7 @@ var app = (function () {
 
     	$$self.$capture_state = () => ({
     		Landing,
+    		Indicators,
     		Quarterly,
     		News,
     		view,

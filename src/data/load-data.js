@@ -7,22 +7,27 @@ const loadData = async () => {
 
     const data = await csv(dataPath); // d3 load csv function
 
-    let domains = ['growth','competition','innovation','trade','fdi','portfolio'];
+    // create an array of objects for the six areas
+    // ... China appears as the last country
 
-    data.sort((a,b) => a.country == 'China' ? 1 : -1);
+    // growth is financial system development
+    // these are referenced across the program
+    let areas = ['growth','competition','innovation','trade','fdi','portfolio'];
+
+    data.sort((a,b)=> a.country == 'China' ? 1 : -1);
 
     let output = [];
     
-    domains.forEach( (x) => { 
+    areas.forEach( (x) => { 
         output.push({
-            domain: x, 
+            area: x, 
             comps: data.map(n => n[x]), 
             countries: data.map(n => n["country"])
         });
     });
 
 
-    return({countries: data, domains: output});
+    return({countries: data, areas: output});
 };
 
 export default loadData;
