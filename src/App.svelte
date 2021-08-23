@@ -1,6 +1,6 @@
 <script>
     import Landing from './views/Landing.svelte';
-    import Indicators from './views/Indicators.svelte';
+    // import Indicators from './views/Indicators.svelte';
     import Quarterly from './views/Quarterly.svelte';
     import News from './views/News.svelte';
     import {view} from './stores/view';
@@ -56,7 +56,7 @@
         {#if $view == 'main'}
             <Landing/>
         {:else if $view == 'indicators'}
-            <Indicators/>
+            <!-- <Indicators/> -->
         {/if}
 
     </section>
