@@ -35,7 +35,6 @@
     // each row has a g element
     // each country has its own element
     $: if (areaData) {
-        console.log(areaData)
 
         const xScale = d3.scaleLinear().domain([1,10]).range([$margin*3, $width-$margin*3]);
 
@@ -120,17 +119,6 @@
                         
                         <path d={graph.path}></path>
                         <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
-                        <!-- <g class='tooltip'>
-                            <rect class='tooltip-bg' width={tipWidth} height={tipHeight} fill='#fff'></rect>
-                            <text x='{tipWidth/2}' y='{tipHeight/2}' dominant-baseline='middle' text-anchor='middle'>{graph.score} / 10</text>
-                            <g class='tooltip-visual'>
-                                <rect width={tipWidth - 20} height=5 fill='lightblue' x=10 y={tipHeight - 10}></rect>
-                                <rect width={graph.score/10*tipWidth} height=5 fill='darkblue' x=10 y={tipHeight - 10}></rect>
-                            </g>
-                        </g> -->
-                        <foreignObject x="5" y="{-tipHeight/2}" width="{tipWidth}" height="{tipHeight}">
-                            <div class='tt'>{graph.score} / 10</div>
-                        </foreignObject>
                     </g>
 
                 {/each}
@@ -139,42 +127,54 @@
 
         {/each}
     </svg>
+
+    {#each areaData as area, i}
+        {#each area.graphData as graph, i}
+            <div
+                class="tooltip"
+                id={'tooltip-' + graph.score}
+                style="left: {graph.x + 'px'}; top: {area.offsetY + 'px'}"
+            >
+                <p>{graph.score} / 10</p>
+            </div>
+        {/each}
+    {/each}
 </div>
 
 
 <style>
 
-    foreignObject {
-        pointer-events: none;
-    }
-
-    .tt {
-        opacity: 0;
+    .tooltip {
+        /*opacity: 0;*/
         position: absolute;
         z-index: 999;
-        width: 100px;
-        height: 60px;
-        /*padding: 10px;*/
+        width: 60px;
+        height: auto;
+        padding: 10px;
         background-color: white;
         border: 2px solid #333;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
         border-radius: 2px;
-        -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         pointer-events: none;
+        transition: opacity 500ms;
     }
 
-    .hovered .tt {
+    .tooltip p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .hovered .tooltip {
         opacity: 1;
     }
     
     .text-wrapper {
         position: relative;
-        width:30%;
-        padding-right:2%;
-        padding-left:25px;
+        width: 30%;
+        padding-right: 2%;
+        padding-left: 25px;
     }
 
     .area {

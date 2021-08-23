@@ -34,7 +34,9 @@
 <!-- main vis container - imports from composite-vis in components -->
 <!-- takes area data (from landing.svelte) and copy data -->
 <div class='vis-container'>
+
     <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
+
 </div>
 
 <style>
