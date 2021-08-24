@@ -22,34 +22,29 @@
 
     function circleMouseOver(e) {
         $hoveredCountry = e.path[1].dataset.id;
-        let selectedTooltip = Array.from(document.getElementsByClassName('tooltip-' + $hoveredCountry));
-        selectedTooltip.forEach(function(d, i) {
-            d.classList.add('hovered');
-        });
+        // let selectedTooltip = Array.from(document.getElementsByClassName('tooltip-' + $hoveredCountry));
+        let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
+        selectedTooltip.forEach(node => node.classList.add('hovered'));
     }
 
     function circleMouseOut(e) {
         $hoveredCountry = '';
-        let selectedTooltip = Array.from(document.getElementsByClassName('tooltip'));
-        selectedTooltip.forEach(function(d, i) {
-            d.classList.remove('hovered');
-        });
+        let selectedTooltip = document.querySelectorAll('.tooltip');
+        selectedTooltip.forEach(node => node.classList.remove('hovered'));
     }
 
     function circleClick(e) {
         $selectedCountry = e.path[1].dataset.id;
+        // let element = document.querySelectorAll('.tooltip');
+        // // console.log(element)
+        // // var myNodeList = document.querySelectorAll('div');
+        // element.forEach(node => node.classList.add('blue'));
+        // console.log(element)
     }
 
     $: if (areaData) {
         parseData();
-
     }
-
-    onMount(async()=>{
-        // handleEvents();
-    });
-
-    setTimeout(handleEvents, 1000);
 
     function parseData() {
         const xScale = d3.scaleLinear().domain([1,10]).range([$margin*3, $width-$margin*3]);
@@ -85,21 +80,6 @@
                 });
             }
         });
-    }
-
-    function handleEvents() {
-        d3.selectAll('circle')
-            .on('mouseover', function(e, d) {
-                // console.log(e.path[1].dataset.id)
-
-                // d3.select('#tooltip-' + d.id)
-                //     .style('left', xPosition + 'px')
-                //     .style('top', yPosition + 'px')
-                //     .classed('hidden', false);
-            })
-            .on('mouseout', function(e, d) {
-                // d3.select('#tooltip-' + d.id).classed('hidden', true);
-            });
     }
 
 </script>
