@@ -1,5 +1,6 @@
 <script>
     import * as d3 from 'd3';
+    import { onMount } from "svelte";
     import {width, height, margin, scaleFactor} from '../stores/dimensions';
     import utils from "../utils";
     export let areaData;
@@ -21,29 +22,43 @@
 
     function circleMouseOver(e) {
         $hoveredCountry = e.path[1].dataset.id;
+        let selectedTooltip = Array.from(document.getElementsByClassName('tooltip-' + $hoveredCountry));
+        selectedTooltip.forEach(function(d, i) {
+            d.classList.add('hovered');
+        });
     }
 
     function circleMouseOut(e) {
         $hoveredCountry = '';
+        let selectedTooltip = Array.from(document.getElementsByClassName('tooltip'));
+        selectedTooltip.forEach(function(d, i) {
+            d.classList.remove('hovered');
+        });
     }
 
     function circleClick(e) {
         $selectedCountry = e.path[1].dataset.id;
     }
 
-    // country.Denmark - grab class on mouse over state to add styles and highlight color
-    // each row has a g element
-    // each country has its own element
     $: if (areaData) {
+        parseData();
 
+    }
+
+    onMount(async()=>{
+        // handleEvents();
+    });
+
+    setTimeout(handleEvents, 1000);
+
+    function parseData() {
         const xScale = d3.scaleLinear().domain([1,10]).range([$margin*3, $width-$margin*3]);
 
         areaData.forEach( (d,i) => {
             if (d3.select('.text-wrapper .'+d.area).size()>0) {
 
-                // get offset for each text box, position text to vis rows
-                // svg height of each vis row is determined by the height of each text block
                 const textRect = d3.select('.text-wrapper .'+d.area).node().getBoundingClientRect();
+
                 d.offsetY = textRect.top 
                     - d3.select('.text-wrapper').node().getBoundingClientRect().top
                     + $margin*2;
@@ -54,15 +69,12 @@
                     let points = i<5 ? ([
                         [0 , 0],
                         [distance, textRect.bottom - textRect.top + $margin*2]
-                        // [distance, ($height-$margin*5)/5]
                     ]) : ([[0,0],[0,0]]);
                     
-                    // third argument is swerve of the curve
-                    let path = utils.cubicBezier(points[0], points[1], 0.5); // compute path for each country using cubic bezier - pulls from utils
+                    let path = utils.cubicBezier(points[0], points[1], 0.5);
 
-                    // computes the circle location for each country - primary composite score attribute
                     return {
-                        id : d.countries[n].trim().toLowerCase(),
+                        id : d.countries[n].trim().toLowerCase().split(" ").join("-"),
                         x : xScale(m),
                         y : 0,
                         r : $scaleFactor,
@@ -74,6 +86,22 @@
             }
         });
     }
+
+    function handleEvents() {
+        d3.selectAll('circle')
+            .on('mouseover', function(e, d) {
+                // console.log(e.path[1].dataset.id)
+
+                // d3.select('#tooltip-' + d.id)
+                //     .style('left', xPosition + 'px')
+                //     .style('top', yPosition + 'px')
+                //     .classed('hidden', false);
+            })
+            .on('mouseout', function(e, d) {
+                // d3.select('#tooltip-' + d.id).classed('hidden', true);
+            });
+    }
+
 </script>
 
 
@@ -96,21 +124,17 @@
         width={$width}
         height={$height}>
 
-        <!-- <Defs /> -->
         <rect x="0" y="0" width={$width} height={$height}></rect>
 
         {#each areaData as area, i}
 
-            <!-- each row gets its own g element -->
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
 
                 <line class='gridline' x2={$width}></line>
 
-                <!-- each country gets its own g element -->
-                <!-- pre-computed values get fed into the g element -->
                 {#each area.graphData as graph, i}
 
-                    <g class='country {graph.country}'
+                    <g class='country {graph.id}'
                         data-id='{graph.id}'
                         transform='translate({graph.x},{graph.y})'
                         class:hovered='{graph.id == $hoveredCountry}'
@@ -131,8 +155,7 @@
     {#each areaData as area, i}
         {#each area.graphData as graph, i}
             <div
-                class="tooltip"
-                id={'tooltip-' + graph.score}
+                class="tooltip {'tooltip-' + graph.id}"
                 style="left: {graph.x + 'px'}; top: {area.offsetY + 'px'}"
             >
                 <p>{graph.score} / 10</p>
@@ -145,7 +168,7 @@
 <style>
 
     .tooltip {
-        /*opacity: 0;*/
+        opacity: 0;
         position: absolute;
         z-index: 999;
         width: 60px;
@@ -166,7 +189,7 @@
         text-align: center;
     }
 
-    .hovered .tooltip {
+    .tooltip.hovered {
         opacity: 1;
     }
     

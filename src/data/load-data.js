@@ -21,7 +21,7 @@ const loadData = async () => {
     areas.forEach( (x) => { 
         output.push({
             area: x, 
-            comps: data.map(n => n[x]), 
+            comps: data.map(n => n[x]),
             countries: data.map(n => n["country"])
         });
     });

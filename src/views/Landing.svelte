@@ -9,17 +9,19 @@
     export let showPrevious = false;
     let data = [], countryNames = [], areaData = [];
 
+    import { csv } from 'd3';
+    const dataPath = '../data/composite-score.csv';
+
     onMount(async()=>{
-        data = await loadData(); // pulled from load-data.js - loads primary indicator composite scores
-        countryNames = data['countries'].filter(d=> d.country!=='China'); // all countries but China to use for comparison dropdown
+        data = await loadData();
+        countryNames = data['countries'].filter(d=> d.country!=='China');
         areaData = data['areas'];
     });
 
+
 </script>
 
-<!-- where events happen -->
 <div class='control-area'>
-    <!-- imported from country-select in components -->
     <CountrySelect {countryNames}/>
 
     <button>Share this view</button>
@@ -31,8 +33,6 @@
 
 </div>
 
-<!-- main vis container - imports from composite-vis in components -->
-<!-- takes area data (from landing.svelte) and copy data -->
 <div class='vis-container'>
 
     <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
