@@ -38903,7 +38903,7 @@ var app = (function () {
     			t = text$1(t_value);
     			option.__value = option_value_value = /*country*/ ctx[3].id;
     			option.value = option.__value;
-    			add_location(option, file$5, 10, 16, 331);
+    			add_location(option, file$5, 10, 16, 338);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -38936,12 +38936,10 @@ var app = (function () {
     function create_fragment$5(ctx) {
     	let div1;
     	let t0;
+    	let span;
+    	let t2;
     	let div0;
     	let select;
-    	let t1;
-    	let p;
-    	let t2;
-    	let t3;
     	let mounted;
     	let dispose;
     	let each_value = /*countryNames*/ ctx[0];
@@ -38955,7 +38953,10 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div1 = element("div");
-    			t0 = text$1("How China compares with \n    ");
+    			t0 = text$1("Compare ");
+    			span = element("span");
+    			span.textContent = "China";
+    			t2 = text$1(" with\n    ");
     			div0 = element("div");
     			select = element("select");
 
@@ -38963,16 +38964,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t1 = space();
-    			p = element("p");
-    			t2 = text$1("Selected ");
-    			t3 = text$1(/*$selectedCountry*/ ctx[1]);
+    			attr_dev(span, "class", "svelte-s5ny5h");
+    			add_location(span, file$5, 6, 12, 170);
     			if (/*$selectedCountry*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
-    			add_location(select, file$5, 8, 8, 232);
-    			add_location(p, file$5, 13, 8, 431);
-    			attr_dev(div0, "class", "country-toggle-box svelte-1uigpzs");
-    			add_location(div0, file$5, 7, 4, 191);
-    			attr_dev(div1, "class", "country-select");
+    			add_location(select, file$5, 8, 8, 239);
+    			attr_dev(div0, "class", "country-toggle-box svelte-s5ny5h");
+    			add_location(div0, file$5, 7, 4, 198);
+    			attr_dev(div1, "class", "country-select svelte-s5ny5h");
     			add_location(div1, file$5, 5, 0, 129);
     		},
     		l: function claim(nodes) {
@@ -38981,6 +38979,8 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, t0);
+    			append_dev(div1, span);
+    			append_dev(div1, t2);
     			append_dev(div1, div0);
     			append_dev(div0, select);
 
@@ -38989,10 +38989,6 @@ var app = (function () {
     			}
 
     			select_option(select, /*$selectedCountry*/ ctx[1]);
-    			append_dev(div0, t1);
-    			append_dev(div0, p);
-    			append_dev(p, t2);
-    			append_dev(p, t3);
 
     			if (!mounted) {
     				dispose = listen_dev(select, "change", /*select_change_handler*/ ctx[2]);
@@ -39027,8 +39023,6 @@ var app = (function () {
     			if (dirty & /*$selectedCountry, countryNames*/ 3) {
     				select_option(select, /*$selectedCountry*/ ctx[1]);
     			}
-
-    			if (dirty & /*$selectedCountry*/ 2) set_data_dev(t3, /*$selectedCountry*/ ctx[1]);
     		},
     		i: noop$4,
     		o: noop$4,
@@ -39129,25 +39123,23 @@ var app = (function () {
     	let countryselect;
     	let t0;
     	let button;
+    	let t1;
+    	let svg;
+    	let path0;
+    	let path1;
     	let t2;
-    	let label;
-    	let input;
-    	let t3;
-    	let t4;
     	let div1;
     	let landingvisual;
     	let current;
-    	let mounted;
-    	let dispose;
 
     	countryselect = new CountrySelect({
-    			props: { countryNames: /*countryNames*/ ctx[1] },
+    			props: { countryNames: /*countryNames*/ ctx[0] },
     			$$inline: true
     		});
 
     	landingvisual = new LandingVisual({
     			props: {
-    				areaData: /*areaData*/ ctx[2],
+    				areaData: /*areaData*/ ctx[1],
     				copyData: copyData.filter(func)
     			},
     			$$inline: true
@@ -39159,23 +39151,29 @@ var app = (function () {
     			create_component(countryselect.$$.fragment);
     			t0 = space();
     			button = element("button");
-    			button.textContent = "Share this view";
+    			t1 = text$1("Share this view\n        ");
+    			svg = svg_element("svg");
+    			path0 = svg_element("path");
+    			path1 = svg_element("path");
     			t2 = space();
-    			label = element("label");
-    			input = element("input");
-    			t3 = text$1("\n            Show China’s change since 2010");
-    			t4 = space();
     			div1 = element("div");
     			create_component(landingvisual.$$.fragment);
+    			attr_dev(path0, "d", "M6.01122 1.49998V7.99998H6.88162V1.49998L7.96962 2.39998L8.62242 1.79998L6.77282 0.0999756H6.12002L4.27042 1.79998L4.92322 2.39998L6.01122 1.49998Z");
+    			attr_dev(path0, "fill", "white");
+    			add_location(path0, file$4, 29, 12, 880);
+    			attr_dev(path1, "d", "M11.4512 3.29997C11.2119 3.07266 10.9241 2.89317 10.6058 2.77273C10.2876 2.65228 9.94573 2.59347 9.60163 2.59997V3.39997C10.0345 3.39997 10.4496 3.55801 10.7556 3.83931C11.0617 4.12062 11.2336 4.50215 11.2336 4.89997V10.7C11.2345 11.1075 11.0661 11.5001 10.7628 11.7974C10.4595 12.0947 10.0442 12.2745 9.60163 12.3H3.29123C2.84866 12.2745 2.43334 12.0947 2.13005 11.7974C1.82676 11.5001 1.65837 11.1075 1.65923 10.7V4.89997C1.65923 4.50215 1.83118 4.12062 2.13724 3.83931C2.4433 3.55801 2.8584 3.39997 3.29123 3.39997V2.59997C2.94714 2.59347 2.60528 2.65228 2.28703 2.77273C1.96878 2.89317 1.68099 3.07266 1.44163 3.29997C1.1913 3.49636 0.992705 3.74239 0.860787 4.01953C0.728868 4.29667 0.667067 4.59771 0.680035 4.89997V10.8C0.667067 11.1022 0.728868 11.4033 0.860787 11.6804C0.992705 11.9576 1.1913 12.2036 1.44163 12.4C1.68099 12.6273 1.96878 12.8068 2.28703 12.9272C2.60528 13.0477 2.94714 13.1065 3.29123 13.1H9.60163C10.2757 13.1005 10.9239 12.8614 11.4106 12.4327C11.8973 12.0041 12.1847 11.419 12.2128 10.8V4.89997C12.1866 4.29766 11.9147 3.72647 11.4512 3.29997Z");
+    			attr_dev(path1, "fill", "white");
+    			add_location(path1, file$4, 30, 12, 1065);
+    			attr_dev(svg, "width", "13");
+    			attr_dev(svg, "height", "14");
+    			attr_dev(svg, "viewBox", "0 0 13 14");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$4, 28, 8, 807);
     			add_location(button, file$4, 26, 4, 766);
-    			attr_dev(input, "type", "checkbox");
-    			add_location(input, file$4, 29, 12, 852);
-    			attr_dev(label, "class", "time-toggle-box");
-    			add_location(label, file$4, 28, 4, 808);
-    			attr_dev(div0, "class", "control-area");
+    			attr_dev(div0, "class", "control-area svelte-1de46wq");
     			add_location(div0, file$4, 23, 0, 698);
-    			attr_dev(div1, "class", "vis-container svelte-6sncrf");
-    			add_location(div1, file$4, 35, 0, 967);
+    			attr_dev(div1, "class", "vis-container svelte-1de46wq");
+    			add_location(div1, file$4, 42, 0, 2362);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39185,32 +39183,21 @@ var app = (function () {
     			mount_component(countryselect, div0, null);
     			append_dev(div0, t0);
     			append_dev(div0, button);
-    			append_dev(div0, t2);
-    			append_dev(div0, label);
-    			append_dev(label, input);
-    			input.checked = /*showPrevious*/ ctx[0];
-    			append_dev(label, t3);
-    			insert_dev(target, t4, anchor);
+    			append_dev(button, t1);
+    			append_dev(button, svg);
+    			append_dev(svg, path0);
+    			append_dev(svg, path1);
+    			insert_dev(target, t2, anchor);
     			insert_dev(target, div1, anchor);
     			mount_component(landingvisual, div1, null);
     			current = true;
-
-    			if (!mounted) {
-    				dispose = listen_dev(input, "change", /*input_change_handler*/ ctx[3]);
-    				mounted = true;
-    			}
     		},
     		p: function update(ctx, [dirty]) {
     			const countryselect_changes = {};
-    			if (dirty & /*countryNames*/ 2) countryselect_changes.countryNames = /*countryNames*/ ctx[1];
+    			if (dirty & /*countryNames*/ 1) countryselect_changes.countryNames = /*countryNames*/ ctx[0];
     			countryselect.$set(countryselect_changes);
-
-    			if (dirty & /*showPrevious*/ 1) {
-    				input.checked = /*showPrevious*/ ctx[0];
-    			}
-
     			const landingvisual_changes = {};
-    			if (dirty & /*areaData*/ 4) landingvisual_changes.areaData = /*areaData*/ ctx[2];
+    			if (dirty & /*areaData*/ 2) landingvisual_changes.areaData = /*areaData*/ ctx[1];
     			landingvisual.$set(landingvisual_changes);
     		},
     		i: function intro(local) {
@@ -39227,11 +39214,9 @@ var app = (function () {
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div0);
     			destroy_component(countryselect);
-    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(div1);
     			destroy_component(landingvisual);
-    			mounted = false;
-    			dispose();
     		}
     	};
 
@@ -39257,8 +39242,8 @@ var app = (function () {
 
     	onMount(async () => {
     		data = await loadData();
-    		$$invalidate(1, countryNames = data["countries"].filter(d => d.country !== "China"));
-    		$$invalidate(2, areaData = data["areas"]);
+    		$$invalidate(0, countryNames = data["countries"].filter(d => d.country !== "China"));
+    		$$invalidate(1, areaData = data["areas"]);
     	});
 
     	const writable_props = ["showPrevious"];
@@ -39267,13 +39252,8 @@ var app = (function () {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Landing> was created with unknown prop '${key}'`);
     	});
 
-    	function input_change_handler() {
-    		showPrevious = this.checked;
-    		$$invalidate(0, showPrevious);
-    	}
-
     	$$self.$$set = $$props => {
-    		if ("showPrevious" in $$props) $$invalidate(0, showPrevious = $$props.showPrevious);
+    		if ("showPrevious" in $$props) $$invalidate(2, showPrevious = $$props.showPrevious);
     	};
 
     	$$self.$capture_state = () => ({
@@ -39292,23 +39272,23 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("showPrevious" in $$props) $$invalidate(0, showPrevious = $$props.showPrevious);
+    		if ("showPrevious" in $$props) $$invalidate(2, showPrevious = $$props.showPrevious);
     		if ("data" in $$props) data = $$props.data;
-    		if ("countryNames" in $$props) $$invalidate(1, countryNames = $$props.countryNames);
-    		if ("areaData" in $$props) $$invalidate(2, areaData = $$props.areaData);
+    		if ("countryNames" in $$props) $$invalidate(0, countryNames = $$props.countryNames);
+    		if ("areaData" in $$props) $$invalidate(1, areaData = $$props.areaData);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [showPrevious, countryNames, areaData, input_change_handler];
+    	return [countryNames, areaData, showPrevious];
     }
 
     class Landing extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, { showPrevious: 0 });
+    		init$1(this, options, instance$4, create_fragment$4, safe_not_equal, { showPrevious: 2 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
