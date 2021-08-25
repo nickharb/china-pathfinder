@@ -37797,12 +37797,12 @@ var app = (function () {
 
     // exported from raw Excel "Copy data for China Pathfinder" using Mr. Data Converter
 
-    var copyData = [{"label":"growth","name":"Financial System Development","definition":"quantifies the prominence of market-driven credit pricing, the availability of financial instruments, and the absence of distortive controls on debt.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","category":"main"},
-    {"label":"competition","name":"Market Competition","definition":"quantifies economic dynamism by assessing the entry and exit barriers firms face, government response to market power abuses, and government participation in the marketplace.","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","category":"main"},
-    {"label":"innovation","name":"Modern and Open Innovation System","definition":"quantifies the prevalence of a market-based innovation system by analyzing the levels of public and private sector investment, the protection of intellectual property rights, and collaboration with foreign firms.","context":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","category":"main"},
-    {"label":"trade","name":"Trade Openness","definition":"quantifies an economy’s trade restrictiveness through measures such as tariff rates, non-tariff barriers, and the overall cross-border flow of goods and services.","context":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","category":"main"},
-    {"label":"FDI","name":"Direct Investment Openness","definition":"quantifies the level of freedom a country’s domestic companies have to invest abroad without restrictions or political mandates, and access for foreign firms to invest in its domestic markets.","context":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","category":"main"},
-    {"label":"portfolio","name":"Portfolio Investment Openness","definition":"quantifies a country’s controls on cross-border investment through measures of equities, bonds, debt, foreign exchange, and other financial instruments.","context":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","category":"main"},
+    var copyData = [{"label":"growth","name":"Financial System Development","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna sed sollicitudin vitae.","context":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","category":"main"},
+    {"label":"competition","name":"Market Competition","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna sed sollicitudin vitae.","context":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","category":"main"},
+    {"label":"innovation","name":"Modern and Open Innovation System","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna sed sollicitudin vitae.","context":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","category":"main"},
+    {"label":"trade","name":"Trade Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna sed sollicitudin vitae.","context":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","category":"main"},
+    {"label":"FDI","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna sed sollicitudin vitae.","context":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","category":"main"},
+    {"label":"portfolio","name":"Portfolio Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna sed sollicitudin vitae.","context":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","category":"main"},
     {"label":"1","name":"Inward FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","context":"","category":"FDI"},
     {"label":"2","name":"Outbound FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","context":"","category":"FDI"},
     {"label":"3","name":"Barriers to Inward FDI: OECD FDI Restrictiveness Index (2019)","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","context":"","category":"FDI"},
@@ -37989,61 +37989,68 @@ var app = (function () {
 
     function get_each_context$4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
-    	child_ctx[23] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[24] = list[i];
-    	child_ctx[23] = i;
+    	child_ctx[23] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
-    	child_ctx[23] = i;
+    	child_ctx[20] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[24] = list[i];
-    	child_ctx[23] = i;
+    	child_ctx[23] = list[i];
+    	child_ctx[22] = i;
     	return child_ctx;
     }
 
     function get_each_context_4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[21] = list[i];
+    	child_ctx[20] = list[i];
     	return child_ctx;
     }
 
-    // (89:4) {#each copyData as area}
+    // (88:4) {#each copyData as area}
     function create_each_block_4(ctx) {
     	let div1;
     	let h2;
-    	let t0_value = /*area*/ ctx[21].name + "";
+    	let t0_value = /*area*/ ctx[20].name + "";
     	let t0;
     	let t1;
-    	let div0;
-    	let t2_value = /*area*/ ctx[21].definition + "";
+    	let svg0;
+    	let path0;
     	let t2;
+    	let div0;
+    	let p;
+    	let t3_value = /*area*/ ctx[20].definition + "";
     	let t3;
-    	let span;
+    	let t4;
+    	let button;
     	let t5;
+    	let svg1;
+    	let path1;
+    	let t6;
     	let div1_class_value;
     	let mounted;
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[11](/*area*/ ctx[21]);
+    		return /*click_handler*/ ctx[11](/*area*/ ctx[20]);
     	}
 
     	function click_handler_1() {
-    		return /*click_handler_1*/ ctx[12](/*area*/ ctx[21]);
+    		return /*click_handler_1*/ ctx[12](/*area*/ ctx[20]);
     	}
 
     	const block = {
@@ -38052,36 +38059,73 @@ var app = (function () {
     			h2 = element("h2");
     			t0 = text$1(t0_value);
     			t1 = space();
+    			svg0 = svg_element("svg");
+    			path0 = svg_element("path");
+    			t2 = space();
     			div0 = element("div");
-    			t2 = text$1(t2_value);
-    			t3 = space();
-    			span = element("span");
-    			span.textContent = "Click for details";
-    			t5 = space();
-    			attr_dev(h2, "class", "svelte-8yj4mr");
-    			add_location(h2, file$6, 90, 12, 3126);
-    			attr_dev(span, "class", "svelte-8yj4mr");
-    			add_location(span, file$6, 93, 16, 3306);
-    			attr_dev(div0, "class", "description svelte-8yj4mr");
-    			add_location(div0, file$6, 91, 12, 3230);
-    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[21].label.toLowerCase()) + " svelte-8yj4mr"));
-    			add_location(div1, file$6, 89, 8, 3067);
+    			p = element("p");
+    			t3 = text$1(t3_value);
+    			t4 = space();
+    			button = element("button");
+    			t5 = text$1("Explore data\n                    ");
+    			svg1 = svg_element("svg");
+    			path1 = svg_element("path");
+    			t6 = space();
+    			attr_dev(path0, "d", "M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z");
+    			attr_dev(path0, "fill", "#122431");
+    			attr_dev(path0, "class", "svelte-hw3jbj");
+    			add_location(path0, file$6, 92, 20, 3245);
+    			attr_dev(svg0, "width", "14");
+    			attr_dev(svg0, "height", "14");
+    			attr_dev(svg0, "viewBox", "0 0 14 14");
+    			attr_dev(svg0, "fill", "none");
+    			attr_dev(svg0, "class", "svelte-hw3jbj");
+    			add_location(svg0, file$6, 91, 16, 3164);
+    			attr_dev(h2, "class", "svelte-hw3jbj");
+    			add_location(h2, file$6, 89, 12, 3044);
+    			attr_dev(p, "class", "svelte-hw3jbj");
+    			add_location(p, file$6, 96, 16, 5109);
+    			attr_dev(path1, "fill-rule", "evenodd");
+    			attr_dev(path1, "clip-rule", "evenodd");
+    			attr_dev(path1, "d", "M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z");
+    			attr_dev(path1, "fill", "white");
+    			attr_dev(path1, "class", "svelte-hw3jbj");
+    			add_location(path1, file$6, 100, 24, 5364);
+    			attr_dev(svg1, "width", "7");
+    			attr_dev(svg1, "height", "9");
+    			attr_dev(svg1, "viewBox", "0 0 7 9");
+    			attr_dev(svg1, "fill", "none");
+    			attr_dev(svg1, "class", "svelte-hw3jbj");
+    			add_location(svg1, file$6, 99, 20, 5283);
+    			attr_dev(button, "class", "svelte-hw3jbj");
+    			add_location(button, file$6, 97, 16, 5150);
+    			attr_dev(div0, "class", "description svelte-hw3jbj");
+    			add_location(div0, file$6, 95, 12, 5067);
+    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[20].label.toLowerCase()) + " svelte-hw3jbj"));
+    			add_location(div1, file$6, 88, 8, 2985);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, h2);
     			append_dev(h2, t0);
-    			append_dev(div1, t1);
+    			append_dev(h2, t1);
+    			append_dev(h2, svg0);
+    			append_dev(svg0, path0);
+    			append_dev(div1, t2);
     			append_dev(div1, div0);
-    			append_dev(div0, t2);
-    			append_dev(div0, t3);
-    			append_dev(div0, span);
-    			append_dev(div1, t5);
+    			append_dev(div0, p);
+    			append_dev(p, t3);
+    			append_dev(div0, t4);
+    			append_dev(div0, button);
+    			append_dev(button, t5);
+    			append_dev(button, svg1);
+    			append_dev(svg1, path1);
+    			append_dev(div1, t6);
 
     			if (!mounted) {
     				dispose = [
     					listen_dev(h2, "click", self$1(click_handler), false, false, false),
-    					listen_dev(span, "click", self$1(click_handler_1), false, false, false)
+    					listen_dev(button, "click", self$1(click_handler_1), false, false, false)
     				];
 
     				mounted = true;
@@ -38089,10 +38133,10 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*copyData*/ 2 && t0_value !== (t0_value = /*area*/ ctx[21].name + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*copyData*/ 2 && t2_value !== (t2_value = /*area*/ ctx[21].definition + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*copyData*/ 2 && t0_value !== (t0_value = /*area*/ ctx[20].name + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*copyData*/ 2 && t3_value !== (t3_value = /*area*/ ctx[20].definition + "")) set_data_dev(t3, t3_value);
 
-    			if (dirty & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[21].label.toLowerCase()) + " svelte-8yj4mr"))) {
+    			if (dirty & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[20].label.toLowerCase()) + " svelte-hw3jbj"))) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
@@ -38107,14 +38151,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(89:4) {#each copyData as area}",
+    		source: "(88:4) {#each copyData as area}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (115:16) {#each area.graphData as graph, i}
+    // (127:16) {#each area.graphData as graph, i}
     function create_each_block_3(ctx) {
     	let g;
     	let path;
@@ -38123,6 +38167,7 @@ var app = (function () {
     	let circle_r_value;
     	let g_class_value;
     	let g_data_id_value;
+    	let g_data_area_value;
     	let g_transform_value;
     	let mounted;
     	let dispose;
@@ -38132,18 +38177,19 @@ var app = (function () {
     			g = svg_element("g");
     			path = svg_element("path");
     			circle = svg_element("circle");
-    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[24].path);
-    			attr_dev(path, "class", "svelte-8yj4mr");
-    			add_location(path, file$6, 123, 24, 4307);
-    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[24].r);
-    			attr_dev(circle, "class", "country-circle svelte-8yj4mr");
-    			add_location(circle, file$6, 124, 24, 4360);
-    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[24].id + " svelte-8yj4mr");
-    			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[24].id);
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[24].x + "," + /*graph*/ ctx[24].y + ")");
-    			toggle_class(g, "hovered", /*graph*/ ctx[24].id == /*$hoveredCountry*/ ctx[2]);
-    			toggle_class(g, "selected", /*graph*/ ctx[24].id == /*$selectedCountry*/ ctx[3] || /*graph*/ ctx[24].id == "china");
-    			add_location(g, file$6, 116, 20, 3929);
+    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[23].path);
+    			attr_dev(path, "class", "svelte-hw3jbj");
+    			add_location(path, file$6, 136, 24, 7004);
+    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[23].r);
+    			attr_dev(circle, "class", "country-circle svelte-hw3jbj");
+    			add_location(circle, file$6, 137, 24, 7057);
+    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[23].id + " svelte-hw3jbj");
+    			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[23].id);
+    			attr_dev(g, "data-area", g_data_area_value = /*area*/ ctx[20].area);
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[23].x + "," + /*graph*/ ctx[23].y + ")");
+    			toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[2]);
+    			toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[3] || /*graph*/ ctx[23].id == "china");
+    			add_location(g, file$6, 128, 20, 6578);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -38161,32 +38207,36 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[24].path)) {
+    			if (dirty & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[23].path)) {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[24].r)) {
+    			if (dirty & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[23].r)) {
     				attr_dev(circle, "r", circle_r_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[24].id + " svelte-8yj4mr")) {
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[23].id + " svelte-hw3jbj")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_data_id_value !== (g_data_id_value = /*graph*/ ctx[24].id)) {
+    			if (dirty & /*areaData*/ 1 && g_data_id_value !== (g_data_id_value = /*graph*/ ctx[23].id)) {
     				attr_dev(g, "data-id", g_data_id_value);
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[24].x + "," + /*graph*/ ctx[24].y + ")")) {
+    			if (dirty & /*areaData*/ 1 && g_data_area_value !== (g_data_area_value = /*area*/ ctx[20].area)) {
+    				attr_dev(g, "data-area", g_data_area_value);
+    			}
+
+    			if (dirty & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[23].x + "," + /*graph*/ ctx[23].y + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
 
     			if (dirty & /*areaData, areaData, $hoveredCountry*/ 5) {
-    				toggle_class(g, "hovered", /*graph*/ ctx[24].id == /*$hoveredCountry*/ ctx[2]);
+    				toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[2]);
     			}
 
     			if (dirty & /*areaData, areaData, $selectedCountry*/ 9) {
-    				toggle_class(g, "selected", /*graph*/ ctx[24].id == /*$selectedCountry*/ ctx[3] || /*graph*/ ctx[24].id == "china");
+    				toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[3] || /*graph*/ ctx[23].id == "china");
     			}
     		},
     		d: function destroy(detaching) {
@@ -38200,20 +38250,25 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(115:16) {#each area.graphData as graph, i}",
+    		source: "(127:16) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (109:8) {#each areaData as area, i}
+    // (118:8) {#each areaData as area, i}
     function create_each_block_2(ctx) {
     	let g;
+    	let text0;
+    	let t0;
+    	let text1;
+    	let t1;
+    	let text1_x_value;
     	let line;
     	let g_class_value;
     	let g_transform_value;
-    	let each_value_3 = /*area*/ ctx[21].graphData;
+    	let each_value_3 = /*area*/ ctx[20].graphData;
     	validate_each_argument(each_value_3);
     	let each_blocks = [];
 
@@ -38224,21 +38279,42 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			g = svg_element("g");
+    			text0 = svg_element("text");
+    			t0 = text$1("Least open");
+    			text1 = svg_element("text");
+    			t1 = text$1("Most open");
     			line = svg_element("line");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(line, "class", "gridline svelte-8yj4mr");
+    			attr_dev(text0, "x", "0");
+    			attr_dev(text0, "y", "-5");
+    			attr_dev(text0, "font-size", "12px");
+    			attr_dev(text0, "fill", "#5E7B8A");
+    			attr_dev(text0, "fill-opacity", "0.7");
+    			add_location(text0, file$6, 121, 16, 6221);
+    			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[5] - /*$margin*/ ctx[4]);
+    			attr_dev(text1, "y", "-5");
+    			attr_dev(text1, "text-anchor", "end");
+    			attr_dev(text1, "font-size", "12px");
+    			attr_dev(text1, "fill", "#5E7B8A");
+    			attr_dev(text1, "fill-opacity", "0.7");
+    			add_location(text1, file$6, 122, 16, 6325);
+    			attr_dev(line, "class", "gridline svelte-hw3jbj");
     			attr_dev(line, "x2", /*$width*/ ctx[5]);
-    			add_location(line, file$6, 112, 16, 3813);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[21].area) + " svelte-8yj4mr"));
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[4] + "," + /*area*/ ctx[21].offsetY + ")");
-    			add_location(g, file$6, 110, 12, 3724);
+    			add_location(line, file$6, 124, 16, 6462);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[20].area) + " svelte-hw3jbj"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[4] + "," + /*area*/ ctx[20].offsetY + ")");
+    			add_location(g, file$6, 119, 12, 6132);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
+    			append_dev(g, text0);
+    			append_dev(text0, t0);
+    			append_dev(g, text1);
+    			append_dev(text1, t1);
     			append_dev(g, line);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -38246,12 +38322,16 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
+    			if (dirty & /*$width, $margin*/ 48 && text1_x_value !== (text1_x_value = /*$width*/ ctx[5] - /*$margin*/ ctx[4])) {
+    				attr_dev(text1, "x", text1_x_value);
+    			}
+
     			if (dirty & /*$width*/ 32) {
     				attr_dev(line, "x2", /*$width*/ ctx[5]);
     			}
 
     			if (dirty & /*areaData, $hoveredCountry, $selectedCountry, circleMouseOver, circleMouseOut, circleClick*/ 1805) {
-    				each_value_3 = /*area*/ ctx[21].graphData;
+    				each_value_3 = /*area*/ ctx[20].graphData;
     				validate_each_argument(each_value_3);
     				let i;
 
@@ -38274,11 +38354,11 @@ var app = (function () {
     				each_blocks.length = each_value_3.length;
     			}
 
-    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[21].area) + " svelte-8yj4mr"))) {
+    			if (dirty & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[20].area) + " svelte-hw3jbj"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*$margin, areaData*/ 17 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[4] + "," + /*area*/ ctx[21].offsetY + ")")) {
+    			if (dirty & /*$margin, areaData*/ 17 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[4] + "," + /*area*/ ctx[20].offsetY + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
     		},
@@ -38292,18 +38372,18 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(109:8) {#each areaData as area, i}",
+    		source: "(118:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (136:8) {#each area.graphData as graph, i}
+    // (149:8) {#each area.graphData as graph, i}
     function create_each_block_1$1(ctx) {
     	let div;
     	let p;
-    	let t0_value = /*graph*/ ctx[24].score + "";
+    	let t0_value = /*graph*/ ctx[23].score + "";
     	let t0;
     	let t1;
     	let t2;
@@ -38316,12 +38396,12 @@ var app = (function () {
     			t0 = text$1(t0_value);
     			t1 = text$1(" / 10");
     			t2 = space();
-    			attr_dev(p, "class", "svelte-8yj4mr");
-    			add_location(p, file$6, 140, 16, 4846);
-    			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*graph*/ ctx[24].id) + " svelte-8yj4mr");
-    			set_style(div, "left", /*graph*/ ctx[24].x + "px");
-    			set_style(div, "top", /*area*/ ctx[21].offsetY + "px");
-    			add_location(div, file$6, 136, 12, 4680);
+    			attr_dev(p, "class", "svelte-hw3jbj");
+    			add_location(p, file$6, 153, 16, 7568);
+    			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*graph*/ ctx[23].id) + " " + ("tooltip-" + /*area*/ ctx[20].area) + " svelte-hw3jbj");
+    			set_style(div, "left", /*graph*/ ctx[23].x + "px");
+    			set_style(div, "top", /*area*/ ctx[20].offsetY + "px");
+    			add_location(div, file$6, 149, 12, 7377);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -38331,18 +38411,18 @@ var app = (function () {
     			append_dev(div, t2);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*areaData*/ 1 && t0_value !== (t0_value = /*graph*/ ctx[24].score + "")) set_data_dev(t0, t0_value);
+    			if (dirty & /*areaData*/ 1 && t0_value !== (t0_value = /*graph*/ ctx[23].score + "")) set_data_dev(t0, t0_value);
 
-    			if (dirty & /*areaData*/ 1 && div_class_value !== (div_class_value = "tooltip " + ("tooltip-" + /*graph*/ ctx[24].id) + " svelte-8yj4mr")) {
+    			if (dirty & /*areaData*/ 1 && div_class_value !== (div_class_value = "tooltip " + ("tooltip-" + /*graph*/ ctx[23].id) + " " + ("tooltip-" + /*area*/ ctx[20].area) + " svelte-hw3jbj")) {
     				attr_dev(div, "class", div_class_value);
     			}
 
     			if (dirty & /*areaData*/ 1) {
-    				set_style(div, "left", /*graph*/ ctx[24].x + "px");
+    				set_style(div, "left", /*graph*/ ctx[23].x + "px");
     			}
 
     			if (dirty & /*areaData*/ 1) {
-    				set_style(div, "top", /*area*/ ctx[21].offsetY + "px");
+    				set_style(div, "top", /*area*/ ctx[20].offsetY + "px");
     			}
     		},
     		d: function destroy(detaching) {
@@ -38354,17 +38434,17 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(136:8) {#each area.graphData as graph, i}",
+    		source: "(149:8) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (135:4) {#each areaData as area, i}
+    // (148:4) {#each areaData as area, i}
     function create_each_block$4(ctx) {
     	let each_1_anchor;
-    	let each_value_1 = /*area*/ ctx[21].graphData;
+    	let each_value_1 = /*area*/ ctx[20].graphData;
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -38389,7 +38469,7 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			if (dirty & /*areaData*/ 1) {
-    				each_value_1 = /*area*/ ctx[21].graphData;
+    				each_value_1 = /*area*/ ctx[20].graphData;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -38422,7 +38502,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(135:4) {#each areaData as area, i}",
+    		source: "(148:4) {#each areaData as area, i}",
     		ctx
     	});
 
@@ -38486,22 +38566,22 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "text-wrapper svelte-8yj4mr");
+    			attr_dev(div0, "class", "text-wrapper svelte-hw3jbj");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[13].call(div0));
-    			add_location(div0, file$6, 87, 0, 2974);
+    			add_location(div0, file$6, 86, 0, 2892);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[5]);
     			attr_dev(rect, "height", /*$height*/ ctx[6]);
-    			add_location(rect, file$6, 106, 8, 3616);
+    			add_location(rect, file$6, 115, 8, 6024);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[5] + " " + /*$height*/ ctx[6]);
     			attr_dev(svg, "width", /*$width*/ ctx[5]);
     			attr_dev(svg, "height", /*$height*/ ctx[6]);
-    			attr_dev(svg, "class", "svelte-8yj4mr");
-    			add_location(svg, file$6, 102, 4, 3520);
-    			attr_dev(div1, "class", "vis-wrapper svelte-8yj4mr");
+    			attr_dev(svg, "class", "svelte-hw3jbj");
+    			add_location(svg, file$6, 111, 4, 5928);
+    			attr_dev(div1, "class", "vis-wrapper svelte-hw3jbj");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[14].call(div1));
-    			add_location(div1, file$6, 101, 0, 3464);
+    			add_location(div1, file$6, 110, 0, 5872);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38656,7 +38736,6 @@ var app = (function () {
     	let $selectedCountry;
     	let $margin;
     	let $width;
-    	let $scaleFactor;
     	let $height;
     	validate_store(view, "view");
     	component_subscribe($$self, view, $$value => $$invalidate(15, $view = $$value));
@@ -38670,8 +38749,6 @@ var app = (function () {
     	component_subscribe($$self, margin, $$value => $$invalidate(4, $margin = $$value));
     	validate_store(width, "width");
     	component_subscribe($$self, width, $$value => $$invalidate(5, $width = $$value));
-    	validate_store(scaleFactor, "scaleFactor");
-    	component_subscribe($$self, scaleFactor, $$value => $$invalidate(17, $scaleFactor = $$value));
     	validate_store(height, "height");
     	component_subscribe($$self, height, $$value => $$invalidate(6, $height = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
@@ -38692,23 +38769,22 @@ var app = (function () {
 
     	function circleMouseOver(e) {
     		set_store_value(hoveredCountry, $hoveredCountry = e.path[1].dataset.id, $hoveredCountry);
+    	} // if ($selectedCountry = e.path[1].dataset.id) {
+    	//     let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
 
-    		// let selectedTooltip = Array.from(document.getElementsByClassName('tooltip-' + $hoveredCountry));
-    		let selectedTooltip = document.querySelectorAll(".tooltip-" + $hoveredCountry);
-
-    		selectedTooltip.forEach(node => node.classList.add("hovered"));
-    	}
-
+    	//     selectedTooltip.forEach(node => node.classList.add('hovered'));
+    	// } else {
+    	//     let hoveredTooltip = document.querySelector('.tooltip-' + $hoveredCountry + '.tooltip-' + e.path[1].dataset.area);
+    	//     hoveredTooltip.classList.add('hovered');
+    	// }
     	function circleMouseOut(e) {
     		set_store_value(hoveredCountry, $hoveredCountry = "", $hoveredCountry);
-    		let selectedTooltip = document.querySelectorAll(".tooltip");
-    		selectedTooltip.forEach(node => node.classList.remove("hovered"));
-    	}
+    	} // let selectedTooltip = document.querySelectorAll('.tooltip');
+    	// selectedTooltip.forEach(node => node.classList.remove('hovered'));
 
     	function circleClick(e) {
     		set_store_value(selectedCountry, $selectedCountry = e.path[1].dataset.id, $selectedCountry);
-    	} // let element = document.querySelectorAll('.tooltip');
-    	// // console.log(element)
+    	}
 
     	function parseData() {
     		const xScale = linear().domain([1, 10]).range([$margin * 3, $width - $margin * 3]);
@@ -38734,7 +38810,7 @@ var app = (function () {
     						id: d.countries[n].trim().toLowerCase().split(" ").join("-"),
     						x: xScale(m),
     						y: 0,
-    						r: $scaleFactor,
+    						r: 6,
     						country: d.countries[n],
     						path,
     						score: d.comps[n]
@@ -38795,7 +38871,6 @@ var app = (function () {
     		$selectedCountry,
     		$margin,
     		$width,
-    		$scaleFactor,
     		$height
     	});
 
@@ -38812,9 +38887,6 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*areaData*/ 1) {
-    			// // var myNodeList = document.querySelectorAll('div');
-    			// element.forEach(node => node.classList.add('blue'));
-    			// console.log(element)
     			if (areaData) {
     				parseData();
     			}
@@ -39170,9 +39242,9 @@ var app = (function () {
     			attr_dev(svg, "fill", "none");
     			add_location(svg, file$4, 28, 8, 807);
     			add_location(button, file$4, 26, 4, 766);
-    			attr_dev(div0, "class", "control-area svelte-1de46wq");
+    			attr_dev(div0, "class", "control-area svelte-bf0i77");
     			add_location(div0, file$4, 23, 0, 698);
-    			attr_dev(div1, "class", "vis-container svelte-1de46wq");
+    			attr_dev(div1, "class", "vis-container svelte-bf0i77");
     			add_location(div1, file$4, 42, 0, 2362);
     		},
     		l: function claim(nodes) {
@@ -40476,9 +40548,9 @@ var app = (function () {
     			span = element("span");
     			t0 = text$1(t0_value);
     			t1 = text$1(t1_value);
-    			attr_dev(span, "class", "svelte-1vn1i5s");
+    			attr_dev(span, "class", "svelte-dz8e99");
     			add_location(span, file$1, 41, 40, 1027);
-    			attr_dev(li, "class", "" + (null_to_empty(/*quarter*/ ctx[1].class) + " svelte-1vn1i5s"));
+    			attr_dev(li, "class", "" + (null_to_empty(/*quarter*/ ctx[1].class) + " svelte-dz8e99"));
     			add_location(li, file$1, 41, 12, 999);
     		},
     		m: function mount(target, anchor) {
@@ -40534,13 +40606,13 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h2, "class", "svelte-1vn1i5s");
+    			attr_dev(h2, "class", "svelte-dz8e99");
     			add_location(h2, file$1, 37, 4, 850);
-    			attr_dev(p, "class", "svelte-1vn1i5s");
+    			attr_dev(p, "class", "svelte-dz8e99");
     			add_location(p, file$1, 38, 4, 880);
-    			attr_dev(ul, "class", "svelte-1vn1i5s");
+    			attr_dev(ul, "class", "svelte-dz8e99");
     			add_location(ul, file$1, 39, 4, 941);
-    			attr_dev(div, "class", "quarterly svelte-1vn1i5s");
+    			attr_dev(div, "class", "quarterly svelte-dz8e99");
     			add_location(div, file$1, 36, 0, 822);
     		},
     		l: function claim(nodes) {

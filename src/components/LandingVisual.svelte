@@ -22,24 +22,23 @@
 
     function circleMouseOver(e) {
         $hoveredCountry = e.path[1].dataset.id;
-        // let selectedTooltip = Array.from(document.getElementsByClassName('tooltip-' + $hoveredCountry));
-        let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
-        selectedTooltip.forEach(node => node.classList.add('hovered'));
+        // if ($selectedCountry = e.path[1].dataset.id) {
+        //     let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
+        //     selectedTooltip.forEach(node => node.classList.add('hovered'));
+        // } else {
+        //     let hoveredTooltip = document.querySelector('.tooltip-' + $hoveredCountry + '.tooltip-' + e.path[1].dataset.area);
+        //     hoveredTooltip.classList.add('hovered');
+        // }
     }
 
     function circleMouseOut(e) {
         $hoveredCountry = '';
-        let selectedTooltip = document.querySelectorAll('.tooltip');
-        selectedTooltip.forEach(node => node.classList.remove('hovered'));
+        // let selectedTooltip = document.querySelectorAll('.tooltip');
+        // selectedTooltip.forEach(node => node.classList.remove('hovered'));
     }
 
     function circleClick(e) {
         $selectedCountry = e.path[1].dataset.id;
-        // let element = document.querySelectorAll('.tooltip');
-        // // console.log(element)
-        // // var myNodeList = document.querySelectorAll('div');
-        // element.forEach(node => node.classList.add('blue'));
-        // console.log(element)
     }
 
     $: if (areaData) {
@@ -72,7 +71,7 @@
                         id : d.countries[n].trim().toLowerCase().split(" ").join("-"),
                         x : xScale(m),
                         y : 0,
-                        r : $scaleFactor,
+                        r : 6,
                         country : d.countries[n],
                         path: path,
                         score: d.comps[n]
@@ -88,10 +87,20 @@
 <div class='text-wrapper'  bind:clientHeight={$height}>
     {#each copyData as area}
         <div class={'area '+area.label.toLowerCase()}>
-            <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>{area.name}</h2>
+            <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                {area.name}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z" fill="#122431"/>
+                </svg>
+            </h2>
             <div class='description'>
-                {area.definition}
-                <span on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>Click for details</span>
+                <p>{area.definition}</p>
+                <button on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                    Explore data
+                    <svg width="7" height="9" viewBox="0 0 7 9" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z" fill="white"/>
+                    </svg>
+                </button>
             </div>
         </div>
     {/each}
@@ -110,12 +119,16 @@
 
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
 
+                <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
+                <text x='{$width-$margin}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
+
                 <line class='gridline' x2={$width}></line>
 
                 {#each area.graphData as graph, i}
 
                     <g class='country {graph.id}'
                         data-id='{graph.id}'
+                        data-area='{area.area}'
                         transform='translate({graph.x},{graph.y})'
                         class:hovered='{graph.id == $hoveredCountry}'
                         class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
@@ -135,7 +148,7 @@
     {#each areaData as area, i}
         {#each area.graphData as graph, i}
             <div
-                class="tooltip {'tooltip-' + graph.id}"
+                class="tooltip {'tooltip-' + graph.id} {'tooltip-' + area.area}"
                 style="left: {graph.x + 'px'}; top: {area.offsetY + 'px'}"
             >
                 <p>{graph.score} / 10</p>
@@ -174,124 +187,94 @@
     }
     
     .text-wrapper {
-        position: relative;
-        width: 30%;
-        padding-right: 2%;
-        padding-left: 25px;
+        width: 360px;
+        margin-right: 20px;
     }
 
     .area {
-        margin-bottom:20px;
+        margin-bottom: 20px;
     }
+
     .area h2 {
-        font-size:1.2em;
-        margin-top:0;
-        margin-bottom:0;
-        display:inline-block;
-        position:relative;
-        cursor:pointer;
+        margin-top: 0;
+        margin-bottom: 10px;
+        position: relative;
+        cursor: pointer;
     }
 
-    .area .description {
-        font-size:0.9em;
-        display:inline;
+    .area h2 svg {
+        margin-left: 3px;
     }
 
-    .area .description span {
-        color: steelblue; /*placeholder color*/
-        font-style: italic;
-        text-decoration: underline dotted;
-        cursor:pointer;
+    .description {
+        margin-bottom: 20px;
+    }
+
+    .description p {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .description button {
+        height: 23px;
+        font-size: 12px;
     }
 
     .vis-wrapper {
         position: relative;
-        width: 99%;
+        width: 100%;
     }
 
-    svg {
+    .vis-wrapper svg {
         position: absolute;
         fill: #fff;
     }
     
     circle.country-circle {
-        fill: #666666;
-        stroke: #f9f9f9;
-        fill-opacity: 0.5;
-    }
-
-    .tooltip {
-        fill-opacity: 0;
-        stroke-opacity: 0;
-        transform: translate(10px, -20px);
-        pointer-events: none;
-    }
-
-    .selected.hovered .tooltip {
-        fill-opacity: 1;
-        stroke-opacity: 1;
-    }
-
-    .tooltip-bg {
-        stroke: #333;
-        fill: #fff;
+        fill: #84A9BC;
+        stroke: #fff;
         stroke-width: 2px;
     }
 
-    .tooltip text {
-        fill: #333;
-    }
-
-    path {
-        stroke:#cccccc;
-        fill:none;
-        stroke-width:1px;
+    .vis-wrapper path {
+        stroke: #84A9BC;
+        fill: none;
+        stroke-width: 1px;
         mix-blend-mode: multiply;
-        stroke-opacity: 0.5;
-    }
-
-    g.China.selected circle {
-        fill: white;
-        stroke: red;
-        stroke-width: 2px;
-        fill-opacity:1;
-    }
-
-    g.China.selected path {
-        stroke: red;
-        stroke-width: 2px;
-        stroke-opacity: 1;
-    }
-
-    g.hovered path {
-        stroke: #333;
-        stroke-width: 2px;
-        stroke-opacity: 1;
+        stroke-opacity: 0.2;
     }
 
     g.hovered circle {
-        fill: white;
-        stroke: #333;
-        stroke-width: 2px;
-        fill-opacity:1;
+        fill: #234462;
+        stroke: #fff;
     }
 
     g.selected path {
-        stroke: blue;
+        stroke: #234462;
         stroke-width: 2px;
         stroke-opacity: 1;
     }
 
     g.selected circle {
-        fill: white;
-        stroke: blue;
+        fill: #234462;
+        stroke: #fff;
+    }
+
+    g.china.selected circle {
+        fill: #FF0202;
+        stroke: #fff;
         stroke-width: 2px;
-        fill-opacity:1;
+    }
+
+    g.china.selected path {
+        stroke: #FF0202;
+        stroke-width: 2px;
+        stroke-opacity: 1;
     }
 
     .gridline {
-        stroke: #eeeeee;
-
+        stroke: #84A9BC;
     }
 
 </style>

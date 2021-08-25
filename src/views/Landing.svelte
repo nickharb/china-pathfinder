@@ -48,7 +48,6 @@
 
 <style>
     .vis-container {
-        max-width: 1000px;
         display: flex;
         text-align: left;
         margin: 1em auto;
@@ -59,5 +58,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 30px;
     }
 </style>

@@ -46,7 +46,6 @@
 
 <style type="text/css">
     .quarterly {
-        width: 100%;
         margin: 40px auto;
         border-radius: 4px;
         background-color: #EFF4F8;
