@@ -39383,15 +39383,17 @@ var app = (function () {
 
     const loadIndicatorsData = async (indicatorName) => {
 
-        const data = await csv(dataPath + '/' + indicatorName + '.csv');
-        let indicators = Object.keys(data[0]).filter(d=> d!=='countries');
+        const data = await csv(dataPath + '/' + indicatorName + '.csv'); // load the indicator data for current indicator
+        let indicators = Object.keys(data[0]).filter(d => d !== 'country' && d !== 'id'); // grab all the annual indicators (exclude country and id fields)
         let output = [];
+
         indicators.forEach((d)=>{
+            // console.log(d)
 
             let countries = [];
 
             data.forEach((x)=>{
-                countries.push({country: x.countries, value: x[d]});
+                countries.push({country: x.country, value: x[d]});
             });
 
             countries.sort((a,b)=> b.value - a.value); // sorts data from highest to lowest
