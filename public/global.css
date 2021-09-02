@@ -15,8 +15,10 @@ body {
 }
 
 main {
-    max-width: 1024px;
+    /*max-width: 1024px;*/
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 100px 40px;
 }
 
 a {
@@ -95,12 +97,21 @@ h1 {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 10px;
+    letter-spacing: 0.01em;
+    line-height: 1;
 }
 
 h2 {
     font-size: 17px;
     font-weight: bold;
     line-height: 1.2;
+}
+
+.control-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 

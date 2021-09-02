@@ -6,6 +6,7 @@
     import {view, areaInView} from '../stores/view';
     import {width, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import copyData from "../data/copy";
+    import Icon from '../components/Icon.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
     import IndicatorVisual from '../components/IndicatorVisual.svelte';
 
@@ -63,9 +64,9 @@
 </script>
 
 <div class='area-summary'>
-    <button on:click|self={()=> switchView('main')}>Back</button>
+    <button class='back' on:click|self={()=> switchView('main')}>Back</button>
     <div class='area-text'>
-        <h2>{currentArea.name}</h2>
+        <h1>{currentArea.name}</h1>
         <div class='area-vis' bind:clientWidth={$width}>
             <svg viewBox="0 0 {$width} 100"
                 width={$width}
@@ -91,8 +92,11 @@
 
 <div class='indicators'>
     <h2>Assessing {currentArea.name.toLowerCase()}</h2>
-    <CountrySelect {countryNames}/>
-    <button>Share this view</button>
+
+    <div class='control-area'>
+        <CountrySelect {countryNames}/>
+        <button>Share this view<Icon type='share' /></button>
+    </div>
 
     {#each indicatorsData as indicator, i}
         <div class='indicator-container'>
@@ -102,7 +106,7 @@
                 <div style='margin-top:{$chartWidth*0.3}px; padding-left:20px; border-left:1px solid #eee;' class='inner-container'>
                     <h3>{indicator.copy.name}</h3>
                     <div class='description'>{indicator.copy.definition}</div>
-                    <button>Share this chart</button>
+                    <button>Share this chart<Icon type='share' /></button>
                 </div>
             </div>
         {:else}
@@ -110,7 +114,7 @@
                 <div style='float:right;margin-top:{$chartWidth*0.3}px; padding-right:20px; border-right:1px solid #eee;' class='inner-container'>
                     <h3>{indicator.copy.name}</h3>
                     <div class='description'>{indicator.copy.definition}</div>
-                    <button>Share this chart</button>
+                    <button>Share this chart<Icon type='share' /></button>
                 </div>
             </div>
             <IndicatorVisual {indicator}/>
@@ -123,15 +127,25 @@
 
 
 <style>
-    .area-summary,.indicators {
-        max-width:1000px;
-        text-align:left;
+    .area-summary,
+    .indicators {
+        /*max-width:1000px;*/
+        /*text-align:left;
         margin: 1em auto;
-        padding: 1em 0;
+        padding: 1em 0;*/
+    }
+
+    .area-summary {
+        background-color: #EFF4F8;
+        margin-bottom: 100px;
+        padding: 40px;
+        border-radius: 10px;
     }
     
-    button {
-        display:block;
+    button.back {
+        display: block;
+        position: absolute;
+        top: 0;
     }
 
     .area-text {
@@ -180,9 +194,9 @@
 
 
     svg {
-        position: absolute;
+        /*position: absolute;*/
         /* fill: #f9f9f9; */
-        fill:white;
+        /*fill:white;*/
         
     }
     circle.country-circle {
