@@ -33,11 +33,12 @@
 
         areaData.comps.forEach((d,i)=>{
             graphData.push({
-                    x : xScale(d),
-                    y : 0,
-                    r : $scaleFactor,
-                    country : areaData.countries[i]
-                });
+                id : areaData.countries[i].trim().toLowerCase().split(" ").join("-"),
+                x : xScale(d),
+                y : 0,
+                r : 6,
+                country : areaData.countries[i]
+            });
         });
     }
 
@@ -55,7 +56,6 @@
         })
     }
 
-
     function switchView(targetView, area) {
         $view = targetView;
         $areaInView = area;
@@ -63,6 +63,7 @@
 
 </script>
 
+<!-- Header area -->
 <div class='area-summary'>
     <button class='back' on:click|self={()=> switchView('main')}>Back</button>
     <div class='area-text'>
@@ -73,13 +74,21 @@
                 height='100'>
                 {#if areaData}
                     <g class="{areaData.area}" transform='translate({$margin},{$margin*4})'>
+
+                        <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
+                        <text x='{$width-$margin}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
+
                         <line class='gridline' x2={$width}></line>
+
                         {#each graphData as graph,i}
-                        <g class='country {graph.country}' transform='translate({graph.x},{graph.y})'>
-                            <circle r={graph.r} class='country-circle'></circle>
-                            <text y='-10px'>{graph.country}</text>
-                        </g>
-                        {/each} 
+
+                            <g class='country {graph.id}' transform='translate({graph.x},{graph.y})'>
+                                <circle r={graph.r} class='country-circle'></circle>
+                                <text class='label' y='-10px'>{graph.country}</text>
+                            </g>
+
+                        {/each}
+
                     </g>
                 {/if}
             
@@ -87,9 +96,10 @@
         </div>
     </div>
     <div class='description'>{currentArea.context}</div>
-    
+    <button>Expand to read more<Icon type='chevron-down' /></button>
 </div>
 
+<!-- Secondary indicator charts container -->
 <div class='indicators'>
     <h2>Assessing {currentArea.name.toLowerCase()}</h2>
 
@@ -98,43 +108,39 @@
         <button>Share this view<Icon type='share' /></button>
     </div>
 
+    <!-- Alternate indicator charts on left and right -->
     {#each indicatorsData as indicator, i}
-        <div class='indicator-container'>
-        {#if i%2 == 0}
-            <IndicatorVisual {indicator}/>
-            <div class='indicator-text'>
-                <div style='margin-top:{$chartWidth*0.3}px; padding-left:20px; border-left:1px solid #eee;' class='inner-container'>
-                    <h3>{indicator.copy.name}</h3>
-                    <div class='description'>{indicator.copy.definition}</div>
-                    <button>Share this chart<Icon type='share' /></button>
-                </div>
-            </div>
-        {:else}
-            <div class='indicator-text'>
-                <div style='float:right;margin-top:{$chartWidth*0.3}px; padding-right:20px; border-right:1px solid #eee;' class='inner-container'>
-                    <h3>{indicator.copy.name}</h3>
-                    <div class='description'>{indicator.copy.definition}</div>
-                    <button>Share this chart<Icon type='share' /></button>
-                </div>
-            </div>
-            <IndicatorVisual {indicator}/>
-        {/if}
-        </div>
-    {/each}
 
+        <div class='indicator-container'>
+
+            {#if i%2 == 0}
+                <IndicatorVisual {indicator}/>
+                <div class='indicator-text'>
+                    <div style='margin-top:{$chartWidth*0.3}px; padding-left:20px; border-left:1px solid #eee;' class='inner-container'>
+                        <h3>{indicator.copy.name}</h3>
+                        <div class='description'>{indicator.copy.definition}</div>
+                        <button>Share this chart<Icon type='share' /></button>
+                    </div>
+                </div>
+            {:else}
+                <div class='indicator-text'>
+                    <div style='float:right;margin-top:{$chartWidth*0.3}px; padding-right:20px; border-right:1px solid #eee;' class='inner-container'>
+                        <h3>{indicator.copy.name}</h3>
+                        <div class='description'>{indicator.copy.definition}</div>
+                        <button>Share this chart<Icon type='share' /></button>
+                    </div>
+                </div>
+                <IndicatorVisual {indicator}/>
+            {/if}
+            
+        </div>
+
+    {/each}
 </div>
 
 
 
 <style>
-    .area-summary,
-    .indicators {
-        /*max-width:1000px;*/
-        /*text-align:left;
-        margin: 1em auto;
-        padding: 1em 0;*/
-    }
-
     .area-summary {
         background-color: #EFF4F8;
         margin-bottom: 100px;
@@ -155,77 +161,95 @@
 
     .area-text h2 {
         position: relative;
-        width:30%;
-        padding-right:2%;
-        /* padding-left:25px; */
-        margin-top:0;
-        margin-bottom:0;
-        display:inline-block;
-
+        width: 30%;
+        padding-right: 2%;
+        margin-top: 0;
+        margin-bottom: 0;
+        display: inline-block;
     }
+    
     .area-text .area-vis {
         position: relative;
-        width:99%;
+        width: 99%;
     }
 
     .description {
-        max-width:620px;
-    }
-    .gridline {
-        stroke:#eeeeee;
-
+        max-width: 620px;
     }
 
     .indicator-container {
-        display:flex;
+        display: flex;
     }
 
     .indicator-container h3 {
-        margin-top:0;
+        margin-top: 0;
     }
     .indicator-container .indicator-text {
-        width:40%;
+        width: 40%;
     }
 
     .indicator-container .indicator-text .inner-container {
-        display:inline-block;
+        display: inline-block;
     }
-    
 
-
-    svg {
-        /*position: absolute;*/
-        /* fill: #f9f9f9; */
-        /*fill:white;*/
-        
-    }
     circle.country-circle {
-        fill:#666666;
-        stroke:#f9f9f9;
-        fill-opacity:0.5;
+        fill: #84A9BC;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
+    /*.vis-wrapper path {
+        stroke: #84A9BC;
+        fill: none;
+        stroke-width: 1px;
+        mix-blend-mode: multiply;
+        stroke-opacity: 0.2;
+    }*/
+
+    g.hovered circle {
+        fill: #234462;
+        stroke: #fff;
+    }
+
+    /*g.selected path {
+        stroke: #234462;
+        stroke-width: 2px;
+        stroke-opacity: 1;
+    }
+
+    g.selected circle {
+        fill: #234462;
+        stroke: #fff;
+    }*/
+
+    g.china circle {
+        fill: #D13F36;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
+    .gridline {
+        stroke: #84A9BC;
     }
 
     text {
-        fill:#444444;
-        text-anchor:middle;
+        pointer-events: none;
+    }
+
+    text.label {
+        fill: #444444;
+        text-anchor: middle;
         fill-opacity: 0;
     }
 
-    g.China text {
+    g.china text {
+        fill: #D13F36;
+        font-weight: bold;
         fill-opacity: 1;
-        fill:#b90000;
-        font-weight:bold;
-    }
-
-    g.China circle {
-        fill:white;
-        stroke:#b90000;
-        stroke-width:2px;
-        fill-opacity:1;
     }
 
     button {
-        margin-top:1em;
+        margin-top: 20px;
     }
 
 

@@ -26,8 +26,8 @@
         margin: 0 5px;
         font-weight: bold;
         border-radius: 4px;
-        background-color: #FFD9D9;
-        color: #FF0202;
+        background-color: #F6D9D7;
+        color: #D13F36;
     }
 
     .country-toggle-box {

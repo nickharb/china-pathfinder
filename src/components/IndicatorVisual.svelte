@@ -45,53 +45,63 @@
 </script>
 
 <div class='indicator-vis'>
-<svg  viewBox="0 0 {$chartWidth} {$chartWidth}">
-    <g transform='translate({$chartWidth/2},{$chartWidth/2})'>
-        {#each indicator.values as country}
-            <g class='country {country.country}'>
-                <path d={country.path}></path>
-                <g transform='rotate({country.rotateAngel})translate({country.barLength},0)'>
-                    <text 
-                    transform='rotate({country.rotateAngel*-1})'
-                    style='text-anchor:{country.textAnchor};'
-                    >{country.country}: {Math.round(country.value*10)/10}</text>
-                </g>
-            </g>
-            
-        {/each}
 
-        <text dy="5" class='middle-text'>{indicator.indicator}</text>
-        
-    </g>
-</svg>
+    <svg viewBox="0 0 {$chartWidth} {$chartWidth}">
+
+        <g transform='translate({$chartWidth/2},{$chartWidth/2})'>
+
+            {#each indicator.values as country}
+
+                <g class='country {country.country}'>
+
+                    <path d={country.path}></path>
+
+                    <g transform='rotate({country.rotateAngel})translate({country.barLength},0)'>
+                        <text 
+                        transform='rotate({country.rotateAngel*-1})'
+                        style='text-anchor:{country.textAnchor};'
+                        >{country.country}: {Math.round(country.value*10)/10}</text>
+                    </g>
+
+                </g>
+                
+            {/each}
+
+            <text dy="5" class='middle-text'>{indicator.indicator}</text>
+            
+        </g>
+    </svg>
 </div>
 
 
 <style>
     .indicator-vis {
-        width:55%;
+        width: 55%;
     }
 
     .country {
-        fill:#cccccc;
+        fill: #84A9BC;
     }
+
     .country text {
-        pointer-events:none;
-        font-size:14px;
-        fill-opacity:0;
+        pointer-events: none;
+        font-size: 14px;
+        fill-opacity: 0;
     }
+    
     .China.country {
-        fill:#444444;
+        fill: #D13F36;
     }
+
     .China.country text{
-        fill-opacity:1;
+        fill-opacity: 1;
     }
 
     text.middle-text {
-        text-anchor:middle;
-        font-weight:400;
-        text-transform:capitalize;
-        font-size:1.3em;
+        text-anchor: middle;
+        font-weight: 400;
+        text-transform: capitalize;
+        font-size: 1.3em;
     }
 
 

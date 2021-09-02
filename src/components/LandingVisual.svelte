@@ -88,7 +88,7 @@
 <div class='text-wrapper'  bind:clientHeight={$height}>
     {#each copyData as area}
         <div class={'area '+area.label.toLowerCase()}>
-            <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} on:mouseover={() => console.log('TEST')}>
+            <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
                 {area.name}
                 <Icon type='info' />
             </h2>
@@ -259,13 +259,13 @@
     }
 
     g.china.selected circle {
-        fill: #FF0202;
+        fill: #D13F36;
         stroke: #fff;
         stroke-width: 2px;
     }
 
     g.china.selected path {
-        stroke: #FF0202;
+        stroke: #D13F36;
         stroke-width: 2px;
         stroke-opacity: 1;
     }
