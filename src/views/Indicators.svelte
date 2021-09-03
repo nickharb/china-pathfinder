@@ -5,6 +5,7 @@
     import loadIndicatorsData from "../data/load-indicators-data.js";
     import {view, areaInView} from '../stores/view';
     import {width, margin, scaleFactor, chartWidth} from '../stores/dimensions';
+    import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import copyData from "../data/copy";
     import Icon from '../components/Icon.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
@@ -20,6 +21,18 @@
     }
 
     const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
+
+    function circleMouseOver(e) {
+        $hoveredCountry = e.path[1].dataset.id;
+    }
+
+    function circleMouseOut(e) {
+        $hoveredCountry = '';
+    }
+
+    function circleClick(e) {
+        $selectedCountry = e.path[1].dataset.id;
+    }
 
     onMount(async()=>{
         data = await loadData();
@@ -69,23 +82,34 @@
     <div class='area-text'>
         <h1>{currentArea.name}</h1>
         <div class='area-vis' bind:clientWidth={$width}>
-            <svg viewBox="0 0 {$width} 100"
+            <svg viewBox="0 0 {$width} 60"
                 width={$width}
-                height='100'>
+                height='50'>
                 {#if areaData}
                     <g class="{areaData.area}" transform='translate({$margin},{$margin*4})'>
 
-                        <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
-                        <text x='{$width-$margin}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
+                        <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
+                        <text x='{$width-$margin}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
 
-                        <line class='gridline' x2={$width}></line>
+                        <line class='gridline' x2={$width} transform='translate(0,5)'></line>
 
                         {#each graphData as graph,i}
 
-                            <g class='country {graph.id}' transform='translate({graph.x},{graph.y})'>
-                                <circle r={graph.r} class='country-circle'></circle>
+                            <g class='country {graph.id}'
+                                data-id='{graph.id}'
+                                transform='translate({graph.x},{graph.y+5})'
+                                class:hovered='{graph.id == $hoveredCountry}'
+                                class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
+                            >
+                                
+                                <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
                                 <text class='label' y='-10px'>{graph.country}</text>
                             </g>
+
+                            <!-- <g class='country {graph.id}' transform='translate({graph.x},{graph.y+5})'>
+                                <circle r={graph.r} class='country-circle'></circle>
+                                <text class='label' y='-10px'>{graph.country}</text>
+                            </g> -->
 
                         {/each}
 
@@ -132,7 +156,7 @@
                 </div>
                 <IndicatorVisual {indicator}/>
             {/if}
-            
+
         </div>
 
     {/each}
@@ -156,21 +180,21 @@
 
     .area-text {
         display: flex;
-        padding-bottom:1em;
+        align-items: center;
+        margin-bottom: 20px;
     }
 
-    .area-text h2 {
-        position: relative;
+    .area-text h1 {
         width: 30%;
-        padding-right: 2%;
-        margin-top: 0;
-        margin-bottom: 0;
+        padding-right: 10px;
+        margin: 0;
         display: inline-block;
     }
     
     .area-text .area-vis {
         position: relative;
-        width: 99%;
+        /*max-width: 500px;*/
+        width: 70%;
     }
 
     .description {
@@ -222,6 +246,12 @@
         stroke: #fff;
     }*/
 
+    g.selected circle {
+        fill: #234462;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
     g.china circle {
         fill: #D13F36;
         stroke: #fff;
@@ -240,6 +270,12 @@
         fill: #444444;
         text-anchor: middle;
         fill-opacity: 0;
+    }
+
+    g.selected text {
+        fill: #234462;
+        font-weight: bold;
+        fill-opacity: 1;
     }
 
     g.china text {
