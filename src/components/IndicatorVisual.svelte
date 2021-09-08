@@ -1,37 +1,38 @@
 <script>
     import * as d3 from 'd3';
-    import {chartWidth, innerR} from '../stores/dimensions';
+    import {chartWidth, innerRadius} from '../stores/dimensions';
+    import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     export let indicator;
     
-    $chartWidth = window.innerWidth*0.5;
+    // $chartWidth = window.innerWidth * 0.2;
+    $chartWidth = 500;
+    $innerRadius = 50;
+
+    let minRadius = $innerRadius + 10;
+    let maxRadius = $chartWidth/2-$innerRadius;
 
     let x = d3.scaleBand()
-        .range([0, 2 * Math.PI])
-        .align(0)
-        .domain( indicator.values.map(d=> d.country));
+        .domain(indicator.values.map(d => d.country))
+        .range([0, 2 * Math.PI]);
 
-    let y = d3.scalePow(2) 
-    // d3.scaleSqrt() makes less dramatic effect
-        .domain(d3.extent(indicator.values.map(d=>d.value)))
-        .range([$innerR+20, $chartWidth/2-50])
+    let y = d3.scalePow()
+        .domain(d3.extent(indicator.values.map(d => parseFloat(d.value))))
+        .range([minRadius, maxRadius])
 
-    // uses d3 arc function, rotates 360 degrees
-    // each sunburst bar is its own g element
-
-    indicator.values.forEach((d,i)=>{
+    indicator.values.forEach((d,i) => {
         d.path = d3.arc()
-            .innerRadius($innerR)
+            .innerRadius($innerRadius)
             .outerRadius(y(d.value))
-            // .outerRadius($innerR+50)
+            .cornerRadius(2)
             .startAngle(x(d.country))
             .endAngle(x(d.country) + x.bandwidth())
-            .padAngle(0.04)
-            .padRadius($innerR)();
+            .padAngle(0.18)
+            .padRadius($innerRadius)();
         
-        d.rotateAngel = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
+        d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
 
         // computes if the text should be on the right or left of the bar
-        if (i>=indicator.values.length/2){
+        if (i >= indicator.values.length/2) {
             d.textRotate = 180; 
             d.textAnchor = 'end';
         } else{
@@ -46,22 +47,36 @@
 
 <div class='indicator-vis'>
 
-    <svg viewBox="0 0 {$chartWidth} {$chartWidth}">
+    <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}>
 
         <g transform='translate({$chartWidth/2},{$chartWidth/2})'>
 
             {#each indicator.values as country}
 
-                <g class='country {country.country}'>
+                <g class='country {country.id}'>
 
                     <path d={country.path}></path>
 
-                    <g transform='rotate({country.rotateAngel})translate({country.barLength},0)'>
+                    <g transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
                         <text 
-                        transform='rotate({country.rotateAngel*-1})'
-                        style='text-anchor:{country.textAnchor};'
-                        >{country.country}: {Math.round(country.value*10)/10}</text>
+                            transform='rotate({country.rotateAngle*-1})'
+                            style='text-anchor:{country.textAnchor};'
+                        >
+                            {country.country}: {Math.round(country.value*10)/10}
+                        </text>
                     </g>
+
+                    <!-- <g class='country {graph.id}'
+                        data-id='{graph.id}'
+                        data-area='{area.area}'
+                        transform='translate({graph.x},{graph.y})'
+                        class:hovered='{graph.id == $hoveredCountry}'
+                        class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
+                    >
+                        
+                        <path d={graph.path}></path>
+                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
+                    </g> -->
 
                 </g>
                 
@@ -76,7 +91,7 @@
 
 <style>
     .indicator-vis {
-        width: 55%;
+        /*width: 300px;*/
     }
 
     .country {
@@ -85,15 +100,15 @@
 
     .country text {
         pointer-events: none;
-        font-size: 14px;
+        font-size: 11px;
         fill-opacity: 0;
     }
-    
-    .China.country {
+
+    .china.country {
         fill: #D13F36;
     }
 
-    .China.country text{
+    .china.country text{
         fill-opacity: 1;
     }
 
@@ -101,7 +116,8 @@
         text-anchor: middle;
         font-weight: 400;
         text-transform: capitalize;
-        font-size: 1.3em;
+        /*font-size: 1.3em;*/
+        font-size: 12px;
     }
 
 

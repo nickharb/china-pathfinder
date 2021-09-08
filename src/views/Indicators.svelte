@@ -61,6 +61,7 @@
         indicatorsData.forEach((d,i) => {
 
             let indicatorCopy = copyData.filter(x=> x.category == $areaInView);
+
             if (i >= indicatorCopy.length) {
                 d.copy = {name: 'Placeholder indicator', definition:'This will be finalized when data comes in.',context:''};
             } else {
@@ -203,13 +204,15 @@
 
     .indicator-container {
         display: flex;
+        justify-content: center;
     }
 
     .indicator-container h3 {
         margin-top: 0;
     }
     .indicator-container .indicator-text {
-        width: 40%;
+        /*width: 40%;*/
+        width: 350px;
     }
 
     .indicator-container .indicator-text .inner-container {

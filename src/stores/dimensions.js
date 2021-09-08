@@ -7,4 +7,5 @@ export const scaleFactor = derived(width, ($width) => ($width/150));
 
 // for sunburst charts
 export const chartWidth = writable();
-export const innerR = derived(chartWidth, ($chartWidth) => ($chartWidth/6));
+export const innerRadius = writable();
+// export const innerR = derived(chartWidth, ($chartWidth) => ($chartWidth/6));

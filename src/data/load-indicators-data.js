@@ -8,12 +8,15 @@ const loadIndicatorsData = async (indicatorName) => {
     let output = [];
 
     indicators.forEach((d)=>{
-        // console.log(d)
 
         let countries = [];
 
         data.forEach((x)=>{
-            countries.push({country: x.country, value: x[d]});
+            countries.push({
+                id: x.id,
+                country: x.country,
+                value: x[d]
+            });
         })
 
         countries.sort((a,b)=> b.value - a.value); // sorts data from highest to lowest
