@@ -40031,81 +40031,72 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[7] = list[i];
+    	child_ctx[12] = list[i];
     	return child_ctx;
     }
 
-    // (54:12) {#each indicator.values as country}
+    // (66:12) {#each indicator.values as country}
     function create_each_block$1(ctx) {
-    	let g1;
+    	let g;
     	let path;
     	let path_d_value;
-    	let g0;
-    	let text_1;
-    	let t0_value = /*country*/ ctx[7].country + "";
-    	let t0;
-    	let t1;
-    	let t2_value = Math.round(/*country*/ ctx[7].value * 10) / 10 + "";
-    	let t2;
-    	let text_1_transform_value;
-    	let g0_transform_value;
-    	let g1_class_value;
+    	let g_class_value;
+    	let g_data_id_value;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
-    			g1 = svg_element("g");
+    			g = svg_element("g");
     			path = svg_element("path");
-    			g0 = svg_element("g");
-    			text_1 = svg_element("text");
-    			t0 = text$1(t0_value);
-    			t1 = text$1(": ");
-    			t2 = text$1(t2_value);
-    			attr_dev(path, "d", path_d_value = /*country*/ ctx[7].path);
-    			add_location(path, file$2, 57, 20, 1716);
-    			attr_dev(text_1, "transform", text_1_transform_value = "rotate(" + /*country*/ ctx[7].rotateAngle * -1 + ")");
-    			set_style(text_1, "text-anchor", /*country*/ ctx[7].textAnchor);
-    			attr_dev(text_1, "class", "svelte-bwh7ps");
-    			add_location(text_1, file$2, 60, 24, 1870);
-    			attr_dev(g0, "transform", g0_transform_value = "rotate(" + /*country*/ ctx[7].rotateAngle + ")translate(" + /*country*/ ctx[7].barLength + ",0)");
-    			add_location(g0, file$2, 59, 20, 1768);
-    			attr_dev(g1, "class", g1_class_value = "country " + /*country*/ ctx[7].id + " svelte-bwh7ps");
-    			add_location(g1, file$2, 55, 16, 1662);
+    			attr_dev(path, "d", path_d_value = /*country*/ ctx[12].path);
+    			attr_dev(path, "class", "svelte-1inb0db");
+    			add_location(path, file$2, 73, 20, 2209);
+    			attr_dev(g, "class", g_class_value = "country " + /*country*/ ctx[12].id + " svelte-1inb0db");
+    			attr_dev(g, "data-id", g_data_id_value = /*country*/ ctx[12].id);
+    			toggle_class(g, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
+    			toggle_class(g, "selected", /*country*/ ctx[12].id == /*$selectedCountry*/ ctx[3] || /*country*/ ctx[12].id == "china");
+    			add_location(g, file$2, 67, 16, 1932);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, g1, anchor);
-    			append_dev(g1, path);
-    			append_dev(g1, g0);
-    			append_dev(g0, text_1);
-    			append_dev(text_1, t0);
-    			append_dev(text_1, t1);
-    			append_dev(text_1, t2);
+    			insert_dev(target, g, anchor);
+    			append_dev(g, path);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(path, "mouseover", /*pathMouseOver*/ ctx[4], false, false, false),
+    					listen_dev(path, "mouseout", /*pathMouseOut*/ ctx[5], false, false, false),
+    					listen_dev(path, "click", /*pathClick*/ ctx[6], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*indicator*/ 1 && path_d_value !== (path_d_value = /*country*/ ctx[7].path)) {
+    			if (dirty & /*indicator*/ 1 && path_d_value !== (path_d_value = /*country*/ ctx[12].path)) {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty & /*indicator*/ 1 && t0_value !== (t0_value = /*country*/ ctx[7].country + "")) set_data_dev(t0, t0_value);
-    			if (dirty & /*indicator*/ 1 && t2_value !== (t2_value = Math.round(/*country*/ ctx[7].value * 10) / 10 + "")) set_data_dev(t2, t2_value);
-
-    			if (dirty & /*indicator*/ 1 && text_1_transform_value !== (text_1_transform_value = "rotate(" + /*country*/ ctx[7].rotateAngle * -1 + ")")) {
-    				attr_dev(text_1, "transform", text_1_transform_value);
+    			if (dirty & /*indicator*/ 1 && g_class_value !== (g_class_value = "country " + /*country*/ ctx[12].id + " svelte-1inb0db")) {
+    				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty & /*indicator*/ 1) {
-    				set_style(text_1, "text-anchor", /*country*/ ctx[7].textAnchor);
+    			if (dirty & /*indicator*/ 1 && g_data_id_value !== (g_data_id_value = /*country*/ ctx[12].id)) {
+    				attr_dev(g, "data-id", g_data_id_value);
     			}
 
-    			if (dirty & /*indicator*/ 1 && g0_transform_value !== (g0_transform_value = "rotate(" + /*country*/ ctx[7].rotateAngle + ")translate(" + /*country*/ ctx[7].barLength + ",0)")) {
-    				attr_dev(g0, "transform", g0_transform_value);
+    			if (dirty & /*indicator, indicator, $hoveredCountry*/ 5) {
+    				toggle_class(g, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
     			}
 
-    			if (dirty & /*indicator*/ 1 && g1_class_value !== (g1_class_value = "country " + /*country*/ ctx[7].id + " svelte-bwh7ps")) {
-    				attr_dev(g1, "class", g1_class_value);
+    			if (dirty & /*indicator, indicator, $selectedCountry*/ 9) {
+    				toggle_class(g, "selected", /*country*/ ctx[12].id == /*$selectedCountry*/ ctx[3] || /*country*/ ctx[12].id == "china");
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(g1);
+    			if (detaching) detach_dev(g);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -40113,7 +40104,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(54:12) {#each indicator.values as country}",
+    		source: "(66:12) {#each indicator.values as country}",
     		ctx
     	});
 
@@ -40150,16 +40141,16 @@ var app = (function () {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
     			attr_dev(text_1, "dy", "5");
-    			attr_dev(text_1, "class", "middle-text svelte-bwh7ps");
-    			add_location(text_1, file$2, 84, 12, 2926);
+    			attr_dev(text_1, "class", "middle-text svelte-1inb0db");
+    			add_location(text_1, file$2, 88, 12, 2835);
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")");
-    			add_location(g, file$2, 51, 8, 1537);
+    			add_location(g, file$2, 63, 8, 1807);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1]);
     			attr_dev(svg, "width", /*$chartWidth*/ ctx[1]);
     			attr_dev(svg, "height", /*$chartWidth*/ ctx[1]);
-    			add_location(svg, file$2, 49, 4, 1439);
-    			attr_dev(div, "class", "indicator-vis svelte-bwh7ps");
-    			add_location(div, file$2, 47, 0, 1406);
+    			add_location(svg, file$2, 61, 4, 1709);
+    			attr_dev(div, "class", "indicator-vis svelte-1inb0db");
+    			add_location(div, file$2, 59, 0, 1676);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -40177,7 +40168,7 @@ var app = (function () {
     			append_dev(text_1, t);
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*indicator, Math*/ 1) {
+    			if (dirty & /*indicator, $hoveredCountry, $selectedCountry, pathMouseOver, pathMouseOut, pathClick*/ 125) {
     				each_value = /*indicator*/ ctx[0].values;
     				validate_each_argument(each_value);
     				let i;
@@ -40241,10 +40232,16 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let $chartWidth;
     	let $innerRadius;
+    	let $hoveredCountry;
+    	let $selectedCountry;
     	validate_store(chartWidth, "chartWidth");
     	component_subscribe($$self, chartWidth, $$value => $$invalidate(1, $chartWidth = $$value));
     	validate_store(innerRadius, "innerRadius");
-    	component_subscribe($$self, innerRadius, $$value => $$invalidate(2, $innerRadius = $$value));
+    	component_subscribe($$self, innerRadius, $$value => $$invalidate(7, $innerRadius = $$value));
+    	validate_store(hoveredCountry, "hoveredCountry");
+    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(2, $hoveredCountry = $$value));
+    	validate_store(selectedCountry, "selectedCountry");
+    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(3, $selectedCountry = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("IndicatorVisual", slots, []);
     	let { indicator } = $$props;
@@ -40260,19 +40257,28 @@ var app = (function () {
 
     	indicator.values.forEach((d, i) => {
     		d.path = arc().innerRadius($innerRadius).outerRadius(y(d.value)).cornerRadius(2).startAngle(x(d.country)).endAngle(x(d.country) + x.bandwidth()).padAngle(0.18).padRadius($innerRadius)();
-    		d.rotateAngle = (x(d.country) + x.bandwidth() / 2) * 180 / Math.PI - 90;
+    	}); // d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
+    	// // computes if the text should be on the right or left of the bar
+    	// if (i >= indicator.values.length/2) {
+    	//     d.textRotate = 180; 
 
-    		// computes if the text should be on the right or left of the bar
-    		if (i >= indicator.values.length / 2) {
-    			d.textRotate = 180;
-    			d.textAnchor = "end";
-    		} else {
-    			d.textRotate = 0;
-    			d.textAnchor = "start";
-    		}
+    	//     d.textAnchor = 'end';
+    	// } else{
+    	//     d.textRotate = 0;
+    	//     d.textAnchor = 'start';
+    	// }
+    	// d.barLength = y(d.value)+10;
+    	function pathMouseOver(e) {
+    		set_store_value(hoveredCountry, $hoveredCountry = e.path[1].dataset.id, $hoveredCountry);
+    	}
 
-    		d.barLength = y(d.value) + 10;
-    	});
+    	function pathMouseOut(e) {
+    		set_store_value(hoveredCountry, $hoveredCountry = "", $hoveredCountry);
+    	}
+
+    	function pathClick(e) {
+    		set_store_value(selectedCountry, $selectedCountry = e.path[1].dataset.id, $selectedCountry);
+    	}
 
     	const writable_props = ["indicator"];
 
@@ -40295,8 +40301,13 @@ var app = (function () {
     		maxRadius,
     		x,
     		y,
+    		pathMouseOver,
+    		pathMouseOut,
+    		pathClick,
     		$chartWidth,
-    		$innerRadius
+    		$innerRadius,
+    		$hoveredCountry,
+    		$selectedCountry
     	});
 
     	$$self.$inject_state = $$props => {
@@ -40311,7 +40322,15 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [indicator, $chartWidth];
+    	return [
+    		indicator,
+    		$chartWidth,
+    		$hoveredCountry,
+    		$selectedCountry,
+    		pathMouseOver,
+    		pathMouseOut,
+    		pathClick
+    	];
     }
 
     class IndicatorVisual extends SvelteComponentDev {

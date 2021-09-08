@@ -29,18 +29,30 @@
             .padAngle(0.18)
             .padRadius($innerRadius)();
         
-        d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
+        // d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
 
-        // computes if the text should be on the right or left of the bar
-        if (i >= indicator.values.length/2) {
-            d.textRotate = 180; 
-            d.textAnchor = 'end';
-        } else{
-            d.textRotate = 0;
-            d.textAnchor = 'start';
-        }
-        d.barLength = y(d.value)+10;
-    })
+        // // computes if the text should be on the right or left of the bar
+        // if (i >= indicator.values.length/2) {
+        //     d.textRotate = 180; 
+        //     d.textAnchor = 'end';
+        // } else{
+        //     d.textRotate = 0;
+        //     d.textAnchor = 'start';
+        // }
+        // d.barLength = y(d.value)+10;
+    });
+
+    function pathMouseOver(e) {
+        $hoveredCountry = e.path[1].dataset.id;
+    }
+
+    function pathMouseOut(e) {
+        $hoveredCountry = '';
+    }
+
+    function pathClick(e) {
+        $selectedCountry = e.path[1].dataset.id;
+    }
 
 
 </script>
@@ -53,29 +65,21 @@
 
             {#each indicator.values as country}
 
-                <g class='country {country.id}'>
+                <g class='country {country.id}'
+                    data-id='{country.id}'
+                    class:hovered='{country.id == $hoveredCountry}'
+                    class:selected='{country.id == $selectedCountry || country.id == 'china'}'
+                >
 
-                    <path d={country.path}></path>
+                    <path d={country.path} on:mouseover={pathMouseOver} on:mouseout={pathMouseOut} on:click={pathClick}></path>
 
-                    <g transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
+                    <!-- <g transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
                         <text 
                             transform='rotate({country.rotateAngle*-1})'
                             style='text-anchor:{country.textAnchor};'
                         >
                             {country.country}: {Math.round(country.value*10)/10}
                         </text>
-                    </g>
-
-                    <!-- <g class='country {graph.id}'
-                        data-id='{graph.id}'
-                        data-area='{area.area}'
-                        transform='translate({graph.x},{graph.y})'
-                        class:hovered='{graph.id == $hoveredCountry}'
-                        class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
-                    >
-                        
-                        <path d={graph.path}></path>
-                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
                     </g> -->
 
                 </g>
@@ -109,7 +113,7 @@
     }
 
     .china.country text{
-        fill-opacity: 1;
+        /*fill-opacity: 1;*/
     }
 
     text.middle-text {
@@ -118,6 +122,24 @@
         text-transform: capitalize;
         /*font-size: 1.3em;*/
         font-size: 12px;
+    }
+
+    .country path {
+        transition: transform 300ms, fill 300ms ease;
+        cursor: pointer;
+    }
+
+    g.hovered path {
+        fill: #234462;
+        transform: scale(1.03);
+    }
+
+    g.selected path {
+        fill: #234462;
+    }
+
+    g.china path {
+        fill: #D13F36;
     }
 
 
