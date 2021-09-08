@@ -2,6 +2,7 @@
     import * as d3 from 'd3';
     import {chartWidth, innerRadius} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
+    import Icon from './Icon.svelte';
     export let indicator;
     
     // $chartWidth = window.innerWidth * 0.2;
@@ -20,16 +21,33 @@
         .range([minRadius, maxRadius])
 
     indicator.values.forEach((d,i) => {
-        d.path = d3.arc()
+        let startAngle = x(d.country);
+        let endAngle = x(d.country) + x.bandwidth();
+        let outerRadius = y(d.value);
+
+        let arc = d3.arc()
             .innerRadius($innerRadius)
-            .outerRadius(y(d.value))
+            .outerRadius(outerRadius)
             .cornerRadius(2)
-            .startAngle(x(d.country))
-            .endAngle(x(d.country) + x.bandwidth())
+            .startAngle(startAngle)
+            .endAngle(endAngle)
             .padAngle(0.18)
             .padRadius($innerRadius)();
+
+        // adapted from d3 centroid function
+        function centroid() {
+            let r = ($innerRadius + outerRadius) / 2,
+                a = (startAngle + endAngle) / 2 - Math.PI / 2;
+            return [Math.cos(a) * r, Math.sin(a) * r];
+        };
+
+        d.path = arc;
+        d.centroid = centroid();
         
-        // d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
+        d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
+
+        d.tooltipX = d.rotateAngle;
+        d.tooltipY = d.rotateAngle;
 
         // // computes if the text should be on the right or left of the bar
         // if (i >= indicator.values.length/2) {
@@ -60,11 +78,9 @@
 <div class='indicator-vis'>
 
     <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}>
-
         <g transform='translate({$chartWidth/2},{$chartWidth/2})'>
 
             {#each indicator.values as country}
-
                 <g class='country {country.id}'
                     data-id='{country.id}'
                     class:hovered='{country.id == $hoveredCountry}'
@@ -81,56 +97,102 @@
                             {country.country}: {Math.round(country.value*10)/10}
                         </text>
                     </g> -->
-
                 </g>
-                
             {/each}
 
-            <text dy="5" class='middle-text'>{indicator.indicator}</text>
+            <!-- <text dy="5" class='middle-text'>{indicator.indicator}</text> -->
             
         </g>
     </svg>
+
+    {#each indicator.values as country}
+        <div
+            class="tooltip {'tooltip-' + country.id}"
+            class:hovered='{country.id == $hoveredCountry}'
+            class:selected='{country.id == $selectedCountry || country.id == 'china'}'
+            style="left: {country.centroid[0]+($chartWidth/2) + 'px'}; top: {country.centroid[1]+($chartWidth/2) + 'px'}"
+        >
+            <Icon type='left-caret-white' />
+            <p>{country.country}</p>
+            <p class="value">{parseFloat(country.value).toFixed(2)}</p>
+        </div>
+    {/each}
+
 </div>
 
 
 <style>
-    .indicator-vis {
-        /*width: 300px;*/
-    }
-
-    .country {
-        fill: #84A9BC;
-    }
-
-    .country text {
+    .tooltip {
+        opacity: 0;
+        position: absolute;
+        z-index: 999;
+        padding: 5px 10px;
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         pointer-events: none;
-        font-size: 11px;
-        fill-opacity: 0;
+        transition: opacity 300ms, transform 300ms ease;
+        transform: translate(-10px, 0);
+        height: 18px;
+        margin-top: -9px;
+        margin-left: 20px;
     }
 
-    .china.country {
-        fill: #D13F36;
+    .tooltip.hovered {
+        opacity: 1;
+        transform: translate(0, 0);
     }
 
-    .china.country text{
-        /*fill-opacity: 1;*/
+    .tooltip p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+        text-align: center;
+        color: #234462;
+        line-height: 1.2;
+        white-space: nowrap;
     }
 
-    text.middle-text {
-        text-anchor: middle;
-        font-weight: 400;
-        text-transform: capitalize;
-        /*font-size: 1.3em;*/
-        font-size: 12px;
+    .tooltip p.value {
+        display: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .tooltip.selected {
+        height: 36px;
+        margin-top: -18px;
+    }
+
+    .tooltip.selected p.value {
+        display: block;
+    }
+
+    .tooltip svg {
+        position: absolute;
+        top: 50%;
+        left: -6px;
+        margin-top: -6px;
+    }
+
+    .indicator-vis {
+        position: relative;
     }
 
     .country path {
+        fill: #84A9BC;
         transition: transform 300ms, fill 300ms ease;
         cursor: pointer;
     }
 
+    /*.country text {
+        pointer-events: none;
+        font-size: 11px;
+        fill-opacity: 0;
+    }*/
+
     g.hovered path {
-        fill: #234462;
+        fill: #C2D5DE;
         transform: scale(1.03);
     }
 
@@ -141,6 +203,17 @@
     g.china path {
         fill: #D13F36;
     }
+
+    g.china.hovered path {
+        fill: #FF5C52;
+    }
+
+    /*text.middle-text {
+        text-anchor: middle;
+        font-weight: 400;
+        text-transform: capitalize;
+        font-size: 12px;
+    }*/
 
 
 

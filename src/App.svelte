@@ -5,8 +5,8 @@
     // import News from './views/News.svelte';
     import {view} from './stores/view';
 
-    $view = 'main'; // defines primary view - set this for production (do not delete)
-    // $view = 'indicators';
+    // $view = 'main'; // defines primary view - set this for production (do not delete)
+    $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
     // let showNews = true; // set to true if you want to show
@@ -16,11 +16,10 @@
 
 
 <main>
-    <Indicators/>
     {#if $view == 'main'}
-        <!-- <Landing/> -->
+        <Landing/>
     {:else if $view == 'indicators'}
-        <!-- <Indicators/> -->
+        <Indicators/>
     {/if}
 </main>
 

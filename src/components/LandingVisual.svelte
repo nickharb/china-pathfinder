@@ -23,19 +23,19 @@
 
     function circleMouseOver(e) {
         $hoveredCountry = e.path[1].dataset.id;
-        // if ($selectedCountry = e.path[1].dataset.id) {
-        //     let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
-        //     selectedTooltip.forEach(node => node.classList.add('hovered'));
-        // } else {
-        //     let hoveredTooltip = document.querySelector('.tooltip-' + $hoveredCountry + '.tooltip-' + e.path[1].dataset.area);
-        //     hoveredTooltip.classList.add('hovered');
-        // }
+        if ($selectedCountry = e.path[1].dataset.id) {
+            let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
+            selectedTooltip.forEach(node => node.classList.add('hovered'));
+        } else {
+            let hoveredTooltip = document.querySelector('.tooltip-' + $hoveredCountry + '.tooltip-' + e.path[1].dataset.area);
+            hoveredTooltip.classList.add('hovered');
+        }
     }
 
     function circleMouseOut(e) {
         $hoveredCountry = '';
-        // let selectedTooltip = document.querySelectorAll('.tooltip');
-        // selectedTooltip.forEach(node => node.classList.remove('hovered'));
+        let selectedTooltip = document.querySelectorAll('.tooltip');
+        selectedTooltip.forEach(node => node.classList.remove('hovered'));
     }
 
     function circleClick(e) {
