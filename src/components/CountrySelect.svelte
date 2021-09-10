@@ -1,6 +1,7 @@
 <script>
     export let countryNames;
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
+    import Icon from './Icon.svelte';
 </script>
 
 <div class='country-select'>
@@ -11,6 +12,7 @@
                 <option value={country.id}>{country.country}</option>
             {/each}
         </select>
+        <Icon type='caret-down-dark' />
     </div>
 </div>
 

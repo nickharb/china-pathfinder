@@ -25,14 +25,23 @@
         let endAngle = x(d.country) + x.bandwidth();
         let outerRadius = y(d.value);
 
+        // let arc = d3.arc()
+        //     .innerRadius($innerRadius)
+        //     .outerRadius(outerRadius)
+        //     .cornerRadius(2)
+        //     .startAngle(startAngle)
+        //     .endAngle(endAngle)
+        //     .padAngle(0.18)
+        //     .padRadius($innerRadius)();
+
         let arc = d3.arc()
             .innerRadius($innerRadius)
             .outerRadius(outerRadius)
             .cornerRadius(2)
             .startAngle(startAngle)
             .endAngle(endAngle)
-            .padAngle(0.18)
-            .padRadius($innerRadius)();
+            .padAngle(2.48)
+            .padRadius(5)();
 
         // adapted from d3 centroid function
         function centroid() {

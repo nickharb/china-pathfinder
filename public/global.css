@@ -21,6 +21,8 @@ main {
     padding: 100px 40px;
 }
 
+/* links */
+
 a {
     color: rgb(0,100,200);
     text-decoration: none;
@@ -34,6 +36,8 @@ a:visited {
     color: rgb(0,80,160);
 }
 
+/* buttons and user input */
+
 label {
     display: block;
 }
@@ -41,8 +45,8 @@ label {
 input, button, select, textarea {
     font-family: inherit;
     font-size: inherit;
-    -webkit-padding: 5px 15px;
-    padding: 5px 15px;
+    -webkit-padding: 5px 10px;
+    padding: 5px 10px;
     margin: 0;
     box-sizing: border-box;
     border: none;
@@ -50,6 +54,10 @@ input, button, select, textarea {
     color: #234462;
     background-color: #E7EDF3;
     font-weight: bold;
+}
+
+select {
+    appearance: none;
 }
 
 input:disabled {
@@ -69,25 +77,22 @@ button {
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: background-color 300ms;
 }
 
 button svg {
     margin-left: 20px;
 }
 
-button:disabled {
-    color: #999;
+button:hover {
+    background-color: #234462;
 }
 
-button:not(:disabled):active {
-    background-color: #ddd;
+button:active {
+    background-color: #122431;
 }
 
-button:focus {
-    border-color: #666;
-}
-
-/* Typography */
+/* typography */
 
 h1, h2, h3, h4, h5 {
     color: #122431;
@@ -106,6 +111,8 @@ h2 {
     font-weight: bold;
     line-height: 1.2;
 }
+
+/* custom styles */
 
 .control-area {
     display: flex;

@@ -47,7 +47,7 @@
     }
 
     function parseData() {
-        const xScale = d3.scaleLinear().domain([1,10]).range([$margin*3, $width-$margin*3]);
+        const xScale = d3.scaleLinear().domain([0,10]).range([$margin*3, $width-$margin*3]);
 
         areaData.forEach( (d,i) => {
             if (d3.select('.text-wrapper .'+d.area).size()>0) {
