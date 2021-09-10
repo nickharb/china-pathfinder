@@ -121,7 +121,7 @@
             class:selected='{country.id == $selectedCountry || country.id == 'china'}'
             style="left: {country.centroid[0]+($chartWidth/2) + 'px'}; top: {country.centroid[1]+($chartWidth/2) + 'px'}"
         >
-            <Icon type='left-caret-white' />
+            <Icon type='tooltip-caret-left' />
             <p>{country.country}</p>
             <p class="value">{parseFloat(country.value).toFixed(2)}</p>
         </div>
@@ -132,7 +132,7 @@
 
 <style>
     .tooltip {
-        opacity: 0;
+        /*opacity: 0;*/
         position: absolute;
         z-index: 999;
         padding: 5px 10px;
@@ -177,12 +177,12 @@
         display: block;
     }
 
-    .tooltip svg {
+    /*.tooltip svg {
         position: absolute;
         top: 50%;
         left: -6px;
         margin-top: -6px;
-    }
+    }*/
 
     .indicator-vis {
         position: relative;

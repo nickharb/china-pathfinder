@@ -63,12 +63,14 @@
         const xScale = d3.scaleLinear().domain([0,10]).range([$margin*3, $width-$margin*3]);
 
         areaData.comps.forEach((d,i)=>{
+            console.log(d)
             graphData.push({
                 id : areaData.countries[i].trim().toLowerCase().split(" ").join("-"),
                 x : xScale(d),
                 y : 0,
                 r : 6,
-                country : areaData.countries[i]
+                country : areaData.countries[i],
+                value: d
             });
         });
     }
@@ -117,8 +119,7 @@
 
                         <line class='gridline' x1=0 x2={$width} transform='translate(0,5)'></line>
 
-                        {#each graphData as graph,i}
-
+                        {#each graphData as graph, i}
                             <g class='country {graph.id}'
                                 data-id='{graph.id}'
                                 transform='translate({graph.x},{graph.y+5})'
@@ -132,8 +133,22 @@
                         {/each}
                     </g>
                 {/if}
-            
             </svg>
+
+            {#if areaData}
+                {#each graphData as graph, i}
+                    <div
+                        class="tooltip {'tooltip-' + graph.id}"
+                        class:hovered='{graph.id == $hoveredCountry}'
+                        class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
+                        style="left: {graph.x + 'px'}; top: {graph.y + 20 + 'px'}"
+                    >
+                        <Icon type='tooltip-caret-left' />
+                        <p>{graph.country}</p>
+                        <p class="value">{parseFloat(graph.value).toFixed(2)} / 10</p>
+                    </div>
+                {/each}
+            {/if}
         </div>
     </div>
 
@@ -211,12 +226,6 @@
         margin-bottom: 100px;
         padding: 40px;
         border-radius: 10px;
-        /*height: 300px;*/
-        /*transition: height 500ms;*/
-    }
-
-    .area-summary.expanded {
-        /*height: 500px;*/
     }
 
     button.expand {
@@ -255,6 +264,7 @@
     
     .area-vis {
         margin-top: 40px;
+        position: relative;
     }
 
     .area-footer {
@@ -269,6 +279,54 @@
         font-weight: bold;
         font-size: 14px;
         text-transform: uppercase;
+    }
+
+    /* tooltip */
+
+    .tooltip {
+        opacity: 0;
+        position: absolute;
+        z-index: 999;
+        padding: 5px 10px;
+        background-color: white;
+        border-radius: 2px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        pointer-events: none;
+        transition: opacity 300ms, transform 300ms ease;
+        transform: translate(-10px, 0);
+        height: 18px;
+        margin-top: -9px;
+        margin-left: 20px;
+    }
+
+    .tooltip.hovered {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .tooltip p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+        text-align: center;
+        color: #234462;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .tooltip p.value {
+        display: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .tooltip.selected {
+        height: 36px;
+        margin-top: -18px;
+    }
+
+    .tooltip.selected p.value {
+        display: block;
     }
 
     /* indicator visual */
@@ -295,11 +353,13 @@
         stroke: #fff;
         stroke-width: 2px;
         cursor: pointer;
+        transform: scale(1);
+        transition: transform 200ms, fill 200ms;
     }
 
     g.hovered circle {
-        fill: #234462;
-        stroke: #fff;
+        fill: #C2D5DE;
+        transform: scale(1.2);
     }
 
     g.selected circle {
@@ -314,12 +374,17 @@
         stroke-width: 2px;
     }
 
+    g.china.hovered circle {
+        fill: #FF5C52;
+    }
+
     .gridline {
         stroke: #84A9BC;
     }
 
     text {
         pointer-events: none;
+        transition: fill-opacity 200ms;
     }
 
     text.label {
