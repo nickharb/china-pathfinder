@@ -132,7 +132,7 @@
 
 <style>
     .tooltip {
-        /*opacity: 0;*/
+        opacity: 0;
         position: absolute;
         z-index: 999;
         padding: 5px 10px;

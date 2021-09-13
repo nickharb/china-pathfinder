@@ -38211,8 +38211,8 @@ var app = (function () {
 
     const file$7 = "src/components/Icon.svelte";
 
-    // (42:31) 
-    function create_if_block_9(ctx) {
+    // (74:31) 
+    function create_if_block_10(ctx) {
     	let svg;
     	let path;
 
@@ -38222,12 +38222,51 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.5 13L0.138784 0.250001L14.8612 0.250002L7.5 13Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$7, 43, 8, 6584);
+    			add_location(path, file$7, 75, 8, 12512);
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "13");
     			attr_dev(svg, "viewBox", "0 0 15 13");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 42, 4, 6515);
+    			add_location(svg, file$7, 74, 4, 12443);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    			append_dev(svg, path);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(svg);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_10.name,
+    		type: "if",
+    		source: "(74:31) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (70:36) 
+    function create_if_block_9(ctx) {
+    	let svg;
+    	let path;
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
+    			attr_dev(path, "fill", "#234462");
+    			add_location(path, file$7, 71, 8, 12176);
+    			attr_dev(svg, "class", "caret-down-dark svelte-1jkmjqh");
+    			attr_dev(svg, "width", "13");
+    			attr_dev(svg, "height", "11");
+    			attr_dev(svg, "viewBox", "0 0 13 11");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$7, 70, 4, 12083);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38242,14 +38281,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9.name,
     		type: "if",
-    		source: "(42:31) ",
+    		source: "(70:36) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (38:36) 
+    // (66:37) 
     function create_if_block_8(ctx) {
     	let svg;
     	let path;
@@ -38259,14 +38298,14 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			attr_dev(path, "fill", "#234462");
-    			add_location(path, file$7, 39, 8, 6248);
-    			attr_dev(svg, "class", "caret-down-dark svelte-gndcts");
+    			attr_dev(path, "fill", "#ffffff");
+    			add_location(path, file$7, 67, 8, 11811);
+    			attr_dev(svg, "class", "caret-down-light");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 38, 4, 6155);
+    			add_location(svg, file$7, 66, 4, 11717);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38281,14 +38320,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(38:36) ",
+    		source: "(66:37) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (34:37) 
+    // (62:39) 
     function create_if_block_7(ctx) {
     	let svg;
     	let path;
@@ -38297,15 +38336,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$7, 35, 8, 5883);
-    			attr_dev(svg, "class", "caret-down-light");
-    			attr_dev(svg, "width", "13");
-    			attr_dev(svg, "height", "11");
-    			attr_dev(svg, "viewBox", "0 0 13 11");
+    			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
+    			attr_dev(path, "fill", "white");
+    			add_location(path, file$7, 63, 8, 11586);
+    			attr_dev(svg, "class", "tooltip-caret-left svelte-1jkmjqh");
+    			attr_dev(svg, "width", "6");
+    			attr_dev(svg, "height", "12");
+    			attr_dev(svg, "viewBox", "0 0 6 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 34, 4, 5789);
+    			add_location(svg, file$7, 62, 4, 11492);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38320,14 +38359,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(34:37) ",
+    		source: "(62:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (30:39) 
+    // (58:32) 
     function create_if_block_6(ctx) {
     	let svg;
     	let path;
@@ -38336,15 +38375,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
-    			attr_dev(path, "fill", "white");
-    			add_location(path, file$7, 31, 8, 5658);
-    			attr_dev(svg, "class", "tooltip-caret-left svelte-gndcts");
-    			attr_dev(svg, "width", "6");
-    			attr_dev(svg, "height", "12");
-    			attr_dev(svg, "viewBox", "0 0 6 12");
+    			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
+    			attr_dev(path, "fill", "#122431");
+    			add_location(path, file$7, 59, 8, 10930);
+    			attr_dev(svg, "class", "arrow-right svelte-1jkmjqh");
+    			attr_dev(svg, "width", "21");
+    			attr_dev(svg, "height", "10");
+    			attr_dev(svg, "viewBox", "0 0 21 10");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 30, 4, 5564);
+    			add_location(svg, file$7, 58, 4, 10841);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38359,14 +38398,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(30:39) ",
+    		source: "(58:32) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (26:32) 
+    // (54:38) 
     function create_if_block_5(ctx) {
     	let svg;
     	let path;
@@ -38375,15 +38414,17 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
-    			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$7, 27, 8, 5002);
-    			attr_dev(svg, "class", "arrow-right svelte-gndcts");
-    			attr_dev(svg, "width", "21");
-    			attr_dev(svg, "height", "10");
-    			attr_dev(svg, "viewBox", "0 0 21 10");
+    			attr_dev(path, "fill-rule", "evenodd");
+    			attr_dev(path, "clip-rule", "evenodd");
+    			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
+    			attr_dev(path, "fill", "black");
+    			add_location(path, file$7, 55, 8, 10396);
+    			attr_dev(svg, "class", "chevron-down-dark");
+    			attr_dev(svg, "width", "15");
+    			attr_dev(svg, "height", "12");
+    			attr_dev(svg, "viewBox", "0 0 15 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 26, 4, 4913);
+    			add_location(svg, file$7, 54, 4, 10301);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38398,14 +38439,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(26:32) ",
+    		source: "(54:38) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (22:38) 
+    // (50:33) 
     function create_if_block_4$1(ctx) {
     	let svg;
     	let path;
@@ -38417,14 +38458,13 @@ var app = (function () {
     			attr_dev(path, "fill-rule", "evenodd");
     			attr_dev(path, "clip-rule", "evenodd");
     			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
-    			attr_dev(path, "fill", "black");
-    			add_location(path, file$7, 23, 8, 4468);
-    			attr_dev(svg, "class", "chevron-down-dark");
-    			attr_dev(svg, "width", "15");
-    			attr_dev(svg, "height", "12");
-    			attr_dev(svg, "viewBox", "0 0 15 12");
+    			attr_dev(path, "fill", "white");
+    			add_location(path, file$7, 51, 8, 9850);
+    			attr_dev(svg, "width", "9");
+    			attr_dev(svg, "height", "6");
+    			attr_dev(svg, "viewBox", "0 0 9 6");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 22, 4, 4373);
+    			add_location(svg, file$7, 50, 4, 9785);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38439,14 +38479,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4$1.name,
     		type: "if",
-    		source: "(22:38) ",
+    		source: "(50:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (18:33) 
+    // (46:34) 
     function create_if_block_3$1(ctx) {
     	let svg;
     	let path;
@@ -38457,14 +38497,14 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill-rule", "evenodd");
     			attr_dev(path, "clip-rule", "evenodd");
-    			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
+    			attr_dev(path, "d", "M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z");
     			attr_dev(path, "fill", "white");
-    			add_location(path, file$7, 19, 8, 3922);
-    			attr_dev(svg, "width", "9");
-    			attr_dev(svg, "height", "6");
-    			attr_dev(svg, "viewBox", "0 0 9 6");
+    			add_location(path, file$7, 47, 8, 9337);
+    			attr_dev(svg, "width", "7");
+    			attr_dev(svg, "height", "9");
+    			attr_dev(svg, "viewBox", "0 0 7 9");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 18, 4, 3857);
+    			add_location(svg, file$7, 46, 4, 9272);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38479,55 +38519,15 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(18:33) ",
+    		source: "(46:34) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (14:34) 
+    // (41:26) 
     function create_if_block_2$1(ctx) {
-    	let svg;
-    	let path;
-
-    	const block = {
-    		c: function create() {
-    			svg = svg_element("svg");
-    			path = svg_element("path");
-    			attr_dev(path, "fill-rule", "evenodd");
-    			attr_dev(path, "clip-rule", "evenodd");
-    			attr_dev(path, "d", "M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z");
-    			attr_dev(path, "fill", "white");
-    			add_location(path, file$7, 15, 8, 3409);
-    			attr_dev(svg, "width", "7");
-    			attr_dev(svg, "height", "9");
-    			attr_dev(svg, "viewBox", "0 0 7 9");
-    			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 14, 4, 3344);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, svg, anchor);
-    			append_dev(svg, path);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(svg);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_2$1.name,
-    		type: "if",
-    		source: "(14:34) ",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (9:26) 
-    function create_if_block_1$2(ctx) {
     	let svg;
     	let path0;
     	let path1;
@@ -38539,15 +38539,15 @@ var app = (function () {
     			path1 = svg_element("path");
     			attr_dev(path0, "d", "M6.01122 1.49998V7.99998H6.88162V1.49998L7.96962 2.39998L8.62242 1.79998L6.77282 0.0999756H6.12002L4.27042 1.79998L4.92322 2.39998L6.01122 1.49998Z");
     			attr_dev(path0, "fill", "white");
-    			add_location(path0, file$7, 10, 8, 2015);
+    			add_location(path0, file$7, 42, 8, 7943);
     			attr_dev(path1, "d", "M11.4512 3.29997C11.2119 3.07266 10.9241 2.89317 10.6058 2.77273C10.2876 2.65228 9.94573 2.59347 9.60163 2.59997V3.39997C10.0345 3.39997 10.4496 3.55801 10.7556 3.83931C11.0617 4.12062 11.2336 4.50215 11.2336 4.89997V10.7C11.2345 11.1075 11.0661 11.5001 10.7628 11.7974C10.4595 12.0947 10.0442 12.2745 9.60163 12.3H3.29123C2.84866 12.2745 2.43334 12.0947 2.13005 11.7974C1.82676 11.5001 1.65837 11.1075 1.65923 10.7V4.89997C1.65923 4.50215 1.83118 4.12062 2.13724 3.83931C2.4433 3.55801 2.8584 3.39997 3.29123 3.39997V2.59997C2.94714 2.59347 2.60528 2.65228 2.28703 2.77273C1.96878 2.89317 1.68099 3.07266 1.44163 3.29997C1.1913 3.49636 0.992705 3.74239 0.860787 4.01953C0.728868 4.29667 0.667067 4.59771 0.680035 4.89997V10.8C0.667067 11.1022 0.728868 11.4033 0.860787 11.6804C0.992705 11.9576 1.1913 12.2036 1.44163 12.4C1.68099 12.6273 1.96878 12.8068 2.28703 12.9272C2.60528 13.0477 2.94714 13.1065 3.29123 13.1H9.60163C10.2757 13.1005 10.9239 12.8614 11.4106 12.4327C11.8973 12.0041 12.1847 11.419 12.2128 10.8V4.89997C12.1866 4.29766 11.9147 3.72647 11.4512 3.29997Z");
     			attr_dev(path1, "fill", "white");
-    			add_location(path1, file$7, 11, 8, 2196);
+    			add_location(path1, file$7, 43, 8, 8124);
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 13 14");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 9, 4, 1946);
+    			add_location(svg, file$7, 41, 4, 7874);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38561,17 +38561,17 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(9:26) ",
+    		source: "(41:26) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (5:0) {#if type == 'info'}
-    function create_if_block$2(ctx) {
+    // (37:25) 
+    function create_if_block_1$2(ctx) {
     	let svg;
     	let path;
 
@@ -38581,12 +38581,12 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$7, 6, 8, 135);
+    			add_location(path, file$7, 38, 8, 6063);
     			attr_dev(svg, "width", "14");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 14 14");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$7, 5, 4, 66);
+    			add_location(svg, file$7, 37, 4, 5994);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38599,9 +38599,196 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_if_block_1$2.name,
+    		type: "if",
+    		source: "(37:25) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (5:0) {#if type == 'logo'}
+    function create_if_block$2(ctx) {
+    	let svg;
+    	let g;
+    	let path0;
+    	let path1;
+    	let path2;
+    	let path3;
+    	let path4;
+    	let path5;
+    	let path6;
+    	let path7;
+    	let path8;
+    	let path9;
+    	let path10;
+    	let path11;
+    	let path12;
+    	let path13;
+    	let path14;
+    	let path15;
+    	let path16;
+    	let path17;
+    	let path18;
+    	let path19;
+    	let path20;
+    	let path21;
+    	let defs;
+    	let clipPath;
+    	let rect;
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			g = svg_element("g");
+    			path0 = svg_element("path");
+    			path1 = svg_element("path");
+    			path2 = svg_element("path");
+    			path3 = svg_element("path");
+    			path4 = svg_element("path");
+    			path5 = svg_element("path");
+    			path6 = svg_element("path");
+    			path7 = svg_element("path");
+    			path8 = svg_element("path");
+    			path9 = svg_element("path");
+    			path10 = svg_element("path");
+    			path11 = svg_element("path");
+    			path12 = svg_element("path");
+    			path13 = svg_element("path");
+    			path14 = svg_element("path");
+    			path15 = svg_element("path");
+    			path16 = svg_element("path");
+    			path17 = svg_element("path");
+    			path18 = svg_element("path");
+    			path19 = svg_element("path");
+    			path20 = svg_element("path");
+    			path21 = svg_element("path");
+    			defs = svg_element("defs");
+    			clipPath = svg_element("clipPath");
+    			rect = svg_element("rect");
+    			attr_dev(path0, "d", "M188.389 45.2046C184.033 49.4963 178.153 51.881 172.04 51.8341C165.928 51.7872 160.084 49.3124 155.795 44.9544C151.506 40.5963 149.123 34.7118 149.17 28.5955C149.217 22.4792 151.69 16.632 156.045 12.3403C160.235 8.00224 165.969 5.49766 171.996 5.37265C178.024 5.24765 183.856 7.51236 188.222 11.673L183.054 17.1782C180.12 14.4217 176.221 12.9294 172.198 13.0231C168.175 13.1167 164.35 14.7887 161.547 17.6786C158.837 20.5708 157.351 24.4 157.4 28.364C157.449 32.3281 159.028 36.1196 161.808 38.9443C164.588 41.769 168.352 43.4078 172.313 43.5175C176.273 43.6271 180.122 42.1991 183.054 39.5326L188.389 45.2046Z");
+    			attr_dev(path0, "fill", "#122431");
+    			add_location(path0, file$7, 7, 12, 192);
+    			attr_dev(path1, "d", "M234.903 5.33365V51.5439H227.234V32.3591H206.061V51.5439H198.392V5.33365H206.061V24.5184H227.234V5.33365H234.903Z");
+    			attr_dev(path1, "fill", "#122431");
+    			add_location(path1, file$7, 8, 12, 842);
+    			attr_dev(path2, "d", "M245.073 51.5439V5.33365H252.742V51.5439H245.073Z");
+    			attr_dev(path2, "fill", "#122431");
+    			add_location(path2, file$7, 9, 12, 995);
+    			attr_dev(path3, "d", "M299.423 5.33365V51.7107L270.581 23.5175V51.5439H262.745V5.16682L291.587 33.3601V5.33365H299.423Z");
+    			attr_dev(path3, "fill", "#122431");
+    			add_location(path3, file$7, 10, 12, 1084);
+    			attr_dev(path4, "d", "M348.271 51.5439H339.935L336.768 43.87H320.93L317.762 51.5439H309.426L328.932 5L348.271 51.5439ZM333.6 36.1961L328.932 25.0189L324.264 36.1961H333.6Z");
+    			attr_dev(path4, "fill", "#122431");
+    			add_location(path4, file$7, 11, 12, 1221);
+    			attr_dev(path5, "d", "M171.718 66.3913C173.535 66.413 175.33 66.7928 177.001 67.5088C178.671 68.2249 180.184 69.2632 181.454 70.5644C182.723 71.8657 183.724 73.4045 184.399 75.0928C185.074 76.7812 185.411 78.5861 185.388 80.4045C185.433 84.0927 184.023 87.6499 181.464 90.3045C178.905 92.9591 175.403 94.497 171.718 94.5845H158.88V114.603H150.878V66.3913H171.718ZM177.553 80.4045C177.513 78.8526 176.89 77.3727 175.809 76.2597C174.728 75.1466 173.267 74.4822 171.718 74.3988H158.88V86.4101H171.718C173.28 86.3667 174.764 85.7148 175.854 84.5932C176.944 83.4716 177.553 81.9688 177.553 80.4045V80.4045Z");
+    			attr_dev(path5, "fill", "#122431");
+    			add_location(path5, file$7, 12, 12, 1410);
+    			attr_dev(path6, "d", "M226.068 114.603H217.232L213.898 106.596H197.393L194.058 114.603H185.389L205.728 65.8908L226.068 114.603ZM210.563 98.5883L205.728 86.9106L200.894 98.5883H210.563Z");
+    			attr_dev(path6, "fill", "#122431");
+    			add_location(path6, file$7, 13, 12, 2029);
+    			attr_dev(path7, "d", "M259.078 66.3913V74.3988H248.242V114.603H240.239V74.3988H229.569V66.3913H259.078Z");
+    			attr_dev(path7, "fill", "#122431");
+    			add_location(path7, file$7, 14, 12, 2231);
+    			attr_dev(path8, "d", "M307.593 66.3913V114.603H299.59V94.5845H277.583V114.603H269.414V66.3913H277.583V86.4101H299.59V66.3913H307.593Z");
+    			attr_dev(path8, "fill", "#122431");
+    			add_location(path8, file$7, 15, 12, 2352);
+    			attr_dev(path9, "d", "M326.265 74.3988V86.4101H344.937V94.5845H326.265V114.603H318.262V66.3913H348.271V74.3988H326.265Z");
+    			attr_dev(path9, "fill", "#122431");
+    			add_location(path9, file$7, 16, 12, 2503);
+    			attr_dev(path10, "d", "M358.775 114.603V66.3913H366.778V114.603H358.775Z");
+    			attr_dev(path10, "fill", "#122431");
+    			add_location(path10, file$7, 17, 12, 2640);
+    			attr_dev(path11, "d", "M415.459 66.3912V114.77L385.449 85.2424V114.603H377.28V66.2244L407.456 95.7523V66.3912H415.459Z");
+    			attr_dev(path11, "fill", "#122431");
+    			add_location(path11, file$7, 18, 12, 2729);
+    			attr_dev(path12, "d", "M440.133 66.3913C443.466 66.1136 446.819 66.5307 449.982 67.6162C453.145 68.7016 456.048 70.4318 458.508 72.6973C460.969 74.9628 462.933 77.7145 464.276 80.7783C465.62 83.8422 466.313 87.1516 466.313 90.4973C466.313 93.8431 465.62 97.1525 464.276 100.216C462.933 103.28 460.969 106.032 458.508 108.297C456.048 110.563 453.145 112.293 449.982 113.378C446.819 114.464 443.466 114.881 440.133 114.603H426.129V66.3913H440.133ZM456.305 90.4139C456.261 86.1512 454.538 82.078 451.51 79.0793C448.482 76.0805 444.394 74.3986 440.133 74.3988H434.132V106.596H440.133C444.422 106.596 448.536 104.891 451.568 101.856C454.601 98.8216 456.305 94.7056 456.305 90.4139V90.4139Z");
+    			attr_dev(path12, "fill", "#122431");
+    			add_location(path12, file$7, 19, 12, 2864);
+    			attr_dev(path13, "d", "M482.812 74.3988V86.4101H501.485V94.5845H482.812V106.596H504.819V114.603H474.81V66.3913H504.819V74.3988H482.812Z");
+    			attr_dev(path13, "fill", "#122431");
+    			add_location(path13, file$7, 20, 12, 3565);
+    			attr_dev(path14, "d", "M553.001 114.603H543.165L529.327 94.5845H523.325V114.603H515.323V66.3913H536.163C539.772 66.1704 543.327 67.3553 546.083 69.6979C548.84 72.0405 550.583 75.3592 550.95 78.9592C551.316 82.5592 550.276 86.1614 548.048 89.0117C545.82 91.862 542.577 93.7394 538.997 94.2509L553.001 114.603ZM536.163 86.4101C537.228 86.4347 538.28 86.1751 539.212 85.658C540.144 85.1409 540.921 84.3849 541.464 83.4678C542.007 82.5506 542.297 81.5053 542.303 80.4392C542.308 79.3732 542.031 78.3247 541.498 77.4016C540.959 76.4682 540.18 75.6969 539.241 75.1685C538.303 74.6402 537.239 74.3743 536.163 74.3988H523.325V86.4101H536.163Z");
+    			attr_dev(path14, "fill", "#122431");
+    			add_location(path14, file$7, 21, 12, 3717);
+    			attr_dev(g, "clip-path", "url(#clip0)");
+    			add_location(g, file$7, 6, 8, 152);
+    			attr_dev(path15, "d", "M73.1321 38.503C73.1321 44.2252 77.791 48.8861 83.5108 48.8861H116.953V5H73.1321V38.503Z");
+    			attr_dev(path15, "fill", "#D13F36");
+    			add_location(path15, file$7, 23, 8, 4377);
+    			attr_dev(path16, "d", "M83.5112 51.1935C76.5459 51.1473 70.8722 45.4712 70.8261 38.503V5H27.0969V10.63C27.0969 17.6444 21.4232 23.3205 14.4118 23.3666H8V31.6732H24.2831C31.2945 31.7193 36.9683 37.3954 36.9683 44.4098V49.1169C36.9683 54.8391 41.6733 59.5462 47.3931 59.5462H52.0982C59.1096 59.5923 64.7833 65.2684 64.8295 72.2828V73.2519C67.1358 69.9754 70.9645 67.8065 75.2543 67.8065H116.954V51.1935H83.5112Z");
+    			attr_dev(path16, "fill", "#D13F36");
+    			add_location(path16, file$7, 24, 8, 4501);
+    			attr_dev(path17, "d", "M111.326 94.9873H116.953V70.1139H75.2537C69.5339 70.1139 64.8289 74.7748 64.8289 80.497V114H98.5944V107.678C98.6405 100.663 104.314 94.9873 111.326 94.9873Z");
+    			attr_dev(path17, "fill", "#D13F36");
+    			add_location(path17, file$7, 25, 8, 4923);
+    			attr_dev(path18, "d", "M37.7524 97.0639V114H62.523V80.497V72.2828C62.523 66.5605 57.818 61.8535 52.0982 61.8535H47.3931C40.3817 61.8074 34.708 56.1312 34.6619 49.1169V44.4098C34.6619 38.6876 30.003 33.9805 24.2831 33.9805H8V84.3273H25.0212C32.0326 84.3734 37.7063 90.0495 37.7524 97.0639Z");
+    			attr_dev(path18, "fill", "#D13F36");
+    			add_location(path18, file$7, 26, 8, 5115);
+    			attr_dev(path19, "d", "M111.326 97.2947C105.606 97.2947 100.901 101.956 100.901 107.678V114H116.954V97.2947H111.326Z");
+    			attr_dev(path19, "fill", "#D13F36");
+    			add_location(path19, file$7, 27, 8, 5416);
+    			attr_dev(path20, "d", "M14.4118 21.0593C20.1316 21.0593 24.7905 16.3522 24.7905 10.63V5H8V21.0593H14.4118Z");
+    			attr_dev(path20, "fill", "#D13F36");
+    			add_location(path20, file$7, 28, 8, 5545);
+    			attr_dev(path21, "d", "M35.446 97.0639C35.446 91.3417 30.741 86.6346 25.0212 86.6346H8V114H35.446V97.0639Z");
+    			attr_dev(path21, "fill", "#D13F36");
+    			add_location(path21, file$7, 29, 8, 5664);
+    			attr_dev(rect, "width", "545");
+    			attr_dev(rect, "height", "111");
+    			attr_dev(rect, "fill", "white");
+    			attr_dev(rect, "transform", "translate(8 5)");
+    			add_location(rect, file$7, 32, 16, 5840);
+    			attr_dev(clipPath, "id", "clip0");
+    			add_location(clipPath, file$7, 31, 12, 5802);
+    			add_location(defs, file$7, 30, 8, 5783);
+    			attr_dev(svg, "class", "logo svelte-1jkmjqh");
+    			attr_dev(svg, "width", "560");
+    			attr_dev(svg, "height", "120");
+    			attr_dev(svg, "viewBox", "0 0 560 120");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$7, 5, 4, 66);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    			append_dev(svg, g);
+    			append_dev(g, path0);
+    			append_dev(g, path1);
+    			append_dev(g, path2);
+    			append_dev(g, path3);
+    			append_dev(g, path4);
+    			append_dev(g, path5);
+    			append_dev(g, path6);
+    			append_dev(g, path7);
+    			append_dev(g, path8);
+    			append_dev(g, path9);
+    			append_dev(g, path10);
+    			append_dev(g, path11);
+    			append_dev(g, path12);
+    			append_dev(g, path13);
+    			append_dev(g, path14);
+    			append_dev(svg, path15);
+    			append_dev(svg, path16);
+    			append_dev(svg, path17);
+    			append_dev(svg, path18);
+    			append_dev(svg, path19);
+    			append_dev(svg, path20);
+    			append_dev(svg, path21);
+    			append_dev(svg, defs);
+    			append_dev(defs, clipPath);
+    			append_dev(clipPath, rect);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(svg);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(5:0) {#if type == 'info'}",
+    		source: "(5:0) {#if type == 'logo'}",
     		ctx
     	});
 
@@ -38612,16 +38799,17 @@ var app = (function () {
     	let if_block_anchor;
 
     	function select_block_type(ctx, dirty) {
-    		if (/*type*/ ctx[0] == "info") return create_if_block$2;
-    		if (/*type*/ ctx[0] == "share") return create_if_block_1$2;
-    		if (/*type*/ ctx[0] == "chevron-right") return create_if_block_2$1;
-    		if (/*type*/ ctx[0] == "chevron-down") return create_if_block_3$1;
-    		if (/*type*/ ctx[0] == "chevron-down-dark") return create_if_block_4$1;
-    		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_5;
-    		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_6;
-    		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_7;
-    		if (/*type*/ ctx[0] == "caret-down-dark") return create_if_block_8;
-    		if (/*type*/ ctx[0] == "caret-down") return create_if_block_9;
+    		if (/*type*/ ctx[0] == "logo") return create_if_block$2;
+    		if (/*type*/ ctx[0] == "info") return create_if_block_1$2;
+    		if (/*type*/ ctx[0] == "share") return create_if_block_2$1;
+    		if (/*type*/ ctx[0] == "chevron-right") return create_if_block_3$1;
+    		if (/*type*/ ctx[0] == "chevron-down") return create_if_block_4$1;
+    		if (/*type*/ ctx[0] == "chevron-down-dark") return create_if_block_5;
+    		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_6;
+    		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_7;
+    		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_8;
+    		if (/*type*/ ctx[0] == "caret-down-dark") return create_if_block_9;
+    		if (/*type*/ ctx[0] == "caret-down") return create_if_block_10;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -39745,10 +39933,10 @@ var app = (function () {
     			span = element("span");
     			t0 = text$1(t0_value);
     			t1 = text$1(t1_value);
-    			attr_dev(span, "class", "svelte-dz8e99");
-    			add_location(span, file$5, 41, 40, 1027);
-    			attr_dev(li, "class", "" + (null_to_empty(/*quarter*/ ctx[1].class) + " svelte-dz8e99"));
-    			add_location(li, file$5, 41, 12, 999);
+    			attr_dev(span, "class", "svelte-uebast");
+    			add_location(span, file$5, 41, 40, 1068);
+    			attr_dev(li, "class", "" + (null_to_empty(/*quarter*/ ctx[1].class) + " svelte-uebast"));
+    			add_location(li, file$5, 41, 12, 1040);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, li, anchor);
@@ -39774,12 +39962,17 @@ var app = (function () {
     }
 
     function create_fragment$5(ctx) {
-    	let div;
+    	let div1;
     	let h2;
     	let t1;
     	let p;
     	let t3;
     	let ul;
+    	let t4;
+    	let div0;
+    	let span;
+    	let t6;
+    	let a;
     	let each_value = /*quarterlyData*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -39790,9 +39983,9 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div = element("div");
+    			div1 = element("div");
     			h2 = element("h2");
-    			h2.textContent = "Quarterly Update";
+    			h2.textContent = "Policy Changes: Q3 2021 Update";
     			t1 = space();
     			p = element("p");
     			p.textContent = "Did China move closer or further from OECD norms?";
@@ -39803,29 +39996,49 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(h2, "class", "svelte-dz8e99");
-    			add_location(h2, file$5, 37, 4, 850);
-    			attr_dev(p, "class", "svelte-dz8e99");
-    			add_location(p, file$5, 38, 4, 880);
-    			attr_dev(ul, "class", "svelte-dz8e99");
-    			add_location(ul, file$5, 39, 4, 941);
-    			attr_dev(div, "class", "quarterly svelte-dz8e99");
-    			add_location(div, file$5, 36, 0, 822);
+    			t4 = space();
+    			div0 = element("div");
+    			span = element("span");
+    			span.textContent = "Read the quarterly update:";
+    			t6 = space();
+    			a = element("a");
+    			a.textContent = "Lorem ipsum dolor sit amet consectetuer adipi";
+    			attr_dev(h2, "class", "svelte-uebast");
+    			add_location(h2, file$5, 37, 4, 877);
+    			attr_dev(p, "class", "svelte-uebast");
+    			add_location(p, file$5, 38, 4, 921);
+    			attr_dev(ul, "class", "svelte-uebast");
+    			add_location(ul, file$5, 39, 4, 982);
+    			attr_dev(span, "class", "svelte-uebast");
+    			add_location(span, file$5, 45, 8, 1176);
+    			attr_dev(a, "href", "#");
+    			attr_dev(a, "class", "svelte-uebast");
+    			add_location(a, file$5, 46, 8, 1224);
+    			attr_dev(div0, "class", "latest svelte-uebast");
+    			add_location(div0, file$5, 44, 4, 1147);
+    			attr_dev(div1, "class", "quarterly svelte-uebast");
+    			add_location(div1, file$5, 36, 0, 849);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, h2);
-    			append_dev(div, t1);
-    			append_dev(div, p);
-    			append_dev(div, t3);
-    			append_dev(div, ul);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, h2);
+    			append_dev(div1, t1);
+    			append_dev(div1, p);
+    			append_dev(div1, t3);
+    			append_dev(div1, ul);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(ul, null);
     			}
+
+    			append_dev(div1, t4);
+    			append_dev(div1, div0);
+    			append_dev(div0, span);
+    			append_dev(div0, t6);
+    			append_dev(div0, a);
     		},
     		p: function update(ctx, [dirty]) {
     			if (dirty & /*quarterlyData*/ 1) {
@@ -39855,7 +40068,7 @@ var app = (function () {
     		i: noop$4,
     		o: noop$4,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     			destroy_each(each_blocks, detaching);
     		}
     	};
@@ -39877,32 +40090,32 @@ var app = (function () {
 
     	const quarterlyData = [
     		{
-    			title: "Market competitiveness",
+    			title: "Market Competition",
     			value: "closer",
     			class: "closer"
     		},
     		{
-    			title: "Trade openness",
+    			title: "Trade Openness",
     			value: "further",
     			class: "further"
     		},
     		{
-    			title: "Portfolio openness",
+    			title: "Portfolio Investment Openness",
     			value: "no change",
     			class: "no-change"
     		},
     		{
-    			title: "Innovation openness",
+    			title: "Modern Innovation System",
     			value: "no change",
     			class: "no-change"
     		},
     		{
-    			title: "FDI openness",
+    			title: "Direct Investment Openness",
     			value: "no change",
     			class: "no-change"
     		},
     		{
-    			title: "Financial system efficiency",
+    			title: "Financial System Development",
     			value: "no change",
     			class: "no-change"
     		}
@@ -40200,13 +40413,18 @@ var app = (function () {
     	let section1;
     	let quarterly;
     	let t4;
+    	let header;
+    	let h2;
+    	let t6;
+    	let h3;
+    	let t8;
     	let div0;
     	let countryselect;
-    	let t5;
+    	let t9;
     	let button;
-    	let t6;
+    	let t10;
     	let icon;
-    	let t7;
+    	let t11;
     	let div1;
     	let landingvisual;
     	let current;
@@ -40231,35 +40449,49 @@ var app = (function () {
     		c: function create() {
     			section0 = element("section");
     			h1 = element("h1");
-    			h1.textContent = "Where does China's Economy Stand?";
+    			h1.textContent = "Where does China’s Economy Stand?";
     			t1 = space();
     			p = element("p");
-    			p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla. Amet risus consequat consectetur lorem ac leo nec morbi enim.";
+    			p.textContent = "China is a global economic powerhouse, but its system remains dangerously opaque. Policymakers and financial experts dispute basic facts about what is happening inside China. To create a shared language on China’s economy, the China Pathfinder project scores China and other economies across six areas and presents an objective picture of China’s economy relative to the world.";
     			t3 = space();
     			section1 = element("section");
     			create_component(quarterly.$$.fragment);
     			t4 = space();
+    			header = element("header");
+    			h2 = element("h2");
+    			h2.textContent = "2020 Annual Economic Benchmarks";
+    			t6 = space();
+    			h3 = element("h3");
+    			h3.textContent = "How Does China's Economic System Compare to Open Market Economies?";
+    			t8 = space();
     			div0 = element("div");
     			create_component(countryselect.$$.fragment);
-    			t5 = space();
+    			t9 = space();
     			button = element("button");
-    			t6 = text$1("Share this view");
+    			t10 = text$1("Share this view");
     			create_component(icon.$$.fragment);
-    			t7 = space();
+    			t11 = space();
     			div1 = element("div");
     			create_component(landingvisual.$$.fragment);
-    			add_location(h1, file$3, 26, 4, 821);
-    			add_location(p, file$3, 27, 4, 868);
-    			attr_dev(section0, "id", "intro");
-    			attr_dev(section0, "class", "svelte-475h0");
+    			attr_dev(h1, "class", "svelte-1kxyu2");
+    			add_location(h1, file$3, 26, 4, 824);
+    			attr_dev(p, "class", "svelte-1kxyu2");
+    			add_location(p, file$3, 27, 4, 871);
+    			attr_dev(section0, "class", "intro svelte-1kxyu2");
     			add_location(section0, file$3, 25, 0, 796);
     			attr_dev(section1, "class", "latest");
-    			add_location(section1, file$3, 30, 0, 1125);
-    			add_location(button, file$3, 37, 4, 1248);
-    			attr_dev(div0, "class", "control-area");
-    			add_location(div0, file$3, 34, 0, 1180);
-    			attr_dev(div1, "class", "vis-container svelte-475h0");
-    			add_location(div1, file$3, 46, 0, 1471);
+    			add_location(section1, file$3, 30, 0, 1276);
+    			attr_dev(h2, "class", "svelte-1kxyu2");
+    			add_location(h2, file$3, 35, 4, 1344);
+    			attr_dev(h3, "class", "svelte-1kxyu2");
+    			add_location(h3, file$3, 36, 4, 1389);
+    			add_location(button, file$3, 39, 8, 1544);
+    			attr_dev(div0, "class", "control-area svelte-1kxyu2");
+    			add_location(div0, file$3, 37, 4, 1469);
+    			attr_dev(header, "class", "svelte-1kxyu2");
+    			add_location(header, file$3, 34, 0, 1331);
+    			attr_dev(div1, "class", "vis-container svelte-1kxyu2");
+    			add_location(div1, file$3, 43, 0, 1620);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -40273,13 +40505,18 @@ var app = (function () {
     			insert_dev(target, section1, anchor);
     			mount_component(quarterly, section1, null);
     			insert_dev(target, t4, anchor);
-    			insert_dev(target, div0, anchor);
+    			insert_dev(target, header, anchor);
+    			append_dev(header, h2);
+    			append_dev(header, t6);
+    			append_dev(header, h3);
+    			append_dev(header, t8);
+    			append_dev(header, div0);
     			mount_component(countryselect, div0, null);
-    			append_dev(div0, t5);
+    			append_dev(div0, t9);
     			append_dev(div0, button);
-    			append_dev(button, t6);
+    			append_dev(button, t10);
     			mount_component(icon, button, null);
-    			insert_dev(target, t7, anchor);
+    			insert_dev(target, t11, anchor);
     			insert_dev(target, div1, anchor);
     			mount_component(landingvisual, div1, null);
     			current = true;
@@ -40313,10 +40550,10 @@ var app = (function () {
     			if (detaching) detach_dev(section1);
     			destroy_component(quarterly);
     			if (detaching) detach_dev(t4);
-    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(header);
     			destroy_component(countryselect);
     			destroy_component(icon);
-    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(t11);
     			if (detaching) detach_dev(div1);
     			destroy_component(landingvisual);
     		}
@@ -40478,9 +40715,9 @@ var app = (function () {
     			g = svg_element("g");
     			path = svg_element("path");
     			attr_dev(path, "d", path_d_value = /*country*/ ctx[12].path);
-    			attr_dev(path, "class", "svelte-1ajt06b");
+    			attr_dev(path, "class", "svelte-jrbx13");
     			add_location(path, file$2, 98, 20, 3024);
-    			attr_dev(g, "class", g_class_value = "country " + /*country*/ ctx[12].id + " svelte-1ajt06b");
+    			attr_dev(g, "class", g_class_value = "country " + /*country*/ ctx[12].id + " svelte-jrbx13");
     			attr_dev(g, "data-id", g_data_id_value = /*country*/ ctx[12].id);
     			toggle_class(g, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
     			toggle_class(g, "selected", /*country*/ ctx[12].id == /*$selectedCountry*/ ctx[3] || /*country*/ ctx[12].id == "china");
@@ -40505,7 +40742,7 @@ var app = (function () {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty & /*indicator*/ 1 && g_class_value !== (g_class_value = "country " + /*country*/ ctx[12].id + " svelte-1ajt06b")) {
+    			if (dirty & /*indicator*/ 1 && g_class_value !== (g_class_value = "country " + /*country*/ ctx[12].id + " svelte-jrbx13")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -40571,11 +40808,11 @@ var app = (function () {
     			p1 = element("p");
     			t3 = text$1(t3_value);
     			t4 = space();
-    			attr_dev(p0, "class", "svelte-1ajt06b");
+    			attr_dev(p0, "class", "svelte-jrbx13");
     			add_location(p0, file$2, 124, 12, 4186);
-    			attr_dev(p1, "class", "value svelte-1ajt06b");
+    			attr_dev(p1, "class", "value svelte-jrbx13");
     			add_location(p1, file$2, 125, 12, 4223);
-    			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-1ajt06b");
+    			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-jrbx13");
     			set_style(div, "left", /*country*/ ctx[12].centroid[0] + /*$chartWidth*/ ctx[1] / 2 + "px");
     			set_style(div, "top", /*country*/ ctx[12].centroid[1] + /*$chartWidth*/ ctx[1] / 2 + "px");
     			toggle_class(div, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
@@ -40598,7 +40835,7 @@ var app = (function () {
     			if ((!current || dirty & /*indicator*/ 1) && t1_value !== (t1_value = /*country*/ ctx[12].country + "")) set_data_dev(t1, t1_value);
     			if ((!current || dirty & /*indicator*/ 1) && t3_value !== (t3_value = parseFloat(/*country*/ ctx[12].value).toFixed(2) + "")) set_data_dev(t3, t3_value);
 
-    			if (!current || dirty & /*indicator*/ 1 && div_class_value !== (div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-1ajt06b")) {
+    			if (!current || dirty & /*indicator*/ 1 && div_class_value !== (div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-jrbx13")) {
     				attr_dev(div, "class", div_class_value);
     			}
 
@@ -40694,7 +40931,7 @@ var app = (function () {
     			attr_dev(svg, "width", /*$chartWidth*/ ctx[1]);
     			attr_dev(svg, "height", /*$chartWidth*/ ctx[1]);
     			add_location(svg, file$2, 88, 4, 2526);
-    			attr_dev(div, "class", "indicator-vis svelte-1ajt06b");
+    			attr_dev(div, "class", "indicator-vis svelte-jrbx13");
     			add_location(div, file$2, 86, 0, 2493);
     		},
     		l: function claim(nodes) {
@@ -42392,7 +42629,7 @@ var app = (function () {
 
     const file = "src/App.svelte";
 
-    // (21:36) 
+    // (31:36) 
     function create_if_block_1(ctx) {
     	let indicators;
     	let current;
@@ -42424,14 +42661,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(21:36) ",
+    		source: "(31:36) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (19:4) {#if $view == 'main'}
+    // (29:4) {#if $view == 'main'}
     function create_if_block(ctx) {
     	let landing;
     	let current;
@@ -42463,7 +42700,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(19:4) {#if $view == 'main'}",
+    		source: "(29:4) {#if $view == 'main'}",
     		ctx
     	});
 
@@ -42471,10 +42708,22 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
+    	let header;
+    	let div;
+    	let icon;
+    	let t0;
+    	let ul;
+    	let li0;
+    	let t2;
+    	let li1;
+    	let t4;
+    	let li2;
+    	let t6;
     	let main;
     	let current_block_type_index;
     	let if_block;
     	let current;
+    	icon = new Icon({ props: { type: "logo" }, $$inline: true });
     	const if_block_creators = [create_if_block, create_if_block_1];
     	const if_blocks = [];
 
@@ -42490,14 +42739,51 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			header = element("header");
+    			div = element("div");
+    			create_component(icon.$$.fragment);
+    			t0 = space();
+    			ul = element("ul");
+    			li0 = element("li");
+    			li0.textContent = "Dashboard";
+    			t2 = space();
+    			li1 = element("li");
+    			li1.textContent = "Publications";
+    			t4 = space();
+    			li2 = element("li");
+    			li2.textContent = "About";
+    			t6 = space();
     			main = element("main");
     			if (if_block) if_block.c();
-    			add_location(main, file, 17, 0, 534);
+    			attr_dev(div, "class", "logo-container svelte-1597hg6");
+    			add_location(div, file, 17, 4, 590);
+    			attr_dev(li0, "class", "svelte-1597hg6");
+    			add_location(li0, file, 21, 8, 695);
+    			attr_dev(li1, "class", "svelte-1597hg6");
+    			add_location(li1, file, 22, 8, 722);
+    			attr_dev(li2, "class", "svelte-1597hg6");
+    			add_location(li2, file, 23, 8, 752);
+    			attr_dev(ul, "class", "navigation svelte-1597hg6");
+    			add_location(ul, file, 20, 4, 663);
+    			attr_dev(header, "class", "svelte-1597hg6");
+    			add_location(header, file, 16, 0, 577);
+    			add_location(main, file, 27, 0, 788);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, header, anchor);
+    			append_dev(header, div);
+    			mount_component(icon, div, null);
+    			append_dev(header, t0);
+    			append_dev(header, ul);
+    			append_dev(ul, li0);
+    			append_dev(ul, t2);
+    			append_dev(ul, li1);
+    			append_dev(ul, t4);
+    			append_dev(ul, li2);
+    			insert_dev(target, t6, anchor);
     			insert_dev(target, main, anchor);
 
     			if (~current_block_type_index) {
@@ -42538,14 +42824,19 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
+    			transition_in(icon.$$.fragment, local);
     			transition_in(if_block);
     			current = true;
     		},
     		o: function outro(local) {
+    			transition_out(icon.$$.fragment, local);
     			transition_out(if_block);
     			current = false;
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(header);
+    			destroy_component(icon);
+    			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(main);
 
     			if (~current_block_type_index) {
@@ -42571,14 +42862,14 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "indicators", $view);
+    	set_store_value(view, $view = "main", $view); // defines primary view - set this for production (do not delete)
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<App> was created with unknown prop '${key}'`);
     	});
 
-    	$$self.$capture_state = () => ({ Landing, Indicators, view, $view });
+    	$$self.$capture_state = () => ({ Landing, Indicators, Icon, view, $view });
     	return [$view];
     }
 

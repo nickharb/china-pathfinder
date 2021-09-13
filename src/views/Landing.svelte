@@ -23,26 +23,23 @@
 
 </script>
 
-<section id='intro'>
-    <h1>Where does China's Economy Stand?</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla. Amet risus consequat consectetur lorem ac leo nec morbi enim.</p>
+<section class='intro'>
+    <h1>Where does China’s Economy Stand?</h1>
+    <p>China is a global economic powerhouse, but its system remains dangerously opaque. Policymakers and financial experts dispute basic facts about what is happening inside China. To create a shared language on China’s economy, the China Pathfinder project scores China and other economies across six areas and presents an objective picture of China’s economy relative to the world.</p>
 </section>
         
 <section class='latest'>
     <Quarterly />
 </section>
 
-<div class='control-area'>
-    <CountrySelect {countryNames}/>
-
-    <button>Share this view<Icon type='share' /></button>
-    
-    <!-- <label class='time-toggle-box'>
-        <input type=checkbox bind:checked={showPrevious}>
-        Show China’s change since 2010
-    </label> -->
-
-</div>
+<header>
+    <h2>2020 Annual Economic Benchmarks</h2>
+    <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
+    <div class='control-area'>
+        <CountrySelect {countryNames}/>
+        <button>Share this view<Icon type='share' /></button>
+    </div>
+</header>
 
 <div class='vis-container'>
 
@@ -51,6 +48,56 @@
 </div>
 
 <style>
+    /* intro section */
+
+    .intro {
+        margin: 0 auto;
+        margin-bottom: 70px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .intro h1 {
+        max-width: 350px;
+        font-size: 38px;
+    }
+
+    .intro p {
+        width: 61%;
+        margin: 0;
+        margin-top: 4px;
+        font-size: 18px;
+        letter-spacing: 0.02em;
+        line-height: 1.8;
+    }
+
+    /* landing visual */
+
+    header {
+        margin-bottom: 40px;
+    }
+
+    header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    header h3 {
+        font-size: 18px;
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .control-area {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .vis-container {
         display: flex;
         text-align: left;
@@ -58,9 +105,12 @@
         padding: 1em 0;
     }
 
-    #intro {
-        max-width: 600px;
-        margin: 0 auto
-    }
+
 </style>
+
+
+
+
+
+
 
