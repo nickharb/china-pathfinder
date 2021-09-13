@@ -87,10 +87,12 @@
 <div class='text-wrapper'  bind:clientHeight={$height}>
     {#each copyData as area}
         <div class={'area '+area.label.toLowerCase()}>
-            <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
-                {area.name}
+            <header>
+                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                    {area.name}
+                </h2>
                 <Icon type='info' />
-            </h2>
+            </header>
             <div class='description'>
                 <p>{area.definition}</p>
                 <button on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
@@ -162,19 +164,25 @@
 <style>
     
     .text-wrapper {
-        width: 360px;
+        width: 380px;
         margin-right: 20px;
     }
 
     .area {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+    }
+
+    .area header {
+        margin-bottom: 10px;
+        display: flex;
+        /*justify-content: space-between;*/
     }
 
     .area h2 {
-        margin-top: 0;
-        margin-bottom: 10px;
+        margin: 0;
         position: relative;
         cursor: pointer;
+        font-size: 18px;
     }
 
     .area h2 svg {
@@ -187,18 +195,21 @@
 
     .description p {
         margin: 0;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         font-size: 14px;
+        line-height: 1.5;
     }
 
     .description button {
         height: 23px;
         font-size: 12px;
+        margin-bottom: 20px;
     }
 
     .vis-wrapper {
         position: relative;
         width: 100%;
+        margin-top: -22px;
     }
 
     .vis-wrapper svg {

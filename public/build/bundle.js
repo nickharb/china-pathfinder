@@ -38012,12 +38012,12 @@ var app = (function () {
         return({countries: data, areas: output});
     };
 
-    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"competition","name":"Market Competition","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"innovation","name":"Modern Innovation System","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"trade","name":"Trade Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"FDI","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"competition","name":"Market Competition","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"innovation","name":"Modern Innovation System","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"trade","name":"Trade Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"FDI","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"FDI","label":"1","name":"Inward FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
     {"category":"FDI","label":"2","name":"Outbound FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
     {"category":"FDI","label":"3","name":"Barriers to Inward FDI: OECD FDI Restrictiveness Index (2019)","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
@@ -38028,25 +38028,25 @@ var app = (function () {
     {"category":"portfolio","label":"4","name":"Equity inflow and outflow restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in equity markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
     {"category":"trade","label":"1","name":"Gross two-way goods trade/total two-way goods trade","definition":"This measure shows the total value of imports and exports of goods trade with share of global trade as a denominator. It reflects the size of goods trade in the country's economy.","additional":"","summary":"","context":""},
     {"category":"trade","label":"2","name":"Gross two-way services trade/total two-way services trade","definition":"This measure shows the total value of imports and exports of a country’s services trade divided by the share of global trade. It reflects the size of services trade in the country's economy.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"3","name":"Tariff Rates: Most Favored Nation (MFN), Weighted Mean, All Products","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"4","name":"Non-Tariff Measures, 2021","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"5","name":"Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"6","name":"Digital Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"3","name":"Tariff Rates: Most Favored Nation (MFN), Weighted Mean, All Products","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"4","name":"Non-Tariff Measures, 2021","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"5","name":"Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"6","name":"Digital Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
     {"category":"growth","label":"1","name":"Difference Between Average Annual Interest rate and Nominal GDP Growth","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","additional":"","summary":"","context":""},
     {"category":"growth","label":"2","name":"Credit-to-GDP Gap","definition":"The credit-to-GDP gap (“credit gap”) is defined as the difference between the credit-to-GDP ratio and its long-term trend. It reflects the degree to which credit growth exceeds or lags output growth.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"3","name":"Stock Market Capitalization as a Share of GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"4","name":"Incremental Capital Output Ratio, China vs. Best Practice","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"5","name":"Foreign Competition: Banking System's Assets in Foreign-Controlled Banks","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"3","name":"Stock Market Capitalization as a Share of GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"4","name":"Incremental Capital Output Ratio, China vs. Best Practice","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"5","name":"Foreign Competition: Banking System's Assets in Foreign-Controlled Banks","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
     {"category":"competition","label":"1","name":"Overall Market Concentration Across All Industries","definition":"The Herfindahl-Hirschman Index is a measure of market concentration and provides insight into market competition. It is measured on a scale of 0 (less concentration and thus highly competitive) to 1 (single firm dominance).","additional":"","summary":"","context":""},
     {"category":"competition","label":"2","name":"Combined SOE Company Value","definition":"Total combined value of State-Owned Enterprises denoted in USD.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"3","name":"Total Number of SOEs","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"4","name":"Scope of State-Owned Enterprises (SOEs) Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"5","name":"Unbiased Enforcement of Market Rules: Rule of Law","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"competition","label":"3","name":"Total Number of SOEs","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"competition","label":"4","name":"Scope of State-Owned Enterprises (SOEs) Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"competition","label":"5","name":"Unbiased Enforcement of Market Rules: Rule of Law","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"1","name":"R&D Expenditures / Annual GDP","definition":"This ratio measures gross domestic research and development expenditures as a percentage of GDP. R&D includes capital and current expenditures on basic research, applied research, and experimental development across business, government, academia, and non-profits.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"2","name":"Ratio of Business Enterprise Spending to Government Spending on Domestic R&D","definition":"This indicator measures the ratio between business enterprise and government R&D spending","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"3","name":"Total Triadic Patent Families Filed","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"4","name":"Receipts of payments from abroad for the use of intellectual property","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"5","name":"Intellectual Property Protection Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""}];
+    {"category":"innovation","label":"3","name":"Total Triadic Patent Families Filed","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"4","name":"Receipts of payments from abroad for the use of intellectual property","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"5","name":"Intellectual Property Protection Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""}];
 
     function cubicOut(t) {
         const f = t - 1.0;
@@ -38247,12 +38247,12 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.5 13L0.138784 0.250001L14.8612 0.250002L7.5 13Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$8, 75, 8, 12512);
+    			add_location(path, file$8, 75, 8, 12525);
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "13");
     			attr_dev(svg, "viewBox", "0 0 15 13");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 74, 4, 12443);
+    			add_location(svg, file$8, 74, 4, 12456);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38285,13 +38285,13 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#234462");
-    			add_location(path, file$8, 71, 8, 12176);
-    			attr_dev(svg, "class", "caret-down-dark svelte-1jkmjqh");
+    			add_location(path, file$8, 71, 8, 12189);
+    			attr_dev(svg, "class", "caret-down-dark svelte-ddm29c");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 70, 4, 12083);
+    			add_location(svg, file$8, 70, 4, 12096);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38324,13 +38324,13 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$8, 67, 8, 11811);
+    			add_location(path, file$8, 67, 8, 11824);
     			attr_dev(svg, "class", "caret-down-light");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 66, 4, 11717);
+    			add_location(svg, file$8, 66, 4, 11730);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38363,13 +38363,13 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
     			attr_dev(path, "fill", "white");
-    			add_location(path, file$8, 63, 8, 11586);
-    			attr_dev(svg, "class", "tooltip-caret-left svelte-1jkmjqh");
+    			add_location(path, file$8, 63, 8, 11599);
+    			attr_dev(svg, "class", "tooltip-caret-left svelte-ddm29c");
     			attr_dev(svg, "width", "6");
     			attr_dev(svg, "height", "12");
     			attr_dev(svg, "viewBox", "0 0 6 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 62, 4, 11492);
+    			add_location(svg, file$8, 62, 4, 11505);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38402,13 +38402,13 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$8, 59, 8, 10930);
-    			attr_dev(svg, "class", "arrow-right svelte-1jkmjqh");
+    			add_location(path, file$8, 59, 8, 10943);
+    			attr_dev(svg, "class", "arrow-right svelte-ddm29c");
     			attr_dev(svg, "width", "21");
     			attr_dev(svg, "height", "10");
     			attr_dev(svg, "viewBox", "0 0 21 10");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 58, 4, 10841);
+    			add_location(svg, file$8, 58, 4, 10854);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38443,13 +38443,13 @@ var app = (function () {
     			attr_dev(path, "clip-rule", "evenodd");
     			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
     			attr_dev(path, "fill", "black");
-    			add_location(path, file$8, 55, 8, 10396);
+    			add_location(path, file$8, 55, 8, 10409);
     			attr_dev(svg, "class", "chevron-down-dark");
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "12");
     			attr_dev(svg, "viewBox", "0 0 15 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 54, 4, 10301);
+    			add_location(svg, file$8, 54, 4, 10314);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38484,12 +38484,12 @@ var app = (function () {
     			attr_dev(path, "clip-rule", "evenodd");
     			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
     			attr_dev(path, "fill", "white");
-    			add_location(path, file$8, 51, 8, 9850);
+    			add_location(path, file$8, 51, 8, 9863);
     			attr_dev(svg, "width", "9");
     			attr_dev(svg, "height", "6");
     			attr_dev(svg, "viewBox", "0 0 9 6");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 50, 4, 9785);
+    			add_location(svg, file$8, 50, 4, 9798);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38524,12 +38524,12 @@ var app = (function () {
     			attr_dev(path, "clip-rule", "evenodd");
     			attr_dev(path, "d", "M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z");
     			attr_dev(path, "fill", "white");
-    			add_location(path, file$8, 47, 8, 9337);
+    			add_location(path, file$8, 47, 8, 9350);
     			attr_dev(svg, "width", "7");
     			attr_dev(svg, "height", "9");
     			attr_dev(svg, "viewBox", "0 0 7 9");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 46, 4, 9272);
+    			add_location(svg, file$8, 46, 4, 9285);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38564,15 +38564,15 @@ var app = (function () {
     			path1 = svg_element("path");
     			attr_dev(path0, "d", "M6.01122 1.49998V7.99998H6.88162V1.49998L7.96962 2.39998L8.62242 1.79998L6.77282 0.0999756H6.12002L4.27042 1.79998L4.92322 2.39998L6.01122 1.49998Z");
     			attr_dev(path0, "fill", "white");
-    			add_location(path0, file$8, 42, 8, 7943);
+    			add_location(path0, file$8, 42, 8, 7956);
     			attr_dev(path1, "d", "M11.4512 3.29997C11.2119 3.07266 10.9241 2.89317 10.6058 2.77273C10.2876 2.65228 9.94573 2.59347 9.60163 2.59997V3.39997C10.0345 3.39997 10.4496 3.55801 10.7556 3.83931C11.0617 4.12062 11.2336 4.50215 11.2336 4.89997V10.7C11.2345 11.1075 11.0661 11.5001 10.7628 11.7974C10.4595 12.0947 10.0442 12.2745 9.60163 12.3H3.29123C2.84866 12.2745 2.43334 12.0947 2.13005 11.7974C1.82676 11.5001 1.65837 11.1075 1.65923 10.7V4.89997C1.65923 4.50215 1.83118 4.12062 2.13724 3.83931C2.4433 3.55801 2.8584 3.39997 3.29123 3.39997V2.59997C2.94714 2.59347 2.60528 2.65228 2.28703 2.77273C1.96878 2.89317 1.68099 3.07266 1.44163 3.29997C1.1913 3.49636 0.992705 3.74239 0.860787 4.01953C0.728868 4.29667 0.667067 4.59771 0.680035 4.89997V10.8C0.667067 11.1022 0.728868 11.4033 0.860787 11.6804C0.992705 11.9576 1.1913 12.2036 1.44163 12.4C1.68099 12.6273 1.96878 12.8068 2.28703 12.9272C2.60528 13.0477 2.94714 13.1065 3.29123 13.1H9.60163C10.2757 13.1005 10.9239 12.8614 11.4106 12.4327C11.8973 12.0041 12.1847 11.419 12.2128 10.8V4.89997C12.1866 4.29766 11.9147 3.72647 11.4512 3.29997Z");
     			attr_dev(path1, "fill", "white");
-    			add_location(path1, file$8, 43, 8, 8124);
+    			add_location(path1, file$8, 43, 8, 8137);
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 13 14");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$8, 41, 4, 7874);
+    			add_location(svg, file$8, 41, 4, 7887);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38606,7 +38606,8 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$8, 38, 8, 6063);
+    			add_location(path, file$8, 38, 8, 6076);
+    			attr_dev(svg, "class", "info svelte-ddm29c");
     			attr_dev(svg, "width", "14");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 14 14");
@@ -38768,7 +38769,7 @@ var app = (function () {
     			attr_dev(clipPath, "id", "clip0");
     			add_location(clipPath, file$8, 31, 12, 5802);
     			add_location(defs, file$8, 30, 8, 5783);
-    			attr_dev(svg, "class", "logo svelte-1jkmjqh");
+    			attr_dev(svg, "class", "logo svelte-ddm29c");
     			attr_dev(svg, "width", "560");
     			attr_dev(svg, "height", "120");
     			attr_dev(svg, "viewBox", "0 0 560 120");
@@ -39362,6 +39363,7 @@ var app = (function () {
     // (88:4) {#each copyData as area}
     function create_each_block_4(ctx) {
     	let div1;
+    	let header;
     	let h2;
     	let t0_value = /*area*/ ctx[23].name + "";
     	let t0;
@@ -39381,11 +39383,12 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	icon0 = new Icon({ props: { type: "info" }, $$inline: true });
 
     	function click_handler() {
     		return /*click_handler*/ ctx[13](/*area*/ ctx[23]);
     	}
+
+    	icon0 = new Icon({ props: { type: "info" }, $$inline: true });
 
     	icon1 = new Icon({
     			props: { type: "chevron-right" },
@@ -39399,6 +39402,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div1 = element("div");
+    			header = element("header");
     			h2 = element("h2");
     			t0 = text$1(t0_value);
     			t1 = space();
@@ -39412,23 +39416,26 @@ var app = (function () {
     			t5 = text$1("Explore data\n                    ");
     			create_component(icon1.$$.fragment);
     			t6 = space();
-    			attr_dev(h2, "class", "svelte-137objq");
-    			add_location(h2, file$6, 89, 12, 2761);
-    			attr_dev(p, "class", "svelte-137objq");
-    			add_location(p, file$6, 94, 16, 2974);
-    			attr_dev(button, "class", "svelte-137objq");
-    			add_location(button, file$6, 95, 16, 3015);
-    			attr_dev(div0, "class", "description svelte-137objq");
-    			add_location(div0, file$6, 93, 12, 2932);
-    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[23].label.toLowerCase()) + " svelte-137objq"));
+    			attr_dev(h2, "class", "svelte-1r621gg");
+    			add_location(h2, file$6, 90, 16, 2786);
+    			attr_dev(header, "class", "svelte-1r621gg");
+    			add_location(header, file$6, 89, 12, 2761);
+    			attr_dev(p, "class", "svelte-1r621gg");
+    			add_location(p, file$6, 96, 16, 3029);
+    			attr_dev(button, "class", "svelte-1r621gg");
+    			add_location(button, file$6, 97, 16, 3070);
+    			attr_dev(div0, "class", "description svelte-1r621gg");
+    			add_location(div0, file$6, 95, 12, 2987);
+    			attr_dev(div1, "class", div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[23].label.toLowerCase()) + " svelte-1r621gg"));
     			add_location(div1, file$6, 88, 8, 2702);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
-    			append_dev(div1, h2);
+    			append_dev(div1, header);
+    			append_dev(header, h2);
     			append_dev(h2, t0);
-    			append_dev(h2, t1);
-    			mount_component(icon0, h2, null);
+    			append_dev(header, t1);
+    			mount_component(icon0, header, null);
     			append_dev(div1, t2);
     			append_dev(div1, div0);
     			append_dev(div0, p);
@@ -39454,7 +39461,7 @@ var app = (function () {
     			if ((!current || dirty[0] & /*copyData*/ 2) && t0_value !== (t0_value = /*area*/ ctx[23].name + "")) set_data_dev(t0, t0_value);
     			if ((!current || dirty[0] & /*copyData*/ 2) && t3_value !== (t3_value = /*area*/ ctx[23].definition + "")) set_data_dev(t3, t3_value);
 
-    			if (!current || dirty[0] & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[23].label.toLowerCase()) + " svelte-137objq"))) {
+    			if (!current || dirty[0] & /*copyData*/ 2 && div1_class_value !== (div1_class_value = "" + (null_to_empty("area " + /*area*/ ctx[23].label.toLowerCase()) + " svelte-1r621gg"))) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
@@ -39489,7 +39496,7 @@ var app = (function () {
     	return block;
     }
 
-    // (131:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china'}
+    // (133:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china'}
     function create_if_block$2(ctx) {
     	let text_1;
     	let t_value = /*graph*/ ctx[26].country + "";
@@ -39501,9 +39508,9 @@ var app = (function () {
     		c: function create() {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
-    			attr_dev(text_1, "class", "label svelte-137objq");
+    			attr_dev(text_1, "class", "label svelte-1r621gg");
     			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$6, 131, 28, 4523);
+    			add_location(text_1, file$6, 133, 28, 4578);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text_1, anchor);
@@ -39538,14 +39545,14 @@ var app = (function () {
     		block,
     		id: create_if_block$2.name,
     		type: "if",
-    		source: "(131:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china'}",
+    		source: "(133:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (122:16) {#each area.graphData as graph}
+    // (124:16) {#each area.graphData as graph}
     function create_each_block_3(ctx) {
     	let g;
     	let path;
@@ -39568,18 +39575,18 @@ var app = (function () {
     			path = svg_element("path");
     			circle = svg_element("circle");
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[26].path);
-    			attr_dev(path, "class", "svelte-137objq");
-    			add_location(path, file$6, 133, 24, 4674);
+    			attr_dev(path, "class", "svelte-1r621gg");
+    			add_location(path, file$6, 135, 24, 4729);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[26].r);
-    			attr_dev(circle, "class", "country-circle svelte-137objq");
-    			add_location(circle, file$6, 134, 24, 4727);
-    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[26].id + " svelte-137objq");
+    			attr_dev(circle, "class", "country-circle svelte-1r621gg");
+    			add_location(circle, file$6, 136, 24, 4782);
+    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[26].id + " svelte-1r621gg");
     			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[26].id);
     			attr_dev(g, "data-area", g_data_area_value = /*area*/ ctx[23].area);
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[26].x + "," + /*graph*/ ctx[26].y + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[26].id == /*$hoveredCountry*/ ctx[3] && /*area*/ ctx[23].area == /*$hoveredArea*/ ctx[4]);
     			toggle_class(g, "selected", /*graph*/ ctx[26].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[26].id == "china");
-    			add_location(g, file$6, 123, 20, 3987);
+    			add_location(g, file$6, 125, 20, 4042);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -39630,7 +39637,7 @@ var app = (function () {
     				attr_dev(circle, "r", circle_r_value);
     			}
 
-    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[26].id + " svelte-137objq")) {
+    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[26].id + " svelte-1r621gg")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -39675,14 +39682,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(122:16) {#each area.graphData as graph}",
+    		source: "(124:16) {#each area.graphData as graph}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (113:8) {#each areaData as area, i}
+    // (115:8) {#each areaData as area, i}
     function create_each_block_2$1(ctx) {
     	let g;
     	let text0;
@@ -39724,20 +39731,20 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$6, 116, 16, 3633);
+    			add_location(text0, file$6, 118, 16, 3688);
     			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[7] - /*$margin*/ ctx[6]);
     			attr_dev(text1, "y", "-5");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$6, 117, 16, 3737);
-    			attr_dev(line, "class", "gridline svelte-137objq");
+    			add_location(text1, file$6, 119, 16, 3792);
+    			attr_dev(line, "class", "gridline svelte-1r621gg");
     			attr_dev(line, "x2", /*$width*/ ctx[7]);
-    			add_location(line, file$6, 119, 16, 3874);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[23].area) + " svelte-137objq"));
+    			add_location(line, file$6, 121, 16, 3929);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[23].area) + " svelte-1r621gg"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[6] + "," + /*area*/ ctx[23].offsetY + ")");
-    			add_location(g, file$6, 114, 12, 3544);
+    			add_location(g, file$6, 116, 12, 3599);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -39790,7 +39797,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[23].area) + " svelte-137objq"))) {
+    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[23].area) + " svelte-1r621gg"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -39826,14 +39833,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(113:8) {#each areaData as area, i}",
+    		source: "(115:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:8) {#each area.graphData as graph, i}
+    // (155:8) {#each area.graphData as graph, i}
     function create_each_block_1$2(ctx) {
     	let tooltip;
     	let current;
@@ -39880,14 +39887,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(153:8) {#each area.graphData as graph, i}",
+    		source: "(155:8) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:4) {#each areaData as area, i}
+    // (154:4) {#each areaData as area, i}
     function create_each_block$4(ctx) {
     	let each_1_anchor;
     	let current;
@@ -39976,7 +39983,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(152:4) {#each areaData as area, i}",
+    		source: "(154:4) {#each areaData as area, i}",
     		ctx
     	});
 
@@ -40053,22 +40060,22 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "text-wrapper svelte-137objq");
+    			attr_dev(div0, "class", "text-wrapper svelte-1r621gg");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[15].call(div0));
     			add_location(div0, file$6, 86, 0, 2609);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[7]);
     			attr_dev(rect, "height", /*$height*/ ctx[8]);
-    			add_location(rect, file$6, 110, 8, 3436);
+    			add_location(rect, file$6, 112, 8, 3491);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[7] + " " + /*$height*/ ctx[8]);
     			attr_dev(svg, "width", /*$width*/ ctx[7]);
     			attr_dev(svg, "height", /*$height*/ ctx[8]);
-    			attr_dev(svg, "class", "svelte-137objq");
-    			add_location(svg, file$6, 106, 4, 3340);
-    			attr_dev(div1, "class", "vis-wrapper svelte-137objq");
+    			attr_dev(svg, "class", "svelte-1r621gg");
+    			add_location(svg, file$6, 108, 4, 3395);
+    			attr_dev(div1, "class", "vis-wrapper svelte-1r621gg");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[16].call(div1));
-    			add_location(div1, file$6, 105, 0, 3284);
+    			add_location(div1, file$6, 107, 0, 3339);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
