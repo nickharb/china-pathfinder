@@ -1,16 +1,15 @@
 <script>
     import * as d3 from 'd3';
     import { onMount } from "svelte";
+    import { fly } from 'svelte/transition';
     import {width, height, margin, scaleFactor} from '../stores/dimensions';
     import utils from "../utils";
     export let areaData;
     export let copyData;
     import {areaInView, view} from '../stores/view';
-    import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
+    import {hoveredCountry, hoveredArea, selectedCountry, selectedArea} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
-
-    // SVG basics
-    // https://frontendmasters.com/courses/svg-essentials-animation/
+    import Tooltip from './Tooltip.svelte';
 
     let tipWidth = 80;
     let tipHeight = 40;
@@ -18,29 +17,30 @@
     function switchView(targetView, area) {
         $view = targetView;
         $areaInView = area;
-
     }
 
-    function circleMouseOver(e) {
+    // event handlers
+
+    let isHovered = false;
+
+    function mouseOver(e) {
+        isHovered = true;
         $hoveredCountry = e.path[1].dataset.id;
-        if ($selectedCountry = e.path[1].dataset.id) {
-            let selectedTooltip = document.querySelectorAll('.tooltip-' + $hoveredCountry);
-            selectedTooltip.forEach(node => node.classList.add('hovered'));
-        } else {
-            let hoveredTooltip = document.querySelector('.tooltip-' + $hoveredCountry + '.tooltip-' + e.path[1].dataset.area);
-            hoveredTooltip.classList.add('hovered');
-        }
+        $hoveredArea = e.path[1].dataset.area;
     }
 
-    function circleMouseOut(e) {
+    function mouseLeave(e) {
+        isHovered = false;
         $hoveredCountry = '';
-        let selectedTooltip = document.querySelectorAll('.tooltip');
-        selectedTooltip.forEach(node => node.classList.remove('hovered'));
+        $hoveredArea = '';
     }
 
-    function circleClick(e) {
+    function mouseClick(e) {
         $selectedCountry = e.path[1].dataset.id;
+        $selectedArea = e.path[1].dataset.area;
     }
+
+    // parse data
 
     $: if (areaData) {
         parseData();
@@ -81,10 +81,9 @@
             }
         });
     }
-
 </script>
 
-
+<!-- area header -->
 <div class='text-wrapper'  bind:clientHeight={$height}>
     {#each copyData as area}
         <div class={'area '+area.label.toLowerCase()}>
@@ -101,10 +100,9 @@
             </div>
         </div>
     {/each}
-
 </div>
 
-
+<!-- composite visual -->
 <div class='vis-wrapper' bind:clientWidth={$width}>
     <svg viewBox="0 0 {$width} {$height}"
         width={$width}
@@ -121,18 +119,26 @@
 
                 <line class='gridline' x2={$width}></line>
 
-                {#each area.graphData as graph, i}
+                {#each area.graphData as graph}
 
                     <g class='country {graph.id}'
                         data-id='{graph.id}'
                         data-area='{area.area}'
                         transform='translate({graph.x},{graph.y})'
-                        class:hovered='{graph.id == $hoveredCountry}'
+                        class:hovered='{graph.id == $hoveredCountry && area.area == $hoveredArea}'
                         class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
                     >
-                        
+                        {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china'}
+                            <text class='label' y='-10px' transition:fly="{{ y: 10, duration: 200 }}">{graph.country}</text>
+                        {/if}
                         <path d={graph.path}></path>
-                        <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
+                        <circle
+                            r={graph.r}
+                            class='country-circle'
+                            on:mouseover={mouseOver}
+                            on:mouseleave={mouseLeave}
+                            on:click={mouseClick}
+                        ></circle>
                     </g>
 
                 {/each}
@@ -142,46 +148,18 @@
         {/each}
     </svg>
 
+    <!-- tooltips -->
     {#each areaData as area, i}
         {#each area.graphData as graph, i}
-            <div
-                class="tooltip {'tooltip-' + graph.id} {'tooltip-' + area.area}"
-                style="left: {graph.x + 'px'}; top: {area.offsetY + 'px'}"
-            >
-                <p>{graph.score} / 10</p>
-            </div>
+            <Tooltip isHovered={isHovered} graph={graph} area={area} />
         {/each}
     {/each}
 </div>
 
 
+
+
 <style>
-
-    .tooltip {
-        opacity: 0;
-        position: absolute;
-        z-index: 999;
-        width: 60px;
-        height: auto;
-        padding: 10px;
-        background-color: white;
-        border: 2px solid #333;
-        border-radius: 2px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        pointer-events: none;
-        transition: opacity 500ms;
-    }
-
-    .tooltip p {
-        margin: 0;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .tooltip.hovered {
-        opacity: 1;
-    }
     
     .text-wrapper {
         width: 360px;
@@ -232,6 +210,7 @@
         fill: #84A9BC;
         stroke: #fff;
         stroke-width: 2px;
+        cursor: pointer;
     }
 
     .vis-wrapper path {
@@ -240,6 +219,7 @@
         stroke-width: 1px;
         mix-blend-mode: multiply;
         stroke-opacity: 0.2;
+        transition: stroke 200ms, stroke-opacity 200ms;
     }
 
     g.hovered circle {
@@ -272,6 +252,28 @@
 
     .gridline {
         stroke: #84A9BC;
+    }
+
+    /* country label */
+
+    text.label {
+        fill: #444444;
+        text-anchor: middle;
+        /*fill-opacity: 0;*/
+        pointer-events: none;
+        /*transition: fill-opacity 200ms;*/
+    }
+
+    g.selected text.label {
+        fill: #234462;
+        font-weight: bold;
+        /*fill-opacity: 1;*/
+    }
+
+    g.china text.label {
+        fill: #D13F36;
+        font-weight: bold;
+        /*fill-opacity: 1;*/
     }
 
 </style>

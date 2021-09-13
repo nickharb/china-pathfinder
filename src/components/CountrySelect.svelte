@@ -36,4 +36,8 @@
         display: inline-block;
         margin-left: 10px;
     }
+
+    select {
+        cursor: pointer;
+    }
 </style>

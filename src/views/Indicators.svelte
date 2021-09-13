@@ -63,7 +63,6 @@
         const xScale = d3.scaleLinear().domain([0,10]).range([$margin*3, $width-$margin*3]);
 
         areaData.comps.forEach((d,i)=>{
-            console.log(d)
             graphData.push({
                 id : areaData.countries[i].trim().toLowerCase().split(" ").join("-"),
                 x : xScale(d),

@@ -36,9 +36,9 @@
 
 <style>
     header {
-        max-width: 1280px;
+        width: 1280px;
         margin: 0 auto;
-        padding: 60px 0 20px;
+        padding: 60px 40px 20px;
         border-bottom: 1px solid #122431;
         display: flex;
         justify-content: space-between;
