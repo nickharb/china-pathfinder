@@ -28,7 +28,7 @@
 <main>
     {#if $view == 'main'}
         <Landing/>
-    {:else if $view == 'indicators'}
+    {:else}
         <Indicators/>
     {/if}
 </main>

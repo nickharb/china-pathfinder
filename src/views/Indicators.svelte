@@ -16,10 +16,10 @@
     let expanded = false;
 
     // set area visual width
-    $width = 750;
-    $margin = 20;
+    let areaWidth = 750;
+    let areaMargin = 20;
 
-    // TODO - dev only, delete these lines for production
+    // // TODO - dev only, delete these lines for production
     if (!$areaInView) { 
         $areaInView = 'growth'; // pulled from /stores/view
     }
@@ -60,7 +60,7 @@
     // parse data
 
     $: if (areaData) {
-        const xScale = d3.scaleLinear().domain([0,10]).range([$margin*3, $width-$margin*3]);
+        const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, areaWidth-areaMargin*3]);
 
         areaData.comps.forEach((d,i)=>{
             graphData.push({
@@ -75,8 +75,6 @@
     }
 
     $: if (indicatorsData) {
-        // match indicators copy with the indicators data
-        // it's not currently matching for a lack of real indicators data
         indicatorsData.forEach((d,i) => {
 
             let indicatorCopy = copyData.filter(x=> x.category == $areaInView);
@@ -89,6 +87,8 @@
         })
     }
 
+    console.log($view, $areaInView)
+
     function switchView(targetView, area) {
         $view = targetView;
         $areaInView = area;
@@ -96,7 +96,7 @@
 
 </script>
 
-<!-- Header area -->
+
 <div class='area-summary' class:expanded={expanded == true}>
 
     <button class='back' on:click|self={()=> switchView('main')}>Back</button>
@@ -107,16 +107,15 @@
             <div class='intro'>{currentArea.context}</div>
         </div>
 
-        <!-- <div class='area-vis' bind:clientWidth={$width}> -->
         <div class='area-vis'>
-            <svg width='{$width}' height='50'>
+            <svg width='{areaWidth}' height='50'>
                 {#if areaData}
-                    <g class="{areaData.area}" transform='translate(0,{$margin})'>
+                    <g class="{areaData.area}" transform='translate(0,{areaMargin})'>
 
                         <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
-                        <text x='{$width}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
+                        <text x='{areaWidth}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
 
-                        <line class='gridline' x1=0 x2={$width} transform='translate(0,5)'></line>
+                        <line class='gridline' x1=0 x2={areaWidth} transform='translate(0,5)'></line>
 
                         {#each graphData as graph, i}
                             <g class='country {graph.id}'
@@ -169,13 +168,11 @@
             </svg>
         </button>
         <div class="methodology">
-            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
             <a href="#">Methodology<Icon type="arrow-right" /></a>
         </div>
     </div>
 </div>
 
-<!-- Secondary indicator charts container -->
 <div class='indicators'>
     <h2>Assessing {currentArea.name.toLowerCase()}</h2>
 
@@ -184,7 +181,6 @@
         <button>Share this view<Icon type='share' /></button>
     </div>
 
-    <!-- Alternate indicator charts on left and right -->
     {#each indicatorsData as indicator, i}
 
         <div class='indicator-container'>

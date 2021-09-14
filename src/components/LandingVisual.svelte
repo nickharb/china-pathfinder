@@ -15,6 +15,7 @@
     let tipHeight = 40;
 
     function switchView(targetView, area) {
+        // console.log(targetView, area)
         $view = targetView;
         $areaInView = area;
     }
@@ -95,7 +96,7 @@
             </header>
             <div class='description'>
                 <p>{area.definition}</p>
-                <button on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                <button on:click|self={()=> switchView('indicators', area.label.toLowerCase())}>
                     Explore data
                     <Icon type='chevron-right' />
                 </button>
@@ -175,7 +176,6 @@
     .area header {
         margin-bottom: 10px;
         display: flex;
-        /*justify-content: space-between;*/
     }
 
     .area h2 {
