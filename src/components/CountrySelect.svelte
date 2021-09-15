@@ -39,5 +39,6 @@
 
     select {
         cursor: pointer;
+        min-width: 210px;
     }
 </style>

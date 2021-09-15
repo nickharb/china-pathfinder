@@ -79,9 +79,14 @@
 
 
 <style>
+    svg {
+        pointer-events: none;
+    }
+    
     .info {
         margin-top: 4px;
         margin-left: 7px;
+        /*pointer-events: none;*/
     }
 
     .tooltip-caret-left {

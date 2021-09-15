@@ -5,4 +5,5 @@ export const hoveredCountry = writable();
 export const hoveredArea = writable();
 export const selectedCountry = writable();
 export const selectedArea = writable();
+export const hoveredInfo = writable();
 

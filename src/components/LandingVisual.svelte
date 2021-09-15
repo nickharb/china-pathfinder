@@ -7,15 +7,19 @@
     export let areaData;
     export let copyData;
     import {areaInView, view} from '../stores/view';
-    import {hoveredCountry, hoveredArea, selectedCountry, selectedArea} from '../stores/country-store.js';
+    import {hoveredCountry, hoveredArea, selectedCountry, selectedArea, hoveredInfo} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
     import Tooltip from './Tooltip.svelte';
+    import InfoTooltip from './InfoTooltip.svelte';
 
-    let tipWidth = 80;
-    let tipHeight = 40;
+    let descriptionWidth = 380;
+    let offsetLeft = [];
 
     function switchView(targetView, area) {
-        // console.log(targetView, area)
+        // scroll to top
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        // reset view and area
         $view = targetView;
         $areaInView = area;
     }
@@ -23,6 +27,7 @@
     // event handlers
 
     let isHovered = false;
+    let infoIsHovered = false;
 
     function mouseOver(e) {
         isHovered = true;
@@ -39,6 +44,16 @@
     function mouseClick(e) {
         $selectedCountry = e.path[1].dataset.id;
         $selectedArea = e.path[1].dataset.area;
+    }
+
+    function infoMouseOver(e) {
+        infoIsHovered = true;
+        $hoveredInfo = e.path[0].dataset.area;
+    }
+
+    function infoMouseLeave(e) {
+        infoIsHovered = false;
+        $hoveredInfo = '';
     }
 
     // parse data
@@ -59,7 +74,6 @@
                     - d3.select('.text-wrapper').node().getBoundingClientRect().top
                     + $margin*2;
 
-                // 
                 d.graphData = d.comps.map((m, n)=>{
                     let distance = i<5 ? (xScale(areaData[i+1]['comps'][n]) - xScale(m)) : 0;
                     let points = i<5 ? ([
@@ -86,13 +100,21 @@
 
 <!-- area header -->
 <div class='text-wrapper'  bind:clientHeight={$height}>
-    {#each copyData as area}
+    {#each copyData as area, i}
         <div class={'area '+area.label.toLowerCase()}>
             <header>
-                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} bind:clientWidth={offsetLeft[i]}>
                     {area.name}
                 </h2>
-                <Icon type='info' />
+                <div
+                    class="info"
+                    data-area='{area.name}'
+                    on:mouseover={infoMouseOver}
+                    on:mouseleave={infoMouseLeave}
+                ><Icon type='info' /></div>
+                <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
+                    {area.additional}
+                </InfoTooltip>
             </header>
             <div class='description'>
                 <p>{area.definition}</p>
@@ -151,7 +173,7 @@
         {/each}
     </svg>
 
-    <!-- tooltips -->
+    <!-- area vis tooltips -->
     {#each areaData as area, i}
         {#each area.graphData as graph, i}
             <Tooltip isHovered={isHovered} graph={graph} area={area} />
@@ -163,10 +185,16 @@
 
 
 <style>
-    
+    .info {
+        cursor: pointer;
+        display: block;
+        padding-right: 5px;
+    }
+
     .text-wrapper {
         width: 380px;
         margin-right: 20px;
+        position: relative;
     }
 
     .area {
