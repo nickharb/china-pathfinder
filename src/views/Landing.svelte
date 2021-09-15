@@ -16,7 +16,7 @@
 
     onMount(async()=>{
         data = await loadData();
-        countryNames = data['countries'].filter(d=> d.country!=='China');
+        countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
         areaData = data['areas'];
     });
 

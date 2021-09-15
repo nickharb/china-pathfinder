@@ -12,7 +12,7 @@
 </script>
 
 
-{#if isHovered && graph.id == $hoveredCountry && graph.id == $selectedCountry || isHovered && graph.id == $hoveredCountry && graph.id == 'china'}
+{#if isHovered && graph.id == $hoveredCountry && graph.id == $selectedCountry || isHovered && graph.id == $hoveredCountry && graph.id == 'china' || isHovered && graph.id == $hoveredCountry && graph.id == 'open-economy-avg'}
     <div class="tooltip" transition:fly="{{ x: -10, duration: 200 }}" style="left: {graph.x+25 + 'px'}; top: {area.offsetY-5 + 'px'}">
         <Icon type='tooltip-caret-left' />
         <p>{graph.score} / 10</p>

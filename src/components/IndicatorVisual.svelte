@@ -84,7 +84,7 @@
                 <g class='country {country.id}'
                     data-id='{country.id}'
                     class:hovered='{country.id == $hoveredCountry}'
-                    class:selected='{country.id == $selectedCountry || country.id == 'china'}'
+                    class:selected='{country.id == $selectedCountry || country.id == 'china' || country.id == 'open-economy-avg'}'
                 >
 
                     <path d={country.path} on:mouseover={pathMouseOver} on:mouseout={pathMouseOut} on:click={pathClick}></path>

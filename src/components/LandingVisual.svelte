@@ -151,12 +151,15 @@
                         data-area='{area.area}'
                         transform='translate({graph.x},{graph.y})'
                         class:hovered='{graph.id == $hoveredCountry && area.area == $hoveredArea}'
-                        class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
+                        class:selected='{graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}'
                     >
-                        {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china'}
+                        <!-- top country labels -->
+                        {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
                             <text class='label' y='-10px' transition:fly="{{ y: 10, duration: 200 }}">{graph.country}</text>
                         {/if}
+                        <!-- country path -->
                         <path d={graph.path}></path>
+                        <!-- country circle -->
                         <circle
                             r={graph.r}
                             class='country-circle'
@@ -289,6 +292,30 @@
         stroke-opacity: 1;
     }
 
+    g.china-2010.selected circle {
+        fill: #A13F36;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
+    g.china-2010.selected path {
+        stroke: #A13F36;
+        stroke-width: 2px;
+        stroke-opacity: 1;
+    }
+
+    g.open-economy-avg.selected circle {
+        fill: #D18B36;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
+    g.open-economy-avg.selected path {
+        stroke: #D18B36;
+        stroke-width: 2px;
+        stroke-opacity: 1;
+    }
+
     .gridline {
         stroke: #84A9BC;
     }
@@ -298,21 +325,27 @@
     text.label {
         fill: #444444;
         text-anchor: middle;
-        /*fill-opacity: 0;*/
         pointer-events: none;
-        /*transition: fill-opacity 200ms;*/
     }
 
     g.selected text.label {
         fill: #234462;
         font-weight: bold;
-        /*fill-opacity: 1;*/
     }
 
     g.china text.label {
         fill: #D13F36;
         font-weight: bold;
-        /*fill-opacity: 1;*/
+    }
+
+    g.china-2010 text.label {
+        fill: #A13F36;
+        font-weight: bold;
+    }
+
+    g.open-economy-avg text.label {
+        fill: #D18B36;
+        font-weight: bold;
     }
 
 </style>
