@@ -25,6 +25,7 @@
     }
 
     const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
+    console.log(currentArea)
 
     // event handlers
 
@@ -53,6 +54,7 @@
     onMount(async()=>{
         data = await loadData();
         indicatorsData = await loadIndicatorsData($areaInView);
+        console.log(indicatorsData)
         countryNames = data['countries'].filter(d=> d.country!=='China');
         areaData = (data['areas']).filter(d=> d.area == $areaInView)[0];
     });
@@ -86,8 +88,6 @@
             }
         })
     }
-
-    console.log($view, $areaInView)
 
     function switchView(targetView, area) {
         $view = targetView;

@@ -38064,12 +38064,12 @@ var app = (function () {
     {"category":"main","label":"competition","name":"Market Competition","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"innovation","name":"Modern Innovation System","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"trade","name":"Trade Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"FDI","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"fdi","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"FDI","label":"1","name":"Inward FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
-    {"category":"FDI","label":"2","name":"Outbound FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
-    {"category":"FDI","label":"3","name":"Barriers to Inward FDI: OECD FDI Restrictiveness Index (2019)","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
-    {"category":"FDI","label":"4","name":"Capital Controls: FDI Inflow and Outflow Restrictions (2017)","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset and adapted from the IMF Annual Report on Exchange Arrangements and Exchange Restrictions, measures regulatory restrictions on inbound and outbound FDI flows on a scale of 0 (low) to 1 (high).","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"1","name":"Inward FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"2","name":"Outbound FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"3","name":"Barriers to Inward FDI: OECD FDI Restrictiveness Index (2019)","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"4","name":"Capital Controls: FDI Inflow and Outflow Restrictions (2017)","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset and adapted from the IMF Annual Report on Exchange Arrangements and Exchange Restrictions, measures regulatory restrictions on inbound and outbound FDI flows on a scale of 0 (low) to 1 (high).","additional":"","summary":"","context":""},
     {"category":"portfolio","label":"1","name":"Cross-Border Debt Assets and Liabilities / GDP, 2020","definition":"Cross-border debt assets and liabilities measure the value of domestic debt owned by foreigners and foreign debt owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
     {"category":"portfolio","label":"2","name":"Cross-Border Equity Assets and Liabilities / GDP, 2020","definition":"Cross-border equity assets and liabilities measure the value of domestic equity owned by foreigners and foreign equity owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
     {"category":"portfolio","label":"3","name":"Bond inflow and outflow restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in bond markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
@@ -42343,7 +42343,7 @@ var app = (function () {
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
     			attr_dev(text0, "class", "svelte-iun7sz");
-    			add_location(text0, file$1, 114, 24, 3506);
+    			add_location(text0, file$1, 114, 24, 3534);
     			attr_dev(text1, "x", /*areaWidth*/ ctx[8]);
     			attr_dev(text1, "y", "0");
     			attr_dev(text1, "text-anchor", "end");
@@ -42351,15 +42351,15 @@ var app = (function () {
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
     			attr_dev(text1, "class", "svelte-iun7sz");
-    			add_location(text1, file$1, 115, 24, 3617);
+    			add_location(text1, file$1, 115, 24, 3645);
     			attr_dev(line, "class", "gridline svelte-iun7sz");
     			attr_dev(line, "x1", "0");
     			attr_dev(line, "x2", /*areaWidth*/ ctx[8]);
     			attr_dev(line, "transform", "translate(0,5)");
-    			add_location(line, file$1, 117, 24, 3756);
+    			add_location(line, file$1, 117, 24, 3784);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-iun7sz"));
     			attr_dev(g, "transform", "translate(0," + /*areaMargin*/ ctx[9] + ")");
-    			add_location(g, file$1, 112, 20, 3415);
+    			add_location(g, file$1, 112, 20, 3443);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -42437,16 +42437,16 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(circle, "r", /*graph*/ ctx[23].r);
     			attr_dev(circle, "class", "country-circle svelte-iun7sz");
-    			add_location(circle, file$1, 127, 32, 4353);
+    			add_location(circle, file$1, 127, 32, 4381);
     			attr_dev(text_1, "class", "label svelte-iun7sz");
     			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$1, 128, 32, 4521);
+    			add_location(text_1, file$1, 128, 32, 4549);
     			attr_dev(g, "class", "country " + /*graph*/ ctx[23].id + " svelte-iun7sz");
     			attr_dev(g, "data-id", /*graph*/ ctx[23].id);
     			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[23].x + "," + (/*graph*/ ctx[23].y + 5) + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
-    			add_location(g, file$1, 120, 28, 3917);
+    			add_location(g, file$1, 120, 28, 3945);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -42621,15 +42621,15 @@ var app = (function () {
     			t4 = text$1(" / 10");
     			t5 = space();
     			attr_dev(p0, "class", "svelte-iun7sz");
-    			add_location(p0, file$1, 144, 24, 5221);
+    			add_location(p0, file$1, 144, 24, 5249);
     			attr_dev(p1, "class", "value svelte-iun7sz");
-    			add_location(p1, file$1, 145, 24, 5268);
+    			add_location(p1, file$1, 145, 24, 5296);
     			attr_dev(div, "class", "tooltip " + ("tooltip-" + /*graph*/ ctx[23].id) + " svelte-iun7sz");
     			set_style(div, "left", /*graph*/ ctx[23].x + "px");
     			set_style(div, "top", /*graph*/ ctx[23].y + 20 + "px");
     			toggle_class(div, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			toggle_class(div, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
-    			add_location(div, file$1, 137, 20, 4799);
+    			add_location(div, file$1, 137, 20, 4827);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42691,9 +42691,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-    			add_location(p, file$1, 154, 12, 5504);
+    			add_location(p, file$1, 154, 12, 5532);
     			attr_dev(div, "class", "summary");
-    			add_location(div, file$1, 153, 8, 5454);
+    			add_location(div, file$1, 153, 8, 5482);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42827,19 +42827,19 @@ var app = (function () {
     			t5 = space();
     			create_component(indicatorvisual.$$.fragment);
     			attr_dev(h3, "class", "svelte-iun7sz");
-    			add_location(h3, file$1, 199, 24, 7789);
+    			add_location(h3, file$1, 199, 24, 7817);
     			attr_dev(div0, "class", "description");
-    			add_location(div0, file$1, 200, 24, 7844);
+    			add_location(div0, file$1, 200, 24, 7872);
     			attr_dev(button, "class", "svelte-iun7sz");
-    			add_location(button, file$1, 201, 24, 7927);
+    			add_location(button, file$1, 201, 24, 7955);
     			set_style(div1, "float", "right");
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[6] * 0.3 + "px");
     			set_style(div1, "padding-right", "20px");
     			set_style(div1, "border-right", "1px solid #eee");
     			attr_dev(div1, "class", "inner-container svelte-iun7sz");
-    			add_location(div1, file$1, 198, 20, 7634);
+    			add_location(div1, file$1, 198, 20, 7662);
     			attr_dev(div2, "class", "indicator-text svelte-iun7sz");
-    			add_location(div2, file$1, 197, 16, 7585);
+    			add_location(div2, file$1, 197, 16, 7613);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -42941,18 +42941,18 @@ var app = (function () {
     			t5 = text$1("Share this chart");
     			create_component(icon.$$.fragment);
     			attr_dev(h3, "class", "svelte-iun7sz");
-    			add_location(h3, file$1, 191, 24, 7306);
+    			add_location(h3, file$1, 191, 24, 7334);
     			attr_dev(div0, "class", "description");
-    			add_location(div0, file$1, 192, 24, 7361);
+    			add_location(div0, file$1, 192, 24, 7389);
     			attr_dev(button, "class", "svelte-iun7sz");
-    			add_location(button, file$1, 193, 24, 7444);
+    			add_location(button, file$1, 193, 24, 7472);
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[6] * 0.3 + "px");
     			set_style(div1, "padding-left", "20px");
     			set_style(div1, "border-left", "1px solid #eee");
     			attr_dev(div1, "class", "inner-container svelte-iun7sz");
-    			add_location(div1, file$1, 190, 20, 7165);
+    			add_location(div1, file$1, 190, 20, 7193);
     			attr_dev(div2, "class", "indicator-text svelte-iun7sz");
-    			add_location(div2, file$1, 189, 16, 7116);
+    			add_location(div2, file$1, 189, 16, 7144);
     		},
     		m: function mount(target, anchor) {
     			mount_component(indicatorvisual, target, anchor);
@@ -43035,7 +43035,7 @@ var app = (function () {
     			if_block.c();
     			t = space();
     			attr_dev(div, "class", "indicator-container svelte-iun7sz");
-    			add_location(div, file$1, 185, 8, 6991);
+    			add_location(div, file$1, 185, 8, 7019);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -43197,48 +43197,48 @@ var app = (function () {
     			}
 
     			attr_dev(button0, "class", "back svelte-iun7sz");
-    			add_location(button0, file$1, 101, 4, 3027);
+    			add_location(button0, file$1, 101, 4, 3055);
     			attr_dev(h1, "class", "svelte-iun7sz");
-    			add_location(h1, file$1, 105, 12, 3180);
+    			add_location(h1, file$1, 105, 12, 3208);
     			attr_dev(div0, "class", "intro");
-    			add_location(div0, file$1, 106, 12, 3220);
+    			add_location(div0, file$1, 106, 12, 3248);
     			attr_dev(div1, "class", "area-text svelte-iun7sz");
-    			add_location(div1, file$1, 104, 8, 3144);
+    			add_location(div1, file$1, 104, 8, 3172);
     			attr_dev(svg0, "width", /*areaWidth*/ ctx[8]);
     			attr_dev(svg0, "height", "50");
-    			add_location(svg0, file$1, 110, 12, 3326);
+    			add_location(svg0, file$1, 110, 12, 3354);
     			attr_dev(div2, "class", "area-vis svelte-iun7sz");
-    			add_location(div2, file$1, 109, 8, 3291);
+    			add_location(div2, file$1, 109, 8, 3319);
     			attr_dev(div3, "class", "area-container svelte-iun7sz");
-    			add_location(div3, file$1, 103, 4, 3107);
+    			add_location(div3, file$1, 103, 4, 3135);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$1, 166, 16, 6320);
+    			add_location(path, file$1, 166, 16, 6348);
     			attr_dev(svg1, "class", "caret-down-light svelte-iun7sz");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
-    			add_location(svg1, file$1, 165, 12, 6218);
+    			add_location(svg1, file$1, 165, 12, 6246);
     			attr_dev(button1, "class", "expand svelte-iun7sz");
-    			add_location(button1, file$1, 159, 8, 6025);
+    			add_location(button1, file$1, 159, 8, 6053);
     			attr_dev(a, "href", "#");
     			attr_dev(a, "class", "svelte-iun7sz");
-    			add_location(a, file$1, 170, 12, 6623);
+    			add_location(a, file$1, 170, 12, 6651);
     			attr_dev(div4, "class", "methodology svelte-iun7sz");
-    			add_location(div4, file$1, 169, 8, 6585);
+    			add_location(div4, file$1, 169, 8, 6613);
     			attr_dev(div5, "class", "area-footer svelte-iun7sz");
-    			add_location(div5, file$1, 158, 4, 5991);
+    			add_location(div5, file$1, 158, 4, 6019);
     			attr_dev(div6, "class", "area-summary svelte-iun7sz");
     			toggle_class(div6, "expanded", /*expanded*/ ctx[3] == true);
-    			add_location(div6, file$1, 99, 0, 2961);
-    			add_location(h2, file$1, 176, 4, 6741);
+    			add_location(div6, file$1, 99, 0, 2989);
+    			add_location(h2, file$1, 176, 4, 6769);
     			attr_dev(button2, "class", "svelte-iun7sz");
-    			add_location(button2, file$1, 180, 8, 6873);
+    			add_location(button2, file$1, 180, 8, 6901);
     			attr_dev(div7, "class", "control-area");
-    			add_location(div7, file$1, 178, 4, 6798);
+    			add_location(div7, file$1, 178, 4, 6826);
     			attr_dev(div8, "class", "indicators");
-    			add_location(div8, file$1, 175, 0, 6712);
+    			add_location(div8, file$1, 175, 0, 6740);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -43491,6 +43491,7 @@ var app = (function () {
     	}
 
     	const currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0];
+    	console.log(currentArea);
 
     	// event handlers
     	function expandButtonClick() {
@@ -43517,11 +43518,10 @@ var app = (function () {
     	onMount(async () => {
     		data = await loadData();
     		$$invalidate(0, indicatorsData = await loadIndicatorsData($areaInView));
+    		console.log(indicatorsData);
     		$$invalidate(2, countryNames = data["countries"].filter(d => d.country !== "China"));
     		$$invalidate(1, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
     	});
-
-    	console.log($view, $areaInView);
 
     	function switchView(targetView, area) {
     		set_store_value(view, $view = targetView, $view);
