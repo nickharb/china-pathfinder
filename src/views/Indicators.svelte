@@ -21,11 +21,10 @@
 
     // // TODO - dev only, delete these lines for production
     if (!$areaInView) { 
-        $areaInView = 'growth'; // pulled from /stores/view
+        $areaInView = 'fdi'; // pulled from /stores/view
     }
 
     const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
-    console.log(currentArea)
 
     // event handlers
 
@@ -54,7 +53,6 @@
     onMount(async()=>{
         data = await loadData();
         indicatorsData = await loadIndicatorsData($areaInView);
-        console.log(indicatorsData)
         countryNames = data['countries'].filter(d=> d.country!=='China');
         areaData = (data['areas']).filter(d=> d.area == $areaInView)[0];
     });
@@ -97,14 +95,14 @@
 </script>
 
 
-<div class='area-summary' class:expanded={expanded == true}>
+<button class='back' on:click|self={()=> switchView('main')}>Back</button>
 
-    <button class='back' on:click|self={()=> switchView('main')}>Back</button>
+<div class='area-summary' class:expanded={expanded == true}>
 
     <div class="area-container">
         <div class='area-text'>
             <h1>{currentArea.name}</h1>
-            <div class='intro'>{currentArea.context}</div>
+            <p class='intro'>{currentArea.context}</p>
         </div>
 
         <div class='area-vis'>
@@ -174,12 +172,14 @@
 </div>
 
 <div class='indicators'>
-    <h2>Assessing {currentArea.name.toLowerCase()}</h2>
-
-    <div class='control-area'>
-        <CountrySelect {countryNames}/>
-        <button>Share this view<Icon type='share' /></button>
-    </div>
+    <header>
+        <h2>Assessing {currentArea.name.toLowerCase()}</h2>
+        <h3>Lorem ipsum dolor sit amet consectetur adipiscing elit commodo</h3>
+        <div class='control-area'>
+            <CountrySelect {countryNames}/>
+            <button>Share this view<Icon type='share' /></button>
+        </div>
+    </header>
 
     {#each indicatorsData as indicator, i}
 
@@ -216,11 +216,40 @@
 
     /* header section */
 
+    header {
+        margin-bottom: 40px;
+    }
+
+    header h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    header h3 {
+        font-size: 18px;
+        font-weight: normal;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    .control-area {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .area-summary {
         background-color: #EFF4F8;
         margin-bottom: 100px;
         padding: 40px;
         border-radius: 10px;
+    }
+
+    .intro {
+        margin: 0;
     }
 
     button.expand {
@@ -254,7 +283,9 @@
     .area-text h1 {
         margin: 0;
         margin-bottom: 15px;
-        font-size: 28px;
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1;
     }
     
     .area-vis {
@@ -411,8 +442,8 @@
     
     button.back {
         display: block;
-        position: absolute;
-        top: 0;
+        margin: 0;
+        margin-bottom: 20px;
     }
 
 

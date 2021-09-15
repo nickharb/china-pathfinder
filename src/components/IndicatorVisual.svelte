@@ -6,8 +6,8 @@
     export let indicator;
     
     // $chartWidth = window.innerWidth * 0.2;
-    $chartWidth = 500;
-    $innerRadius = 50;
+    $chartWidth = 600; // 500
+    $innerRadius = 40; // 50
 
     let minRadius = $innerRadius + 10;
     let maxRadius = $chartWidth/2-$innerRadius;
@@ -25,23 +25,14 @@
         let endAngle = x(d.country) + x.bandwidth();
         let outerRadius = y(d.value);
 
-        // let arc = d3.arc()
-        //     .innerRadius($innerRadius)
-        //     .outerRadius(outerRadius)
-        //     .cornerRadius(2)
-        //     .startAngle(startAngle)
-        //     .endAngle(endAngle)
-        //     .padAngle(0.18)
-        //     .padRadius($innerRadius)();
-
         let arc = d3.arc()
             .innerRadius($innerRadius)
             .outerRadius(outerRadius)
             .cornerRadius(2)
-            .startAngle(startAngle)
+            .startAngle(startAngle + 0.15)
             .endAngle(endAngle)
-            .padAngle(2.48)
-            .padRadius(5)();
+            .padAngle(0) // 2.48
+            .padRadius(0)(); // 5
 
         // adapted from d3 centroid function
         function centroid() {

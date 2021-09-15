@@ -550,12 +550,6 @@ var app = (function () {
             }
         };
     }
-
-    const globals = (typeof window !== 'undefined'
-        ? window
-        : typeof globalThis !== 'undefined'
-            ? globalThis
-            : global);
     function create_component(block) {
         block && block.c();
     }
@@ -38066,35 +38060,37 @@ var app = (function () {
     {"category":"main","label":"trade","name":"Trade Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"fdi","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"fdi","label":"1","name":"Inward FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
-    {"category":"fdi","label":"2","name":"Outbound FDI Stock to GDP Ratio (2020)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
-    {"category":"fdi","label":"3","name":"Barriers to Inward FDI: OECD FDI Restrictiveness Index (2019)","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
-    {"category":"fdi","label":"4","name":"Capital Controls: FDI Inflow and Outflow Restrictions (2017)","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset and adapted from the IMF Annual Report on Exchange Arrangements and Exchange Restrictions, measures regulatory restrictions on inbound and outbound FDI flows on a scale of 0 (low) to 1 (high).","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"1","name":"Cross-Border Debt Assets and Liabilities / GDP, 2020","definition":"Cross-border debt assets and liabilities measure the value of domestic debt owned by foreigners and foreign debt owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"2","name":"Cross-Border Equity Assets and Liabilities / GDP, 2020","definition":"Cross-border equity assets and liabilities measure the value of domestic equity owned by foreigners and foreign equity owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"3","name":"Bond inflow and outflow restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in bond markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"4","name":"Equity inflow and outflow restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in equity markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
-    {"category":"trade","label":"1","name":"Gross two-way goods trade/total two-way goods trade","definition":"This measure shows the total value of imports and exports of goods trade with share of global trade as a denominator. It reflects the size of goods trade in the country's economy.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"2","name":"Gross two-way services trade/total two-way services trade","definition":"This measure shows the total value of imports and exports of a country’s services trade divided by the share of global trade. It reflects the size of services trade in the country's economy.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"3","name":"Tariff Rates: Most Favored Nation (MFN), Weighted Mean, All Products","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"4","name":"Non-Tariff Measures, 2021","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"5","name":"Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"6","name":"Digital Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"1","name":"Difference Between Average Annual Interest rate and Nominal GDP Growth","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"2","name":"Credit-to-GDP Gap","definition":"The credit-to-GDP gap (“credit gap”) is defined as the difference between the credit-to-GDP ratio and its long-term trend. It reflects the degree to which credit growth exceeds or lags output growth.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"3","name":"Stock Market Capitalization as a Share of GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"4","name":"Incremental Capital Output Ratio, China vs. Best Practice","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"5","name":"Foreign Competition: Banking System's Assets in Foreign-Controlled Banks","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"1","name":"Overall Market Concentration Across All Industries","definition":"The Herfindahl-Hirschman Index is a measure of market concentration and provides insight into market competition. It is measured on a scale of 0 (less concentration and thus highly competitive) to 1 (single firm dominance).","additional":"","summary":"","context":""},
-    {"category":"competition","label":"2","name":"Combined SOE Company Value","definition":"Total combined value of State-Owned Enterprises denoted in USD.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"3","name":"Total Number of SOEs","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"4","name":"Scope of State-Owned Enterprises (SOEs) Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"5","name":"Unbiased Enforcement of Market Rules: Rule of Law","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"1","name":"R&D Expenditures / Annual GDP","definition":"This ratio measures gross domestic research and development expenditures as a percentage of GDP. R&D includes capital and current expenditures on basic research, applied research, and experimental development across business, government, academia, and non-profits.","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"1","name":"Inward FDI Stock as a Share of GDP (%)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"2","name":"Outward FDI Stock to GDP Ratio (%)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"3","name":"Capital Controls: FDI Inflow Restrictions, 2020","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
+    {"category":"fdi","label":"4","name":"Capital Controls: FDI Outflow Restrictions, 2020","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset and adapted from the IMF Annual Report on Exchange Arrangements and Exchange Restrictions, measures regulatory restrictions on inbound and outbound FDI flows on a scale of 0 (low) to 1 (high).","additional":"","summary":"","context":""},
+    {"category":"portfolio","label":"1","name":"Cross-Border Debt Assets and Liabilities as a Share of Gross Domestic Product, 2020 ","definition":"Cross-border debt assets and liabilities measure the value of domestic debt owned by foreigners and foreign debt owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
+    {"category":"portfolio","label":"2","name":"Cross-Border Equity Assets and Liabilities as a Share  of GDP, 2020 ","definition":"Cross-border equity assets and liabilities measure the value of domestic equity owned by foreigners and foreign equity owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
+    {"category":"portfolio","label":"3","name":"Bond Inflows Restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in bond markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
+    {"category":"portfolio","label":"4","name":"Bond Outflow Restrictiveness, FRKSU derived from AREAER","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in equity markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
+    {"category":"portfolio","label":"5","name":"Equity Inflow Restrictiveness, FRKSU derived from AREAER","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"portfolio","label":"6","name":"Equity Outflow Restrictiveness, FRKSU derived from AREAER","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"1","name":"Country-level two-way goods trade as a share of global two-way goods trade","definition":"This measure shows the total value of imports and exports of goods trade with share of global trade as a denominator. It reflects the size of goods trade in the country's economy.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"2","name":"Country Two-Way Services Trade as a Share of Global Two-way Services Trade","definition":"This measure shows the total value of imports and exports of a country’s services trade divided by the share of global trade. It reflects the size of services trade in the country's economy.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"3","name":"Tariff Rate, Most Favored Nation, Simple Mean, All Products (%)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"4","name":"Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"trade","label":"5","name":"Digital Services Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"1","name":"Difference between Annual interest rate and Nominal GDP Growth rate ","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"2","name":"Stock Market Capitalization as a Share of GDP, % ","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"3","name":"2020 Outstanding Debt Securities as a Share of GDP, %","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"4","name":"Incremental Capital Output Ratio","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"5","name":"Banking assets controlled by the state, China vs Main Countries  ","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"6","name":"Foreign Competition: Banking System's Assets in Foreign-Controlled Banks","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"competition","label":"1","name":"Market Concentration - Herfindahl Hirschman Index","definition":"The Herfindahl-Hirschman Index is a measure of market concentration and provides insight into market competition. It is measured on a scale of 0 (less concentration and thus highly competitive) to 1 (single firm dominance).","additional":"","summary":"","context":""},
+    {"category":"competition","label":"2","name":"Scope of SOEs Index (scale 0-6)","definition":"Total combined value of State-Owned Enterprises denoted in USD.","additional":"","summary":"","context":""},
+    {"category":"competition","label":"3","name":"Rule of Law","definition":"Reflects perceptions of the extent to which agents have confidence in and abide by the rules of society, and in particular the quality of contract enforcement, property rights, the police, and the courts, as well as the likelihood of crime and violence.","additional":"","summary":"","context":""},
+    {"category":"competition","label":"4","name":"FDI Restrictiveness Index (Range from 0-1, where 0 is most restrictive and 1 is least restrictive)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"1","name":"R&D as share of domestic investment, %","definition":"This ratio measures gross domestic research and development expenditures as a percentage of GDP. R&D includes capital and current expenditures on basic research, applied research, and experimental development across business, government, academia, and non-profits.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"2","name":"Ratio of Business Enterprise Spending to Government Spending on Domestic R&D","definition":"This indicator measures the ratio between business enterprise and government R&D spending","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"3","name":"Total Triadic Patent Families Filed","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"4","name":"Receipts of payments from abroad for the use of intellectual property","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"5","name":"Intellectual Property Protection Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"","summary":"","context":""}];
+    {"category":"innovation","label":"3","name":"Triadic Patent Families, controlled for GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"4","name":"Charges for the use of intellectual property, receipts (% of GDP)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"5","name":"International IP Index ","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"6","name":"Percentage of gross expenditure on R&D financed by abroad i.e., with foreign financing","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""}];
 
     function cubicOut(t) {
         const f = t - 1.0;
@@ -41762,7 +41758,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (92:12) {#each indicator.values as country}
+    // (83:12) {#each indicator.values as country}
     function create_each_block_1$1(ctx) {
     	let g;
     	let path;
@@ -41778,12 +41774,12 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", path_d_value = /*country*/ ctx[12].path);
     			attr_dev(path, "class", "svelte-jrbx13");
-    			add_location(path, file$2, 98, 20, 3024);
+    			add_location(path, file$2, 89, 20, 2760);
     			attr_dev(g, "class", g_class_value = "country " + /*country*/ ctx[12].id + " svelte-jrbx13");
     			attr_dev(g, "data-id", g_data_id_value = /*country*/ ctx[12].id);
     			toggle_class(g, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
     			toggle_class(g, "selected", /*country*/ ctx[12].id == /*$selectedCountry*/ ctx[3] || /*country*/ ctx[12].id == "china");
-    			add_location(g, file$2, 92, 16, 2747);
+    			add_location(g, file$2, 83, 16, 2483);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -41831,14 +41827,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$1.name,
     		type: "each",
-    		source: "(92:12) {#each indicator.values as country}",
+    		source: "(83:12) {#each indicator.values as country}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (117:4) {#each indicator.values as country}
+    // (108:4) {#each indicator.values as country}
     function create_each_block$1(ctx) {
     	let div;
     	let icon;
@@ -41871,15 +41867,15 @@ var app = (function () {
     			t3 = text$1(t3_value);
     			t4 = space();
     			attr_dev(p0, "class", "svelte-jrbx13");
-    			add_location(p0, file$2, 124, 12, 4186);
+    			add_location(p0, file$2, 115, 12, 3922);
     			attr_dev(p1, "class", "value svelte-jrbx13");
-    			add_location(p1, file$2, 125, 12, 4223);
+    			add_location(p1, file$2, 116, 12, 3959);
     			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-jrbx13");
     			set_style(div, "left", /*country*/ ctx[12].centroid[0] + /*$chartWidth*/ ctx[1] / 2 + "px");
     			set_style(div, "top", /*country*/ ctx[12].centroid[1] + /*$chartWidth*/ ctx[1] / 2 + "px");
     			toggle_class(div, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
     			toggle_class(div, "selected", /*country*/ ctx[12].id == /*$selectedCountry*/ ctx[3] || /*country*/ ctx[12].id == "china");
-    			add_location(div, file$2, 117, 8, 3789);
+    			add_location(div, file$2, 108, 8, 3525);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -41936,7 +41932,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(117:4) {#each indicator.values as country}",
+    		source: "(108:4) {#each indicator.values as country}",
     		ctx
     	});
 
@@ -41988,13 +41984,13 @@ var app = (function () {
     			}
 
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$chartWidth*/ ctx[1] / 2 + "," + /*$chartWidth*/ ctx[1] / 2 + ")");
-    			add_location(g, file$2, 89, 8, 2623);
+    			add_location(g, file$2, 80, 8, 2359);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$chartWidth*/ ctx[1] + " " + /*$chartWidth*/ ctx[1]);
     			attr_dev(svg, "width", /*$chartWidth*/ ctx[1]);
     			attr_dev(svg, "height", /*$chartWidth*/ ctx[1]);
-    			add_location(svg, file$2, 88, 4, 2526);
+    			add_location(svg, file$2, 79, 4, 2262);
     			attr_dev(div, "class", "indicator-vis svelte-jrbx13");
-    			add_location(div, file$2, 86, 0, 2493);
+    			add_location(div, file$2, 77, 0, 2229);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -42139,9 +42135,9 @@ var app = (function () {
     	let { indicator } = $$props;
 
     	// $chartWidth = window.innerWidth * 0.2;
-    	set_store_value(chartWidth, $chartWidth = 500, $chartWidth);
+    	set_store_value(chartWidth, $chartWidth = 600, $chartWidth); // 500
 
-    	set_store_value(innerRadius, $innerRadius = 50, $innerRadius);
+    	set_store_value(innerRadius, $innerRadius = 40, $innerRadius); // 50
     	let minRadius = $innerRadius + 10;
     	let maxRadius = $chartWidth / 2 - $innerRadius;
     	let x = band().domain(indicator.values.map(d => d.country)).range([0, 2 * Math.PI]);
@@ -42152,15 +42148,8 @@ var app = (function () {
     		let endAngle = x(d.country) + x.bandwidth();
     		let outerRadius = y(d.value);
 
-    		// let arc = d3.arc()
-    		//     .innerRadius($innerRadius)
-    		//     .outerRadius(outerRadius)
-    		//     .cornerRadius(2)
-    		//     .startAngle(startAngle)
-    		//     .endAngle(endAngle)
-    		//     .padAngle(0.18)
-    		//     .padRadius($innerRadius)();
-    		let arc$1 = arc().innerRadius($innerRadius).outerRadius(outerRadius).cornerRadius(2).startAngle(startAngle).endAngle(endAngle).padAngle(2.48).padRadius(5)();
+    		let arc$1 = arc().innerRadius($innerRadius).outerRadius(outerRadius).cornerRadius(2).startAngle(startAngle + 0.15).endAngle(endAngle).padAngle(0).padRadius(0)(); // 2.48
+    		// 5
 
     		// adapted from d3 centroid function
     		function centroid() {
@@ -42282,8 +42271,6 @@ var app = (function () {
     }
 
     /* src/views/Indicators.svelte generated by Svelte v3.38.2 */
-
-    const { console: console_1 } = globals;
     const file$1 = "src/views/Indicators.svelte";
 
     function get_each_context(ctx, list, i) {
@@ -42307,7 +42294,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (112:16) {#if areaData}
+    // (110:16) {#if areaData}
     function create_if_block_4(ctx) {
     	let g;
     	let text0;
@@ -42342,24 +42329,24 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			attr_dev(text0, "class", "svelte-iun7sz");
-    			add_location(text0, file$1, 114, 24, 3534);
+    			attr_dev(text0, "class", "svelte-17we9do");
+    			add_location(text0, file$1, 112, 24, 3458);
     			attr_dev(text1, "x", /*areaWidth*/ ctx[8]);
     			attr_dev(text1, "y", "0");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			attr_dev(text1, "class", "svelte-iun7sz");
-    			add_location(text1, file$1, 115, 24, 3645);
-    			attr_dev(line, "class", "gridline svelte-iun7sz");
+    			attr_dev(text1, "class", "svelte-17we9do");
+    			add_location(text1, file$1, 113, 24, 3569);
+    			attr_dev(line, "class", "gridline svelte-17we9do");
     			attr_dev(line, "x1", "0");
     			attr_dev(line, "x2", /*areaWidth*/ ctx[8]);
     			attr_dev(line, "transform", "translate(0,5)");
-    			add_location(line, file$1, 117, 24, 3784);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-iun7sz"));
+    			add_location(line, file$1, 115, 24, 3708);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-17we9do"));
     			attr_dev(g, "transform", "translate(0," + /*areaMargin*/ ctx[9] + ")");
-    			add_location(g, file$1, 112, 20, 3443);
+    			add_location(g, file$1, 110, 20, 3367);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -42398,7 +42385,7 @@ var app = (function () {
     				each_blocks.length = each_value_2.length;
     			}
 
-    			if (dirty & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-iun7sz"))) {
+    			if (dirty & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-17we9do"))) {
     				attr_dev(g, "class", g_class_value);
     			}
     		},
@@ -42412,14 +42399,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(112:16) {#if areaData}",
+    		source: "(110:16) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (120:24) {#each graphData as graph, i}
+    // (118:24) {#each graphData as graph, i}
     function create_each_block_2(ctx) {
     	let g;
     	let circle;
@@ -42436,17 +42423,17 @@ var app = (function () {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
     			attr_dev(circle, "r", /*graph*/ ctx[23].r);
-    			attr_dev(circle, "class", "country-circle svelte-iun7sz");
-    			add_location(circle, file$1, 127, 32, 4381);
-    			attr_dev(text_1, "class", "label svelte-iun7sz");
+    			attr_dev(circle, "class", "country-circle svelte-17we9do");
+    			add_location(circle, file$1, 125, 32, 4305);
+    			attr_dev(text_1, "class", "label svelte-17we9do");
     			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$1, 128, 32, 4549);
-    			attr_dev(g, "class", "country " + /*graph*/ ctx[23].id + " svelte-iun7sz");
+    			add_location(text_1, file$1, 126, 32, 4473);
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[23].id + " svelte-17we9do");
     			attr_dev(g, "data-id", /*graph*/ ctx[23].id);
     			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[23].x + "," + (/*graph*/ ctx[23].y + 5) + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
-    			add_location(g, file$1, 120, 28, 3945);
+    			add_location(g, file$1, 118, 28, 3869);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -42484,14 +42471,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(120:24) {#each graphData as graph, i}",
+    		source: "(118:24) {#each graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (136:12) {#if areaData}
+    // (134:12) {#if areaData}
     function create_if_block_3(ctx) {
     	let each_1_anchor;
     	let current;
@@ -42580,14 +42567,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(136:12) {#if areaData}",
+    		source: "(134:12) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (137:16) {#each graphData as graph, i}
+    // (135:16) {#each graphData as graph, i}
     function create_each_block_1(ctx) {
     	let div;
     	let icon;
@@ -42620,16 +42607,16 @@ var app = (function () {
     			t3 = text$1(t3_value);
     			t4 = text$1(" / 10");
     			t5 = space();
-    			attr_dev(p0, "class", "svelte-iun7sz");
-    			add_location(p0, file$1, 144, 24, 5249);
-    			attr_dev(p1, "class", "value svelte-iun7sz");
-    			add_location(p1, file$1, 145, 24, 5296);
-    			attr_dev(div, "class", "tooltip " + ("tooltip-" + /*graph*/ ctx[23].id) + " svelte-iun7sz");
+    			attr_dev(p0, "class", "svelte-17we9do");
+    			add_location(p0, file$1, 142, 24, 5173);
+    			attr_dev(p1, "class", "value svelte-17we9do");
+    			add_location(p1, file$1, 143, 24, 5220);
+    			attr_dev(div, "class", "tooltip " + ("tooltip-" + /*graph*/ ctx[23].id) + " svelte-17we9do");
     			set_style(div, "left", /*graph*/ ctx[23].x + "px");
     			set_style(div, "top", /*graph*/ ctx[23].y + 20 + "px");
     			toggle_class(div, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			toggle_class(div, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
-    			add_location(div, file$1, 137, 20, 4827);
+    			add_location(div, file$1, 135, 20, 4751);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42672,14 +42659,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(137:16) {#each graphData as graph, i}",
+    		source: "(135:16) {#each graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:4) {#if expanded}
+    // (151:4) {#if expanded}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -42691,9 +42678,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-    			add_location(p, file$1, 154, 12, 5532);
+    			add_location(p, file$1, 152, 12, 5456);
     			attr_dev(div, "class", "summary");
-    			add_location(div, file$1, 153, 8, 5482);
+    			add_location(div, file$1, 151, 8, 5406);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42725,14 +42712,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(153:4) {#if expanded}",
+    		source: "(151:4) {#if expanded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (163:12) {:else}
+    // (161:12) {:else}
     function create_else_block_1(ctx) {
     	let t;
 
@@ -42752,14 +42739,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(163:12) {:else}",
+    		source: "(161:12) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (161:12) {#if !expanded}
+    // (159:12) {#if !expanded}
     function create_if_block_1(ctx) {
     	let t;
 
@@ -42779,7 +42766,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(161:12) {#if !expanded}",
+    		source: "(159:12) {#if !expanded}",
     		ctx
     	});
 
@@ -42826,20 +42813,20 @@ var app = (function () {
     			create_component(icon.$$.fragment);
     			t5 = space();
     			create_component(indicatorvisual.$$.fragment);
-    			attr_dev(h3, "class", "svelte-iun7sz");
-    			add_location(h3, file$1, 199, 24, 7817);
+    			attr_dev(h3, "class", "svelte-17we9do");
+    			add_location(h3, file$1, 199, 24, 7867);
     			attr_dev(div0, "class", "description");
-    			add_location(div0, file$1, 200, 24, 7872);
-    			attr_dev(button, "class", "svelte-iun7sz");
-    			add_location(button, file$1, 201, 24, 7955);
+    			add_location(div0, file$1, 200, 24, 7922);
+    			attr_dev(button, "class", "svelte-17we9do");
+    			add_location(button, file$1, 201, 24, 8005);
     			set_style(div1, "float", "right");
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[6] * 0.3 + "px");
     			set_style(div1, "padding-right", "20px");
     			set_style(div1, "border-right", "1px solid #eee");
-    			attr_dev(div1, "class", "inner-container svelte-iun7sz");
-    			add_location(div1, file$1, 198, 20, 7662);
-    			attr_dev(div2, "class", "indicator-text svelte-iun7sz");
-    			add_location(div2, file$1, 197, 16, 7613);
+    			attr_dev(div1, "class", "inner-container svelte-17we9do");
+    			add_location(div1, file$1, 198, 20, 7712);
+    			attr_dev(div2, "class", "indicator-text svelte-17we9do");
+    			add_location(div2, file$1, 197, 16, 7663);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -42940,19 +42927,19 @@ var app = (function () {
     			button = element("button");
     			t5 = text$1("Share this chart");
     			create_component(icon.$$.fragment);
-    			attr_dev(h3, "class", "svelte-iun7sz");
-    			add_location(h3, file$1, 191, 24, 7334);
+    			attr_dev(h3, "class", "svelte-17we9do");
+    			add_location(h3, file$1, 191, 24, 7384);
     			attr_dev(div0, "class", "description");
-    			add_location(div0, file$1, 192, 24, 7389);
-    			attr_dev(button, "class", "svelte-iun7sz");
-    			add_location(button, file$1, 193, 24, 7472);
+    			add_location(div0, file$1, 192, 24, 7439);
+    			attr_dev(button, "class", "svelte-17we9do");
+    			add_location(button, file$1, 193, 24, 7522);
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[6] * 0.3 + "px");
     			set_style(div1, "padding-left", "20px");
     			set_style(div1, "border-left", "1px solid #eee");
-    			attr_dev(div1, "class", "inner-container svelte-iun7sz");
-    			add_location(div1, file$1, 190, 20, 7193);
-    			attr_dev(div2, "class", "indicator-text svelte-iun7sz");
-    			add_location(div2, file$1, 189, 16, 7144);
+    			attr_dev(div1, "class", "inner-container svelte-17we9do");
+    			add_location(div1, file$1, 190, 20, 7243);
+    			attr_dev(div2, "class", "indicator-text svelte-17we9do");
+    			add_location(div2, file$1, 189, 16, 7194);
     		},
     		m: function mount(target, anchor) {
     			mount_component(indicatorvisual, target, anchor);
@@ -43034,8 +43021,8 @@ var app = (function () {
     			div = element("div");
     			if_block.c();
     			t = space();
-    			attr_dev(div, "class", "indicator-container svelte-iun7sz");
-    			add_location(div, file$1, 185, 8, 7019);
+    			attr_dev(div, "class", "indicator-container svelte-17we9do");
+    			add_location(div, file$1, 185, 8, 7069);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -43073,41 +43060,44 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	let div6;
     	let button0;
     	let t1;
-    	let div3;
-    	let div1;
+    	let div5;
+    	let div2;
+    	let div0;
     	let h1;
     	let t3;
-    	let div0;
+    	let p;
     	let t5;
-    	let div2;
+    	let div1;
     	let svg0;
     	let t6;
     	let t7;
     	let t8;
-    	let div5;
+    	let div4;
     	let button1;
     	let t9;
     	let svg1;
     	let path;
     	let t10;
-    	let div4;
+    	let div3;
     	let a;
     	let t11;
     	let icon0;
     	let t12;
-    	let div8;
+    	let div7;
+    	let header;
     	let h2;
     	let t15;
-    	let div7;
-    	let countryselect;
-    	let t16;
-    	let button2;
+    	let h3;
     	let t17;
-    	let icon1;
+    	let div6;
+    	let countryselect;
     	let t18;
+    	let button2;
+    	let t19;
+    	let icon1;
+    	let t20;
     	let current;
     	let mounted;
     	let dispose;
@@ -43148,19 +43138,19 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div6 = element("div");
     			button0 = element("button");
     			button0.textContent = "Back";
     			t1 = space();
-    			div3 = element("div");
-    			div1 = element("div");
+    			div5 = element("div");
+    			div2 = element("div");
+    			div0 = element("div");
     			h1 = element("h1");
     			h1.textContent = `${/*currentArea*/ ctx[10].name}`;
     			t3 = space();
-    			div0 = element("div");
-    			div0.textContent = `${/*currentArea*/ ctx[10].context}`;
+    			p = element("p");
+    			p.textContent = `${/*currentArea*/ ctx[10].context}`;
     			t5 = space();
-    			div2 = element("div");
+    			div1 = element("div");
     			svg0 = svg_element("svg");
     			if (if_block0) if_block0.c();
     			t6 = space();
@@ -43168,124 +43158,136 @@ var app = (function () {
     			t7 = space();
     			if (if_block2) if_block2.c();
     			t8 = space();
-    			div5 = element("div");
+    			div4 = element("div");
     			button1 = element("button");
     			if_block3.c();
     			t9 = space();
     			svg1 = svg_element("svg");
     			path = svg_element("path");
     			t10 = space();
-    			div4 = element("div");
+    			div3 = element("div");
     			a = element("a");
     			t11 = text$1("Methodology");
     			create_component(icon0.$$.fragment);
     			t12 = space();
-    			div8 = element("div");
+    			div7 = element("div");
+    			header = element("header");
     			h2 = element("h2");
     			h2.textContent = `Assessing ${/*currentArea*/ ctx[10].name.toLowerCase()}`;
     			t15 = space();
-    			div7 = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "Lorem ipsum dolor sit amet consectetur adipiscing elit commodo";
+    			t17 = space();
+    			div6 = element("div");
     			create_component(countryselect.$$.fragment);
-    			t16 = space();
-    			button2 = element("button");
-    			t17 = text$1("Share this view");
-    			create_component(icon1.$$.fragment);
     			t18 = space();
+    			button2 = element("button");
+    			t19 = text$1("Share this view");
+    			create_component(icon1.$$.fragment);
+    			t20 = space();
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(button0, "class", "back svelte-iun7sz");
-    			add_location(button0, file$1, 101, 4, 3055);
-    			attr_dev(h1, "class", "svelte-iun7sz");
-    			add_location(h1, file$1, 105, 12, 3208);
-    			attr_dev(div0, "class", "intro");
-    			add_location(div0, file$1, 106, 12, 3248);
-    			attr_dev(div1, "class", "area-text svelte-iun7sz");
-    			add_location(div1, file$1, 104, 8, 3172);
+    			attr_dev(button0, "class", "back svelte-17we9do");
+    			add_location(button0, file$1, 97, 0, 2921);
+    			attr_dev(h1, "class", "svelte-17we9do");
+    			add_location(h1, file$1, 103, 12, 3136);
+    			attr_dev(p, "class", "intro svelte-17we9do");
+    			add_location(p, file$1, 104, 12, 3176);
+    			attr_dev(div0, "class", "area-text svelte-17we9do");
+    			add_location(div0, file$1, 102, 8, 3100);
     			attr_dev(svg0, "width", /*areaWidth*/ ctx[8]);
     			attr_dev(svg0, "height", "50");
-    			add_location(svg0, file$1, 110, 12, 3354);
-    			attr_dev(div2, "class", "area-vis svelte-iun7sz");
-    			add_location(div2, file$1, 109, 8, 3319);
-    			attr_dev(div3, "class", "area-container svelte-iun7sz");
-    			add_location(div3, file$1, 103, 4, 3135);
+    			add_location(svg0, file$1, 108, 12, 3278);
+    			attr_dev(div1, "class", "area-vis svelte-17we9do");
+    			add_location(div1, file$1, 107, 8, 3243);
+    			attr_dev(div2, "class", "area-container svelte-17we9do");
+    			add_location(div2, file$1, 101, 4, 3063);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$1, 166, 16, 6348);
-    			attr_dev(svg1, "class", "caret-down-light svelte-iun7sz");
+    			add_location(path, file$1, 164, 16, 6272);
+    			attr_dev(svg1, "class", "caret-down-light svelte-17we9do");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
-    			add_location(svg1, file$1, 165, 12, 6246);
-    			attr_dev(button1, "class", "expand svelte-iun7sz");
-    			add_location(button1, file$1, 159, 8, 6053);
+    			add_location(svg1, file$1, 163, 12, 6170);
+    			attr_dev(button1, "class", "expand svelte-17we9do");
+    			add_location(button1, file$1, 157, 8, 5977);
     			attr_dev(a, "href", "#");
-    			attr_dev(a, "class", "svelte-iun7sz");
-    			add_location(a, file$1, 170, 12, 6651);
-    			attr_dev(div4, "class", "methodology svelte-iun7sz");
-    			add_location(div4, file$1, 169, 8, 6613);
-    			attr_dev(div5, "class", "area-footer svelte-iun7sz");
-    			add_location(div5, file$1, 158, 4, 6019);
-    			attr_dev(div6, "class", "area-summary svelte-iun7sz");
-    			toggle_class(div6, "expanded", /*expanded*/ ctx[3] == true);
-    			add_location(div6, file$1, 99, 0, 2989);
-    			add_location(h2, file$1, 176, 4, 6769);
-    			attr_dev(button2, "class", "svelte-iun7sz");
-    			add_location(button2, file$1, 180, 8, 6901);
-    			attr_dev(div7, "class", "control-area");
-    			add_location(div7, file$1, 178, 4, 6826);
-    			attr_dev(div8, "class", "indicators");
-    			add_location(div8, file$1, 175, 0, 6740);
+    			attr_dev(a, "class", "svelte-17we9do");
+    			add_location(a, file$1, 168, 12, 6575);
+    			attr_dev(div3, "class", "methodology svelte-17we9do");
+    			add_location(div3, file$1, 167, 8, 6537);
+    			attr_dev(div4, "class", "area-footer svelte-17we9do");
+    			add_location(div4, file$1, 156, 4, 5943);
+    			attr_dev(div5, "class", "area-summary svelte-17we9do");
+    			toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
+    			add_location(div5, file$1, 99, 0, 2997);
+    			attr_dev(h2, "class", "svelte-17we9do");
+    			add_location(h2, file$1, 175, 8, 6710);
+    			attr_dev(h3, "class", "svelte-17we9do");
+    			add_location(h3, file$1, 176, 8, 6770);
+    			attr_dev(button2, "class", "svelte-17we9do");
+    			add_location(button2, file$1, 179, 12, 6933);
+    			attr_dev(div6, "class", "control-area svelte-17we9do");
+    			add_location(div6, file$1, 177, 8, 6850);
+    			attr_dev(header, "class", "svelte-17we9do");
+    			add_location(header, file$1, 174, 4, 6693);
+    			attr_dev(div7, "class", "indicators");
+    			add_location(div7, file$1, 173, 0, 6664);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div6, anchor);
-    			append_dev(div6, button0);
-    			append_dev(div6, t1);
-    			append_dev(div6, div3);
-    			append_dev(div3, div1);
-    			append_dev(div1, h1);
-    			append_dev(div1, t3);
-    			append_dev(div1, div0);
-    			append_dev(div3, t5);
-    			append_dev(div3, div2);
-    			append_dev(div2, svg0);
+    			insert_dev(target, button0, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, div5, anchor);
+    			append_dev(div5, div2);
+    			append_dev(div2, div0);
+    			append_dev(div0, h1);
+    			append_dev(div0, t3);
+    			append_dev(div0, p);
+    			append_dev(div2, t5);
+    			append_dev(div2, div1);
+    			append_dev(div1, svg0);
     			if (if_block0) if_block0.m(svg0, null);
-    			append_dev(div2, t6);
-    			if (if_block1) if_block1.m(div2, null);
-    			append_dev(div6, t7);
-    			if (if_block2) if_block2.m(div6, null);
-    			append_dev(div6, t8);
-    			append_dev(div6, div5);
-    			append_dev(div5, button1);
+    			append_dev(div1, t6);
+    			if (if_block1) if_block1.m(div1, null);
+    			append_dev(div5, t7);
+    			if (if_block2) if_block2.m(div5, null);
+    			append_dev(div5, t8);
+    			append_dev(div5, div4);
+    			append_dev(div4, button1);
     			if_block3.m(button1, null);
     			append_dev(button1, t9);
     			append_dev(button1, svg1);
     			append_dev(svg1, path);
-    			append_dev(div5, t10);
-    			append_dev(div5, div4);
-    			append_dev(div4, a);
+    			append_dev(div4, t10);
+    			append_dev(div4, div3);
+    			append_dev(div3, a);
     			append_dev(a, t11);
     			mount_component(icon0, a, null);
     			insert_dev(target, t12, anchor);
-    			insert_dev(target, div8, anchor);
-    			append_dev(div8, h2);
-    			append_dev(div8, t15);
-    			append_dev(div8, div7);
-    			mount_component(countryselect, div7, null);
-    			append_dev(div7, t16);
-    			append_dev(div7, button2);
-    			append_dev(button2, t17);
+    			insert_dev(target, div7, anchor);
+    			append_dev(div7, header);
+    			append_dev(header, h2);
+    			append_dev(header, t15);
+    			append_dev(header, h3);
+    			append_dev(header, t17);
+    			append_dev(header, div6);
+    			mount_component(countryselect, div6, null);
+    			append_dev(div6, t18);
+    			append_dev(div6, button2);
+    			append_dev(button2, t19);
     			mount_component(icon1, button2, null);
-    			append_dev(div8, t18);
+    			append_dev(div7, t20);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(div8, null);
+    				each_blocks[i].m(div7, null);
     			}
 
     			current = true;
@@ -43324,7 +43326,7 @@ var app = (function () {
     					if_block1 = create_if_block_3(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
-    					if_block1.m(div2, null);
+    					if_block1.m(div1, null);
     				}
     			} else if (if_block1) {
     				group_outros();
@@ -43345,7 +43347,7 @@ var app = (function () {
     					if_block2 = create_if_block_2(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
-    					if_block2.m(div6, t8);
+    					if_block2.m(div5, t8);
     				}
     			} else if (if_block2) {
     				group_outros();
@@ -43368,7 +43370,7 @@ var app = (function () {
     			}
 
     			if (dirty & /*expanded*/ 8) {
-    				toggle_class(div6, "expanded", /*expanded*/ ctx[3] == true);
+    				toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
     			}
 
     			const countryselect_changes = {};
@@ -43390,7 +43392,7 @@ var app = (function () {
     						each_blocks[i] = create_each_block(child_ctx);
     						each_blocks[i].c();
     						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(div8, null);
+    						each_blocks[i].m(div7, null);
     					}
     				}
 
@@ -43432,14 +43434,16 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div6);
+    			if (detaching) detach_dev(button0);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(div5);
     			if (if_block0) if_block0.d();
     			if (if_block1) if_block1.d();
     			if (if_block2) if_block2.d();
     			if_block3.d();
     			destroy_component(icon0);
     			if (detaching) detach_dev(t12);
-    			if (detaching) detach_dev(div8);
+    			if (detaching) detach_dev(div7);
     			destroy_component(countryselect);
     			destroy_component(icon1);
     			destroy_each(each_blocks, detaching);
@@ -43487,11 +43491,10 @@ var app = (function () {
 
     	// // TODO - dev only, delete these lines for production
     	if (!$areaInView) {
-    		set_store_value(areaInView, $areaInView = "growth", $areaInView); // pulled from /stores/view
+    		set_store_value(areaInView, $areaInView = "fdi", $areaInView); // pulled from /stores/view
     	}
 
     	const currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0];
-    	console.log(currentArea);
 
     	// event handlers
     	function expandButtonClick() {
@@ -43518,7 +43521,6 @@ var app = (function () {
     	onMount(async () => {
     		data = await loadData();
     		$$invalidate(0, indicatorsData = await loadIndicatorsData($areaInView));
-    		console.log(indicatorsData);
     		$$invalidate(2, countryNames = data["countries"].filter(d => d.country !== "China"));
     		$$invalidate(1, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
     	});
@@ -43531,7 +43533,7 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1.warn(`<Indicators> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Indicators> was created with unknown prop '${key}'`);
     	});
 
     	const click_handler = () => switchView("main");
@@ -43885,7 +43887,7 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "main", $view); // defines primary view - set this for production (do not delete)
+    	set_store_value(view, $view = "indicators", $view);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
