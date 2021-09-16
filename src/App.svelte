@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from "svelte";
     import Landing from './views/Landing.svelte';
     import Indicators from './views/Indicators.svelte';
     import Icon from './components/Icon.svelte';
@@ -6,16 +7,20 @@
     // import News from './views/News.svelte';
     import {view} from './stores/view';
 
-    // $view = 'main'; // defines primary view - set this for production (do not delete)
-    $view = 'indicators';
+    $view = 'main'; // defines primary view - set this for production (do not delete)
+    // $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
     // let showNews = true; // set to true if you want to show
+
+    function switchView(targetView, area) {
+        $view = targetView;
+    }
+
 </script>
 
-
 <header>
-    <div class="logo-container">
+    <div class="logo-container" on:click|self={()=> switchView('main')}>
         <Icon type="logo" />
     </div>
     <ul class="navigation">
@@ -38,7 +43,7 @@
     header {
         width: 1280px;
         margin: 0 auto;
-        padding: 60px 40px 20px;
+        padding: 60px 0 20px;
         border-bottom: 1px solid #122431;
         display: flex;
         justify-content: space-between;

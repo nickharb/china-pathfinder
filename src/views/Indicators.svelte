@@ -1,5 +1,6 @@
 <script>
     import * as d3 from 'd3';
+    import html2canvas from 'html2canvas';
     import { onMount } from "svelte";
     import { fly } from 'svelte/transition';
     import { fade } from 'svelte/transition';
@@ -111,6 +112,36 @@
         $areaInView = area;
     }
 
+    function downloadImage(e) {
+        let chart = e.path[2];
+        html2canvas(chart).then(canvas => {
+            console.log(canvas);
+            downloadImageClick(canvas.toDataURL(), 'chart-download.png');
+        });
+    }
+
+    function downloadImageClick(uri, filename) {
+        var link = document.createElement('a');
+            if (typeof link.download !== 'string') {
+            window.open(uri);
+        } else {
+            link.href = uri;
+            link.download = filename;
+            accountForFirefox(clickLink, link);
+        }
+    }
+
+    function clickLink(link) {
+        link.click();
+    }
+
+    function accountForFirefox(click) {
+        let link = arguments[1];
+        document.body.appendChild(link);
+        click(link);
+        document.body.removeChild(link);
+    }
+
 </script>
 
 
@@ -214,7 +245,7 @@
         <h3>Lorem ipsum dolor sit amet consectetur adipiscing elit commodo</h3>
         <div class='control-area'>
             <CountrySelect {countryNames}/>
-            <button>Share this view<Icon type='share' /></button>
+            <button>Share this page<Icon type='share' /></button>
         </div>
     </header>
 
@@ -231,7 +262,7 @@
                     </div>
                     <h3>{indicator.copy.name}</h3>
                     <div class='description'>{indicator.copy.definition}</div>
-                    <button>Share this chart<Icon type='share' /></button>
+                    <button on:click={downloadImage}>Share this chart<Icon type='share' /></button>
                 </div>
             {:else}
                 <div class='indicator-text text-left'>
@@ -241,7 +272,7 @@
                     </div>
                     <h3>{indicator.copy.name}</h3>
                     <div class='description'>{indicator.copy.definition}</div>
-                    <button>Share this chart<Icon type='share' /></button>
+                    <button on:click={downloadImage}>Share this chart<Icon type='share' /></button>
                 </div>
                 <IndicatorVisual {indicator}/>
             {/if}

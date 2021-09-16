@@ -1,6 +1,7 @@
 <script>
     // import * as d3 from 'd3';
     import * as _ from 'lodash';
+    import html2canvas from 'html2canvas';
     import { onMount } from "svelte";
     import loadData from "../data/load-data.js";
     import copyData from "../data/copy";
@@ -20,6 +21,36 @@
         areaData = data['areas'];
     });
 
+    function downloadImage(e) {
+        let chart = document.querySelector('.vis-container');
+        html2canvas(chart).then(canvas => {
+            console.log(canvas);
+            downloadImageClick(canvas.toDataURL(), 'chart-download.png');
+        });
+    }
+
+    function downloadImageClick(uri, filename) {
+        var link = document.createElement('a');
+            if (typeof link.download !== 'string') {
+            window.open(uri);
+        } else {
+            link.href = uri;
+            link.download = filename;
+            accountForFirefox(clickLink, link);
+        }
+    }
+
+    function clickLink(link) {
+        link.click();
+    }
+
+    function accountForFirefox(click) {
+        let link = arguments[1];
+        document.body.appendChild(link);
+        click(link);
+        document.body.removeChild(link);
+    }
+
 
 </script>
 
@@ -37,7 +68,7 @@
     <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
     <div class='control-area'>
         <CountrySelect {countryNames}/>
-        <button>Share this view<Icon type='share' /></button>
+        <button on:click={downloadImage}>Share this view<Icon type='share' /></button>
     </div>
 </header>
 

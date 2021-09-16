@@ -1,6 +1,7 @@
 <script>
     import * as d3 from 'd3';
-    import { onMount } from "svelte";
+    // import { onMount } from "svelte";
+    import { fly } from 'svelte/transition';
     import {chartWidth, innerRadius} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
@@ -53,15 +54,15 @@
         d.tooltipX = d.rotateAngle;
         d.tooltipY = d.rotateAngle;
 
-        // // computes if the text should be on the right or left of the bar
-        // if (i >= indicator.values.length/2) {
-        //     d.textRotate = 180; 
-        //     d.textAnchor = 'end';
-        // } else{
-        //     d.textRotate = 0;
-        //     d.textAnchor = 'start';
-        // }
-        // d.barLength = y(d.value)+10;
+        // computes if the text should be on the right or left of the bar
+        if (i >= indicator.values.length/2) {
+            d.textRotate = 180; 
+            d.textAnchor = 'end';
+        } else{
+            d.textRotate = 0;
+            d.textAnchor = 'start';
+        }
+        d.barLength = y(d.value)+10;
     });
 
     let isHovered = false;
@@ -126,14 +127,17 @@
                         on:click={mouseClick}
                     ></path>
 
-                    <!-- <g transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
-                        <text 
-                            transform='rotate({country.rotateAngle*-1})'
-                            style='text-anchor:{country.textAnchor};'
-                        >
-                            {country.country}
-                        </text>
-                    </g> -->
+                    <!-- country labels -->
+                    {#if country.id == $selectedCountry || country.id == 'china' || country.id == 'open-economy-avg'}
+                        <g transition:fly="{{ y: 10, duration: 200 }}" transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
+                            <text 
+                                transform='rotate({country.rotateAngle*-1})'
+                                style='text-anchor:{country.textAnchor};'
+                            >
+                                {country.country}
+                            </text>
+                        </g>
+                    {/if}
                 </g>
             {/each}
 
@@ -261,32 +265,54 @@
         /*fill: #FF5C52;*/
     }
 
-    /* indicator labels */
+    /* country label */
 
-    /*.country text {
+    .country text {
+        fill: #444444;
+        text-anchor: middle;
         pointer-events: none;
-        font-size: 11px;
-        fill-opacity: 0;
-    }*/
+    }
 
-    text.middle-title {
+    .country.selected text {
+        fill: #234462;
+        font-weight: bold;
+    }
+
+    .country.china text {
+        fill: #D13F36;
+        font-weight: bold;
+    }
+
+    .country.china-2010 text {
+        fill: #A13F36;
+        font-weight: bold;
+    }
+
+    .country.open-economy-avg text {
+        fill: #D18B36;
+        font-weight: bold;
+    }
+
+    /* indicator middle labels */
+
+    /*text.middle-title {
         text-anchor: middle;
         font-weight: 600;
         font-size: 20px;
     }
 
     text.middle-subtitle {
-        /*text-anchor: middle;
+        text-anchor: middle;
         font-weight: normal;
         font-size: 12px;
-        width: 50px;*/
+        width: 50px;
     }
 
     .subtitle {
         text-align: center;
         font-size: 13px;
         margin: 0;
-    }
+    }*/
 
     
 
