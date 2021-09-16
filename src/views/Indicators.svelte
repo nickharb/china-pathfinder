@@ -262,7 +262,7 @@
                     </div>
                     <h3>{indicator.copy.name}</h3>
                     <div class='description'>{indicator.copy.definition}</div>
-                    <button on:click={downloadImage}>Share this chart<Icon type='share' /></button>
+                    <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
                 </div>
             {:else}
                 <div class='indicator-text text-left'>
@@ -272,7 +272,7 @@
                     </div>
                     <h3>{indicator.copy.name}</h3>
                     <div class='description'>{indicator.copy.definition}</div>
-                    <button on:click={downloadImage}>Share this chart<Icon type='share' /></button>
+                    <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
                 </div>
                 <IndicatorVisual {indicator}/>
             {/if}
@@ -292,6 +292,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .indicator-container {
+        margin-top: -150px;
+    }
+
+    .indicator-container:first-of-type {
+        margin-top: -50px;
     }
 
     .indicator-text {

@@ -68,7 +68,7 @@
     <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
     <div class='control-area'>
         <CountrySelect {countryNames}/>
-        <button on:click={downloadImage}>Share this view<Icon type='share' /></button>
+        <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
     </div>
 </header>
 

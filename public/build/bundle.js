@@ -46162,8 +46162,8 @@ var app = (function () {
 
     const file$b = "src/components/Icon.svelte";
 
-    // (78:31) 
-    function create_if_block_11(ctx) {
+    // (83:31) 
+    function create_if_block_12(ctx) {
     	let svg;
     	let path;
 
@@ -46173,13 +46173,51 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.5 13L0.138784 0.250001L14.8612 0.250002L7.5 13Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$b, 79, 8, 12714);
+    			add_location(path, file$b, 84, 8, 14124);
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "13");
     			attr_dev(svg, "viewBox", "0 0 15 13");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1wr0c9z");
-    			add_location(svg, file$b, 78, 4, 12645);
+    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			add_location(svg, file$b, 83, 4, 14055);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    			append_dev(svg, path);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(svg);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_12.name,
+    		type: "if",
+    		source: "(83:31) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (79:36) 
+    function create_if_block_11(ctx) {
+    	let svg;
+    	let path;
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
+    			add_location(path, file$b, 80, 8, 13802);
+    			attr_dev(svg, "class", "caret-down-dark svelte-6dg4uv");
+    			attr_dev(svg, "width", "13");
+    			attr_dev(svg, "height", "11");
+    			attr_dev(svg, "viewBox", "0 0 13 11");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$b, 79, 4, 13709);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46194,14 +46232,14 @@ var app = (function () {
     		block,
     		id: create_if_block_11.name,
     		type: "if",
-    		source: "(78:31) ",
+    		source: "(79:36) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (74:36) 
+    // (75:37) 
     function create_if_block_10(ctx) {
     	let svg;
     	let path;
@@ -46211,13 +46249,14 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			add_location(path, file$b, 75, 8, 12392);
-    			attr_dev(svg, "class", "caret-down-dark svelte-1wr0c9z");
+    			attr_dev(path, "fill", "#ffffff");
+    			add_location(path, file$b, 76, 8, 13437);
+    			attr_dev(svg, "class", "caret-down-light svelte-6dg4uv");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$b, 74, 4, 12299);
+    			add_location(svg, file$b, 75, 4, 13343);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46232,14 +46271,14 @@ var app = (function () {
     		block,
     		id: create_if_block_10.name,
     		type: "if",
-    		source: "(74:36) ",
+    		source: "(75:37) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:37) 
+    // (71:39) 
     function create_if_block_9(ctx) {
     	let svg;
     	let path;
@@ -46248,15 +46287,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$b, 71, 8, 12027);
-    			attr_dev(svg, "class", "caret-down-light svelte-1wr0c9z");
-    			attr_dev(svg, "width", "13");
-    			attr_dev(svg, "height", "11");
-    			attr_dev(svg, "viewBox", "0 0 13 11");
+    			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
+    			attr_dev(path, "fill", "white");
+    			add_location(path, file$b, 72, 8, 13212);
+    			attr_dev(svg, "class", "tooltip-caret-left svelte-6dg4uv");
+    			attr_dev(svg, "width", "6");
+    			attr_dev(svg, "height", "12");
+    			attr_dev(svg, "viewBox", "0 0 6 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$b, 70, 4, 11933);
+    			add_location(svg, file$b, 71, 4, 13118);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46271,14 +46310,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9.name,
     		type: "if",
-    		source: "(70:37) ",
+    		source: "(71:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:39) 
+    // (67:37) 
     function create_if_block_8(ctx) {
     	let svg;
     	let path;
@@ -46287,15 +46326,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
-    			attr_dev(path, "fill", "white");
-    			add_location(path, file$b, 67, 8, 11802);
-    			attr_dev(svg, "class", "tooltip-caret-left svelte-1wr0c9z");
-    			attr_dev(svg, "width", "6");
-    			attr_dev(svg, "height", "12");
-    			attr_dev(svg, "viewBox", "0 0 6 12");
+    			attr_dev(path, "d", "M6 0L11.1962 6L0.803848 6L6 0Z");
+    			attr_dev(path, "fill", "#E7EDF3");
+    			add_location(path, file$b, 68, 8, 13005);
+    			attr_dev(svg, "class", "tooltip-caret-up svelte-6dg4uv");
+    			attr_dev(svg, "width", "12");
+    			attr_dev(svg, "height", "6");
+    			attr_dev(svg, "viewBox", "0 0 12 6");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$b, 66, 4, 11708);
+    			add_location(svg, file$b, 67, 4, 12913);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46310,14 +46349,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(66:39) ",
+    		source: "(67:37) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:37) 
+    // (63:32) 
     function create_if_block_7(ctx) {
     	let svg;
     	let path;
@@ -46326,15 +46365,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M6 0L11.1962 6L0.803848 6L6 0Z");
-    			attr_dev(path, "fill", "#E7EDF3");
-    			add_location(path, file$b, 63, 8, 11595);
-    			attr_dev(svg, "class", "tooltip-caret-up svelte-1wr0c9z");
-    			attr_dev(svg, "width", "12");
-    			attr_dev(svg, "height", "6");
-    			attr_dev(svg, "viewBox", "0 0 12 6");
+    			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
+    			attr_dev(path, "fill", "#122431");
+    			add_location(path, file$b, 64, 8, 12353);
+    			attr_dev(svg, "class", "arrow-right svelte-6dg4uv");
+    			attr_dev(svg, "width", "21");
+    			attr_dev(svg, "height", "10");
+    			attr_dev(svg, "viewBox", "0 0 21 10");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$b, 62, 4, 11503);
+    			add_location(svg, file$b, 63, 4, 12264);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46349,14 +46388,14 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(62:37) ",
+    		source: "(63:32) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (58:32) 
+    // (59:38) 
     function create_if_block_6(ctx) {
     	let svg;
     	let path;
@@ -46365,15 +46404,17 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
-    			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$b, 59, 8, 10943);
-    			attr_dev(svg, "class", "arrow-right svelte-1wr0c9z");
-    			attr_dev(svg, "width", "21");
-    			attr_dev(svg, "height", "10");
-    			attr_dev(svg, "viewBox", "0 0 21 10");
+    			attr_dev(path, "fill-rule", "evenodd");
+    			attr_dev(path, "clip-rule", "evenodd");
+    			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
+    			attr_dev(path, "fill", "black");
+    			add_location(path, file$b, 60, 8, 11819);
+    			attr_dev(svg, "class", "chevron-down-dark svelte-6dg4uv");
+    			attr_dev(svg, "width", "15");
+    			attr_dev(svg, "height", "12");
+    			attr_dev(svg, "viewBox", "0 0 15 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$b, 58, 4, 10854);
+    			add_location(svg, file$b, 59, 4, 11724);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46388,14 +46429,14 @@ var app = (function () {
     		block,
     		id: create_if_block_6.name,
     		type: "if",
-    		source: "(58:32) ",
+    		source: "(59:38) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:38) 
+    // (55:33) 
     function create_if_block_5$1(ctx) {
     	let svg;
     	let path;
@@ -46407,14 +46448,14 @@ var app = (function () {
     			attr_dev(path, "fill-rule", "evenodd");
     			attr_dev(path, "clip-rule", "evenodd");
     			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
-    			attr_dev(path, "fill", "black");
-    			add_location(path, file$b, 55, 8, 10409);
-    			attr_dev(svg, "class", "chevron-down-dark svelte-1wr0c9z");
-    			attr_dev(svg, "width", "15");
-    			attr_dev(svg, "height", "12");
-    			attr_dev(svg, "viewBox", "0 0 15 12");
+    			attr_dev(path, "fill", "white");
+    			add_location(path, file$b, 56, 8, 11273);
+    			attr_dev(svg, "width", "9");
+    			attr_dev(svg, "height", "6");
+    			attr_dev(svg, "viewBox", "0 0 9 6");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$b, 54, 4, 10314);
+    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			add_location(svg, file$b, 55, 4, 11208);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46429,14 +46470,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5$1.name,
     		type: "if",
-    		source: "(54:38) ",
+    		source: "(55:33) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:33) 
+    // (51:34) 
     function create_if_block_4$1(ctx) {
     	let svg;
     	let path;
@@ -46447,15 +46488,15 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "fill-rule", "evenodd");
     			attr_dev(path, "clip-rule", "evenodd");
-    			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
+    			attr_dev(path, "d", "M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z");
     			attr_dev(path, "fill", "white");
-    			add_location(path, file$b, 51, 8, 9863);
-    			attr_dev(svg, "width", "9");
-    			attr_dev(svg, "height", "6");
-    			attr_dev(svg, "viewBox", "0 0 9 6");
+    			add_location(path, file$b, 52, 8, 10760);
+    			attr_dev(svg, "width", "7");
+    			attr_dev(svg, "height", "9");
+    			attr_dev(svg, "viewBox", "0 0 7 9");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1wr0c9z");
-    			add_location(svg, file$b, 50, 4, 9798);
+    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			add_location(svg, file$b, 51, 4, 10695);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -46470,37 +46511,41 @@ var app = (function () {
     		block,
     		id: create_if_block_4$1.name,
     		type: "if",
-    		source: "(50:33) ",
+    		source: "(51:34) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:34) 
+    // (46:29) 
     function create_if_block_3$1(ctx) {
     	let svg;
-    	let path;
+    	let path0;
+    	let path1;
 
     	const block = {
     		c: function create() {
     			svg = svg_element("svg");
-    			path = svg_element("path");
-    			attr_dev(path, "fill-rule", "evenodd");
-    			attr_dev(path, "clip-rule", "evenodd");
-    			attr_dev(path, "d", "M1.01556 7.37091C0.747902 7.61649 0.747902 8.01465 1.01556 8.26023C1.28322 8.5058 1.71718 8.5058 1.98484 8.26023L5.90131 4.66686C6.16897 4.42128 6.16897 4.02313 5.90131 3.77755L1.98484 0.184182C1.71718 -0.0613944 1.28322 -0.0613944 1.01556 0.184182C0.747902 0.429759 0.747902 0.827918 1.01556 1.07349L4.44927 4.22392L1.01556 7.37091Z");
-    			attr_dev(path, "fill", "white");
-    			add_location(path, file$b, 47, 8, 9350);
-    			attr_dev(svg, "width", "7");
-    			attr_dev(svg, "height", "9");
-    			attr_dev(svg, "viewBox", "0 0 7 9");
+    			path0 = svg_element("path");
+    			path1 = svg_element("path");
+    			attr_dev(path0, "d", "M6.01122 1.49998V7.99998H6.88162V1.49998L7.96962 2.39998L8.62242 1.79998L6.77282 0.0999756H6.12002L4.27042 1.79998L4.92322 2.39998L6.01122 1.49998Z");
+    			attr_dev(path0, "fill", "white");
+    			add_location(path0, file$b, 47, 8, 9366);
+    			attr_dev(path1, "d", "M11.4512 3.29997C11.2119 3.07266 10.9241 2.89317 10.6058 2.77273C10.2876 2.65228 9.94573 2.59347 9.60163 2.59997V3.39997C10.0345 3.39997 10.4496 3.55801 10.7556 3.83931C11.0617 4.12062 11.2336 4.50215 11.2336 4.89997V10.7C11.2345 11.1075 11.0661 11.5001 10.7628 11.7974C10.4595 12.0947 10.0442 12.2745 9.60163 12.3H3.29123C2.84866 12.2745 2.43334 12.0947 2.13005 11.7974C1.82676 11.5001 1.65837 11.1075 1.65923 10.7V4.89997C1.65923 4.50215 1.83118 4.12062 2.13724 3.83931C2.4433 3.55801 2.8584 3.39997 3.29123 3.39997V2.59997C2.94714 2.59347 2.60528 2.65228 2.28703 2.77273C1.96878 2.89317 1.68099 3.07266 1.44163 3.29997C1.1913 3.49636 0.992705 3.74239 0.860787 4.01953C0.728868 4.29667 0.667067 4.59771 0.680035 4.89997V10.8C0.667067 11.1022 0.728868 11.4033 0.860787 11.6804C0.992705 11.9576 1.1913 12.2036 1.44163 12.4C1.68099 12.6273 1.96878 12.8068 2.28703 12.9272C2.60528 13.0477 2.94714 13.1065 3.29123 13.1H9.60163C10.2757 13.1005 10.9239 12.8614 11.4106 12.4327C11.8973 12.0041 12.1847 11.419 12.2128 10.8V4.89997C12.1866 4.29766 11.9147 3.72647 11.4512 3.29997Z");
+    			attr_dev(path1, "fill", "white");
+    			add_location(path1, file$b, 48, 8, 9547);
+    			attr_dev(svg, "class", "download svelte-6dg4uv");
+    			attr_dev(svg, "width", "13");
+    			attr_dev(svg, "height", "14");
+    			attr_dev(svg, "viewBox", "0 0 13 14");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1wr0c9z");
-    			add_location(svg, file$b, 46, 4, 9285);
+    			add_location(svg, file$b, 46, 4, 9280);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
-    			append_dev(svg, path);
+    			append_dev(svg, path0);
+    			append_dev(svg, path1);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(svg);
@@ -46511,7 +46556,7 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(46:34) ",
+    		source: "(46:29) ",
     		ctx
     	});
 
@@ -46539,7 +46584,7 @@ var app = (function () {
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 13 14");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1wr0c9z");
+    			attr_dev(svg, "class", "svelte-6dg4uv");
     			add_location(svg, file$b, 41, 4, 7887);
     		},
     		m: function mount(target, anchor) {
@@ -46575,7 +46620,7 @@ var app = (function () {
     			attr_dev(path, "d", "M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z");
     			attr_dev(path, "fill", "#122431");
     			add_location(path, file$b, 38, 8, 6076);
-    			attr_dev(svg, "class", "info svelte-1wr0c9z");
+    			attr_dev(svg, "class", "info svelte-6dg4uv");
     			attr_dev(svg, "width", "14");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 14 14");
@@ -46737,7 +46782,7 @@ var app = (function () {
     			attr_dev(clipPath, "id", "clip0");
     			add_location(clipPath, file$b, 31, 12, 5802);
     			add_location(defs, file$b, 30, 8, 5783);
-    			attr_dev(svg, "class", "logo svelte-1wr0c9z");
+    			attr_dev(svg, "class", "logo svelte-6dg4uv");
     			attr_dev(svg, "width", "560");
     			attr_dev(svg, "height", "120");
     			attr_dev(svg, "viewBox", "0 0 560 120");
@@ -46796,15 +46841,16 @@ var app = (function () {
     		if (/*type*/ ctx[0] == "logo") return create_if_block$8;
     		if (/*type*/ ctx[0] == "info") return create_if_block_1$2;
     		if (/*type*/ ctx[0] == "share") return create_if_block_2$1;
-    		if (/*type*/ ctx[0] == "chevron-right") return create_if_block_3$1;
-    		if (/*type*/ ctx[0] == "chevron-down") return create_if_block_4$1;
-    		if (/*type*/ ctx[0] == "chevron-down-dark") return create_if_block_5$1;
-    		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_6;
-    		if (/*type*/ ctx[0] == "tooltip-caret-up") return create_if_block_7;
-    		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_8;
-    		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_9;
-    		if (/*type*/ ctx[0] == "caret-down-dark") return create_if_block_10;
-    		if (/*type*/ ctx[0] == "caret-down") return create_if_block_11;
+    		if (/*type*/ ctx[0] == "download") return create_if_block_3$1;
+    		if (/*type*/ ctx[0] == "chevron-right") return create_if_block_4$1;
+    		if (/*type*/ ctx[0] == "chevron-down") return create_if_block_5$1;
+    		if (/*type*/ ctx[0] == "chevron-down-dark") return create_if_block_6;
+    		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_7;
+    		if (/*type*/ ctx[0] == "tooltip-caret-up") return create_if_block_8;
+    		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_9;
+    		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_10;
+    		if (/*type*/ ctx[0] == "caret-down-dark") return create_if_block_11;
+    		if (/*type*/ ctx[0] == "caret-down") return create_if_block_12;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -49213,10 +49259,11 @@ var app = (function () {
     function get_each_context$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
     	child_ctx[3] = list[i];
+    	child_ctx[5] = i;
     	return child_ctx;
     }
 
-    // (11:12) {#each countryNames as country}
+    // (13:12) {#each countryNames as country, i}
     function create_each_block$2(ctx) {
     	let option;
     	let t_value = /*country*/ ctx[3].country + "";
@@ -49229,7 +49276,7 @@ var app = (function () {
     			t = text$1(t_value);
     			option.__value = option_value_value = /*country*/ ctx[3].id;
     			option.value = option.__value;
-    			add_location(option, file$6, 11, 16, 395);
+    			add_location(option, file$6, 13, 16, 439);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -49252,7 +49299,7 @@ var app = (function () {
     		block,
     		id: create_each_block$2.name,
     		type: "each",
-    		source: "(11:12) {#each countryNames as country}",
+    		source: "(13:12) {#each countryNames as country, i}",
     		ctx
     	});
 
@@ -49298,22 +49345,22 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(span, "class", "svelte-9pltw0");
-    			add_location(span, file$6, 7, 12, 208);
+    			add_location(span, file$6, 9, 12, 249);
     			attr_dev(select, "class", "svelte-9pltw0");
     			if (/*$selectedCountry*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
-    			add_location(select, file$6, 9, 8, 296);
+    			add_location(select, file$6, 11, 8, 337);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			add_location(path, file$6, 16, 12, 641);
+    			add_location(path, file$6, 18, 12, 685);
     			attr_dev(svg, "class", "caret-down-dark svelte-9pltw0");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$6, 15, 8, 544);
+    			add_location(svg, file$6, 17, 8, 588);
     			attr_dev(div0, "class", div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-9pltw0");
-    			add_location(div0, file$6, 8, 4, 236);
+    			add_location(div0, file$6, 10, 4, 277);
     			attr_dev(div1, "class", "country-select svelte-9pltw0");
-    			add_location(div1, file$6, 6, 0, 167);
+    			add_location(div1, file$6, 8, 0, 208);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49401,6 +49448,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("CountrySelect", slots, []);
     	let { countryNames } = $$props;
+    	set_store_value(selectedCountry, $selectedCountry = "united-states", $selectedCountry);
     	const writable_props = ["countryNames"];
 
     	Object.keys($$props).forEach(key => {
@@ -49503,7 +49551,10 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	icon = new Icon({ props: { type: "share" }, $$inline: true });
+    	icon = new Icon({
+    			props: { type: "download" },
+    			$$inline: true
+    		});
 
     	landingvisual = new LandingVisual({
     			props: {
@@ -49536,7 +49587,7 @@ var app = (function () {
     			create_component(countryselect.$$.fragment);
     			t9 = space();
     			button = element("button");
-    			t10 = text$1("Share this view");
+    			t10 = text$1("Download this chart");
     			create_component(icon.$$.fragment);
     			t11 = space();
     			div1 = element("div");
@@ -49559,7 +49610,7 @@ var app = (function () {
     			attr_dev(header, "class", "svelte-1kxyu2");
     			add_location(header, file$5, 65, 0, 2245);
     			attr_dev(div1, "class", "vis-container svelte-1kxyu2");
-    			add_location(div1, file$5, 74, 0, 2559);
+    			add_location(div1, file$5, 74, 0, 2566);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -51077,12 +51128,12 @@ var app = (function () {
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
     			add_location(text1, file$1, 163, 24, 4931);
-    			attr_dev(line, "class", "gridline svelte-c2zlej");
+    			attr_dev(line, "class", "gridline svelte-1hjvisr");
     			attr_dev(line, "x1", "0");
     			attr_dev(line, "x2", /*areaWidth*/ ctx[8]);
     			attr_dev(line, "transform", "translate(0,5)");
     			add_location(line, file$1, 165, 24, 5070);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-c2zlej"));
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1hjvisr"));
     			attr_dev(g, "transform", "translate(0," + /*areaMargin*/ ctx[9] + ")");
     			add_location(g, file$1, 160, 20, 4729);
     		},
@@ -51129,7 +51180,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-c2zlej"))) {
+    			if (!current || dirty & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1hjvisr"))) {
     				attr_dev(g, "class", g_class_value);
     			}
     		},
@@ -51180,7 +51231,7 @@ var app = (function () {
     		c: function create() {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
-    			attr_dev(text_1, "class", "label svelte-c2zlej");
+    			attr_dev(text_1, "class", "label svelte-1hjvisr");
     			attr_dev(text_1, "y", "-12px");
     			add_location(text_1, file$1, 188, 36, 6500);
     		},
@@ -51237,9 +51288,9 @@ var app = (function () {
     			circle = svg_element("circle");
     			if (if_block) if_block.c();
     			attr_dev(circle, "r", /*graph*/ ctx[27].r);
-    			attr_dev(circle, "class", "country-circle svelte-c2zlej");
+    			attr_dev(circle, "class", "country-circle svelte-1hjvisr");
     			add_location(circle, file$1, 176, 32, 5844);
-    			attr_dev(g, "class", "country " + /*graph*/ ctx[27].id + " svelte-c2zlej");
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[27].id + " svelte-1hjvisr");
     			attr_dev(g, "data-id", /*graph*/ ctx[27].id);
     			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[27].x + "," + (/*graph*/ ctx[27].y + 5) + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[27].id == /*$hoveredCountry*/ ctx[5]);
@@ -51601,7 +51652,11 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	icon = new Icon({ props: { type: "share" }, $$inline: true });
+
+    	icon = new Icon({
+    			props: { type: "download" },
+    			$$inline: true
+    		});
 
     	indicatorvisual = new IndicatorVisual({
     			props: { indicator: /*indicator*/ ctx[24] },
@@ -51623,24 +51678,24 @@ var app = (function () {
     			t4 = text$1(t4_value);
     			t5 = space();
     			button = element("button");
-    			t6 = text$1("Share this chart");
+    			t6 = text$1("Download this chart");
     			create_component(icon.$$.fragment);
     			t7 = space();
     			create_component(indicatorvisual.$$.fragment);
-    			attr_dev(div0, "class", "leader-line svelte-c2zlej");
-    			add_location(div0, file$1, 269, 24, 9709);
-    			attr_dev(div1, "class", "leader-circle svelte-c2zlej");
-    			add_location(div1, file$1, 270, 24, 9765);
-    			attr_dev(div2, "class", "leader-container svelte-c2zlej");
-    			add_location(div2, file$1, 268, 20, 9654);
-    			attr_dev(h3, "class", "svelte-c2zlej");
-    			add_location(h3, file$1, 272, 20, 9846);
+    			attr_dev(div0, "class", "leader-line svelte-1hjvisr");
+    			add_location(div0, file$1, 269, 24, 9715);
+    			attr_dev(div1, "class", "leader-circle svelte-1hjvisr");
+    			add_location(div1, file$1, 270, 24, 9771);
+    			attr_dev(div2, "class", "leader-container svelte-1hjvisr");
+    			add_location(div2, file$1, 268, 20, 9660);
+    			attr_dev(h3, "class", "svelte-1hjvisr");
+    			add_location(h3, file$1, 272, 20, 9852);
     			attr_dev(div3, "class", "description");
-    			add_location(div3, file$1, 273, 20, 9897);
-    			attr_dev(button, "class", "svelte-c2zlej");
-    			add_location(button, file$1, 274, 20, 9976);
-    			attr_dev(div4, "class", "indicator-text text-left svelte-c2zlej");
-    			add_location(div4, file$1, 267, 16, 9595);
+    			add_location(div3, file$1, 273, 20, 9903);
+    			attr_dev(button, "class", "svelte-1hjvisr");
+    			add_location(button, file$1, 274, 20, 9982);
+    			attr_dev(div4, "class", "indicator-text text-left svelte-1hjvisr");
+    			add_location(div4, file$1, 267, 16, 9601);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div4, anchor);
@@ -51736,7 +51791,10 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	icon = new Icon({ props: { type: "share" }, $$inline: true });
+    	icon = new Icon({
+    			props: { type: "download" },
+    			$$inline: true
+    		});
 
     	const block = {
     		c: function create() {
@@ -51755,21 +51813,21 @@ var app = (function () {
     			t5 = text$1(t5_value);
     			t6 = space();
     			button = element("button");
-    			t7 = text$1("Share this chart");
+    			t7 = text$1("Download this chart");
     			create_component(icon.$$.fragment);
-    			attr_dev(div0, "class", "leader-line svelte-c2zlej");
+    			attr_dev(div0, "class", "leader-line svelte-1hjvisr");
     			add_location(div0, file$1, 259, 24, 9189);
-    			attr_dev(div1, "class", "leader-circle svelte-c2zlej");
+    			attr_dev(div1, "class", "leader-circle svelte-1hjvisr");
     			add_location(div1, file$1, 260, 24, 9245);
-    			attr_dev(div2, "class", "leader-container svelte-c2zlej");
+    			attr_dev(div2, "class", "leader-container svelte-1hjvisr");
     			add_location(div2, file$1, 258, 20, 9134);
-    			attr_dev(h3, "class", "svelte-c2zlej");
+    			attr_dev(h3, "class", "svelte-1hjvisr");
     			add_location(h3, file$1, 262, 20, 9326);
     			attr_dev(div3, "class", "description");
     			add_location(div3, file$1, 263, 20, 9377);
-    			attr_dev(button, "class", "svelte-c2zlej");
+    			attr_dev(button, "class", "svelte-1hjvisr");
     			add_location(button, file$1, 264, 20, 9456);
-    			attr_dev(div4, "class", "indicator-text text-right svelte-c2zlej");
+    			attr_dev(div4, "class", "indicator-text text-right svelte-1hjvisr");
     			add_location(div4, file$1, 257, 16, 9074);
     		},
     		m: function mount(target, anchor) {
@@ -51859,7 +51917,7 @@ var app = (function () {
     			div = element("div");
     			if_block.c();
     			t = space();
-    			attr_dev(div, "class", "indicator-container svelte-c2zlej");
+    			attr_dev(div, "class", "indicator-container svelte-1hjvisr");
     			add_location(div, file$1, 253, 8, 8949);
     		},
     		m: function mount(target, anchor) {
@@ -52028,51 +52086,51 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(button0, "class", "back svelte-c2zlej");
+    			attr_dev(button0, "class", "back svelte-1hjvisr");
     			add_location(button0, file$1, 147, 0, 4267);
-    			attr_dev(h1, "class", "svelte-c2zlej");
+    			attr_dev(h1, "class", "svelte-1hjvisr");
     			add_location(h1, file$1, 153, 12, 4495);
-    			attr_dev(p, "class", "intro svelte-c2zlej");
+    			attr_dev(p, "class", "intro svelte-1hjvisr");
     			add_location(p, file$1, 154, 12, 4535);
-    			attr_dev(div0, "class", "area-text svelte-c2zlej");
+    			attr_dev(div0, "class", "area-text svelte-1hjvisr");
     			add_location(div0, file$1, 152, 8, 4459);
     			attr_dev(svg0, "width", /*areaWidth*/ ctx[8]);
     			attr_dev(svg0, "height", "50");
     			add_location(svg0, file$1, 158, 12, 4640);
-    			attr_dev(div1, "class", "area-vis svelte-c2zlej");
+    			attr_dev(div1, "class", "area-vis svelte-1hjvisr");
     			add_location(div1, file$1, 157, 8, 4605);
-    			attr_dev(div2, "class", "area-container svelte-c2zlej");
+    			attr_dev(div2, "class", "area-container svelte-1hjvisr");
     			add_location(div2, file$1, 151, 4, 4422);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
     			add_location(path, file$1, 232, 16, 8152);
-    			attr_dev(svg1, "class", "caret-down-light svelte-c2zlej");
+    			attr_dev(svg1, "class", "caret-down-light svelte-1hjvisr");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
     			add_location(svg1, file$1, 231, 12, 8050);
-    			attr_dev(button1, "class", "expand svelte-c2zlej");
+    			attr_dev(button1, "class", "expand svelte-1hjvisr");
     			add_location(button1, file$1, 225, 8, 7857);
     			attr_dev(a, "href", "#");
-    			attr_dev(a, "class", "svelte-c2zlej");
+    			attr_dev(a, "class", "svelte-1hjvisr");
     			add_location(a, file$1, 236, 12, 8455);
-    			attr_dev(div3, "class", "methodology svelte-c2zlej");
+    			attr_dev(div3, "class", "methodology svelte-1hjvisr");
     			add_location(div3, file$1, 235, 8, 8417);
-    			attr_dev(div4, "class", "area-footer svelte-c2zlej");
+    			attr_dev(div4, "class", "area-footer svelte-1hjvisr");
     			add_location(div4, file$1, 224, 4, 7823);
-    			attr_dev(div5, "class", "area-summary svelte-c2zlej");
+    			attr_dev(div5, "class", "area-summary svelte-1hjvisr");
     			toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
     			add_location(div5, file$1, 149, 0, 4356);
-    			attr_dev(h2, "class", "svelte-c2zlej");
+    			attr_dev(h2, "class", "svelte-1hjvisr");
     			add_location(h2, file$1, 243, 8, 8590);
-    			attr_dev(h3, "class", "svelte-c2zlej");
+    			attr_dev(h3, "class", "svelte-1hjvisr");
     			add_location(h3, file$1, 244, 8, 8650);
-    			attr_dev(button2, "class", "svelte-c2zlej");
+    			attr_dev(button2, "class", "svelte-1hjvisr");
     			add_location(button2, file$1, 247, 12, 8813);
-    			attr_dev(div6, "class", "control-area svelte-c2zlej");
+    			attr_dev(div6, "class", "control-area svelte-1hjvisr");
     			add_location(div6, file$1, 245, 8, 8730);
-    			attr_dev(header, "class", "svelte-c2zlej");
+    			attr_dev(header, "class", "svelte-1hjvisr");
     			add_location(header, file$1, 242, 4, 8573);
     			attr_dev(div7, "class", "indicators");
     			add_location(div7, file$1, 241, 0, 8544);

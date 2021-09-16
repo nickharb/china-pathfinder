@@ -2,13 +2,15 @@
     export let countryNames;
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
+
+    $selectedCountry = 'united-states';
 </script>
 
 <div class='country-select'>
     Compare <span>China</span> with
     <div class='country-toggle-box {$selectedCountry}'>
         <select bind:value={$selectedCountry}>
-            {#each countryNames as country}
+            {#each countryNames as country, i}
                 <option value={country.id}>{country.country}</option>
             {/each}
         </select>
