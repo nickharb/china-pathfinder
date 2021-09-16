@@ -1,5 +1,6 @@
 <script>
     import * as d3 from 'd3';
+    import { onMount } from "svelte";
     import {chartWidth, innerRadius} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
@@ -7,10 +8,12 @@
     
     // $chartWidth = window.innerWidth * 0.2;
     $chartWidth = 600; // 500
-    $innerRadius = 40; // 50
+    $innerRadius = 50; // 50
 
-    let minRadius = $innerRadius + 10;
-    let maxRadius = $chartWidth/2-$innerRadius;
+    let offsetWidth;
+    let offsetHeight;
+    let minRadius = $innerRadius + 20;
+    let maxRadius = $chartWidth/2-$innerRadius-20;
 
     let x = d3.scaleBand()
         .domain(indicator.values.map(d => d.country))
@@ -28,8 +31,8 @@
         let arc = d3.arc()
             .innerRadius($innerRadius)
             .outerRadius(outerRadius)
-            .cornerRadius(2)
-            .startAngle(startAngle + 0.15)
+            .cornerRadius(0)
+            .startAngle(startAngle + 0.20) // 0.15
             .endAngle(endAngle)
             .padAngle(0) // 2.48
             .padRadius(0)(); // 5
@@ -72,13 +75,22 @@
         $selectedCountry = e.path[1].dataset.id;
     }
 
+    // onMount(function() {
+    //     let indicators = d3.selectAll('.indicator');
+    //     indicators.each(function(el, i) {
+    //         let box = d3.select(this).node().getBBox();
+    //         console.log(box);
+    //     });
+    // });
+
 
 </script>
 
 <div class='indicator-vis'>
 
     <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}>
-        <g transform='translate({$chartWidth/2},{$chartWidth/2})'>
+        <g class="indicator" transform='translate({$chartWidth/2},{$chartWidth/2})'>
+        <!-- <g bind:clientWidth={offsetWidth} bind:clientHeight={offsetHeight}> -->
 
             {#each indicator.values as country}
                 <g class='country {country.id}'
@@ -94,13 +106,17 @@
                             transform='rotate({country.rotateAngle*-1})'
                             style='text-anchor:{country.textAnchor};'
                         >
-                            {country.country}: {Math.round(country.value*10)/10}
+                            {country.country}
                         </text>
                     </g> -->
                 </g>
             {/each}
 
-            <!-- <text dy="5" class='middle-text'>{indicator.indicator}</text> -->
+            <!-- <text dy="-5" class='middle-title'>{indicator.copy.title1}</text> -->
+            <!-- <text dy="15" class='middle-subtitle'>{indicator.copy.title2}</text> -->
+            <!-- <foreignObject x="-60" y="5" width="120" height="60">
+                <p class="subtitle">{indicator.copy.title2}</p>
+            </foreignObject> -->
             
         </g>
     </svg>
@@ -122,6 +138,13 @@
 
 
 <style>
+
+    svg {
+        /*border: 1px solid lightpink;*/
+    }
+
+    /* indicator tooltips */
+
     .tooltip {
         opacity: 0;
         position: absolute;
@@ -216,12 +239,24 @@
         fill-opacity: 0;
     }*/
 
-    /*text.middle-text {
+    text.middle-title {
         text-anchor: middle;
-        font-weight: 400;
-        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    text.middle-subtitle {
+        /*text-anchor: middle;
+        font-weight: normal;
         font-size: 12px;
-    }*/
+        width: 50px;*/
+    }
+
+    .subtitle {
+        text-align: center;
+        font-size: 13px;
+        margin: 0;
+    }
 
     
 

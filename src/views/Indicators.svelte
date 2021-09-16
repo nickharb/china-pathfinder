@@ -102,7 +102,7 @@
     <div class="area-container">
         <div class='area-text'>
             <h1>{currentArea.name}</h1>
-            <p class='intro'>{currentArea.context}</p>
+            <p class='intro'>{currentArea.definition}</p>
         </div>
 
         <div class='area-vis'>
@@ -150,7 +150,7 @@
 
     {#if expanded}
         <div class="summary" transition:fade>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>{currentArea.summary}</p>
         </div>
     {/if}
     
@@ -187,20 +187,24 @@
 
             {#if i%2 == 0}
                 <IndicatorVisual {indicator}/>
-                <div class='indicator-text'>
-                    <div style='margin-top:{$chartWidth*0.3}px; padding-left:20px; border-left:1px solid #eee;' class='inner-container'>
-                        <h3>{indicator.copy.name}</h3>
-                        <div class='description'>{indicator.copy.definition}</div>
-                        <button>Share this chart<Icon type='share' /></button>
+                <div class='indicator-text text-right'>
+                    <div class="leader-container">
+                        <div class="leader-line"></div>
+                        <div class="leader-circle"></div>
                     </div>
+                    <h3>{indicator.copy.name}</h3>
+                    <div class='description'>{indicator.copy.definition}</div>
+                    <button>Share this chart<Icon type='share' /></button>
                 </div>
             {:else}
-                <div class='indicator-text'>
-                    <div style='float:right;margin-top:{$chartWidth*0.3}px; padding-right:20px; border-right:1px solid #eee;' class='inner-container'>
-                        <h3>{indicator.copy.name}</h3>
-                        <div class='description'>{indicator.copy.definition}</div>
-                        <button>Share this chart<Icon type='share' /></button>
+                <div class='indicator-text text-left'>
+                    <div class="leader-container">
+                        <div class="leader-line"></div>
+                        <div class="leader-circle"></div>
                     </div>
+                    <h3>{indicator.copy.name}</h3>
+                    <div class='description'>{indicator.copy.definition}</div>
+                    <button>Share this chart<Icon type='share' /></button>
                 </div>
                 <IndicatorVisual {indicator}/>
             {/if}
@@ -213,6 +217,77 @@
 
 
 <style>
+
+    /* indicator visual */
+
+    .indicator-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .indicator-text {
+        position: relative;
+        width: 350px;
+    }
+
+    .indicator-text h3 {
+        margin: 0;
+    }
+
+    .leader-container {
+        position: absolute;
+        top: 50%;
+        /*left: -60px;*/
+        margin-top: -6px;
+    }
+
+    .leader-line {
+        content: " ";
+        height: 1px;
+        width: 60px;
+        border-bottom: 1px solid #84A9BC;
+    }
+
+    .leader-circle {
+        content: " ";
+        position: absolute;
+        height: 13px;
+        width: 13px;
+        border: 1px solid #84A9BC;
+        border-radius: 50%;
+        top: -6px;
+    }
+
+    .text-left {
+        border-right: 1px solid #84A9BC;
+        padding-right: 40px;
+        margin-right: 40px;
+    }
+
+    .text-right {
+        border-left: 1px solid #84A9BC;
+        padding-left: 40px;
+        margin-left: 40px;
+    }
+
+    .text-left .leader-container {
+        right: -60px;
+    }
+
+    .text-right .leader-container {
+        left: -60px;
+    }
+
+    .text-left .leader-circle {
+        right: -6px;
+        background: #fff;
+    }
+
+    .text-right .leader-circle {
+        left: -6px;
+        background: #fff;
+    }
 
     /* header section */
 
@@ -355,24 +430,9 @@
         display: block;
     }
 
-    /* indicator visual */
-
-    .indicator-container {
-        display: flex;
-        justify-content: center;
-    }
-
-    .indicator-container h3 {
-        margin-top: 0;
-    }
-    .indicator-container .indicator-text {
-        /*width: 40%;*/
-        width: 350px;
-    }
-
-    .indicator-container .indicator-text .inner-container {
+    /*.indicator-container .indicator-text .inner-container {
         display: inline-block;
-    }
+    }*/
 
     circle.country-circle {
         fill: #84A9BC;
