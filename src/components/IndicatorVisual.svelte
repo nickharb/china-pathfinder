@@ -4,6 +4,7 @@
     import {chartWidth, innerRadius} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
+    import IndicatorTooltip from '../components/IndicatorTooltip.svelte';
     export let indicator;
     
     // $chartWidth = window.innerWidth * 0.2;
@@ -63,17 +64,34 @@
         // d.barLength = y(d.value)+10;
     });
 
-    function pathMouseOver(e) {
+    let isHovered = false;
+    // let indicatorIsHovered = false;
+
+    function mouseOver(e) {
+        isHovered = true;
         $hoveredCountry = e.path[1].dataset.id;
     }
 
-    function pathMouseOut(e) {
+    function mouseLeave(e) {
+        isHovered = false;
         $hoveredCountry = '';
     }
 
-    function pathClick(e) {
+    function mouseClick(e) {
         $selectedCountry = e.path[1].dataset.id;
     }
+
+    // function pathMouseOver(e) {
+    //     $hoveredCountry = e.path[1].dataset.id;
+    // }
+
+    // function pathMouseOut(e) {
+    //     $hoveredCountry = '';
+    // }
+
+    // function pathClick(e) {
+    //     $selectedCountry = e.path[1].dataset.id;
+    // }
 
     // onMount(function() {
     //     let indicators = d3.selectAll('.indicator');
@@ -99,7 +117,14 @@
                     class:selected='{country.id == $selectedCountry || country.id == 'china' || country.id == 'open-economy-avg'}'
                 >
 
-                    <path d={country.path} on:mouseover={pathMouseOver} on:mouseout={pathMouseOut} on:click={pathClick}></path>
+                    <!-- <path d={country.path} on:mouseover={pathMouseOver} on:mouseout={pathMouseOut} on:click={pathClick}></path> -->
+
+                    <path
+                        d={country.path}
+                        on:mouseover={mouseOver}
+                        on:mouseleave={mouseLeave}
+                        on:click={mouseClick}
+                    ></path>
 
                     <!-- <g transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
                         <text 
@@ -121,7 +146,11 @@
         </g>
     </svg>
 
-    {#each indicator.values as country}
+    {#each indicator.values as graph}
+        <IndicatorTooltip isHovered={isHovered} graph={graph} />
+    {/each}
+
+    <!-- {#each indicator.values as country}
         <div
             class="tooltip {'tooltip-' + country.id}"
             class:hovered='{country.id == $hoveredCountry}'
@@ -132,7 +161,7 @@
             <p>{country.country}</p>
             <p class="value">{parseFloat(country.value).toFixed(2)}</p>
         </div>
-    {/each}
+    {/each} -->
 
 </div>
 
@@ -204,7 +233,7 @@
     }
 
     g.hovered path {
-        /*fill: #C2D5DE;*/
+        fill: #234462;
         transform: scale(1.03);
     }
 
@@ -217,6 +246,7 @@
         /*background-color: #F6D9D7;*/
     }
 
+    g.china-2010.hovered path,
     g.china-2010.selected path {
         fill: #A13F36;
         /*background-color: #ECD9D7;*/

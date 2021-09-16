@@ -1,6 +1,7 @@
 <script>
     import * as d3 from 'd3';
     import { onMount } from "svelte";
+    import { fly } from 'svelte/transition';
     import { fade } from 'svelte/transition';
     import loadData from "../data/load-data.js"; // needed for the top dots vis (composite score)
     import loadIndicatorsData from "../data/load-indicators-data.js";
@@ -11,6 +12,7 @@
     import Icon from '../components/Icon.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
     import IndicatorVisual from '../components/IndicatorVisual.svelte';
+    import AreaTooltip from '../components/AreaTooltip.svelte';
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[];
     let expanded = false;
@@ -25,6 +27,23 @@
     }
 
     const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
+
+    let isHovered = false;
+    // let indicatorIsHovered = false;
+
+    function mouseOver(e) {
+        isHovered = true;
+        $hoveredCountry = e.path[1].dataset.id;
+    }
+
+    function mouseLeave(e) {
+        isHovered = false;
+        $hoveredCountry = '';
+    }
+
+    function mouseClick(e) {
+        $selectedCountry = e.path[1].dataset.id;
+    }
 
     // event handlers
 
@@ -123,8 +142,21 @@
                                 class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
                             >
                                 
-                                <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle>
-                                <text class='label' y='-10px'>{graph.country}</text>
+                                <!-- <circle r={graph.r} class='country-circle' on:mouseover={circleMouseOver} on:mouseout={circleMouseOut} on:click={circleClick}></circle> -->
+                                <circle
+                                    r={graph.r}
+                                    class='country-circle'
+                                    on:mouseover={mouseOver}
+                                    on:mouseleave={mouseLeave}
+                                    on:click={mouseClick}
+                                ></circle>
+
+                                <!-- <text class='label' y='-10px'>{graph.country}</text> -->
+
+                                <!-- top country labels -->
+                                {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
+                                    <text class='label' y='-12px' transition:fly="{{ y: 10, duration: 200 }}">{graph.country}</text>
+                                {/if}
                             </g>
                         {/each}
                     </g>
@@ -132,7 +164,12 @@
             </svg>
 
             {#if areaData}
+                <!-- area vis tooltips -->
                 {#each graphData as graph, i}
+                    <AreaTooltip isHovered={isHovered} graph={graph} />
+                {/each}
+
+                <!-- {#each graphData as graph, i}
                     <div
                         class="tooltip {'tooltip-' + graph.id}"
                         class:hovered='{graph.id == $hoveredCountry}'
@@ -143,7 +180,7 @@
                         <p>{graph.country}</p>
                         <p class="value">{parseFloat(graph.value).toFixed(2)} / 10</p>
                     </div>
-                {/each}
+                {/each} -->
             {/if}
         </div>
     </div>
@@ -384,7 +421,7 @@
 
     /* tooltip */
 
-    .tooltip {
+    /*.tooltip {
         opacity: 0;
         position: absolute;
         z-index: 999;
@@ -428,24 +465,23 @@
 
     .tooltip.selected p.value {
         display: block;
-    }
-
-    /*.indicator-container .indicator-text .inner-container {
-        display: inline-block;
     }*/
+
+    /* area vis */
 
     circle.country-circle {
         fill: #84A9BC;
         stroke: #fff;
         stroke-width: 2px;
         cursor: pointer;
-        transform: scale(1);
+        /*transform: scale(1);*/
         transition: transform 200ms, fill 200ms;
     }
 
     g.hovered circle {
-        fill: #C2D5DE;
-        transform: scale(1.2);
+        fill: #234462;
+        /*fill: #C2D5DE;*/
+        /*transform: scale(1.2);*/
     }
 
     g.selected circle {
@@ -460,35 +496,56 @@
         stroke-width: 2px;
     }
 
+    g.china-2010.selected circle {
+        fill: #A13F36;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
+    g.open-economy-avg circle {
+        fill: #D18B36;
+        stroke: #fff;
+        stroke-width: 2px;
+    }
+
     g.china.hovered circle {
-        fill: #FF5C52;
+        /*fill: #FF5C52;*/
+    }
+
+    g.china-2010.hovered circle {
+        fill: #A13F36;
     }
 
     .gridline {
         stroke: #84A9BC;
     }
 
-    text {
-        pointer-events: none;
-        transition: fill-opacity 200ms;
-    }
+    /* country label */
 
     text.label {
         fill: #444444;
         text-anchor: middle;
-        fill-opacity: 0;
+        pointer-events: none;
     }
 
-    g.selected text {
+    g.selected text.label {
         fill: #234462;
         font-weight: bold;
-        fill-opacity: 1;
     }
 
-    g.china text {
+    g.china text.label {
         fill: #D13F36;
         font-weight: bold;
-        fill-opacity: 1;
+    }
+
+    g.china-2010 text.label {
+        fill: #A13F36;
+        font-weight: bold;
+    }
+
+    g.open-economy-avg text.label {
+        fill: #D18B36;
+        font-weight: bold;
     }
 
     /* buttons */
