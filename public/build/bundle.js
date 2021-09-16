@@ -38054,12 +38054,12 @@ var app = (function () {
         return({countries: data, areas: output});
     };
 
-    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"competition","name":"Market Competition","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"innovation","name":"Modern Innovation System","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"trade","name":"Trade Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"fdi","name":"Direct Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","definition":"Depth and stability of financial market; minimal distortions on credit pricing and quantity; foreign firms able to access financial services and foreign exchange markets.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"competition","name":"Market Competition","definition":"An environment where firms face low entry/exit barriers, market power abuses are disciplined, and distortive interventions are minimized.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"innovation","name":"Modern Innovation System","definition":"A market-led system that fosters productivity through private-public cooperation and international collaboration.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"trade","name":"Trade Openness","definition":"Goods and services trade free from discriminatory measures and restrictions.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"fdi","name":"Direct Investment Openness","definition":"Fair access for foreign firms to domestic markets alongside minimal restrictions on local companies to invest abroad.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","definition":"Limited controls on cross-border investment into equities, debt and other financial instruments.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"fdi","label":"1","name":"Inward FDI Stock as a Share of GDP (%)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
     {"category":"fdi","label":"2","name":"Outward FDI Stock to GDP Ratio (%)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
     {"category":"fdi","label":"3","name":"Capital Controls: FDI Inflow Restrictions, 2020","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
@@ -38281,8 +38281,8 @@ var app = (function () {
 
     const file$9 = "src/components/Icon.svelte";
 
-    // (74:31) 
-    function create_if_block_10(ctx) {
+    // (78:31) 
+    function create_if_block_11(ctx) {
     	let svg;
     	let path;
 
@@ -38292,13 +38292,51 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.5 13L0.138784 0.250001L14.8612 0.250002L7.5 13Z");
     			attr_dev(path, "fill", "#122431");
-    			add_location(path, file$9, 75, 8, 12511);
+    			add_location(path, file$9, 79, 8, 12714);
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "13");
     			attr_dev(svg, "viewBox", "0 0 15 13");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1pzny51");
-    			add_location(svg, file$9, 74, 4, 12442);
+    			attr_dev(svg, "class", "svelte-1wr0c9z");
+    			add_location(svg, file$9, 78, 4, 12645);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, svg, anchor);
+    			append_dev(svg, path);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(svg);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_11.name,
+    		type: "if",
+    		source: "(78:31) ",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (74:36) 
+    function create_if_block_10(ctx) {
+    	let svg;
+    	let path;
+
+    	const block = {
+    		c: function create() {
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
+    			add_location(path, file$9, 75, 8, 12392);
+    			attr_dev(svg, "class", "caret-down-dark svelte-1wr0c9z");
+    			attr_dev(svg, "width", "13");
+    			attr_dev(svg, "height", "11");
+    			attr_dev(svg, "viewBox", "0 0 13 11");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$9, 74, 4, 12299);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38313,14 +38351,14 @@ var app = (function () {
     		block,
     		id: create_if_block_10.name,
     		type: "if",
-    		source: "(74:31) ",
+    		source: "(74:36) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:36) 
+    // (70:37) 
     function create_if_block_9(ctx) {
     	let svg;
     	let path;
@@ -38330,13 +38368,14 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			add_location(path, file$9, 71, 8, 12189);
-    			attr_dev(svg, "class", "caret-down-dark svelte-1pzny51");
+    			attr_dev(path, "fill", "#ffffff");
+    			add_location(path, file$9, 71, 8, 12027);
+    			attr_dev(svg, "class", "caret-down-light svelte-1wr0c9z");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$9, 70, 4, 12096);
+    			add_location(svg, file$9, 70, 4, 11933);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38351,14 +38390,14 @@ var app = (function () {
     		block,
     		id: create_if_block_9.name,
     		type: "if",
-    		source: "(70:36) ",
+    		source: "(70:37) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (66:37) 
+    // (66:39) 
     function create_if_block_8(ctx) {
     	let svg;
     	let path;
@@ -38367,15 +38406,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$9, 67, 8, 11824);
-    			attr_dev(svg, "class", "caret-down-light svelte-1pzny51");
-    			attr_dev(svg, "width", "13");
-    			attr_dev(svg, "height", "11");
-    			attr_dev(svg, "viewBox", "0 0 13 11");
+    			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
+    			attr_dev(path, "fill", "white");
+    			add_location(path, file$9, 67, 8, 11802);
+    			attr_dev(svg, "class", "tooltip-caret-left svelte-1wr0c9z");
+    			attr_dev(svg, "width", "6");
+    			attr_dev(svg, "height", "12");
+    			attr_dev(svg, "viewBox", "0 0 6 12");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$9, 66, 4, 11730);
+    			add_location(svg, file$9, 66, 4, 11708);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38390,14 +38429,14 @@ var app = (function () {
     		block,
     		id: create_if_block_8.name,
     		type: "if",
-    		source: "(66:37) ",
+    		source: "(66:39) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (62:39) 
+    // (62:37) 
     function create_if_block_7(ctx) {
     	let svg;
     	let path;
@@ -38406,15 +38445,15 @@ var app = (function () {
     		c: function create() {
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
-    			attr_dev(path, "fill", "white");
-    			add_location(path, file$9, 63, 8, 11599);
-    			attr_dev(svg, "class", "tooltip-caret-left svelte-1pzny51");
-    			attr_dev(svg, "width", "6");
-    			attr_dev(svg, "height", "12");
-    			attr_dev(svg, "viewBox", "0 0 6 12");
+    			attr_dev(path, "d", "M6 0L11.1962 6L0.803848 6L6 0Z");
+    			attr_dev(path, "fill", "#E7EDF3");
+    			add_location(path, file$9, 63, 8, 11595);
+    			attr_dev(svg, "class", "tooltip-caret-up svelte-1wr0c9z");
+    			attr_dev(svg, "width", "12");
+    			attr_dev(svg, "height", "6");
+    			attr_dev(svg, "viewBox", "0 0 12 6");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$9, 62, 4, 11505);
+    			add_location(svg, file$9, 62, 4, 11503);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, svg, anchor);
@@ -38429,7 +38468,7 @@ var app = (function () {
     		block,
     		id: create_if_block_7.name,
     		type: "if",
-    		source: "(62:39) ",
+    		source: "(62:37) ",
     		ctx
     	});
 
@@ -38448,7 +38487,7 @@ var app = (function () {
     			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
     			attr_dev(path, "fill", "#122431");
     			add_location(path, file$9, 59, 8, 10943);
-    			attr_dev(svg, "class", "arrow-right svelte-1pzny51");
+    			attr_dev(svg, "class", "arrow-right svelte-1wr0c9z");
     			attr_dev(svg, "width", "21");
     			attr_dev(svg, "height", "10");
     			attr_dev(svg, "viewBox", "0 0 21 10");
@@ -38489,7 +38528,7 @@ var app = (function () {
     			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
     			attr_dev(path, "fill", "black");
     			add_location(path, file$9, 55, 8, 10409);
-    			attr_dev(svg, "class", "chevron-down-dark svelte-1pzny51");
+    			attr_dev(svg, "class", "chevron-down-dark svelte-1wr0c9z");
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "12");
     			attr_dev(svg, "viewBox", "0 0 15 12");
@@ -38534,7 +38573,7 @@ var app = (function () {
     			attr_dev(svg, "height", "6");
     			attr_dev(svg, "viewBox", "0 0 9 6");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1pzny51");
+    			attr_dev(svg, "class", "svelte-1wr0c9z");
     			add_location(svg, file$9, 50, 4, 9798);
     		},
     		m: function mount(target, anchor) {
@@ -38575,7 +38614,7 @@ var app = (function () {
     			attr_dev(svg, "height", "9");
     			attr_dev(svg, "viewBox", "0 0 7 9");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1pzny51");
+    			attr_dev(svg, "class", "svelte-1wr0c9z");
     			add_location(svg, file$9, 46, 4, 9285);
     		},
     		m: function mount(target, anchor) {
@@ -38619,7 +38658,7 @@ var app = (function () {
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 13 14");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-1pzny51");
+    			attr_dev(svg, "class", "svelte-1wr0c9z");
     			add_location(svg, file$9, 41, 4, 7887);
     		},
     		m: function mount(target, anchor) {
@@ -38655,7 +38694,7 @@ var app = (function () {
     			attr_dev(path, "d", "M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z");
     			attr_dev(path, "fill", "#122431");
     			add_location(path, file$9, 38, 8, 6076);
-    			attr_dev(svg, "class", "info svelte-1pzny51");
+    			attr_dev(svg, "class", "info svelte-1wr0c9z");
     			attr_dev(svg, "width", "14");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 14 14");
@@ -38817,7 +38856,7 @@ var app = (function () {
     			attr_dev(clipPath, "id", "clip0");
     			add_location(clipPath, file$9, 31, 12, 5802);
     			add_location(defs, file$9, 30, 8, 5783);
-    			attr_dev(svg, "class", "logo svelte-1pzny51");
+    			attr_dev(svg, "class", "logo svelte-1wr0c9z");
     			attr_dev(svg, "width", "560");
     			attr_dev(svg, "height", "120");
     			attr_dev(svg, "viewBox", "0 0 560 120");
@@ -38880,10 +38919,11 @@ var app = (function () {
     		if (/*type*/ ctx[0] == "chevron-down") return create_if_block_4$1;
     		if (/*type*/ ctx[0] == "chevron-down-dark") return create_if_block_5;
     		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_6;
-    		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_7;
-    		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_8;
-    		if (/*type*/ ctx[0] == "caret-down-dark") return create_if_block_9;
-    		if (/*type*/ ctx[0] == "caret-down") return create_if_block_10;
+    		if (/*type*/ ctx[0] == "tooltip-caret-up") return create_if_block_7;
+    		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_8;
+    		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_9;
+    		if (/*type*/ ctx[0] == "caret-down-dark") return create_if_block_10;
+    		if (/*type*/ ctx[0] == "caret-down") return create_if_block_11;
     	}
 
     	let current_block_type = select_block_type(ctx);
@@ -38993,19 +39033,25 @@ var app = (function () {
     /* src/components/Tooltip.svelte generated by Svelte v3.38.2 */
     const file$8 = "src/components/Tooltip.svelte";
 
-    // (20:80) 
+    // (30:80) 
     function create_if_block_1$1(ctx) {
     	let div;
     	let icon;
     	let t0;
-    	let p;
+    	let h3;
     	let t1_value = /*graph*/ ctx[1].country + "";
     	let t1;
+    	let t2;
+    	let p;
+    	let t3_value = /*graph*/ ctx[1].score + "";
+    	let t3;
+    	let t4;
+    	let div_resize_listener;
     	let div_transition;
     	let current;
 
     	icon = new Icon({
-    			props: { type: "tooltip-caret-left" },
+    			props: { type: "tooltip-caret-up" },
     			$$inline: true
     		});
 
@@ -39014,32 +39060,50 @@ var app = (function () {
     			div = element("div");
     			create_component(icon.$$.fragment);
     			t0 = space();
-    			p = element("p");
+    			h3 = element("h3");
     			t1 = text$1(t1_value);
-    			attr_dev(p, "class", "svelte-zz03fq");
-    			add_location(p, file$8, 22, 8, 1109);
-    			attr_dev(div, "class", "tooltip svelte-zz03fq");
-    			set_style(div, "left", /*graph*/ ctx[1].x + 25 + "px");
-    			set_style(div, "top", /*area*/ ctx[0].offsetY - 5 + "px");
-    			add_location(div, file$8, 20, 4, 927);
+    			t2 = space();
+    			p = element("p");
+    			t3 = text$1(t3_value);
+    			t4 = text$1(" / 10");
+    			attr_dev(h3, "class", "svelte-3kppof");
+    			add_location(h3, file$8, 32, 8, 1543);
+    			attr_dev(p, "class", "svelte-3kppof");
+    			add_location(p, file$8, 33, 8, 1576);
+    			attr_dev(div, "class", "tooltip svelte-3kppof");
+    			set_style(div, "left", /*graph*/ ctx[1].x + "px");
+    			set_style(div, "top", /*area*/ ctx[0].offsetY + 15 + "px");
+    			set_style(div, "margin-left", -/*offsetWidth*/ ctx[3] / 2 + 19 + "px");
+    			add_render_callback(() => /*div_elementresize_handler_1*/ ctx[8].call(div));
+    			add_location(div, file$8, 30, 4, 1308);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
     			mount_component(icon, div, null);
     			append_dev(div, t0);
+    			append_dev(div, h3);
+    			append_dev(h3, t1);
+    			append_dev(div, t2);
     			append_dev(div, p);
-    			append_dev(p, t1);
+    			append_dev(p, t3);
+    			append_dev(p, t4);
+    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler_1*/ ctx[8].bind(div));
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*graph*/ 2) && t1_value !== (t1_value = /*graph*/ ctx[1].country + "")) set_data_dev(t1, t1_value);
+    			if ((!current || dirty & /*graph*/ 2) && t3_value !== (t3_value = /*graph*/ ctx[1].score + "")) set_data_dev(t3, t3_value);
 
     			if (!current || dirty & /*graph*/ 2) {
-    				set_style(div, "left", /*graph*/ ctx[1].x + 25 + "px");
+    				set_style(div, "left", /*graph*/ ctx[1].x + "px");
     			}
 
     			if (!current || dirty & /*area*/ 1) {
-    				set_style(div, "top", /*area*/ ctx[0].offsetY - 5 + "px");
+    				set_style(div, "top", /*area*/ ctx[0].offsetY + 15 + "px");
+    			}
+
+    			if (!current || dirty & /*offsetWidth*/ 8) {
+    				set_style(div, "margin-left", -/*offsetWidth*/ ctx[3] / 2 + 19 + "px");
     			}
     		},
     		i: function intro(local) {
@@ -39047,7 +39111,7 @@ var app = (function () {
     			transition_in(icon.$$.fragment, local);
 
     			add_render_callback(() => {
-    				if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { x: -10, duration: 200 }, true);
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { y: -5, duration: 200 }, true);
     				div_transition.run(1);
     			});
 
@@ -39055,13 +39119,14 @@ var app = (function () {
     		},
     		o: function outro(local) {
     			transition_out(icon.$$.fragment, local);
-    			if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { x: -10, duration: 200 }, false);
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { y: -5, duration: 200 }, false);
     			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
     			destroy_component(icon);
+    			div_resize_listener();
     			if (detaching && div_transition) div_transition.end();
     		}
     	};
@@ -39070,85 +39135,112 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(20:80) ",
+    		source: "(30:80) ",
     		ctx
     	});
 
     	return block;
     }
 
-    // (15:0) {#if isHovered && graph.id == $hoveredCountry && graph.id == $selectedCountry || isHovered && graph.id == $hoveredCountry && graph.id == 'china' || isHovered && graph.id == $hoveredCountry && graph.id == 'open-economy-avg'}
+    // (14:0) {#if isHovered && graph.id == $hoveredCountry && graph.id == $selectedCountry || isHovered && graph.id == $hoveredCountry && graph.id == 'china' || isHovered && graph.id == $hoveredCountry && graph.id == 'open-economy-avg'}
     function create_if_block$4(ctx) {
     	let div;
-    	let icon;
+    	let svg;
+    	let path;
     	let t0;
-    	let p;
+    	let h3;
     	let t1_value = /*graph*/ ctx[1].score + "";
     	let t1;
     	let t2;
+    	let div_resize_listener;
     	let div_transition;
     	let current;
-
-    	icon = new Icon({
-    			props: { type: "tooltip-caret-left" },
-    			$$inline: true
-    		});
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			create_component(icon.$$.fragment);
+    			svg = svg_element("svg");
+    			path = svg_element("path");
     			t0 = space();
-    			p = element("p");
+    			h3 = element("h3");
     			t1 = text$1(t1_value);
     			t2 = text$1(" / 10");
-    			attr_dev(p, "class", "svelte-zz03fq");
-    			add_location(p, file$8, 17, 8, 805);
-    			attr_dev(div, "class", "tooltip svelte-zz03fq");
-    			set_style(div, "left", /*graph*/ ctx[1].x + 25 + "px");
-    			set_style(div, "top", /*area*/ ctx[0].offsetY - 5 + "px");
-    			add_location(div, file$8, 15, 4, 623);
+    			attr_dev(path, "d", "M6 0L11.1962 6L0.803848 6L6 0Z");
+    			add_location(path, file$8, 25, 12, 1117);
+    			attr_dev(svg, "class", "tooltip-caret-up svelte-3kppof");
+    			attr_dev(svg, "width", "12");
+    			attr_dev(svg, "height", "6");
+    			attr_dev(svg, "viewBox", "0 0 12 6");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$8, 24, 8, 1021);
+    			attr_dev(h3, "class", "svelte-3kppof");
+    			add_location(h3, file$8, 27, 8, 1184);
+    			attr_dev(div, "class", "tooltip svelte-3kppof");
+    			set_style(div, "left", /*graph*/ ctx[1].x + "px");
+    			set_style(div, "top", /*area*/ ctx[0].offsetY + 15 + "px");
+    			set_style(div, "margin-left", -/*offsetWidth*/ ctx[3] / 2 + 19 + "px");
+    			add_render_callback(() => /*div_elementresize_handler*/ ctx[7].call(div));
+    			toggle_class(div, "china", /*graph*/ ctx[1].id == "china");
+    			toggle_class(div, "china-2010", /*graph*/ ctx[1].id == "china-2010");
+    			toggle_class(div, "open-economy-avg", /*graph*/ ctx[1].id == "open-economy-avg");
+    			add_location(div, file$8, 14, 4, 576);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			mount_component(icon, div, null);
+    			append_dev(div, svg);
+    			append_dev(svg, path);
     			append_dev(div, t0);
-    			append_dev(div, p);
-    			append_dev(p, t1);
-    			append_dev(p, t2);
+    			append_dev(div, h3);
+    			append_dev(h3, t1);
+    			append_dev(h3, t2);
+    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler*/ ctx[7].bind(div));
     			current = true;
     		},
     		p: function update(ctx, dirty) {
     			if ((!current || dirty & /*graph*/ 2) && t1_value !== (t1_value = /*graph*/ ctx[1].score + "")) set_data_dev(t1, t1_value);
 
     			if (!current || dirty & /*graph*/ 2) {
-    				set_style(div, "left", /*graph*/ ctx[1].x + 25 + "px");
+    				set_style(div, "left", /*graph*/ ctx[1].x + "px");
     			}
 
     			if (!current || dirty & /*area*/ 1) {
-    				set_style(div, "top", /*area*/ ctx[0].offsetY - 5 + "px");
+    				set_style(div, "top", /*area*/ ctx[0].offsetY + 15 + "px");
+    			}
+
+    			if (!current || dirty & /*offsetWidth*/ 8) {
+    				set_style(div, "margin-left", -/*offsetWidth*/ ctx[3] / 2 + 19 + "px");
+    			}
+
+    			if (dirty & /*graph*/ 2) {
+    				toggle_class(div, "china", /*graph*/ ctx[1].id == "china");
+    			}
+
+    			if (dirty & /*graph*/ 2) {
+    				toggle_class(div, "china-2010", /*graph*/ ctx[1].id == "china-2010");
+    			}
+
+    			if (dirty & /*graph*/ 2) {
+    				toggle_class(div, "open-economy-avg", /*graph*/ ctx[1].id == "open-economy-avg");
     			}
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(icon.$$.fragment, local);
 
     			add_render_callback(() => {
-    				if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { x: -10, duration: 200 }, true);
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { y: -5, duration: 200 }, true);
     				div_transition.run(1);
     			});
 
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(icon.$$.fragment, local);
-    			if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { x: -10, duration: 200 }, false);
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, fly, { y: -5, duration: 200 }, false);
     			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			destroy_component(icon);
+    			div_resize_listener();
     			if (detaching && div_transition) div_transition.end();
     		}
     	};
@@ -39157,7 +39249,7 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(15:0) {#if isHovered && graph.id == $hoveredCountry && graph.id == $selectedCountry || isHovered && graph.id == $hoveredCountry && graph.id == 'china' || isHovered && graph.id == $hoveredCountry && graph.id == 'open-economy-avg'}",
+    		source: "(14:0) {#if isHovered && graph.id == $hoveredCountry && graph.id == $selectedCountry || isHovered && graph.id == $hoveredCountry && graph.id == 'china' || isHovered && graph.id == $hoveredCountry && graph.id == 'open-economy-avg'}",
     		ctx
     	});
 
@@ -39173,8 +39265,8 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[3] && /*graph*/ ctx[1].id == /*$selectedCountry*/ ctx[4] || /*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[3] && /*graph*/ ctx[1].id == "china" || /*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[3] && /*graph*/ ctx[1].id == "open-economy-avg") return 0;
-    		if (/*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[3] && /*area*/ ctx[0].area == /*$hoveredArea*/ ctx[5]) return 1;
+    		if (/*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[4] && /*graph*/ ctx[1].id == /*$selectedCountry*/ ctx[5] || /*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[4] && /*graph*/ ctx[1].id == "china" || /*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[4] && /*graph*/ ctx[1].id == "open-economy-avg") return 0;
+    		if (/*isHovered*/ ctx[2] && /*graph*/ ctx[1].id == /*$hoveredCountry*/ ctx[4] && /*area*/ ctx[0].area == /*$hoveredArea*/ ctx[6]) return 1;
     		return -1;
     	}
 
@@ -39268,21 +39360,32 @@ var app = (function () {
     	let $selectedCountry;
     	let $hoveredArea;
     	validate_store(hoveredCountry, "hoveredCountry");
-    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(3, $hoveredCountry = $$value));
+    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(4, $hoveredCountry = $$value));
     	validate_store(selectedCountry, "selectedCountry");
-    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(4, $selectedCountry = $$value));
+    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(5, $selectedCountry = $$value));
     	validate_store(hoveredArea, "hoveredArea");
-    	component_subscribe($$self, hoveredArea, $$value => $$invalidate(5, $hoveredArea = $$value));
+    	component_subscribe($$self, hoveredArea, $$value => $$invalidate(6, $hoveredArea = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Tooltip", slots, []);
     	let { area } = $$props;
     	let { graph } = $$props;
     	let { isHovered } = $$props;
+    	let offsetWidth;
     	const writable_props = ["area", "graph", "isHovered"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<Tooltip> was created with unknown prop '${key}'`);
     	});
+
+    	function div_elementresize_handler() {
+    		offsetWidth = this.clientWidth;
+    		$$invalidate(3, offsetWidth);
+    	}
+
+    	function div_elementresize_handler_1() {
+    		offsetWidth = this.clientWidth;
+    		$$invalidate(3, offsetWidth);
+    	}
 
     	$$self.$$set = $$props => {
     		if ("area" in $$props) $$invalidate(0, area = $$props.area);
@@ -39301,6 +39404,7 @@ var app = (function () {
     		area,
     		graph,
     		isHovered,
+    		offsetWidth,
     		$hoveredCountry,
     		$selectedCountry,
     		$hoveredArea
@@ -39310,13 +39414,24 @@ var app = (function () {
     		if ("area" in $$props) $$invalidate(0, area = $$props.area);
     		if ("graph" in $$props) $$invalidate(1, graph = $$props.graph);
     		if ("isHovered" in $$props) $$invalidate(2, isHovered = $$props.isHovered);
+    		if ("offsetWidth" in $$props) $$invalidate(3, offsetWidth = $$props.offsetWidth);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [area, graph, isHovered, $hoveredCountry, $selectedCountry, $hoveredArea];
+    	return [
+    		area,
+    		graph,
+    		isHovered,
+    		offsetWidth,
+    		$hoveredCountry,
+    		$selectedCountry,
+    		$hoveredArea,
+    		div_elementresize_handler,
+    		div_elementresize_handler_1
+    	];
     }
 
     class Tooltip extends SvelteComponentDev {
@@ -40999,9 +41114,9 @@ var app = (function () {
     			span = element("span");
     			t0 = text$1(t0_value);
     			t1 = text$1(t1_value);
-    			attr_dev(span, "class", "svelte-uebast");
+    			attr_dev(span, "class", "svelte-z4l8nh");
     			add_location(span, file$5, 41, 40, 1068);
-    			attr_dev(li, "class", "" + (null_to_empty(/*quarter*/ ctx[1].class) + " svelte-uebast"));
+    			attr_dev(li, "class", "" + (null_to_empty(/*quarter*/ ctx[1].class) + " svelte-z4l8nh"));
     			add_location(li, file$5, 41, 12, 1040);
     		},
     		m: function mount(target, anchor) {
@@ -41069,20 +41184,20 @@ var app = (function () {
     			t6 = space();
     			a = element("a");
     			a.textContent = "Lorem ipsum dolor sit amet consectetuer adipi";
-    			attr_dev(h2, "class", "svelte-uebast");
+    			attr_dev(h2, "class", "svelte-z4l8nh");
     			add_location(h2, file$5, 37, 4, 877);
-    			attr_dev(p, "class", "svelte-uebast");
+    			attr_dev(p, "class", "svelte-z4l8nh");
     			add_location(p, file$5, 38, 4, 921);
-    			attr_dev(ul, "class", "svelte-uebast");
+    			attr_dev(ul, "class", "svelte-z4l8nh");
     			add_location(ul, file$5, 39, 4, 982);
-    			attr_dev(span, "class", "svelte-uebast");
+    			attr_dev(span, "class", "svelte-z4l8nh");
     			add_location(span, file$5, 45, 8, 1176);
     			attr_dev(a, "href", "#");
-    			attr_dev(a, "class", "svelte-uebast");
+    			attr_dev(a, "class", "svelte-z4l8nh");
     			add_location(a, file$5, 46, 8, 1224);
-    			attr_dev(div0, "class", "latest svelte-uebast");
+    			attr_dev(div0, "class", "latest svelte-z4l8nh");
     			add_location(div0, file$5, 44, 4, 1147);
-    			attr_dev(div1, "class", "quarterly svelte-uebast");
+    			attr_dev(div1, "class", "quarterly svelte-z4l8nh");
     			add_location(div1, file$5, 36, 0, 849);
     		},
     		l: function claim(nodes) {
@@ -41301,22 +41416,22 @@ var app = (function () {
     			t3 = space();
     			svg = svg_element("svg");
     			path = svg_element("path");
-    			attr_dev(span, "class", "svelte-wgh6ob");
+    			attr_dev(span, "class", "svelte-9pltw0");
     			add_location(span, file$4, 7, 12, 208);
-    			attr_dev(select, "class", "svelte-wgh6ob");
+    			attr_dev(select, "class", "svelte-9pltw0");
     			if (/*$selectedCountry*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
     			add_location(select, file$4, 9, 8, 296);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			add_location(path, file$4, 16, 12, 641);
-    			attr_dev(svg, "class", "caret-down-dark svelte-wgh6ob");
+    			attr_dev(svg, "class", "caret-down-dark svelte-9pltw0");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
     			add_location(svg, file$4, 15, 8, 544);
-    			attr_dev(div0, "class", div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-wgh6ob");
+    			attr_dev(div0, "class", div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-9pltw0");
     			add_location(div0, file$4, 8, 4, 236);
-    			attr_dev(div1, "class", "country-select svelte-wgh6ob");
+    			attr_dev(div1, "class", "country-select svelte-9pltw0");
     			add_location(div1, file$4, 6, 0, 167);
     		},
     		l: function claim(nodes) {
@@ -41373,7 +41488,7 @@ var app = (function () {
     				select_option(select, /*$selectedCountry*/ ctx[1]);
     			}
 
-    			if (dirty & /*$selectedCountry, countryNames*/ 3 && div0_class_value !== (div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-wgh6ob")) {
+    			if (dirty & /*$selectedCountry, countryNames*/ 3 && div0_class_value !== (div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-9pltw0")) {
     				attr_dev(div0, "class", div0_class_value);
     			}
     		},
@@ -41773,9 +41888,9 @@ var app = (function () {
     			g = svg_element("g");
     			path = svg_element("path");
     			attr_dev(path, "d", path_d_value = /*country*/ ctx[12].path);
-    			attr_dev(path, "class", "svelte-jrbx13");
+    			attr_dev(path, "class", "svelte-1pmya67");
     			add_location(path, file$2, 89, 20, 2796);
-    			attr_dev(g, "class", g_class_value = "country " + /*country*/ ctx[12].id + " svelte-jrbx13");
+    			attr_dev(g, "class", g_class_value = "country " + /*country*/ ctx[12].id + " svelte-1pmya67");
     			attr_dev(g, "data-id", g_data_id_value = /*country*/ ctx[12].id);
     			toggle_class(g, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
     			toggle_class(g, "selected", /*country*/ ctx[12].id == /*$selectedCountry*/ ctx[3] || /*country*/ ctx[12].id == "china" || /*country*/ ctx[12].id == "open-economy-avg");
@@ -41800,7 +41915,7 @@ var app = (function () {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty & /*indicator*/ 1 && g_class_value !== (g_class_value = "country " + /*country*/ ctx[12].id + " svelte-jrbx13")) {
+    			if (dirty & /*indicator*/ 1 && g_class_value !== (g_class_value = "country " + /*country*/ ctx[12].id + " svelte-1pmya67")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -41866,11 +41981,11 @@ var app = (function () {
     			p1 = element("p");
     			t3 = text$1(t3_value);
     			t4 = space();
-    			attr_dev(p0, "class", "svelte-jrbx13");
+    			attr_dev(p0, "class", "svelte-1pmya67");
     			add_location(p0, file$2, 115, 12, 3958);
-    			attr_dev(p1, "class", "value svelte-jrbx13");
+    			attr_dev(p1, "class", "value svelte-1pmya67");
     			add_location(p1, file$2, 116, 12, 3995);
-    			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-jrbx13");
+    			attr_dev(div, "class", div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-1pmya67");
     			set_style(div, "left", /*country*/ ctx[12].centroid[0] + /*$chartWidth*/ ctx[1] / 2 + "px");
     			set_style(div, "top", /*country*/ ctx[12].centroid[1] + /*$chartWidth*/ ctx[1] / 2 + "px");
     			toggle_class(div, "hovered", /*country*/ ctx[12].id == /*$hoveredCountry*/ ctx[2]);
@@ -41893,7 +42008,7 @@ var app = (function () {
     			if ((!current || dirty & /*indicator*/ 1) && t1_value !== (t1_value = /*country*/ ctx[12].country + "")) set_data_dev(t1, t1_value);
     			if ((!current || dirty & /*indicator*/ 1) && t3_value !== (t3_value = parseFloat(/*country*/ ctx[12].value).toFixed(2) + "")) set_data_dev(t3, t3_value);
 
-    			if (!current || dirty & /*indicator*/ 1 && div_class_value !== (div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-jrbx13")) {
+    			if (!current || dirty & /*indicator*/ 1 && div_class_value !== (div_class_value = "tooltip " + ("tooltip-" + /*country*/ ctx[12].id) + " svelte-1pmya67")) {
     				attr_dev(div, "class", div_class_value);
     			}
 
@@ -41989,7 +42104,7 @@ var app = (function () {
     			attr_dev(svg, "width", /*$chartWidth*/ ctx[1]);
     			attr_dev(svg, "height", /*$chartWidth*/ ctx[1]);
     			add_location(svg, file$2, 79, 4, 2262);
-    			attr_dev(div, "class", "indicator-vis svelte-jrbx13");
+    			attr_dev(div, "class", "indicator-vis svelte-1pmya67");
     			add_location(div, file$2, 77, 0, 2229);
     		},
     		l: function claim(nodes) {
@@ -42330,7 +42445,7 @@ var app = (function () {
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
     			attr_dev(text0, "class", "svelte-17we9do");
-    			add_location(text0, file$1, 112, 24, 3458);
+    			add_location(text0, file$1, 112, 24, 3506);
     			attr_dev(text1, "x", /*areaWidth*/ ctx[8]);
     			attr_dev(text1, "y", "0");
     			attr_dev(text1, "text-anchor", "end");
@@ -42338,15 +42453,15 @@ var app = (function () {
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
     			attr_dev(text1, "class", "svelte-17we9do");
-    			add_location(text1, file$1, 113, 24, 3569);
+    			add_location(text1, file$1, 113, 24, 3617);
     			attr_dev(line, "class", "gridline svelte-17we9do");
     			attr_dev(line, "x1", "0");
     			attr_dev(line, "x2", /*areaWidth*/ ctx[8]);
     			attr_dev(line, "transform", "translate(0,5)");
-    			add_location(line, file$1, 115, 24, 3708);
+    			add_location(line, file$1, 115, 24, 3756);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-17we9do"));
     			attr_dev(g, "transform", "translate(0," + /*areaMargin*/ ctx[9] + ")");
-    			add_location(g, file$1, 110, 20, 3367);
+    			add_location(g, file$1, 110, 20, 3415);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -42424,16 +42539,16 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(circle, "r", /*graph*/ ctx[23].r);
     			attr_dev(circle, "class", "country-circle svelte-17we9do");
-    			add_location(circle, file$1, 125, 32, 4305);
+    			add_location(circle, file$1, 125, 32, 4353);
     			attr_dev(text_1, "class", "label svelte-17we9do");
     			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$1, 126, 32, 4473);
+    			add_location(text_1, file$1, 126, 32, 4521);
     			attr_dev(g, "class", "country " + /*graph*/ ctx[23].id + " svelte-17we9do");
     			attr_dev(g, "data-id", /*graph*/ ctx[23].id);
     			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[23].x + "," + (/*graph*/ ctx[23].y + 5) + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			toggle_class(g, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
-    			add_location(g, file$1, 118, 28, 3869);
+    			add_location(g, file$1, 118, 28, 3917);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -42608,15 +42723,15 @@ var app = (function () {
     			t4 = text$1(" / 10");
     			t5 = space();
     			attr_dev(p0, "class", "svelte-17we9do");
-    			add_location(p0, file$1, 142, 24, 5173);
+    			add_location(p0, file$1, 142, 24, 5221);
     			attr_dev(p1, "class", "value svelte-17we9do");
-    			add_location(p1, file$1, 143, 24, 5220);
+    			add_location(p1, file$1, 143, 24, 5268);
     			attr_dev(div, "class", "tooltip " + ("tooltip-" + /*graph*/ ctx[23].id) + " svelte-17we9do");
     			set_style(div, "left", /*graph*/ ctx[23].x + "px");
     			set_style(div, "top", /*graph*/ ctx[23].y + 20 + "px");
     			toggle_class(div, "hovered", /*graph*/ ctx[23].id == /*$hoveredCountry*/ ctx[4]);
     			toggle_class(div, "selected", /*graph*/ ctx[23].id == /*$selectedCountry*/ ctx[5] || /*graph*/ ctx[23].id == "china");
-    			add_location(div, file$1, 135, 20, 4751);
+    			add_location(div, file$1, 135, 20, 4799);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42678,9 +42793,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			p.textContent = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-    			add_location(p, file$1, 152, 12, 5456);
+    			add_location(p, file$1, 152, 12, 5504);
     			attr_dev(div, "class", "summary");
-    			add_location(div, file$1, 151, 8, 5406);
+    			add_location(div, file$1, 151, 8, 5454);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -42814,19 +42929,19 @@ var app = (function () {
     			t5 = space();
     			create_component(indicatorvisual.$$.fragment);
     			attr_dev(h3, "class", "svelte-17we9do");
-    			add_location(h3, file$1, 199, 24, 7867);
+    			add_location(h3, file$1, 199, 24, 7915);
     			attr_dev(div0, "class", "description");
-    			add_location(div0, file$1, 200, 24, 7922);
+    			add_location(div0, file$1, 200, 24, 7970);
     			attr_dev(button, "class", "svelte-17we9do");
-    			add_location(button, file$1, 201, 24, 8005);
+    			add_location(button, file$1, 201, 24, 8053);
     			set_style(div1, "float", "right");
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[6] * 0.3 + "px");
     			set_style(div1, "padding-right", "20px");
     			set_style(div1, "border-right", "1px solid #eee");
     			attr_dev(div1, "class", "inner-container svelte-17we9do");
-    			add_location(div1, file$1, 198, 20, 7712);
+    			add_location(div1, file$1, 198, 20, 7760);
     			attr_dev(div2, "class", "indicator-text svelte-17we9do");
-    			add_location(div2, file$1, 197, 16, 7663);
+    			add_location(div2, file$1, 197, 16, 7711);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -42928,18 +43043,18 @@ var app = (function () {
     			t5 = text$1("Share this chart");
     			create_component(icon.$$.fragment);
     			attr_dev(h3, "class", "svelte-17we9do");
-    			add_location(h3, file$1, 191, 24, 7384);
+    			add_location(h3, file$1, 191, 24, 7432);
     			attr_dev(div0, "class", "description");
-    			add_location(div0, file$1, 192, 24, 7439);
+    			add_location(div0, file$1, 192, 24, 7487);
     			attr_dev(button, "class", "svelte-17we9do");
-    			add_location(button, file$1, 193, 24, 7522);
+    			add_location(button, file$1, 193, 24, 7570);
     			set_style(div1, "margin-top", /*$chartWidth*/ ctx[6] * 0.3 + "px");
     			set_style(div1, "padding-left", "20px");
     			set_style(div1, "border-left", "1px solid #eee");
     			attr_dev(div1, "class", "inner-container svelte-17we9do");
-    			add_location(div1, file$1, 190, 20, 7243);
+    			add_location(div1, file$1, 190, 20, 7291);
     			attr_dev(div2, "class", "indicator-text svelte-17we9do");
-    			add_location(div2, file$1, 189, 16, 7194);
+    			add_location(div2, file$1, 189, 16, 7242);
     		},
     		m: function mount(target, anchor) {
     			mount_component(indicatorvisual, target, anchor);
@@ -43022,7 +43137,7 @@ var app = (function () {
     			if_block.c();
     			t = space();
     			attr_dev(div, "class", "indicator-container svelte-17we9do");
-    			add_location(div, file$1, 185, 8, 7069);
+    			add_location(div, file$1, 185, 8, 7117);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -43139,7 +43254,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			button0 = element("button");
-    			button0.textContent = "Back";
+    			button0.textContent = "Back to Dashboard";
     			t1 = space();
     			div5 = element("div");
     			div2 = element("div");
@@ -43191,53 +43306,53 @@ var app = (function () {
     			}
 
     			attr_dev(button0, "class", "back svelte-17we9do");
-    			add_location(button0, file$1, 97, 0, 2921);
+    			add_location(button0, file$1, 97, 0, 2956);
     			attr_dev(h1, "class", "svelte-17we9do");
-    			add_location(h1, file$1, 103, 12, 3136);
+    			add_location(h1, file$1, 103, 12, 3184);
     			attr_dev(p, "class", "intro svelte-17we9do");
-    			add_location(p, file$1, 104, 12, 3176);
+    			add_location(p, file$1, 104, 12, 3224);
     			attr_dev(div0, "class", "area-text svelte-17we9do");
-    			add_location(div0, file$1, 102, 8, 3100);
+    			add_location(div0, file$1, 102, 8, 3148);
     			attr_dev(svg0, "width", /*areaWidth*/ ctx[8]);
     			attr_dev(svg0, "height", "50");
-    			add_location(svg0, file$1, 108, 12, 3278);
+    			add_location(svg0, file$1, 108, 12, 3326);
     			attr_dev(div1, "class", "area-vis svelte-17we9do");
-    			add_location(div1, file$1, 107, 8, 3243);
+    			add_location(div1, file$1, 107, 8, 3291);
     			attr_dev(div2, "class", "area-container svelte-17we9do");
-    			add_location(div2, file$1, 101, 4, 3063);
+    			add_location(div2, file$1, 101, 4, 3111);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$1, 164, 16, 6272);
+    			add_location(path, file$1, 164, 16, 6320);
     			attr_dev(svg1, "class", "caret-down-light svelte-17we9do");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
-    			add_location(svg1, file$1, 163, 12, 6170);
+    			add_location(svg1, file$1, 163, 12, 6218);
     			attr_dev(button1, "class", "expand svelte-17we9do");
-    			add_location(button1, file$1, 157, 8, 5977);
+    			add_location(button1, file$1, 157, 8, 6025);
     			attr_dev(a, "href", "#");
     			attr_dev(a, "class", "svelte-17we9do");
-    			add_location(a, file$1, 168, 12, 6575);
+    			add_location(a, file$1, 168, 12, 6623);
     			attr_dev(div3, "class", "methodology svelte-17we9do");
-    			add_location(div3, file$1, 167, 8, 6537);
+    			add_location(div3, file$1, 167, 8, 6585);
     			attr_dev(div4, "class", "area-footer svelte-17we9do");
-    			add_location(div4, file$1, 156, 4, 5943);
+    			add_location(div4, file$1, 156, 4, 5991);
     			attr_dev(div5, "class", "area-summary svelte-17we9do");
     			toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
-    			add_location(div5, file$1, 99, 0, 2997);
+    			add_location(div5, file$1, 99, 0, 3045);
     			attr_dev(h2, "class", "svelte-17we9do");
-    			add_location(h2, file$1, 175, 8, 6710);
+    			add_location(h2, file$1, 175, 8, 6758);
     			attr_dev(h3, "class", "svelte-17we9do");
-    			add_location(h3, file$1, 176, 8, 6770);
+    			add_location(h3, file$1, 176, 8, 6818);
     			attr_dev(button2, "class", "svelte-17we9do");
-    			add_location(button2, file$1, 179, 12, 6933);
+    			add_location(button2, file$1, 179, 12, 6981);
     			attr_dev(div6, "class", "control-area svelte-17we9do");
-    			add_location(div6, file$1, 177, 8, 6850);
+    			add_location(div6, file$1, 177, 8, 6898);
     			attr_dev(header, "class", "svelte-17we9do");
-    			add_location(header, file$1, 174, 4, 6693);
+    			add_location(header, file$1, 174, 4, 6741);
     			attr_dev(div7, "class", "indicators");
-    			add_location(div7, file$1, 173, 0, 6664);
+    			add_location(div7, file$1, 173, 0, 6712);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -43521,7 +43636,7 @@ var app = (function () {
     	onMount(async () => {
     		data = await loadData();
     		$$invalidate(0, indicatorsData = await loadIndicatorsData($areaInView));
-    		$$invalidate(2, countryNames = data["countries"].filter(d => d.country !== "China"));
+    		$$invalidate(2, countryNames = data["countries"].filter(d => d.country !== "China" && d.country !== "Open Economy Avg"));
     		$$invalidate(1, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
     	});
 
@@ -43887,7 +44002,7 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "main", $view); // defines primary view - set this for production (do not delete)
+    	set_store_value(view, $view = "indicators", $view);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {

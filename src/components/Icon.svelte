@@ -59,6 +59,10 @@
     <svg class="arrow-right" width="21" height="10" viewBox="0 0 21 10" fill="none">
         <path d="M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z" fill="#122431"/>
     </svg>
+{:else if type == 'tooltip-caret-up'}
+    <svg class="tooltip-caret-up" width="12" height="6" viewBox="0 0 12 6" fill="none">
+        <path d="M6 0L11.1962 6L0.803848 6L6 0Z" fill="#E7EDF3"/>
+    </svg>
 {:else if type == 'tooltip-caret-left'}
     <svg class="tooltip-caret-left" width="6" height="12" viewBox="0 0 6 12" fill="none">
         <path d="M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z" fill="white"/>
@@ -86,6 +90,14 @@
     .info {
         margin-top: 4px;
         margin-left: 7px;
+    }
+
+    .tooltip-caret-up {
+        position: absolute;
+        top: 0;
+        margin-top: -6px;
+        left: 50%;
+        margin-left: -6px;
     }
 
     .tooltip-caret-left {

@@ -125,8 +125,8 @@
     }
 
     li.further span {
-        color: #B99104;
-        background-color: #EDE7DB;
+        background-color: #F6E8D7;
+        color: #D18B36;
     }
 </style>
 

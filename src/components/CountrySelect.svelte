@@ -42,7 +42,7 @@
 
     select {
         cursor: pointer;
-        min-width: 210px;
+        min-width: 190px;
         transition: color 300ms, background-color 300ms;
         outline: none;
     }

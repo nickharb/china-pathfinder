@@ -168,12 +168,7 @@
         display: block;
     }
 
-    /*.tooltip svg {
-        position: absolute;
-        top: 50%;
-        left: -6px;
-        margin-top: -6px;
-    }*/
+    /* indicator visual */
 
     .indicator-vis {
         position: relative;
@@ -185,14 +180,8 @@
         cursor: pointer;
     }
 
-    /*.country text {
-        pointer-events: none;
-        font-size: 11px;
-        fill-opacity: 0;
-    }*/
-
     g.hovered path {
-        fill: #C2D5DE;
+        /*fill: #C2D5DE;*/
         transform: scale(1.03);
     }
 
@@ -202,11 +191,30 @@
 
     g.china path {
         fill: #D13F36;
+        /*background-color: #F6D9D7;*/
+    }
+
+    g.china-2010.selected path {
+        fill: #A13F36;
+        /*background-color: #ECD9D7;*/
+    }
+
+    g.open-economy-avg path {
+        fill: #D18B36;
+        /*background-color: #F6E8D7;*/
     }
 
     g.china.hovered path {
-        fill: #FF5C52;
+        /*fill: #FF5C52;*/
     }
+
+    /* indicator labels */
+
+    /*.country text {
+        pointer-events: none;
+        font-size: 11px;
+        fill-opacity: 0;
+    }*/
 
     /*text.middle-text {
         text-anchor: middle;
@@ -214,6 +222,8 @@
         text-transform: capitalize;
         font-size: 12px;
     }*/
+
+    
 
 
 

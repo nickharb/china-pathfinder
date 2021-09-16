@@ -53,7 +53,7 @@
     onMount(async()=>{
         data = await loadData();
         indicatorsData = await loadIndicatorsData($areaInView);
-        countryNames = data['countries'].filter(d=> d.country!=='China');
+        countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
         areaData = (data['areas']).filter(d=> d.area == $areaInView)[0];
     });
 
@@ -95,7 +95,7 @@
 </script>
 
 
-<button class='back' on:click|self={()=> switchView('main')}>Back</button>
+<button class='back' on:click|self={()=> switchView('main')}>Back to Dashboard</button>
 
 <div class='area-summary' class:expanded={expanded == true}>
 
