@@ -64,7 +64,7 @@
 </section>
 
 <header>
-    <h2>2020 Annual Economic Benchmarks</h2>
+    <h2>2020 Annual Economic Benchmarks (not final data)</h2>
     <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
     <div class='control-area'>
         <CountrySelect {countryNames}/>

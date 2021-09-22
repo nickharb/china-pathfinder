@@ -35,6 +35,7 @@
     function mouseOver(e) {
         isHovered = true;
         $hoveredCountry = e.path[1].dataset.id;
+        d3.select(e.path[1]).raise();
     }
 
     function mouseLeave(e) {
@@ -145,6 +146,7 @@
 </script>
 
 
+
 <button class='back' on:click|self={()=> switchView('main')}>Back to Dashboard</button>
 
 <div class='area-summary' class:expanded={expanded == true}>
@@ -160,8 +162,8 @@
                 {#if areaData}
                     <g class="{areaData.area}" transform='translate(0,{areaMargin})'>
 
-                        <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
-                        <text x='{areaWidth}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
+                        <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
+                        <text x='{areaWidth}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
 
                         <line class='gridline' x1=0 x2={areaWidth} transform='translate(0,5)'></line>
 

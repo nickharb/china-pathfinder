@@ -45935,7 +45935,7 @@ var app = (function () {
         return({countries: data, areas: output});
     };
 
-    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","title1":"","title2":"","definition":"Depth and stability of financial market; minimal distortions on credit pricing and quantity; foreign firms able to access financial services and foreign exchange markets.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
+    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","title1":"","title2":"","definition":"A system that efficiently prices credit, allocates capital based on market signals, and provides foreign firms with access to financial services.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"competition","name":"Market Competition","title1":"","title2":"","definition":"An environment where firms face low entry/exit barriers, market power abuses are disciplined, and distortive interventions are minimized.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"innovation","name":"Modern Innovation System","title1":"","title2":"","definition":"A market-led system that fosters productivity through private-public cooperation and international collaboration.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
     {"category":"main","label":"trade","name":"Trade Openness","title1":"","title2":"","definition":"Goods and services trade free from discriminatory measures and restrictions.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
@@ -45956,7 +45956,7 @@ var app = (function () {
     {"category":"trade","label":"3","name":"Tariff Rate, Most Favored Nation, Simple Mean, All Products (%)","title1":"Tariff Rate","title2":"Most Favored Nation, Simple Mean, All Products (%)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"trade","label":"4","name":"Services Trade Restrictiveness Index","title1":"Services Trade","title2":"Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"trade","label":"5","name":"Digital Services Trade Restrictiveness Index","title1":"Digital Services","title2":"Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"1","name":"Difference between Annual interest rate and Nominal GDP Growth rate ","title1":"Annual interest Rate","title2":"vs. Nominal GDP Growth Rate","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","additional":"","summary":"","context":""},
+    {"category":"growth","label":"1","name":"Difference between Annual interest rate and Nominal GDP Growth rate ","title1":"Interest Rate","title2":"vs. Nominal GDP Growth Rate","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","additional":"","summary":"","context":""},
     {"category":"growth","label":"2","name":"Stock Market Capitalization as a Share of GDP, % ","title1":"Stock Market","title2":"Capitalization as a Share of GDP, %","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"growth","label":"3","name":"2020 Outstanding Debt Securities as a Share of GDP, %","title1":"Debt Securities","title2":"As a Share of GDP, %, 2020","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"growth","label":"4","name":"Incremental Capital Output Ratio","title1":"Incremental Capital","title2":"Output Ratio","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
@@ -45968,9 +45968,9 @@ var app = (function () {
     {"category":"competition","label":"4","name":"FDI Restrictiveness Index (Range from 0-1, where 0 is most restrictive and 1 is least restrictive)","title1":"FDI Restrictiveness","title2":"(Range from 0-1, where 0 is most restrictive and 1 is least restrictive)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"1","name":"R&D as share of domestic investment, %","title1":"R&D","title2":"As Share of Domestic Investment, %","definition":"This ratio measures gross domestic research and development expenditures as a percentage of GDP. R&D includes capital and current expenditures on basic research, applied research, and experimental development across business, government, academia, and non-profits.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"2","name":"Ratio of Business Enterprise Spending to Government Spending on Domestic R&D","title1":"Ratio of Business","title2":"Enterprise Spending to Government Spending on Domestic R&D","definition":"This indicator measures the ratio between business enterprise and government R&D spending","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"3","name":"Triadic Patent Families, controlled for GDP","title1":"Triadic Patent Families","title2":"Controlled for GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"3","name":"Triadic Patent Families, controlled for GDP","title1":"Patent Families","title2":"Controlled for GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"4","name":"Charges for the use of intellectual property, receipts (% of GDP)","title1":"IP Charges","title2":"Receipts (% of GDP)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"5","name":"International IP Index ","title1":"International IP Index","title2":"","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
+    {"category":"innovation","label":"5","name":"International IP Index ","title1":"IP Index","title2":"","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
     {"category":"innovation","label":"6","name":"Percentage of gross expenditure on R&D financed by abroad i.e., with foreign financing","title1":"R&D Expenditure","title2":"With Foreign Financing, %","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""}];
 
     function cubicOut(t) {
@@ -46130,21 +46130,39 @@ var app = (function () {
         
         return 'M ' + a[0] + ' ' + a[1] + ' C ' + b[0] + ' ' + b[1] + ', ' + c[0] + ' ' + c[1] + ', ' + d[0] + ' ' + d[1]; 
 
-        // const interpolate = (i, t) => Math.pow((1 - t), 3) * a[i] + 3 * t * Math.pow((1 - t), 2) * b[i] + 3 * Math.pow(t, 2) * (1 - t) * c[i] + Math.pow(t, 3) * d[i],
-        //       i = t => [interpolate(0, t), interpolate(1, t)],
-        //       l = geometric.lineLength([a, d]),
-        //       n = Math.floor(l),
-        //       o = [];
+      //   const interpolate = (i, t) => Math.pow((1 - t), 3) * a[i] + 3 * t * Math.pow((1 - t), 2) * b[i] + 3 * Math.pow(t, 2) * (1 - t) * c[i] + Math.pow(t, 3) * d[i],
+      //         i = t => [interpolate(0, t), interpolate(1, t)],
+      //         l = geometric.lineLength([a, d]),
+      //         n = Math.floor(l),
+      //         o = [];
       
-        // for (let j = 0; j <= n; j += p || 1){
-        //   o.push(i(j / n));
-        // }
+      //   for (let j = 0; j <= n; j += p || 1){
+      //     o.push(i(j / n));
+      //   }
       
-        // if (l !== n) o.push(d);
-        // return o;
-      }
+      //   if (l !== n) o.push(d);
+      //   return o;
+    }
 
     var utils = {cubicBezier};
+
+
+    // function cubicBezier(a, b, c, d, p){
+    //   const interpolate = (i, t) => Math.pow((1 - t), 3) * a[i] + 3 * t * Math.pow((1 - t), 2) * b[i] + 3 * Math.pow(t, 2) * (1 - t) * c[i] + Math.pow(t, 3) * d[i],
+    //         i = t => [interpolate(0, t), interpolate(1, t)],
+    //         l = geometric.lineLength([a, d]),
+    //         n = Math.floor(l),
+    //         o = [];
+
+    //   for (let j = 0; j <= n; j += p || 1){
+    //     o.push(i(j / n));
+    //   }
+
+    //   if (l !== n) o.push(d);
+    //   return o;
+    // }
+
+    // export default {cubicBezier};
 
     // global vars available from all pages
 
@@ -46154,7 +46172,7 @@ var app = (function () {
     // call writable function to create a store, pass a default value as an argument
     const hoveredCountry = writable();
     const hoveredArea = writable();
-    const selectedCountry = writable();
+    const selectedCountry = writable('china-2010');
     const selectedArea = writable();
     const hoveredInfo = writable();
 
@@ -47743,7 +47761,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (115:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
+    // (118:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
     function create_default_slot(ctx) {
     	let t_value = /*area*/ ctx[28].additional + "";
     	let t;
@@ -47767,14 +47785,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(115:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
+    		source: "(118:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (103:4) {#each copyData as area, i}
+    // (106:4) {#each copyData as area, i}
     function create_each_block_4(ctx) {
     	let div2;
     	let header;
@@ -47855,20 +47873,20 @@ var app = (function () {
     			t7 = space();
     			attr_dev(h2, "class", "svelte-1jk0mvu");
     			add_render_callback(() => h2_elementresize_handler.call(h2));
-    			add_location(h2, file$8, 105, 16, 3281);
+    			add_location(h2, file$8, 108, 16, 3516);
     			attr_dev(div0, "class", "info svelte-1jk0mvu");
     			attr_dev(div0, "data-area", div0_data_area_value = /*area*/ ctx[28].name);
-    			add_location(div0, file$8, 108, 16, 3460);
+    			add_location(div0, file$8, 111, 16, 3695);
     			attr_dev(header, "class", "svelte-1jk0mvu");
-    			add_location(header, file$8, 104, 12, 3256);
+    			add_location(header, file$8, 107, 12, 3491);
     			attr_dev(p, "class", "svelte-1jk0mvu");
-    			add_location(p, file$8, 119, 16, 3931);
+    			add_location(p, file$8, 122, 16, 4166);
     			attr_dev(button, "class", "svelte-1jk0mvu");
-    			add_location(button, file$8, 120, 16, 3972);
+    			add_location(button, file$8, 123, 16, 4207);
     			attr_dev(div1, "class", "description svelte-1jk0mvu");
-    			add_location(div1, file$8, 118, 12, 3889);
+    			add_location(div1, file$8, 121, 12, 4124);
     			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[28].label.toLowerCase()) + " svelte-1jk0mvu"));
-    			add_location(div2, file$8, 103, 8, 3197);
+    			add_location(div2, file$8, 106, 8, 3432);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -47955,14 +47973,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(103:4) {#each copyData as area, i}",
+    		source: "(106:4) {#each copyData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (157:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
+    // (160:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
     function create_if_block$5(ctx) {
     	let text_1;
     	let t_value = /*graph*/ ctx[31].country + "";
@@ -47976,7 +47994,7 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(text_1, "class", "label svelte-1jk0mvu");
     			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$8, 157, 28, 5611);
+    			add_location(text_1, file$8, 160, 28, 5834);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text_1, anchor);
@@ -48011,14 +48029,14 @@ var app = (function () {
     		block,
     		id: create_if_block$5.name,
     		type: "if",
-    		source: "(157:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}",
+    		source: "(160:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (147:16) {#each area.graphData as graph}
+    // (150:16) {#each area.graphData as graph}
     function create_each_block_3(ctx) {
     	let g;
     	let path;
@@ -48042,17 +48060,17 @@ var app = (function () {
     			circle = svg_element("circle");
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[31].path);
     			attr_dev(path, "class", "svelte-1jk0mvu");
-    			add_location(path, file$8, 160, 24, 5808);
+    			add_location(path, file$8, 163, 24, 6031);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[31].r);
     			attr_dev(circle, "class", "country-circle svelte-1jk0mvu");
-    			add_location(circle, file$8, 162, 24, 5909);
+    			add_location(circle, file$8, 165, 24, 6132);
     			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[31].id + " svelte-1jk0mvu");
     			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[31].id);
     			attr_dev(g, "data-area", g_data_area_value = /*area*/ ctx[28].area);
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[31].x + "," + /*graph*/ ctx[31].y + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[31].id == /*$hoveredCountry*/ ctx[5] && /*area*/ ctx[28].area == /*$hoveredArea*/ ctx[6]);
     			toggle_class(g, "selected", /*graph*/ ctx[31].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[31].id == "china" || /*graph*/ ctx[31].id == "open-economy-avg");
-    			add_location(g, file$8, 148, 20, 4945);
+    			add_location(g, file$8, 151, 20, 5168);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48148,14 +48166,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(147:16) {#each area.graphData as graph}",
+    		source: "(150:16) {#each area.graphData as graph}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (138:8) {#each areaData as area, i}
+    // (141:8) {#each areaData as area, i}
     function create_each_block_2$1(ctx) {
     	let g;
     	let text0;
@@ -48183,9 +48201,9 @@ var app = (function () {
     		c: function create() {
     			g = svg_element("g");
     			text0 = svg_element("text");
-    			t0 = text$1("Least open");
+    			t0 = text$1("Low");
     			text1 = svg_element("text");
-    			t1 = text$1("Most open");
+    			t1 = text$1("High");
     			line = svg_element("line");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -48197,20 +48215,20 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$8, 141, 16, 4591);
+    			add_location(text0, file$8, 144, 16, 4826);
     			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[9] - /*$margin*/ ctx[8]);
     			attr_dev(text1, "y", "-5");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$8, 142, 16, 4695);
+    			add_location(text1, file$8, 145, 16, 4923);
     			attr_dev(line, "class", "gridline svelte-1jk0mvu");
     			attr_dev(line, "x2", /*$width*/ ctx[9]);
-    			add_location(line, file$8, 144, 16, 4832);
+    			add_location(line, file$8, 147, 16, 5055);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[28].area) + " svelte-1jk0mvu"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[8] + "," + /*area*/ ctx[28].offsetY + ")");
-    			add_location(g, file$8, 139, 12, 4502);
+    			add_location(g, file$8, 142, 12, 4737);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48299,14 +48317,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(138:8) {#each areaData as area, i}",
+    		source: "(141:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (181:8) {#each area.graphData as graph, i}
+    // (184:8) {#each area.graphData as graph, i}
     function create_each_block_1$2(ctx) {
     	let tooltip;
     	let current;
@@ -48353,14 +48371,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(181:8) {#each area.graphData as graph, i}",
+    		source: "(184:8) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (180:4) {#each areaData as area, i}
+    // (183:4) {#each areaData as area, i}
     function create_each_block$4(ctx) {
     	let each_1_anchor;
     	let current;
@@ -48449,7 +48467,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(180:4) {#each areaData as area, i}",
+    		source: "(183:4) {#each areaData as area, i}",
     		ctx
     	});
 
@@ -48528,20 +48546,20 @@ var app = (function () {
 
     			attr_dev(div0, "class", "text-wrapper svelte-1jk0mvu");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[20].call(div0));
-    			add_location(div0, file$8, 101, 0, 3101);
+    			add_location(div0, file$8, 104, 0, 3336);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[9]);
     			attr_dev(rect, "height", /*$height*/ ctx[10]);
-    			add_location(rect, file$8, 135, 8, 4394);
+    			add_location(rect, file$8, 138, 8, 4629);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[9] + " " + /*$height*/ ctx[10]);
     			attr_dev(svg, "width", /*$width*/ ctx[9]);
     			attr_dev(svg, "height", /*$height*/ ctx[10]);
     			attr_dev(svg, "class", "svelte-1jk0mvu");
-    			add_location(svg, file$8, 131, 4, 4298);
+    			add_location(svg, file$8, 134, 4, 4533);
     			attr_dev(div1, "class", "vis-wrapper svelte-1jk0mvu");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[21].call(div1));
-    			add_location(div1, file$8, 130, 0, 4242);
+    			add_location(div1, file$8, 133, 0, 4477);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -48797,6 +48815,8 @@ var app = (function () {
     		$$invalidate(3, isHovered = true);
     		set_store_value(hoveredCountry, $hoveredCountry = e.path[1].dataset.id, $hoveredCountry);
     		set_store_value(hoveredArea, $hoveredArea = e.path[1].dataset.area, $hoveredArea);
+    		selectAll(".country.selected").raise(); // raises selected country circles
+    		select(e.path[1]).raise(); // raises hovered circle
     	}
 
     	function mouseLeave(e) {
@@ -48808,6 +48828,7 @@ var app = (function () {
     	function mouseClick(e) {
     		set_store_value(selectedCountry, $selectedCountry = e.path[1].dataset.id, $selectedCountry);
     		set_store_value(selectedArea, $selectedArea = e.path[1].dataset.area, $selectedArea);
+    		selectAll("." + $selectedCountry).raise(); // raises selected country circles
     	}
 
     	function infoMouseOver(e) {
@@ -48837,7 +48858,7 @@ var app = (function () {
     					? [[0, 0], [distance, textRect.bottom - textRect.top + $margin * 2]]
     					: [[0, 0], [0, 0]];
 
-    					let path = utils.cubicBezier(points[0], points[1], 0.5);
+    					let path = utils.cubicBezier(points[0], points[1], 10);
 
     					return {
     						id: d.countries[n].trim().toLowerCase().split(" ").join("-"),
@@ -49276,7 +49297,7 @@ var app = (function () {
     			t = text$1(t_value);
     			option.__value = option_value_value = /*country*/ ctx[3].id;
     			option.value = option.__value;
-    			add_location(option, file$6, 13, 16, 439);
+    			add_location(option, file$6, 13, 16, 442);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -49345,22 +49366,22 @@ var app = (function () {
     			svg = svg_element("svg");
     			path = svg_element("path");
     			attr_dev(span, "class", "svelte-9pltw0");
-    			add_location(span, file$6, 9, 12, 249);
+    			add_location(span, file$6, 9, 12, 252);
     			attr_dev(select, "class", "svelte-9pltw0");
     			if (/*$selectedCountry*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
-    			add_location(select, file$6, 11, 8, 337);
+    			add_location(select, file$6, 11, 8, 340);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
-    			add_location(path, file$6, 18, 12, 685);
+    			add_location(path, file$6, 18, 12, 688);
     			attr_dev(svg, "class", "caret-down-dark svelte-9pltw0");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$6, 17, 8, 588);
+    			add_location(svg, file$6, 17, 8, 591);
     			attr_dev(div0, "class", div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-9pltw0");
-    			add_location(div0, file$6, 10, 4, 277);
+    			add_location(div0, file$6, 10, 4, 280);
     			attr_dev(div1, "class", "country-select svelte-9pltw0");
-    			add_location(div1, file$6, 8, 0, 208);
+    			add_location(div1, file$6, 8, 0, 211);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49448,7 +49469,6 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("CountrySelect", slots, []);
     	let { countryNames } = $$props;
-    	set_store_value(selectedCountry, $selectedCountry = "united-states", $selectedCountry);
     	const writable_props = ["countryNames"];
 
     	Object.keys($$props).forEach(key => {
@@ -49578,7 +49598,7 @@ var app = (function () {
     			t4 = space();
     			header = element("header");
     			h2 = element("h2");
-    			h2.textContent = "2020 Annual Economic Benchmarks";
+    			h2.textContent = "2020 Annual Economic Benchmarks (not final data)";
     			t6 = space();
     			h3 = element("h3");
     			h3.textContent = "How Does China's Economic System Compare to Open Market Economies?";
@@ -49603,14 +49623,14 @@ var app = (function () {
     			attr_dev(h2, "class", "svelte-1kxyu2");
     			add_location(h2, file$5, 66, 4, 2258);
     			attr_dev(h3, "class", "svelte-1kxyu2");
-    			add_location(h3, file$5, 67, 4, 2303);
-    			add_location(button, file$5, 70, 8, 2458);
+    			add_location(h3, file$5, 67, 4, 2320);
+    			add_location(button, file$5, 70, 8, 2475);
     			attr_dev(div0, "class", "control-area svelte-1kxyu2");
-    			add_location(div0, file$5, 68, 4, 2383);
+    			add_location(div0, file$5, 68, 4, 2400);
     			attr_dev(header, "class", "svelte-1kxyu2");
     			add_location(header, file$5, 65, 0, 2245);
     			attr_dev(div1, "class", "vis-container svelte-1kxyu2");
-    			add_location(div1, file$5, 74, 0, 2566);
+    			add_location(div1, file$5, 74, 0, 2583);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -51080,7 +51100,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (160:16) {#if areaData}
+    // (162:16) {#if areaData}
     function create_if_block_4(ctx) {
     	let g;
     	let text0;
@@ -51106,9 +51126,9 @@ var app = (function () {
     		c: function create() {
     			g = svg_element("g");
     			text0 = svg_element("text");
-    			t0 = text$1("Least open");
+    			t0 = text$1("Low");
     			text1 = svg_element("text");
-    			t1 = text$1("Most open");
+    			t1 = text$1("High");
     			line = svg_element("line");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -51120,22 +51140,22 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$1, 162, 24, 4820);
+    			add_location(text0, file$1, 164, 24, 4859);
     			attr_dev(text1, "x", /*areaWidth*/ ctx[8]);
     			attr_dev(text1, "y", "0");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$1, 163, 24, 4931);
+    			add_location(text1, file$1, 165, 24, 4963);
     			attr_dev(line, "class", "gridline svelte-1hjvisr");
     			attr_dev(line, "x1", "0");
     			attr_dev(line, "x2", /*areaWidth*/ ctx[8]);
     			attr_dev(line, "transform", "translate(0,5)");
-    			add_location(line, file$1, 165, 24, 5070);
+    			add_location(line, file$1, 167, 24, 5097);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-1hjvisr"));
     			attr_dev(g, "transform", "translate(0," + /*areaMargin*/ ctx[9] + ")");
-    			add_location(g, file$1, 160, 20, 4729);
+    			add_location(g, file$1, 162, 20, 4768);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -51212,14 +51232,14 @@ var app = (function () {
     		block,
     		id: create_if_block_4.name,
     		type: "if",
-    		source: "(160:16) {#if areaData}",
+    		source: "(162:16) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (188:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
+    // (190:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
     function create_if_block_5(ctx) {
     	let text_1;
     	let t_value = /*graph*/ ctx[27].country + "";
@@ -51233,7 +51253,7 @@ var app = (function () {
     			t = text$1(t_value);
     			attr_dev(text_1, "class", "label svelte-1hjvisr");
     			attr_dev(text_1, "y", "-12px");
-    			add_location(text_1, file$1, 188, 36, 6500);
+    			add_location(text_1, file$1, 190, 36, 6527);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text_1, anchor);
@@ -51266,14 +51286,14 @@ var app = (function () {
     		block,
     		id: create_if_block_5.name,
     		type: "if",
-    		source: "(188:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}",
+    		source: "(190:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (168:24) {#each graphData as graph, i}
+    // (170:24) {#each graphData as graph, i}
     function create_each_block_2(ctx) {
     	let g;
     	let circle;
@@ -51289,13 +51309,13 @@ var app = (function () {
     			if (if_block) if_block.c();
     			attr_dev(circle, "r", /*graph*/ ctx[27].r);
     			attr_dev(circle, "class", "country-circle svelte-1hjvisr");
-    			add_location(circle, file$1, 176, 32, 5844);
+    			add_location(circle, file$1, 178, 32, 5871);
     			attr_dev(g, "class", "country " + /*graph*/ ctx[27].id + " svelte-1hjvisr");
     			attr_dev(g, "data-id", /*graph*/ ctx[27].id);
     			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[27].x + "," + (/*graph*/ ctx[27].y + 5) + ")");
     			toggle_class(g, "hovered", /*graph*/ ctx[27].id == /*$hoveredCountry*/ ctx[5]);
     			toggle_class(g, "selected", /*graph*/ ctx[27].id == /*$selectedCountry*/ ctx[6] || /*graph*/ ctx[27].id == "china");
-    			add_location(g, file$1, 168, 28, 5231);
+    			add_location(g, file$1, 170, 28, 5258);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -51366,14 +51386,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(168:24) {#each graphData as graph, i}",
+    		source: "(170:24) {#each graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (197:12) {#if areaData}
+    // (199:12) {#if areaData}
     function create_if_block_3(ctx) {
     	let each_1_anchor;
     	let current;
@@ -51462,14 +51482,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(197:12) {#if areaData}",
+    		source: "(199:12) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (199:16) {#each graphData as graph, i}
+    // (201:16) {#each graphData as graph, i}
     function create_each_block_1(ctx) {
     	let areatooltip;
     	let current;
@@ -51513,14 +51533,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(199:16) {#each graphData as graph, i}",
+    		source: "(201:16) {#each graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (219:4) {#if expanded}
+    // (221:4) {#if expanded}
     function create_if_block_2(ctx) {
     	let div;
     	let p;
@@ -51532,9 +51552,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			p.textContent = `${/*currentArea*/ ctx[10].summary}`;
-    			add_location(p, file$1, 220, 12, 7760);
+    			add_location(p, file$1, 222, 12, 7787);
     			attr_dev(div, "class", "summary");
-    			add_location(div, file$1, 219, 8, 7710);
+    			add_location(div, file$1, 221, 8, 7737);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -51567,14 +51587,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(219:4) {#if expanded}",
+    		source: "(221:4) {#if expanded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (229:12) {:else}
+    // (231:12) {:else}
     function create_else_block_1(ctx) {
     	let t;
 
@@ -51594,14 +51614,14 @@ var app = (function () {
     		block,
     		id: create_else_block_1.name,
     		type: "else",
-    		source: "(229:12) {:else}",
+    		source: "(231:12) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (227:12) {#if !expanded}
+    // (229:12) {#if !expanded}
     function create_if_block_1(ctx) {
     	let t;
 
@@ -51621,14 +51641,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(227:12) {#if !expanded}",
+    		source: "(229:12) {#if !expanded}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (267:12) {:else}
+    // (269:12) {:else}
     function create_else_block$1(ctx) {
     	let div4;
     	let div2;
@@ -51683,19 +51703,19 @@ var app = (function () {
     			t7 = space();
     			create_component(indicatorvisual.$$.fragment);
     			attr_dev(div0, "class", "leader-line svelte-1hjvisr");
-    			add_location(div0, file$1, 269, 24, 9715);
+    			add_location(div0, file$1, 271, 24, 9742);
     			attr_dev(div1, "class", "leader-circle svelte-1hjvisr");
-    			add_location(div1, file$1, 270, 24, 9771);
+    			add_location(div1, file$1, 272, 24, 9798);
     			attr_dev(div2, "class", "leader-container svelte-1hjvisr");
-    			add_location(div2, file$1, 268, 20, 9660);
+    			add_location(div2, file$1, 270, 20, 9687);
     			attr_dev(h3, "class", "svelte-1hjvisr");
-    			add_location(h3, file$1, 272, 20, 9852);
+    			add_location(h3, file$1, 274, 20, 9879);
     			attr_dev(div3, "class", "description");
-    			add_location(div3, file$1, 273, 20, 9903);
+    			add_location(div3, file$1, 275, 20, 9930);
     			attr_dev(button, "class", "svelte-1hjvisr");
-    			add_location(button, file$1, 274, 20, 9982);
+    			add_location(button, file$1, 276, 20, 10009);
     			attr_dev(div4, "class", "indicator-text text-left svelte-1hjvisr");
-    			add_location(div4, file$1, 267, 16, 9601);
+    			add_location(div4, file$1, 269, 16, 9628);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div4, anchor);
@@ -51754,14 +51774,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(267:12) {:else}",
+    		source: "(269:12) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (256:12) {#if i%2 == 0}
+    // (258:12) {#if i%2 == 0}
     function create_if_block$1(ctx) {
     	let indicatorvisual;
     	let t0;
@@ -51816,19 +51836,19 @@ var app = (function () {
     			t7 = text$1("Download this chart");
     			create_component(icon.$$.fragment);
     			attr_dev(div0, "class", "leader-line svelte-1hjvisr");
-    			add_location(div0, file$1, 259, 24, 9189);
+    			add_location(div0, file$1, 261, 24, 9216);
     			attr_dev(div1, "class", "leader-circle svelte-1hjvisr");
-    			add_location(div1, file$1, 260, 24, 9245);
+    			add_location(div1, file$1, 262, 24, 9272);
     			attr_dev(div2, "class", "leader-container svelte-1hjvisr");
-    			add_location(div2, file$1, 258, 20, 9134);
+    			add_location(div2, file$1, 260, 20, 9161);
     			attr_dev(h3, "class", "svelte-1hjvisr");
-    			add_location(h3, file$1, 262, 20, 9326);
+    			add_location(h3, file$1, 264, 20, 9353);
     			attr_dev(div3, "class", "description");
-    			add_location(div3, file$1, 263, 20, 9377);
+    			add_location(div3, file$1, 265, 20, 9404);
     			attr_dev(button, "class", "svelte-1hjvisr");
-    			add_location(button, file$1, 264, 20, 9456);
+    			add_location(button, file$1, 266, 20, 9483);
     			attr_dev(div4, "class", "indicator-text text-right svelte-1hjvisr");
-    			add_location(div4, file$1, 257, 16, 9074);
+    			add_location(div4, file$1, 259, 16, 9101);
     		},
     		m: function mount(target, anchor) {
     			mount_component(indicatorvisual, target, anchor);
@@ -51887,14 +51907,14 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(256:12) {#if i%2 == 0}",
+    		source: "(258:12) {#if i%2 == 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (252:4) {#each indicatorsData as indicator, i}
+    // (254:4) {#each indicatorsData as indicator, i}
     function create_each_block(ctx) {
     	let div;
     	let current_block_type_index;
@@ -51918,7 +51938,7 @@ var app = (function () {
     			if_block.c();
     			t = space();
     			attr_dev(div, "class", "indicator-container svelte-1hjvisr");
-    			add_location(div, file$1, 253, 8, 8949);
+    			add_location(div, file$1, 255, 8, 8976);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -51948,7 +51968,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(252:4) {#each indicatorsData as indicator, i}",
+    		source: "(254:4) {#each indicatorsData as indicator, i}",
     		ctx
     	});
 
@@ -52087,53 +52107,53 @@ var app = (function () {
     			}
 
     			attr_dev(button0, "class", "back svelte-1hjvisr");
-    			add_location(button0, file$1, 147, 0, 4267);
+    			add_location(button0, file$1, 149, 0, 4306);
     			attr_dev(h1, "class", "svelte-1hjvisr");
-    			add_location(h1, file$1, 153, 12, 4495);
+    			add_location(h1, file$1, 155, 12, 4534);
     			attr_dev(p, "class", "intro svelte-1hjvisr");
-    			add_location(p, file$1, 154, 12, 4535);
+    			add_location(p, file$1, 156, 12, 4574);
     			attr_dev(div0, "class", "area-text svelte-1hjvisr");
-    			add_location(div0, file$1, 152, 8, 4459);
+    			add_location(div0, file$1, 154, 8, 4498);
     			attr_dev(svg0, "width", /*areaWidth*/ ctx[8]);
     			attr_dev(svg0, "height", "50");
-    			add_location(svg0, file$1, 158, 12, 4640);
+    			add_location(svg0, file$1, 160, 12, 4679);
     			attr_dev(div1, "class", "area-vis svelte-1hjvisr");
-    			add_location(div1, file$1, 157, 8, 4605);
+    			add_location(div1, file$1, 159, 8, 4644);
     			attr_dev(div2, "class", "area-container svelte-1hjvisr");
-    			add_location(div2, file$1, 151, 4, 4422);
+    			add_location(div2, file$1, 153, 4, 4461);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
-    			add_location(path, file$1, 232, 16, 8152);
+    			add_location(path, file$1, 234, 16, 8179);
     			attr_dev(svg1, "class", "caret-down-light svelte-1hjvisr");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
-    			add_location(svg1, file$1, 231, 12, 8050);
+    			add_location(svg1, file$1, 233, 12, 8077);
     			attr_dev(button1, "class", "expand svelte-1hjvisr");
-    			add_location(button1, file$1, 225, 8, 7857);
+    			add_location(button1, file$1, 227, 8, 7884);
     			attr_dev(a, "href", "#");
     			attr_dev(a, "class", "svelte-1hjvisr");
-    			add_location(a, file$1, 236, 12, 8455);
+    			add_location(a, file$1, 238, 12, 8482);
     			attr_dev(div3, "class", "methodology svelte-1hjvisr");
-    			add_location(div3, file$1, 235, 8, 8417);
+    			add_location(div3, file$1, 237, 8, 8444);
     			attr_dev(div4, "class", "area-footer svelte-1hjvisr");
-    			add_location(div4, file$1, 224, 4, 7823);
+    			add_location(div4, file$1, 226, 4, 7850);
     			attr_dev(div5, "class", "area-summary svelte-1hjvisr");
     			toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
-    			add_location(div5, file$1, 149, 0, 4356);
+    			add_location(div5, file$1, 151, 0, 4395);
     			attr_dev(h2, "class", "svelte-1hjvisr");
-    			add_location(h2, file$1, 243, 8, 8590);
+    			add_location(h2, file$1, 245, 8, 8617);
     			attr_dev(h3, "class", "svelte-1hjvisr");
-    			add_location(h3, file$1, 244, 8, 8650);
+    			add_location(h3, file$1, 246, 8, 8677);
     			attr_dev(button2, "class", "svelte-1hjvisr");
-    			add_location(button2, file$1, 247, 12, 8813);
+    			add_location(button2, file$1, 249, 12, 8840);
     			attr_dev(div6, "class", "control-area svelte-1hjvisr");
-    			add_location(div6, file$1, 245, 8, 8730);
+    			add_location(div6, file$1, 247, 8, 8757);
     			attr_dev(header, "class", "svelte-1hjvisr");
-    			add_location(header, file$1, 242, 4, 8573);
+    			add_location(header, file$1, 244, 4, 8600);
     			attr_dev(div7, "class", "indicators");
-    			add_location(div7, file$1, 241, 0, 8544);
+    			add_location(div7, file$1, 243, 0, 8571);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -52431,6 +52451,7 @@ var app = (function () {
     	function mouseOver(e) {
     		$$invalidate(4, isHovered = true);
     		set_store_value(hoveredCountry, $hoveredCountry = e.path[1].dataset.id, $hoveredCountry);
+    		select(e.path[1]).raise();
     	}
 
     	function mouseLeave(e) {

@@ -3,7 +3,7 @@
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
 
-    $selectedCountry = 'united-states';
+    // $selectedCountry = 'united-states';
 </script>
 
 <div class='country-select'>

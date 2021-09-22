@@ -33,6 +33,8 @@
         isHovered = true;
         $hoveredCountry = e.path[1].dataset.id;
         $hoveredArea = e.path[1].dataset.area;
+        d3.selectAll('.country.selected').raise(); // raises selected country circles
+        d3.select(e.path[1]).raise(); // raises hovered circle
     }
 
     function mouseLeave(e) {
@@ -44,6 +46,7 @@
     function mouseClick(e) {
         $selectedCountry = e.path[1].dataset.id;
         $selectedArea = e.path[1].dataset.area;
+        d3.selectAll('.'+$selectedCountry).raise(); // raises selected country circles
     }
 
     function infoMouseOver(e) {
@@ -81,7 +84,7 @@
                         [distance, textRect.bottom - textRect.top + $margin*2]
                     ]) : ([[0,0],[0,0]]);
                     
-                    let path = utils.cubicBezier(points[0], points[1], 0.5);
+                    let path = utils.cubicBezier(points[0], points[1], 10);
 
                     return {
                         id : d.countries[n].trim().toLowerCase().split(" ").join("-"),
@@ -139,8 +142,8 @@
 
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
 
-                <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Least open</text>
-                <text x='{$width-$margin}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Most open</text>
+                <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
+                <text x='{$width-$margin}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
 
                 <line class='gridline' x2={$width}></line>
 
