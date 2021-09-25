@@ -15,6 +15,129 @@
     let descriptionWidth = 380;
     let offsetLeft = [];
 
+    onMount(function() {
+        setTimeout(positionLabels, 500);
+    });
+
+    function positionLabels() {
+        // var width = 400, height = 400
+
+        // var numNodes = 20
+        // var nodes = d3.range(numNodes).map(function(d) {
+        //     return {radius: 25}
+        // })
+
+        // let nodes = d3.selectAll();
+
+        // var simulation = d3.forceSimulation(nodes)
+        //     .force('charge', d3.forceManyBody().strength(5))
+        //     // .force('center', d3.forceCenter(width / 2, height / 2))
+        //     // .force('collision', d3.forceCollide().radius(function(d) {
+        //     //     return d.radius
+        //     // }))
+        //     .on('tick', ticked);
+
+        // function ticked() {
+        //     var u = d3.select('svg')
+        //         .selectAll('circle')
+        //         .data(nodes)
+        //         .join('circle')
+        //         .attr('r', function(d) {
+        //             return d.radius
+        //         })
+        //         .attr('cx', function(d) {
+        //             return d.x
+        //         })
+        //         .attr('cy', function(d) {
+        //             return d.y
+        //         })
+        // }
+
+        let visibleLabels = d3.selectAll('.country');
+        // console.log(visibleLabels)
+        visibleLabels.each(function(label, i) {
+            console.log(label);
+        });
+        // visibleLabels.forEach((label, i) => console.log(label));
+        // visibleLabels.forEach((label, i) => label.y = labels[i].y);
+    }
+
+    // function positionLabels() {
+    //     let labels = [];
+
+    //     // let labels = [
+    //     //     {
+    //     //         fx:0,
+    //     //         targetY:529.452
+    //     //     },
+    //     //     {
+    //     //         fx:0,
+    //     //         targetY:535.416
+    //     //     },
+    //     //     {
+    //     //         fx:0,
+    //     //         targetY:315.59999999999997
+    //     //     }
+    //     // ];
+
+    //     let labelWidth = 50;
+    //     let selected = d3.selectAll('.country.header.selected');
+
+    //     // grab target x value from each selected header element
+    //     selected.each(function(label, i) {
+    //         let x = this.dataset.x;
+    //         let id = this.dataset.id;
+    //         let text = d3.select(this).select('text');
+    //         labels[i] = {fx: 0, targetX: parseFloat(x), id: id};
+    //         // labels[id] = {fy: 0, targetX: parseFloat(x)};
+    //     });
+
+    //     // Define a custom force
+    //     const forceClamp = (min, max) => {
+    //         let nodes;
+    //         const force = () => {
+    //           nodes.forEach(n => {
+    //             // if (n.y > max) n.y = max;
+    //             // if (n.y < min) n.y = min;
+    //             if (n.x > max) n.x = max;
+    //             if (n.x < min) n.x = min;
+    //           });
+    //         };
+    //         force.initialize = (_) => nodes = _;
+    //         return force;
+    //     }
+
+    //     const force = d3.forceSimulation()
+    //         .nodes(labels)
+    //         .force('collide', d3.forceCollide(labelWidth / 2))
+    //         // .force('x', d3.forceX(d => d.targetX).strength(1))
+    //         // .force('clamp', forceClamp(0, width))
+    //         .stop();
+
+    //     for (let i = 0; i < 300; i++) { force.tick() };
+
+    //     function findLabel(id) {
+    //         let el;
+    //         labels.forEach(function(l) {
+    //             // console.log(id, l.id)
+    //             if (l.id == id) {
+    //                 // console.log(l)
+    //                 el = l;
+    //             }
+    //         });
+    //         return el;
+    //     }
+
+    //     selected.each(function(label, i) {
+    //         let id = this.dataset.id;
+    //         // let l = _.filter(labels, { 'id': id });
+    //         let l = findLabel(id);
+    //         console.log(l)
+    //         d3.select(this).select('text')
+    //             .attr('x', l.x);
+    //     });
+    // }
+
     function switchView(targetView, area) {
         // scroll to top
         document.body.scrollTop = 0; // For Safari
@@ -22,50 +145,6 @@
         // reset view and area
         $view = targetView;
         $areaInView = area;
-    }
-
-    setTimeout(positionLabels, 500);
-
-    function positionLabels() {
-        let labels = [];
-
-        let labelWidth = 50;
-        let selected = d3.selectAll('.country.header.selected');
-
-        // grab target x value from each selected header element
-        selected.each(function(label, i) {
-            let x = this.dataset.x;
-            let text = d3.select(this).select('text');
-            labels[i] = {fy: 0, targetX: parseFloat(x), id: this.dataset.id};
-        });
-
-        // Define a custom force
-        const forceClamp = (min, max) => {
-            let nodes;
-            const force = () => {
-              nodes.forEach(n => {
-                if (n.x > max) n.x = max;
-                if (n.x < min) n.x = min;
-              });
-            };
-            force.initialize = (_) => nodes = _;
-            return force;
-        }
-
-        const force = d3.forceSimulation()
-            .nodes(labels)
-            .force('collide', d3.forceCollide(labelWidth / 2))
-            // .force('x', d3.forceX(d => d.targetX).strength(1))
-            // .force('clamp', forceClamp(0, width))
-            .stop();
-
-        for (let i = 0; i < 300; i++) { force.tick() };
-
-        selected.each(function(label, i) {
-            let id = this.dataset.id;
-            d3.select(this).select('text')
-                .attr('x', labels[i].x);
-        });
     }
 
     // event handlers
@@ -91,7 +170,6 @@
         $selectedCountry = e.path[1].dataset.id;
         $selectedArea = e.path[1].dataset.area;
         d3.selectAll('.'+$selectedCountry).raise(); // raises selected country circles
-        positionLabels();
     }
 
     function infoMouseOver(e) {
@@ -195,13 +273,11 @@
                 {#each area.graphData as graph}
 
                     <g class='country {graph.id}'
-                        data-x='{graph.x}'
                         data-id='{graph.id}'
                         data-area='{area.area}'
                         transform='translate({graph.x},{graph.y})'
                         class:hovered='{graph.id == $hoveredCountry && area.area == $hoveredArea}'
                         class:selected='{graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}'
-                        class:header='{i == 0}'
                     >
                         <!-- top country labels -->
                         {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
@@ -238,10 +314,6 @@
 
 
 <style>
-
-    circle {
-  fill: orange;
-}
     .info {
         cursor: pointer;
         display: block;
@@ -403,8 +475,6 @@
     }
 
 </style>
-
-
 
 
 
