@@ -25,21 +25,41 @@
     .country-select {
         font-weight: bold;
         color: #122431;
-        font-size: 20px;
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .country-select {
+            font-size: 20px;
+            margin-bottom: 0;
+        }
     }
 
     .country-select span {
         padding: 5px 10px;
-        margin: 0 5px;
+        margin: 0 1px;
         font-weight: bold;
         border-radius: 4px;
         background-color: #F6D9D7;
         color: #D13F36;
     }
 
+    @media (min-width: 768px) {
+        .country-select span {
+            margin: 0 5px;
+        }
+    }
+
     .country-toggle-box {
         display: inline-block;
-        margin-left: 10px;
+        margin-left: 2px;
+    }
+
+    @media (min-width: 768px) {
+        .country-toggle-box {
+            margin-left: 10px;
+        }
     }
 
     select {

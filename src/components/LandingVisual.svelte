@@ -24,49 +24,32 @@
         $areaInView = area;
     }
 
-    setTimeout(positionLabels, 500);
+    // setTimeout(positionLabels, 500);
 
-    function positionLabels() {
-        let labels = [];
+    // function positionLabels() {
+    //     let edges = [];
+    //     let selected = d3.selectAll('.country.header.selected');
 
-        let labelWidth = 50;
-        let selected = d3.selectAll('.country.header.selected');
+    //     selected.each(function(label, i) {
+    //         let box = d3.select(this).select('text').node().getBBox();
+    //         let width = box.width;
+    //         let x = parseFloat(this.dataset.x);
+    //         let id = this.dataset.id;
+    //         console.log(width)
+    //         console.log(x)
 
-        // grab target x value from each selected header element
-        selected.each(function(label, i) {
-            let x = this.dataset.x;
-            let text = d3.select(this).select('text');
-            labels[i] = {fy: 0, targetX: parseFloat(x), id: this.dataset.id};
-        });
+    //         edges.push({
+    //             id: id,
+    //             left: x - (width/2),
+    //             right: x + (width/2)
+    //         });
+    //     });
 
-        // Define a custom force
-        const forceClamp = (min, max) => {
-            let nodes;
-            const force = () => {
-              nodes.forEach(n => {
-                if (n.x > max) n.x = max;
-                if (n.x < min) n.x = min;
-              });
-            };
-            force.initialize = (_) => nodes = _;
-            return force;
-        }
-
-        const force = d3.forceSimulation()
-            .nodes(labels)
-            .force('collide', d3.forceCollide(labelWidth / 2))
-            // .force('x', d3.forceX(d => d.targetX).strength(1))
-            // .force('clamp', forceClamp(0, width))
-            .stop();
-
-        for (let i = 0; i < 300; i++) { force.tick() };
-
-        selected.each(function(label, i) {
-            let id = this.dataset.id;
-            d3.select(this).select('text')
-                .attr('x', labels[i].x);
-        });
-    }
+    //     if (edges[0].left > edges[1].right || edges[0].right > edges[1].left) {
+    //         d3.select('.canada.header.selected').select('text')
+    //             .attr('y', -25);
+    //     }
+    // }
 
     // event handlers
 
@@ -91,7 +74,7 @@
         $selectedCountry = e.path[1].dataset.id;
         $selectedArea = e.path[1].dataset.area;
         d3.selectAll('.'+$selectedCountry).raise(); // raises selected country circles
-        positionLabels();
+        // positionLabels();
     }
 
     function infoMouseOver(e) {
@@ -151,7 +134,7 @@
     {#each copyData as area, i}
         <div class={'area '+area.label.toLowerCase()}>
             <header>
-                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} bind:clientWidth={offsetLeft[i]}>
+                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
                     {area.name}
                 </h2>
                 <div
@@ -205,7 +188,13 @@
                     >
                         <!-- top country labels -->
                         {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
-                            <text class='label' y='-10px' transition:fly="{{ y: 10, duration: 200 }}">{graph.country}</text>
+                            <text
+                                class='label'
+                                y='-10px'
+                                transition:fly="{{ y: 10, duration: 200 }}"
+                            >
+                                {graph.country}
+                            </text>
                         {/if}
                         <!-- country path -->
                         <path d={graph.path}></path>
@@ -238,10 +227,6 @@
 
 
 <style>
-
-    circle {
-  fill: orange;
-}
     .info {
         cursor: pointer;
         display: block;
@@ -252,6 +237,14 @@
         width: 380px;
         margin-right: 20px;
         position: relative;
+        z-index: 100;
+        margin-top: 40px;
+    }
+
+    @media (min-width: 768px) {
+        .text-wrapper {
+            margin-top: 0;
+        }
     }
 
     .area {
@@ -268,21 +261,32 @@
         position: relative;
         cursor: pointer;
         font-size: 18px;
-    }
-
-    .area h2 svg {
-        margin-left: 3px;
+        flex: 0 0 auto;
     }
 
     .description {
         margin-bottom: 20px;
     }
 
+    .description:after {
+        content: ' ';
+        /*height: 100px;*/
+        /*width: 100%;*/
+        padding: 10px;
+    }
+
     .description p {
+        display: none;
         margin: 0;
         margin-bottom: 15px;
         font-size: 14px;
         line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+        .description p {
+            display: block;
+        }
     }
 
     .description button {
@@ -291,10 +295,25 @@
         margin-bottom: 20px;
     }
 
+    @media (min-width: 768px) {
+        .description button {
+            margin-bottom: 20px;
+        }
+    }
+
     .vis-wrapper {
-        position: relative;
+        position: absolute;
         width: 100%;
-        margin-top: -22px;
+        top: 0;
+        pointer-events: none;
+    }
+
+    @media (min-width: 768px) {
+        .vis-wrapper {
+            position: relative;
+            margin-top: -22px;
+            pointer-events: auto;
+        }
     }
 
     .vis-wrapper svg {
@@ -326,7 +345,13 @@
     g.selected path {
         stroke: #234462;
         stroke-width: 2px;
-        stroke-opacity: 1;
+        /*stroke-opacity: 1;*/
+    }
+
+    @media (min-width: 768px) {
+        g.selected path {
+            stroke-opacity: 1;
+        }
     }
 
     g.selected circle {
@@ -343,7 +368,7 @@
     g.china.selected path {
         stroke: #D13F36;
         stroke-width: 2px;
-        stroke-opacity: 1;
+        /*stroke-opacity: 1;*/
     }
 
     g.china-2010.selected circle {
@@ -355,7 +380,7 @@
     g.china-2010.selected path {
         stroke: #A13F36;
         stroke-width: 2px;
-        stroke-opacity: 1;
+        /*stroke-opacity: 1;*/
     }
 
     g.open-economy-avg.selected circle {
@@ -367,7 +392,7 @@
     g.open-economy-avg.selected path {
         stroke: #D18B36;
         stroke-width: 2px;
-        stroke-opacity: 1;
+        /*stroke-opacity: 1;*/
     }
 
     .gridline {

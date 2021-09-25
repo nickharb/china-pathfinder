@@ -105,7 +105,7 @@
 
 </script>
 
-<div class='indicator-vis'>
+<div class={$$props.class}>
 
     <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}>
         <g class="indicator" transform='translate({$chartWidth/2},{$chartWidth/2})'>
@@ -228,6 +228,16 @@
 
     .indicator-vis {
         position: relative;
+    }
+
+    @media (min-width: 768px) {
+        .align-left {
+            order: 1;
+        }
+
+        .align-right {
+            order: 2;
+        }
     }
 
     .country path {

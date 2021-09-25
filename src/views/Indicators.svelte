@@ -7,7 +7,7 @@
     import loadData from "../data/load-data.js"; // needed for the top dots vis (composite score)
     import loadIndicatorsData from "../data/load-indicators-data.js";
     import {view, areaInView} from '../stores/view';
-    import {width, margin, scaleFactor, chartWidth} from '../stores/dimensions';
+    import {width, height, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import copyData from "../data/copy";
     import Icon from '../components/Icon.svelte';
@@ -21,6 +21,7 @@
     // set area visual width
     let areaWidth = 750;
     let areaMargin = 20;
+    $height = 50;
 
     // // TODO - dev only, delete these lines for production
     if (!$areaInView) { 
@@ -81,7 +82,7 @@
     // parse data
 
     $: if (areaData) {
-        const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, areaWidth-areaMargin*3]);
+        const xScale = d3.scaleLinear().domain([0,10]).range([$margin*3, $width-$margin*3]);
 
         areaData.comps.forEach((d,i)=>{
             graphData.push({
@@ -157,15 +158,18 @@
             <p class='intro'>{currentArea.definition}</p>
         </div>
 
-        <div class='area-vis'>
-            <svg width='{areaWidth}' height='50'>
+        <div class='area-vis' bind:clientWidth={$width}>
+            <svg viewBox="0 0 {$width} {$height}"
+                width={$width}
+                height={$height}>
+            <!-- <svg width='{$width}' height='50' viewBox="0 0 20 10"> -->
                 {#if areaData}
-                    <g class="{areaData.area}" transform='translate(0,{areaMargin})'>
+                    <g class="{areaData.area}" transform='translate(0,{$margin})'>
 
                         <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
-                        <text x='{areaWidth}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
+                        <text x='{$width}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
 
-                        <line class='gridline' x1=0 x2={areaWidth} transform='translate(0,5)'></line>
+                        <line class='gridline' x1=0 x2={$width} transform='translate(0,5)'></line>
 
                         {#each graphData as graph, i}
                             <g class='country {graph.id}'
@@ -255,9 +259,13 @@
 
         <div class='indicator-container'>
 
-            {#if i%2 == 0}
-                <IndicatorVisual {indicator}/>
-                <div class='indicator-text text-right'>
+                {#if (i%2 == 0)}
+                    <IndicatorVisual {indicator} class="indicator-vis align-left" />
+                {:else}
+                    <IndicatorVisual {indicator} class="indicator-vis align-right" />
+                {/if}
+
+                <div class='indicator-text' class:text-right='{i%2 == 0}' class:text-left='{i%2 !== 0}'>
                     <div class="leader-container">
                         <div class="leader-line"></div>
                         <div class="leader-circle"></div>
@@ -266,18 +274,6 @@
                     <div class='description'>{indicator.copy.definition}</div>
                     <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
                 </div>
-            {:else}
-                <div class='indicator-text text-left'>
-                    <div class="leader-container">
-                        <div class="leader-line"></div>
-                        <div class="leader-circle"></div>
-                    </div>
-                    <h3>{indicator.copy.name}</h3>
-                    <div class='description'>{indicator.copy.definition}</div>
-                    <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
-                </div>
-                <IndicatorVisual {indicator}/>
-            {/if}
 
         </div>
 
@@ -292,21 +288,46 @@
 
     .indicator-container {
         display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .indicator-container {
-        margin-top: -150px;
+        flex-wrap: wrap;
+        margin-top: -50px;
     }
 
     .indicator-container:first-of-type {
         margin-top: -50px;
     }
 
+    @media (min-width: 768px) {
+        .indicator-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -150px;
+        }
+    }
+
     .indicator-text {
         position: relative;
-        width: 350px;
+        border-bottom: 1px solid #84A9BC;
+        padding-bottom: 50px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .indicator-text {
+            width: 350px;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .text-right {
+            order: 2;
+        }
+
+        .text-left {
+            order: 1;
+        }
     }
 
     .indicator-text h3 {
@@ -314,10 +335,16 @@
     }
 
     .leader-container {
-        position: absolute;
-        top: 50%;
-        /*left: -60px;*/
-        margin-top: -6px;
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .leader-container {
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -6px;
+        }
     }
 
     .leader-line {
@@ -338,15 +365,31 @@
     }
 
     .text-left {
-        border-right: 1px solid #84A9BC;
+        /*border-right: 1px solid #84A9BC;
         padding-right: 40px;
-        margin-right: 40px;
+        margin-right: 40px;*/
+    }
+
+    @media (min-width: 768px) {
+        .text-left {
+            border-right: 1px solid #84A9BC;
+            padding-right: 40px;
+            margin-right: 40px;
+        }
     }
 
     .text-right {
-        border-left: 1px solid #84A9BC;
+        /*border-left: 1px solid #84A9BC;
         padding-left: 40px;
-        margin-left: 40px;
+        margin-left: 40px;*/
+    }
+
+    @media (min-width: 768px) {
+        .text-right {
+            border-left: 1px solid #84A9BC;
+            padding-left: 40px;
+            margin-left: 40px;
+        }
     }
 
     .text-left .leader-container {
@@ -389,16 +432,29 @@
 
     .control-area {
         margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    }
+
+    @media (min-width: 768px) {
+        .control-area {
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
     .area-summary {
         background-color: #EFF4F8;
-        margin-bottom: 100px;
-        padding: 40px;
+        margin-bottom: 40px;
+        padding: 20px;
         border-radius: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .area-summary {
+            margin-bottom: 60px;
+            padding: 40px;
+        }
     }
 
     .intro {
@@ -423,14 +479,26 @@
     }
 
     .area-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+        .area-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
     }
 
     .area-text {
-        max-width: 400px;
-        margin-right: 40px;
+        /*max-width: 400px;*/
+    }
+
+    @media (min-width: 768px) {
+        .area-text {
+            max-width: 400px;
+            margin-right: 40px;
+        }
     }
 
     .area-text h1 {

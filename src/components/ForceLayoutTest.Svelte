@@ -15,51 +15,52 @@
     let descriptionWidth = 380;
     let offsetLeft = [];
 
-    onMount(function() {
-        setTimeout(positionLabels, 500);
-    });
+    // onMount(function() {
+    //     setTimeout(positionLabels, 500);
+    // });
+
+    setTimeout(positionLabels, 500);
 
     function positionLabels() {
-        // var width = 400, height = 400
+        let labels = [];
 
-        // var numNodes = 20
-        // var nodes = d3.range(numNodes).map(function(d) {
-        //     return {radius: 25}
-        // })
+        let labelWidth = 50;
+        let selected = d3.selectAll('.country.header.selected');
 
-        // let nodes = d3.selectAll();
-
-        // var simulation = d3.forceSimulation(nodes)
-        //     .force('charge', d3.forceManyBody().strength(5))
-        //     // .force('center', d3.forceCenter(width / 2, height / 2))
-        //     // .force('collision', d3.forceCollide().radius(function(d) {
-        //     //     return d.radius
-        //     // }))
-        //     .on('tick', ticked);
-
-        // function ticked() {
-        //     var u = d3.select('svg')
-        //         .selectAll('circle')
-        //         .data(nodes)
-        //         .join('circle')
-        //         .attr('r', function(d) {
-        //             return d.radius
-        //         })
-        //         .attr('cx', function(d) {
-        //             return d.x
-        //         })
-        //         .attr('cy', function(d) {
-        //             return d.y
-        //         })
-        // }
-
-        let visibleLabels = d3.selectAll('.country');
-        // console.log(visibleLabels)
-        visibleLabels.each(function(label, i) {
-            console.log(label);
+        // grab target x value from each selected header element
+        selected.each(function(label, i) {
+            let x = this.dataset.x;
+            let text = d3.select(this).select('text');
+            labels[i] = {fy: 0, targetX: parseFloat(x), id: this.dataset.id};
         });
-        // visibleLabels.forEach((label, i) => console.log(label));
-        // visibleLabels.forEach((label, i) => label.y = labels[i].y);
+
+        // Define a custom force
+        const forceClamp = (min, max) => {
+            let nodes;
+            const force = () => {
+              nodes.forEach(n => {
+                if (n.x > max) n.x = max;
+                if (n.x < min) n.x = min;
+              });
+            };
+            force.initialize = (_) => nodes = _;
+            return force;
+        }
+
+        const force = d3.forceSimulation()
+            .nodes(labels)
+            .force('collide', d3.forceCollide(labelWidth / 2))
+            // .force('x', d3.forceX(d => d.targetX).strength(1))
+            // .force('clamp', forceClamp(0, width))
+            .stop();
+
+        for (let i = 0; i < 300; i++) { force.tick() };
+
+        selected.each(function(label, i) {
+            let id = this.dataset.id;
+            d3.select(this).select('text')
+                .attr('x', labels[i].x);
+        });
     }
 
     // function positionLabels() {

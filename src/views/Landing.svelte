@@ -65,7 +65,7 @@
 </section>
 
 <header>
-    <h2>2020 Annual Economic Benchmarks (not final data)</h2>
+    <h2>2020 Annual Economic Benchmarks</h2>
     <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
     <div class='control-area'>
         <CountrySelect {countryNames}/>
@@ -83,19 +83,31 @@
     /* intro section */
 
     .intro {
-        margin: 0 auto;
-        margin-bottom: 70px;
-        display: flex;
-        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+
+    @media (min-width: 768px) {
+        .intro {
+            margin: 0 auto;
+            margin-bottom: 70px;
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
     .intro h1 {
-        max-width: 350px;
-        font-size: 38px;
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .intro h1 {
+            max-width: 350px;
+            font-size: 38px;
+        }
     }
 
     .intro p {
-        width: 61%;
         margin: 0;
         margin-top: 4px;
         font-size: 18px;
@@ -103,10 +115,22 @@
         line-height: 1.8;
     }
 
+    @media (min-width: 768px) {
+        .intro p {
+            width: 61%;
+        }
+    }
+
     /* landing visual */
 
     header {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+        header {
+            margin-bottom: 40px;
+        }
     }
 
     header h2 {
@@ -125,12 +149,18 @@
 
     .control-area {
         margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    }
+
+    @media (min-width: 768px) {
+        .control-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
     .vis-container {
+        position: relative;
         display: flex;
         text-align: left;
         margin: 1em auto;

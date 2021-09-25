@@ -39,7 +39,7 @@
     <p>Did China move closer or further from OECD norms?</p>
     <ul>
         {#each quarterlyData as quarter}
-            <li class='{quarter.class}'><span>{quarter.value}</span>{quarter.title}</li>
+            <li class='{quarter.class}'><span>{quarter.value}</span><h4>{quarter.title}</h4></li>
         {/each}
     </ul>
     <div class="latest">
@@ -96,10 +96,23 @@
     }
 
     li {
-        /*flex: 1 0 33%;*/
-        width: 28%;
+        width: 100%;
         margin-bottom: 30px;
         font-size: 14px;
+        display: flex;
+        align-items: center;
+    }
+
+    @media (min-width: 512px) {
+        li {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 768px) {
+        li {
+            width: 28%;
+        }
     }
 
     li span {
@@ -112,6 +125,20 @@
         border-radius: 4px;
         width: 70px;
         text-align: center;
+    }
+
+    li h4 {
+        display: inline-block;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+        max-width: 150px;
+    }
+
+    @media (min-width: 768px) {
+        li h4 {
+            max-width: inherit;
+        }
     }
 
     li.no-change span {

@@ -16,9 +16,15 @@ body {
 }
 
 main {
-    width: 1280px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: 40px 20px;
+}
+
+@media (min-width: 768px) {
+    main {
+        padding: 80px 40px;
+    }
 }
 
 /* links */
