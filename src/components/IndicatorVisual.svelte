@@ -2,15 +2,30 @@
     import * as d3 from 'd3';
     // import { onMount } from "svelte";
     import { fly } from 'svelte/transition';
-    import {chartWidth, innerRadius} from '../stores/dimensions';
+    import {width, height, margin, scaleFactor, chartWidth, innerRadius} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
     import IndicatorTooltip from '../components/IndicatorTooltip.svelte';
     export let indicator;
-    
+
     // $chartWidth = window.innerWidth * 0.2;
-    $chartWidth = 600; // 500
-    $innerRadius = 50; // 50
+
+    let isMobile = (window.innerWidth < 450) ? true : false;
+    let isLargeMobile = (window.innerWidth < 768) ? true : false;
+    let isTablet = (window.innerWidth < 1080) ? true : false;
+
+    // $chartWidth = 200;
+    $innerRadius = 40;
+
+    if (isMobile) {
+        $chartWidth = 300;
+    } else if (isLargeMobile) {
+        $chartWidth = 400;
+    } else if (isTablet) {
+        $chartWidth = 300;
+    } else {
+        $chartWidth = 500;
+    }
 
     let offsetWidth;
     let offsetHeight;
@@ -105,11 +120,20 @@
 
 </script>
 
-<div class={$$props.class}>
+<div class={$$props.class} bind:clientWidth={$chartWidth}>
 
-    <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}>
+    <!-- <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}> -->
+        <!-- <g class="indicator" transform='translate({$chartWidth/2},{$chartWidth/2})'> -->
+
+    <!-- <svg viewBox="0 0 {$chartWidth} {$height}"
+        width={$chartWidth}
+        height={$height}> -->
+
+    <svg viewBox="0 0 {$chartWidth} {$chartWidth}"
+        width={$chartWidth}
+        height={$chartWidth}>
+
         <g class="indicator" transform='translate({$chartWidth/2},{$chartWidth/2})'>
-        <!-- <g bind:clientWidth={offsetWidth} bind:clientHeight={offsetHeight}> -->
 
             {#each indicator.values as country}
                 <g class='country {country.id}'
@@ -228,9 +252,15 @@
 
     .indicator-vis {
         position: relative;
+        margin: 0 auto;
     }
 
     @media (min-width: 768px) {
+        .indicator-vis {
+            position: relative;
+            margin: 0;
+        }
+
         .align-left {
             order: 1;
         }
