@@ -34,7 +34,8 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: '../../wordpress/pathfinderlocal/app/public/wp-content/plugins/pathfinder-dashboard/app.js'
+		// file: 'public/build/bundle.js'
 	},
 	plugins: [
 		svelte({

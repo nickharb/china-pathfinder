@@ -56,14 +56,15 @@
 </script>
 
 <section class='intro'>
-    <h1>Where does China’s Economy Stand?</h1>
-    <p>China is a global economic powerhouse, but its system remains dangerously opaque. Policymakers and financial experts dispute basic facts about what is happening inside China. To create a shared language on China’s economy, the China Pathfinder project scores China and other economies across six areas and presents an objective picture of China’s economy relative to the world.</p>
+    <h1>Where Does China’s Economy Stand?</h1>
+    <p>China is a global economic giant, but we know surprisingly little about how its system actually works. Policymakers and financial experts disagree on basic facts about what is happening inside the country. To create a shared language for understanding the Chinese economy, the Pathfinder project scores China and other leading economies across six indicators and presents an objective picture of China relative to the world’s largest open market countries.</p>
 </section>
         
-<section class='latest'>
+<!-- <section class='latest'>
     <Quarterly />
-</section>
+</section> -->
 
+<!-- todo - make these headers dynamic -->
 <header>
     <h2>2020 Annual Economic Benchmarks</h2>
     <h3>How Does China's Economic System Compare to Open Market Economies?</h3>

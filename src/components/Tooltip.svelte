@@ -59,6 +59,7 @@
 
     .tooltip p {
         margin: 0;
+        padding: 0;
         font-weight: normal;
         font-size: 16px;
         white-space: nowrap;

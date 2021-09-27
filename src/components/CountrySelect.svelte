@@ -1,43 +1,62 @@
 <script>
     export let countryNames;
+    import { onMount } from "svelte";
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
+    import Selectr from 'mobius1-selectr';
 
-    // $selectedCountry = 'united-states';
+    let selector;
+
+    // todo - write this better so it doesn't have a set timeout
+    onMount(() => {
+        setTimeout(function() {
+            selector = new Selectr('#country-select', {
+                searchable: false,
+                width: 500
+            });
+        }, 500);
+    });
+
+    $: $selectedCountry, setSelector();
+
+    function setSelector() {
+        if (selector) {
+            selector.setValue($selectedCountry);
+        }
+    }
+    
 </script>
 
-<div class='country-select'>
+<div class='country-select-container'>
     Compare <span>China</span> with
     <div class='country-toggle-box {$selectedCountry}'>
-        <select bind:value={$selectedCountry}>
+        <select id='country-select' bind:value={$selectedCountry}>
             {#each countryNames as country, i}
                 <option value={country.id}>{country.country}</option>
             {/each}
         </select>
-        <!-- <Icon type='caret-down-dark' /> -->
-        <svg class="caret-down-dark" width="13" height="11" viewBox="0 0 13 11" fill="none">
-            <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" />
-        </svg>
     </div>
 </div>
 
 <style>
-    .country-select {
+    .country-select-container {
         font-weight: bold;
         color: #122431;
         font-size: 16px;
         margin-bottom: 20px;
+        display: flex;
+        align-items: center;
     }
 
     @media (min-width: 768px) {
-        .country-select {
+        .country-select-container {
             font-size: 20px;
             margin-bottom: 0;
         }
     }
 
-    .country-select span {
-        padding: 5px 10px;
+    .country-select-container span {
+        padding: 2px 10px;
         margin: 0 1px;
         font-weight: bold;
         border-radius: 4px;
@@ -46,7 +65,7 @@
     }
 
     @media (min-width: 768px) {
-        .country-select span {
+        .country-select-container span {
             margin: 0 5px;
         }
     }
@@ -60,30 +79,6 @@
         .country-toggle-box {
             margin-left: 10px;
         }
-    }
-
-    select {
-        cursor: pointer;
-        min-width: 190px;
-        transition: color 300ms, background-color 300ms;
-        outline: none;
-    }
-
-    .china-2010 select {
-        color: #A13F36;
-        background-color: #ECD9D7;
-    }
-
-    .caret-down-dark {
-        margin-left: -25px;
-        margin-top: -5px;
-        fill: #234462;
-        pointer-events: none;
-        transition: fill 300ms;
-    }
-
-    .china-2010 .caret-down-dark {
-        fill: #A13F36;
     }
 </style>
 

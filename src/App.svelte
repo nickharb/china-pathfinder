@@ -7,8 +7,8 @@
     // import News from './views/News.svelte';
     import {view} from './stores/view';
 
-    // $view = 'main'; // defines primary view - set this for production (do not delete)
-    $view = 'indicators';
+    $view = 'main'; // defines primary view - set this for production (do not delete)
+    // $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
     // let showNews = true; // set to true if you want to show
@@ -19,7 +19,7 @@
 
 </script>
 
-<header>
+<!-- <header>
     <div class="logo-container" on:click|self={()=> switchView('main')}>
         <Icon type="logo" />
     </div>
@@ -28,7 +28,7 @@
         <li>Publications</li>
         <li>About</li>
     </ul>
-</header>
+</header> -->
 
 <main>
     {#if $view == 'main'}
@@ -40,35 +40,79 @@
 
 
 <style>
-    header {
+
+    main {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.03em;
+        color: #122431;
+        box-sizing: border-box;
         max-width: 1280px;
         margin: 0 auto;
-        padding: 60px 0 20px;
-        border-bottom: 1px solid #122431;
+        /*padding: 40px 20px;*/
+    }
+
+    @media (min-width: 768px) {
+        main {
+            /*padding: 80px 40px;*/
+        }
+    }
+
+    :global(button) {
+        background-color: #122431;
+        outline: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        border-radius: 4px;
+        border: none;
+        height: 28px;
         display: flex;
-        justify-content: space-between;
-    }
-
-    .logo-container {
-        max-width: 230px;
+        align-items: center;
         cursor: pointer;
+        transition: background-color 300ms;
     }
 
-    ul.navigation {
-        margin: 0 -15px;
-        padding: 0;
-        list-style: none;
-        display: flex;
-
+    :global(button svg) {
+        margin-left: 20px;
     }
 
-    ul.navigation li {
-        padding: 0 15px;
-        cursor: pointer;
+    :global(button:hover) {
+        background-color: #234462;
+    }
+
+    :global(button:active) {
+        background-color: #122431;
+    }
+
+    /* typography */
+
+    :global(h1, h2, h3, h4, h5) {
+        font-family: 'Source Sans Pro', sans-serif;
         color: #122431;
-        font-size: 18px;
+        padding: 0;
+    }
+
+    :global(h1) {
+        font-size: 32px;
         font-weight: bold;
-        letter-spacing: 0.04em;
+        margin: 0;
+        margin-bottom: 10px;
+        letter-spacing: 0.01em;
+        line-height: 1.3;
+    }
+
+    :global(h2) {
+        font-size: 17px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    :global(h3) {
+        font-size: 20px;
+        line-height: 1.1;
     }
 </style>
 

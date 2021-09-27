@@ -1,5 +1,5 @@
 import { csv } from 'd3';
-const dataPath = './data/composite-score.csv';
+const dataPath = '../data/composite-score.csv';
 // const parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
 // const parseDate = timeParse('%m/%d/%Y');
 

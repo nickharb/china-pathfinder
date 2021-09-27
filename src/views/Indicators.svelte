@@ -203,6 +203,7 @@
         indicatorsData = await loadIndicatorsData($areaInView);
         countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
         areaData = (data['areas']).filter(d=> d.area == $areaInView)[0];
+        console.log($width, $height)
     });
 
     // parse data
@@ -342,8 +343,8 @@
         <div class='area-vis' bind:clientWidth={$width}>
             <svg viewBox="0 0 {$width} {$height}"
                 width={$width}
-                height={$height}>
-            <!-- <svg width='{$width}' height='50' viewBox="0 0 20 10"> -->
+                height={$height}
+            >
                 {#if areaData}
                     <g class="{areaData.area}" transform='translate(0,{$margin})'>
 
@@ -662,6 +663,7 @@
 
     .intro {
         margin: 0;
+        padding: 0;
     }
 
     button.expand {
@@ -693,17 +695,6 @@
         }
     }
 
-    .area-text {
-        /*max-width: 400px;*/
-    }
-
-    @media (min-width: 768px) {
-        .area-text {
-            max-width: 400px;
-            margin-right: 40px;
-        }
-    }
-
     .area-text h1 {
         margin: 0;
         margin-bottom: 15px;
@@ -713,8 +704,32 @@
     }
     
     .area-vis {
-        margin-top: 40px;
+        margin-top: 10px;
         position: relative;
+    }
+
+    @media (min-width: 768px) {
+        .area-text {
+            margin-right: 20px;
+            width: 40%;
+        }
+
+        .area-vis {
+            margin-top: 40px;
+            width: 60%;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .area-text {
+            margin-right: 40px;
+            width: 30%;
+        }
+
+        .area-vis {
+            /*margin-top: 40px;*/
+            width: 70%;
+        }
     }
 
     .area-footer {
