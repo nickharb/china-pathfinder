@@ -76,7 +76,7 @@
     }
 
     :global(button svg) {
-        margin-left: 20px;
+        margin-left: 10px;
     }
 
     :global(button:hover) {

@@ -15,6 +15,7 @@
     import CountrySelect from '../components/CountrySelect.svelte';
     import IndicatorVisual from '../components/IndicatorVisual.svelte';
     import AreaTooltip from '../components/AreaTooltip.svelte';
+    import SocialButtons from '../components/SocialButtons.svelte';
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[];
     let expanded = false;
@@ -22,7 +23,7 @@
     // set area visual width
     let areaWidth = 750;
     let areaMargin = 20;
-    $height = 50;
+    $height = 100;
 
     // // TODO - dev only, delete these lines for production
     // if (!$areaInView) { 
@@ -157,6 +158,7 @@
             <p class='intro'>{currentArea.definition}</p>
         </div>
 
+        <!-- <div class='area-vis' bind:clientWidth={$width}> -->
         <div class='area-vis'>
             <svg viewBox="0 0 {$width} {$height}"
                 width={$width}
@@ -240,7 +242,11 @@
         <h3>Lorem ipsum dolor sit amet consectetur adipiscing elit commodo</h3>
         <div class='control-area'>
             <CountrySelect {countryNames}/>
-            <button>Share this page<Icon type='share' /></button>
+            <div class="social-share">
+                <p>Share:</p>
+                <SocialButtons />
+            </div>
+            <!-- <button>Share this page<Icon type='share' /></button> -->
         </div>
     </header>
 
@@ -272,6 +278,20 @@
 
 
 <style>
+
+    .social-share {
+        display: flex;
+        align-items: center;
+    }
+
+    .social-share p {
+        margin: 0;
+        padding: 0;
+        margin-right: 2px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 
     /* indicator visual */
 
@@ -468,6 +488,7 @@
     .intro {
         margin: 0;
         padding: 0;
+        font-size: 16px;
     }
 
     button.expand {
@@ -495,7 +516,6 @@
         .area-container {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
         }
     }
 
@@ -510,6 +530,8 @@
     .area-vis {
         margin-top: 10px;
         position: relative;
+        overflow: hidden;
+        width: 100%;
     }
 
     @media (min-width: 768px) {
@@ -520,7 +542,7 @@
 
         .area-vis {
             margin-top: 40px;
-            /*width: 60%;*/
+            width: 60%;
         }
     }
 
@@ -531,7 +553,7 @@
         }
 
         .area-vis {
-            /*width: 70%;*/
+            width: 70%;
         }
     }
 

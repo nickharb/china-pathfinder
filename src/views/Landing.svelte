@@ -10,6 +10,7 @@
     import Quarterly from './Quarterly.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
     import Icon from '../components/Icon.svelte';
+    import SocialButtons from '../components/SocialButtons.svelte';
     export let showPrevious = false;
     let data = [], countryNames = [], areaData = [];
 
@@ -70,7 +71,10 @@
     <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
     <div class='control-area'>
         <CountrySelect {countryNames}/>
-        <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
+        <div class="social-sharing">
+            <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
+            <SocialButtons />
+        </div>
     </div>
 </header>
 
@@ -158,6 +162,10 @@
             justify-content: space-between;
             align-items: center;
         }
+    }
+
+    .social-sharing {
+        display: flex;
     }
 
     .vis-container {

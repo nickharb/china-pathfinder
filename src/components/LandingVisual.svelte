@@ -248,7 +248,7 @@
     }
 
     .area {
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
 
     .area header {
@@ -265,22 +265,27 @@
     }
 
     .description {
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
 
     .description:after {
         content: ' ';
-        /*height: 100px;*/
-        /*width: 100%;*/
         padding: 10px;
+    }
+
+    @media (min-width: 768px) {
+        .description:after {
+            content: '';
+            padding: 0;
+        }
     }
 
     .description p {
         display: none;
-        margin: 0;
         margin-bottom: 15px;
         font-size: 14px;
         line-height: 1.5;
+        padding: 0;
     }
 
     @media (min-width: 768px) {
@@ -292,12 +297,12 @@
     .description button {
         height: 23px;
         font-size: 12px;
-        margin-bottom: 20px;
+        /*margin-bottom: 20px;*/
     }
 
     @media (min-width: 768px) {
         .description button {
-            margin-bottom: 20px;
+            /*margin-bottom: 20px;*/
         }
     }
 

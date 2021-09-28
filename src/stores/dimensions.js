@@ -1,6 +1,6 @@
 import {writable, derived} from "svelte/store";
 
-export const width = writable(500);
+export const width = writable(300);
 export const height = writable(200);
 export const margin = writable(20);
 // export const margin = derived(width, ($width) => ($width/100));
