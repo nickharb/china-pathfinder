@@ -2,5 +2,5 @@
 
 import {writable} from "svelte/store";
 
-export const view = writable();
-export const areaInView = writable();
+export const view = writable('main');
+export const areaInView = writable('fdi');

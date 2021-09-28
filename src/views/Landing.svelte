@@ -6,7 +6,7 @@
     import loadData from "../data/load-data.js";
     import copyData from "../data/copy";
     import LandingVisual from "../components/LandingVisual.svelte";
-    import ForceLayoutTest from "../components/ForceLayoutTest.svelte";
+    // import ForceLayoutTest from "../components/ForceLayoutTest.svelte";
     import Quarterly from './Quarterly.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
     import Icon from '../components/Icon.svelte';

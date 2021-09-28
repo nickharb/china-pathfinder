@@ -7,7 +7,7 @@
     // import News from './views/News.svelte';
     import {view} from './stores/view';
 
-    $view = 'main'; // defines primary view - set this for production (do not delete)
+    // $view = 'main'; // defines primary view - set this for production (do not delete)
     // $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
