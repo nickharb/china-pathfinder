@@ -162,7 +162,7 @@
         <div class='area-vis'>
             <svg viewBox="0 0 {$width} {$height}"
                 width={$width}
-                height={$height}
+                height={$height+30}
             >
                 {#if areaData}
                     <g class="{areaData.area}" transform='translate(0,{$margin})'>
@@ -194,8 +194,30 @@
                                 <!-- <text class='label' y='-10px'>{graph.country}</text> -->
 
                                 <!-- top country labels -->
-                                {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
+                                <!-- {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
                                     <text class='label' y='-12px' transition:fly="{{ y: 10, duration: 200 }}">{graph.country}</text>
+                                {/if} -->
+
+                                <!-- top country labels -->
+                                {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
+                                    <!-- conditional for label spacing -->
+                                    {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010' ||  graph.id == 'united-kingdom'}
+                                        <text
+                                            class='label'
+                                            y='-10px'
+                                            transition:fly="{{ y: 10, duration: 200 }}"
+                                        >
+                                            {graph.country}
+                                        </text>
+                                    {:else}
+                                        <text
+                                            class='label level-2'
+                                            y='-27px'
+                                            transition:fly="{{ y: 10, duration: 200 }}"
+                                        >
+                                            {graph.country}
+                                        </text>
+                                    {/if}
                                 {/if}
                             </g>
                         {/each}
@@ -226,20 +248,21 @@
             {:else}
                 View less
             {/if}
-            <svg class="caret-down-light" width="13" height="11" viewBox="0 0 13 11" fill="none">
-                <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" fill="#ffffff"/>
+            <svg class="caret-down-dark" width="13" height="11" viewBox="0 0 13 11" fill="none">
+                <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" fill="#234462"/>
             </svg>
         </button>
         <div class="methodology">
-            <a href="#">Methodology<Icon type="arrow-right" /></a>
+            <a href="https://pathfinder.sevenmilemedia.com/methodology/">Methodology<Icon type="arrow-right" /></a>
         </div>
+        
     </div>
 </div>
 
 <div class='indicators'>
     <header>
         <h2>Assessing {currentArea.name.toLowerCase()}</h2>
-        <h3>Lorem ipsum dolor sit amet consectetur adipiscing elit commodo</h3>
+        <!-- <h3>Lorem ipsum dolor sit amet consectetur adipiscing elit commodo</h3> -->
         <div class='control-area'>
             <CountrySelect {countryNames}/>
             <div class="social-share">
@@ -356,6 +379,8 @@
 
     .indicator-text h3 {
         margin: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
     }
 
     .description {
@@ -441,14 +466,14 @@
     /* header section */
 
     header {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
     }
 
     header h2 {
         font-size: 24px;
         font-weight: bold;
         margin: 0;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
     }
 
     header h3 {
@@ -485,6 +510,14 @@
         }
     }
 
+    .summary {
+        margin-top: 10px;
+    }
+
+    .summary p {
+        font-size: 16px;
+    }
+
     .intro {
         margin: 0;
         padding: 0;
@@ -492,11 +525,20 @@
     }
 
     button.expand {
-        min-width: 180px;
         position: relative;
+        background-color: #EFF4F8;
+        color: #234462;
+        padding: 0 30px 0px 0;
     }
 
-    .caret-down-light {
+    #pathfinder-dashboard-container button.expand {
+        position: relative;
+        background-color: #EFF4F8;
+        color: #234462;
+        padding: 0 30px 0px 0;
+    }
+
+    .caret-down-dark {
         position: absolute;
         top: 8px;
         right: 10px;
@@ -504,7 +546,7 @@
         transition: transform 500ms;
     }
 
-    .expanded .caret-down-light {
+    .expanded .caret-down-dark {
         transform: rotate(180deg);
     }
 

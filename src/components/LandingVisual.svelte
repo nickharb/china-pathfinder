@@ -137,7 +137,10 @@
     {#each copyData as area, i}
         <div class={'area '+area.label.toLowerCase()}>
             <header>
-                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                <!-- <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                    {area.name}
+                </h2> -->
+                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} bind:clientWidth={offsetLeft[i]}>
                     {area.name}
                 </h2>
                 <div
@@ -193,24 +196,21 @@
                         {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
                             <!-- conditional for label spacing -->
                             {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010'  || graph.id == 'germany' ||  graph.id == 'united-kingdom'}
-                            <text
-                                class='label'
-                                y='-10px'
-                                transition:fly="{{ y: 10, duration: 200 }}"
-                            >
-                                {graph.country}
-                            </text>
-                    
-   
-            
+                                <text
+                                    class='label'
+                                    y='-10px'
+                                    transition:fly="{{ y: 10, duration: 200 }}"
+                                >
+                                    {graph.country}
+                                </text>
                             {:else}
-                            <text
-                                class='label level-2'
-                                y='-27px'
-                                transition:fly="{{ y: 10, duration: 200 }}"
-                            >
-                                {graph.country}
-                            </text>
+                                <text
+                                    class='label level-2'
+                                    y='-27px'
+                                    transition:fly="{{ y: 10, duration: 200 }}"
+                                >
+                                    {graph.country}
+                                </text>
                             {/if}
                         {/if}
                         <!-- country path -->

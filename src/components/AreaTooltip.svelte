@@ -18,7 +18,7 @@
         class:open-economy-avg="{graph.id == 'open-economy-avg'}"
         transition:fly="{{ y: -5, duration: 200 }}"
         bind:clientWidth={offsetWidth}
-        style="left: {graph.x}px; top: {45}px; margin-left: {-offsetWidth/2}px;"
+        style="left: {graph.x}px; top: {55}px; margin-left: {-offsetWidth/2}px;"
     >
         <svg class="tooltip-caret-up" width="12" height="6" viewBox="0 0 12 6" fill="none">
             <path d="M6 0L11.1962 6L0.803848 6L6 0Z" />
