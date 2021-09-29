@@ -52,7 +52,7 @@
     // }
 
     // event handlers
-
+    
     let isHovered = false;
     let infoIsHovered = false;
 
@@ -71,8 +71,10 @@
     }
 
     function mouseClick(e) {
+
         $selectedCountry = e.path[1].dataset.id;
         $selectedArea = e.path[1].dataset.area;
+
         d3.selectAll('.'+$selectedCountry).raise(); // raises selected country circles
         // positionLabels();
     }
@@ -188,6 +190,8 @@
                     >
                         <!-- top country labels -->
                         {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
+                            <!-- conditional for label spacing -->
+                            {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010'  || graph.id == 'germany' ||  graph.id == 'united-kingdom'}
                             <text
                                 class='label'
                                 y='-10px'
@@ -195,6 +199,18 @@
                             >
                                 {graph.country}
                             </text>
+                    
+   
+            
+                            {:else}
+                            <text
+                                class='label level-2'
+                                y='-27px'
+                                transition:fly="{{ y: 10, duration: 200 }}"
+                            >
+                                {graph.country}
+                            </text>
+                            {/if}
                         {/if}
                         <!-- country path -->
                         <path d={graph.path}></path>
@@ -431,7 +447,19 @@
         fill: #D18B36;
         font-weight: bold;
     }
+    /*here we modify the label spacing for mobile*/
+    @media(max-width: 768px){
+        .level-2{
+            transform:translateY(17px);
 
+        }
+        .country.open-economy-avg text{
+            transform:translateY(-20px);
+        }
+        .country.italy text{
+            transform: none;
+        }
+    }
 </style>
 
 
