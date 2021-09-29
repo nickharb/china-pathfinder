@@ -111,7 +111,8 @@
                     let distance = i<5 ? (xScale(areaData[i+1]['comps'][n]) - xScale(m)) : 0;
                     let points = i<5 ? ([
                         [0 , 0],
-                        [distance, textRect.bottom - textRect.top + $margin*2]
+                        [distance, textRect.bottom - textRect.top + $margin + 12]
+                        // [distance, textRect.bottom - textRect.top + $margin*2]
                     ]) : ([[0,0],[0,0]]);
                     
                     let path = utils.cubicBezier(points[0], points[1], 10);

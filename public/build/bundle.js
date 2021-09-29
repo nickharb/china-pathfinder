@@ -46635,7 +46635,7 @@ var app = (function () {
     }
 
     // (37:25) 
-    function create_if_block_1$2(ctx) {
+    function create_if_block_1$3(ctx) {
     	let svg;
     	let path;
 
@@ -46664,7 +46664,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$2.name,
+    		id: create_if_block_1$3.name,
     		type: "if",
     		source: "(37:25) ",
     		ctx
@@ -46865,7 +46865,7 @@ var app = (function () {
 
     	function select_block_type(ctx, dirty) {
     		if (/*type*/ ctx[0] == "logo") return create_if_block$8;
-    		if (/*type*/ ctx[0] == "info") return create_if_block_1$2;
+    		if (/*type*/ ctx[0] == "info") return create_if_block_1$3;
     		if (/*type*/ ctx[0] == "share") return create_if_block_2$1;
     		if (/*type*/ ctx[0] == "download") return create_if_block_3$1;
     		if (/*type*/ ctx[0] == "chevron-right") return create_if_block_4$1;
@@ -46987,7 +46987,7 @@ var app = (function () {
     const file$b = "src/components/Tooltip.svelte";
 
     // (30:80) 
-    function create_if_block_1$1(ctx) {
+    function create_if_block_1$2(ctx) {
     	let div;
     	let icon;
     	let t0;
@@ -47086,7 +47086,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1$1.name,
+    		id: create_if_block_1$2.name,
     		type: "if",
     		source: "(30:80) ",
     		ctx
@@ -47214,7 +47214,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$7, create_if_block_1$1];
+    	const if_block_creators = [create_if_block$7, create_if_block_1$2];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -47768,7 +47768,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (146:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
+    // (148:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
     function create_default_slot(ctx) {
     	let t_value = /*area*/ ctx[27].additional + "";
     	let t;
@@ -47792,14 +47792,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(146:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
+    		source: "(148:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (134:4) {#each copyData as area, i}
+    // (136:4) {#each copyData as area, i}
     function create_each_block_4(ctx) {
     	let div2;
     	let header;
@@ -47873,21 +47873,21 @@ var app = (function () {
     			t6 = text$1("Explore data\n                    ");
     			create_component(icon1.$$.fragment);
     			t7 = space();
-    			attr_dev(h2, "class", "svelte-1m67irs");
-    			add_location(h2, file$9, 136, 16, 4411);
-    			attr_dev(div0, "class", "info svelte-1m67irs");
+    			attr_dev(h2, "class", "svelte-qzw21w");
+    			add_location(h2, file$9, 138, 16, 4417);
+    			attr_dev(div0, "class", "info svelte-qzw21w");
     			attr_dev(div0, "data-area", div0_data_area_value = /*area*/ ctx[27].name);
-    			add_location(div0, file$9, 139, 16, 4557);
-    			attr_dev(header, "class", "svelte-1m67irs");
-    			add_location(header, file$9, 135, 12, 4386);
-    			attr_dev(p, "class", "svelte-1m67irs");
-    			add_location(p, file$9, 150, 16, 5028);
-    			attr_dev(button, "class", "svelte-1m67irs");
-    			add_location(button, file$9, 151, 16, 5069);
-    			attr_dev(div1, "class", "description svelte-1m67irs");
-    			add_location(div1, file$9, 149, 12, 4986);
-    			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[27].label.toLowerCase()) + " svelte-1m67irs"));
-    			add_location(div2, file$9, 134, 8, 4327);
+    			add_location(div0, file$9, 141, 16, 4563);
+    			attr_dev(header, "class", "svelte-qzw21w");
+    			add_location(header, file$9, 137, 12, 4392);
+    			attr_dev(p, "class", "svelte-qzw21w");
+    			add_location(p, file$9, 152, 16, 5034);
+    			attr_dev(button, "class", "svelte-qzw21w");
+    			add_location(button, file$9, 153, 16, 5075);
+    			attr_dev(div1, "class", "description svelte-qzw21w");
+    			add_location(div1, file$9, 151, 12, 4992);
+    			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[27].label.toLowerCase()) + " svelte-qzw21w"));
+    			add_location(div2, file$9, 136, 8, 4333);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -47940,7 +47940,7 @@ var app = (function () {
     			infotooltip.$set(infotooltip_changes);
     			if ((!current || dirty[0] & /*copyData*/ 2) && t4_value !== (t4_value = /*area*/ ctx[27].definition + "")) set_data_dev(t4, t4_value);
 
-    			if (!current || dirty[0] & /*copyData*/ 2 && div2_class_value !== (div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[27].label.toLowerCase()) + " svelte-1m67irs"))) {
+    			if (!current || dirty[0] & /*copyData*/ 2 && div2_class_value !== (div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[27].label.toLowerCase()) + " svelte-qzw21w"))) {
     				attr_dev(div2, "class", div2_class_value);
     			}
     		},
@@ -47971,15 +47971,95 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(134:4) {#each copyData as area, i}",
+    		source: "(136:4) {#each copyData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (190:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
+    // (192:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
     function create_if_block$5(ctx) {
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block_1$1, create_else_block$2];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg" || /*graph*/ ctx[30].id == "china-2010" || /*graph*/ ctx[30].id == "germany" || /*graph*/ ctx[30].id == "united-kingdom") return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty$3();
+    		},
+    		m: function mount(target, anchor) {
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				} else {
+    					if_block.p(ctx, dirty);
+    				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block$5.name,
+    		type: "if",
+    		source: "(192:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (205:28) {:else}
+    function create_else_block$2(ctx) {
     	let text_1;
     	let t_value = /*graph*/ ctx[30].country + "";
     	let t;
@@ -47990,9 +48070,9 @@ var app = (function () {
     		c: function create() {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
-    			attr_dev(text_1, "class", "label svelte-1m67irs");
-    			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$9, 190, 28, 6787);
+    			attr_dev(text_1, "class", "label level-2 svelte-qzw21w");
+    			attr_dev(text_1, "y", "-27px");
+    			add_location(text_1, file$9, 205, 28, 7422);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text_1, anchor);
@@ -48025,16 +48105,72 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block$5.name,
-    		type: "if",
-    		source: "(190:24) {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}",
+    		id: create_else_block$2.name,
+    		type: "else",
+    		source: "(205:28) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (178:16) {#each area.graphData as graph}
+    // (194:28) {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010'  || graph.id == 'germany' ||  graph.id == 'united-kingdom'}
+    function create_if_block_1$1(ctx) {
+    	let text_1;
+    	let t_value = /*graph*/ ctx[30].country + "";
+    	let t;
+    	let text_1_transition;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(text_1, "class", "label svelte-qzw21w");
+    			attr_dev(text_1, "y", "-10px");
+    			add_location(text_1, file$9, 194, 28, 7036);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, text_1, anchor);
+    			append_dev(text_1, t);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if ((!current || dirty[0] & /*areaData*/ 1) && t_value !== (t_value = /*graph*/ ctx[30].country + "")) set_data_dev(t, t_value);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, true);
+    				text_1_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, false);
+    			text_1_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(text_1);
+    			if (detaching && text_1_transition) text_1_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1$1.name,
+    		type: "if",
+    		source: "(194:28) {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010'  || graph.id == 'germany' ||  graph.id == 'united-kingdom'}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (180:16) {#each area.graphData as graph}
     function create_each_block_3(ctx) {
     	let g;
     	let path;
@@ -48058,12 +48194,12 @@ var app = (function () {
     			path = svg_element("path");
     			circle = svg_element("circle");
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[30].path);
-    			attr_dev(path, "class", "svelte-1m67irs");
-    			add_location(path, file$9, 199, 24, 7171);
+    			attr_dev(path, "class", "svelte-qzw21w");
+    			add_location(path, file$9, 215, 24, 7848);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[30].r);
-    			attr_dev(circle, "class", "country-circle svelte-1m67irs");
-    			add_location(circle, file$9, 201, 24, 7272);
-    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[30].id + " svelte-1m67irs");
+    			attr_dev(circle, "class", "country-circle svelte-qzw21w");
+    			add_location(circle, file$9, 217, 24, 7949);
+    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[30].id + " svelte-qzw21w");
     			attr_dev(g, "data-x", g_data_x_value = /*graph*/ ctx[30].x);
     			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[30].id);
     			attr_dev(g, "data-area", g_data_area_value = /*area*/ ctx[27].area);
@@ -48071,7 +48207,7 @@ var app = (function () {
     			toggle_class(g, "hovered", /*graph*/ ctx[30].id == /*$hoveredCountry*/ ctx[4] && /*area*/ ctx[27].area == /*$hoveredArea*/ ctx[5]);
     			toggle_class(g, "selected", /*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[6] || /*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg");
     			toggle_class(g, "header", /*i*/ ctx[29] == 0);
-    			add_location(g, file$9, 179, 20, 6030);
+    			add_location(g, file$9, 181, 20, 6036);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48122,7 +48258,7 @@ var app = (function () {
     				attr_dev(circle, "r", circle_r_value);
     			}
 
-    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[30].id + " svelte-1m67irs")) {
+    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[30].id + " svelte-qzw21w")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -48175,14 +48311,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(178:16) {#each area.graphData as graph}",
+    		source: "(180:16) {#each area.graphData as graph}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:8) {#each areaData as area, i}
+    // (171:8) {#each areaData as area, i}
     function create_each_block_2$1(ctx) {
     	let g;
     	let text0;
@@ -48224,20 +48360,22 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$9, 172, 16, 5688);
+    			attr_dev(text0, "class", "svelte-qzw21w");
+    			add_location(text0, file$9, 174, 16, 5694);
     			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[8] - /*$margin*/ ctx[7]);
     			attr_dev(text1, "y", "-5");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$9, 173, 16, 5785);
-    			attr_dev(line, "class", "gridline svelte-1m67irs");
+    			attr_dev(text1, "class", "svelte-qzw21w");
+    			add_location(text1, file$9, 175, 16, 5791);
+    			attr_dev(line, "class", "gridline svelte-qzw21w");
     			attr_dev(line, "x2", /*$width*/ ctx[8]);
-    			add_location(line, file$9, 175, 16, 5917);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[27].area) + " svelte-1m67irs"));
+    			add_location(line, file$9, 177, 16, 5923);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[27].area) + " svelte-qzw21w"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[7] + "," + /*area*/ ctx[27].offsetY + ")");
-    			add_location(g, file$9, 170, 12, 5599);
+    			add_location(g, file$9, 172, 12, 5605);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48290,7 +48428,7 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[27].area) + " svelte-1m67irs"))) {
+    			if (!current || dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[27].area) + " svelte-qzw21w"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
@@ -48326,14 +48464,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(169:8) {#each areaData as area, i}",
+    		source: "(171:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (220:8) {#each area.graphData as graph, i}
+    // (236:8) {#each area.graphData as graph, i}
     function create_each_block_1$2(ctx) {
     	let tooltip;
     	let current;
@@ -48380,14 +48518,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(220:8) {#each area.graphData as graph, i}",
+    		source: "(236:8) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (219:4) {#each areaData as area, i}
+    // (235:4) {#each areaData as area, i}
     function create_each_block$4(ctx) {
     	let each_1_anchor;
     	let current;
@@ -48476,7 +48614,7 @@ var app = (function () {
     		block,
     		id: create_each_block$4.name,
     		type: "each",
-    		source: "(219:4) {#each areaData as area, i}",
+    		source: "(235:4) {#each areaData as area, i}",
     		ctx
     	});
 
@@ -48553,22 +48691,22 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(div0, "class", "text-wrapper svelte-1m67irs");
+    			attr_dev(div0, "class", "text-wrapper svelte-qzw21w");
     			add_render_callback(() => /*div0_elementresize_handler*/ ctx[19].call(div0));
-    			add_location(div0, file$9, 132, 0, 4231);
+    			add_location(div0, file$9, 134, 0, 4237);
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[8]);
     			attr_dev(rect, "height", /*$height*/ ctx[9]);
-    			add_location(rect, file$9, 166, 8, 5491);
+    			add_location(rect, file$9, 168, 8, 5497);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[8] + " " + /*$height*/ ctx[9]);
     			attr_dev(svg, "width", /*$width*/ ctx[8]);
     			attr_dev(svg, "height", /*$height*/ ctx[9]);
-    			attr_dev(svg, "class", "svelte-1m67irs");
-    			add_location(svg, file$9, 162, 4, 5395);
-    			attr_dev(div1, "class", "vis-wrapper svelte-1m67irs");
+    			attr_dev(svg, "class", "svelte-qzw21w");
+    			add_location(svg, file$9, 164, 4, 5401);
+    			attr_dev(div1, "class", "vis-wrapper svelte-qzw21w");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[20].call(div1));
-    			add_location(div1, file$9, 161, 0, 5339);
+    			add_location(div1, file$9, 163, 0, 5345);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

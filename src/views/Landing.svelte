@@ -94,7 +94,7 @@
     @media (min-width: 768px) {
         .intro {
             margin: 0 auto;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             display: flex;
             justify-content: space-between;
         }
