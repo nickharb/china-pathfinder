@@ -148,7 +148,8 @@
 
 
 
-<button class='back' on:click|self={()=> switchView('main')}>Back to Dashboard</button>
+<!-- <button class='back' on:click|self={()=> switchView('main')}>Back to Dashboard</button> -->
+<button class='back'><a href="https://pathfinder.sevenmilemedia.com/">Back to Dashboard</a></button>
 
 <div class='area-summary' class:expanded={expanded == true}>
 
@@ -755,6 +756,12 @@
         display: block;
         margin: 0;
         margin-bottom: 20px;
+    }
+
+    button.back a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
     }
 
 

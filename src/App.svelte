@@ -8,7 +8,7 @@
     import {view} from './stores/view';
 
     // $view = 'main'; // defines primary view - set this for production (do not delete)
-    // $view = 'indicators';
+    $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
     // let showNews = true; // set to true if you want to show

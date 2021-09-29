@@ -15,6 +15,24 @@
     let descriptionWidth = 380;
     let offsetLeft = [];
 
+    // const url = {
+    //     'growth': 'http://localhost:10003/portfolio-investment-openness',
+    //     'competition': 'http://localhost:10003/portfolio-investment-openness',
+    //     'innovation': 'http://localhost:10003/portfolio-investment-openness',
+    //     'trade': 'http://localhost:10003/portfolio-investment-openness',
+    //     'fdi': 'http://localhost:10003/portfolio-investment-openness',
+    //     'portfolio': 'http://localhost:10003/portfolio-investment-openness'
+    // }
+
+    const url = {
+        'growth': 'https://pathfinder.sevenmilemedia.com/financial-system-development/',
+        'competition': 'https://pathfinder.sevenmilemedia.com/market-competition/',
+        'innovation': 'https://pathfinder.sevenmilemedia.com/modern-innovation-system/',
+        'trade': 'https://pathfinder.sevenmilemedia.com/trade-openness/',
+        'fdi': 'https://pathfinder.sevenmilemedia.com/direct-investment-openness/',
+        'portfolio': 'https://pathfinder.sevenmilemedia.com/portfolio-investment-openness/',
+    }
+
     function switchView(targetView, area) {
         // scroll to top
         document.body.scrollTop = 0; // For Safari
@@ -137,12 +155,13 @@
     {#each copyData as area, i}
         <div class={'area '+area.label.toLowerCase()}>
             <header>
-                <!-- <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())}>
+                <!-- <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} bind:clientWidth={offsetLeft[i]}>
                     {area.name}
                 </h2> -->
-                <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} bind:clientWidth={offsetLeft[i]}>
-                    {area.name}
+                <h2 bind:clientWidth={offsetLeft[i]}>
+                    <a href="{url[area.label.toLowerCase()]}">{area.name}</a>
                 </h2>
+                
                 <div
                     class="info"
                     data-area='{area.name}'
@@ -155,9 +174,15 @@
             </header>
             <div class='description'>
                 <p>{area.definition}</p>
-                <button on:click|self={()=> switchView('indicators', area.label.toLowerCase())}>
+                <!-- <button on:click|self={()=> switchView('indicators', area.label.toLowerCase())}>
                     Explore data
                     <Icon type='chevron-right' />
+                </button> -->
+                <button>
+                    <a href="{url[area.label.toLowerCase()]}">
+                        Explore data
+                        <Icon type='chevron-right' />
+                    </a>
                 </button>
             </div>
         </div>
@@ -281,6 +306,23 @@
         flex: 0 0 auto;
     }
 
+    .area a {
+        text-decoration: none;
+        transition: color 200ms;
+    }
+
+    .area h2 a {
+        color: #122431;
+    }
+
+    .area h2 a:hover {
+        color: #234462;
+    }
+
+    .area button a {
+        color: #fff;
+    }
+
     .description {
         margin-bottom: 0;
     }
@@ -299,10 +341,12 @@
 
     .description p {
         display: none;
-        margin-bottom: 15px;
+        /*margin-bottom: 15px;*/
         font-size: 14px;
         line-height: 1.5;
         padding: 0;
+        margin-top: 5px;
+        margin-bottom: 10px;
     }
 
     @media (min-width: 768px) {
@@ -312,7 +356,7 @@
     }
 
     .description button {
-        height: 23px;
+        height: 24px;
         font-size: 12px;
         /*margin-bottom: 20px;*/
     }

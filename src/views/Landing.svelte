@@ -58,7 +58,8 @@
 
 <section class='intro'>
     <h1>Where Does China’s Economy Stand?</h1>
-    <p>China is a global economic giant, but we know surprisingly little about how its system actually works. Policymakers and financial experts disagree on basic facts about what is happening inside the country. To create a shared language for understanding the Chinese economy, the Pathfinder project scores China and other leading economies across six indicators and presents an objective picture of China relative to the world’s largest open market countries.</p>
+    <p>China is a global economic powerhouse, but its system remains opaque. Policymakers and financial experts disagree on basic facts about what is happening inside the country. To create a shared language for understanding the Chinese economy, the China Pathfinder project scores China and other open market economies across six key areas and presents an objective picture of China relative to the world.
+</p>
 </section>
         
 <!-- <section class='latest'>
