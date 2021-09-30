@@ -21,6 +21,13 @@
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData;
     let expanded = false;
 
+    // $areaInView = 'growth';
+    // $areaInView = 'competition';
+    // $areaInView = 'innovation';
+    // $areaInView = 'trade';
+    // $areaInView = 'fdi';
+    $areaInView = 'portfolio';
+
     // set area visual width
     let areaWidth = 750;
     let areaMargin = 20;
@@ -82,7 +89,7 @@
     }
 
     $: if (areaData) {
-        const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, areaWidth-areaMargin*3]);
+        const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, $width-areaMargin*3]);
 
         areaData.comps.forEach((d,i)=>{
             graphData.push({
@@ -159,8 +166,8 @@
             <p class='intro'>{currentArea.definition}</p>
         </div>
 
-        <!-- <div class='area-vis' bind:clientWidth={$width}> -->
-        <div class='area-vis'>
+        <div class='area-vis' bind:clientWidth={$width}>
+        <!-- <div class='area-vis'> -->
             <svg viewBox="0 0 {$width} {$height}"
                 width={$width}
                 height={$height+30}
@@ -169,7 +176,7 @@
                     <g class="{areaData.area}" transform='translate(0,{$margin})'>
 
                         <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
-                        <text x='{areaWidth}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
+                        <text x='{$width}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
 
                         <line class='gridline' x1=0 x2={$width} transform='translate(0,5)'></line>
 
@@ -531,6 +538,7 @@
         background-color: #EFF4F8;
         color: #234462;
         padding: 0 30px 0px 0;
+        margin-top: 0;
     }
 
     #pathfinder-dashboard-container button.expand {
@@ -538,6 +546,7 @@
         background-color: #EFF4F8;
         color: #234462;
         padding: 0 30px 0px 0;
+        margin-top: 0;
     }
 
     .caret-down-dark {
