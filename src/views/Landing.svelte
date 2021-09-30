@@ -4,7 +4,8 @@
     import html2canvas from 'html2canvas';
     import { onMount } from "svelte";
     import loadData from "../data/load-data.js";
-    import copyData from "../data/copy";
+    // import copyData from "../data/copy";
+    import loadCopyData from "../data/load-copy-data.js";
     import LandingVisual from "../components/LandingVisual.svelte";
     // import ForceLayoutTest from "../components/ForceLayoutTest.svelte";
     import Quarterly from './Quarterly.svelte';
@@ -12,7 +13,7 @@
     import Icon from '../components/Icon.svelte';
     import SocialButtons from '../components/SocialButtons.svelte';
     export let showPrevious = false;
-    let data = [], countryNames = [], areaData = [];
+    let data = [], countryNames = [], areaData = [], copyData = [];
 
     import { csv } from 'd3';
     const dataPath = '../data/composite-score.csv';
@@ -22,6 +23,13 @@
         countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
         areaData = data['areas'];
     });
+
+    async function getCopyData() {
+        return await loadCopyData()
+            .then((data) => {
+                return data;
+            });
+    }
 
     function downloadImage(e) {
         let chart = document.querySelector('.vis-container');
@@ -81,7 +89,11 @@
 
 <div class='vis-container'>
 
-    <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
+    {#await getCopyData()}
+        <p>Loading data...</p>
+    {:then data}
+        <LandingVisual areaData={areaData} copyData={data.filter(d=>(d.category == 'main'))}/>
+    {/await}
 
 </div>
 

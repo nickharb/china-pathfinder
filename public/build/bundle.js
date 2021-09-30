@@ -11,6 +11,9 @@ var app = (function () {
             tar[k] = src[k];
         return tar;
     }
+    function is_promise(value) {
+        return value && typeof value === 'object' && typeof value.then === 'function';
+    }
     function add_location(element, file, line, column, char) {
         element.__svelte_meta = {
             loc: { file, line, column, char }
@@ -549,6 +552,88 @@ var app = (function () {
                 running_program = pending_program = null;
             }
         };
+    }
+
+    function handle_promise(promise, info) {
+        const token = info.token = {};
+        function update(type, index, key, value) {
+            if (info.token !== token)
+                return;
+            info.resolved = value;
+            let child_ctx = info.ctx;
+            if (key !== undefined) {
+                child_ctx = child_ctx.slice();
+                child_ctx[key] = value;
+            }
+            const block = type && (info.current = type)(child_ctx);
+            let needs_flush = false;
+            if (info.block) {
+                if (info.blocks) {
+                    info.blocks.forEach((block, i) => {
+                        if (i !== index && block) {
+                            group_outros();
+                            transition_out(block, 1, 1, () => {
+                                if (info.blocks[i] === block) {
+                                    info.blocks[i] = null;
+                                }
+                            });
+                            check_outros();
+                        }
+                    });
+                }
+                else {
+                    info.block.d(1);
+                }
+                block.c();
+                transition_in(block, 1);
+                block.m(info.mount(), info.anchor);
+                needs_flush = true;
+            }
+            info.block = block;
+            if (info.blocks)
+                info.blocks[index] = block;
+            if (needs_flush) {
+                flush();
+            }
+        }
+        if (is_promise(promise)) {
+            const current_component = get_current_component();
+            promise.then(value => {
+                set_current_component(current_component);
+                update(info.then, 1, info.value, value);
+                set_current_component(null);
+            }, error => {
+                set_current_component(current_component);
+                update(info.catch, 2, info.error, error);
+                set_current_component(null);
+                if (!info.hasCatch) {
+                    throw error;
+                }
+            });
+            // if we previously had a then/catch block, destroy it
+            if (info.current !== info.pending) {
+                update(info.pending, 0);
+                return true;
+            }
+        }
+        else {
+            if (info.current !== info.then) {
+                update(info.then, 1, info.value, promise);
+                return true;
+            }
+            info.resolved = promise;
+        }
+    }
+    function update_await_block_branch(info, ctx, dirty) {
+        const child_ctx = ctx.slice();
+        const { resolved } = info;
+        if (info.current === info.then) {
+            child_ctx[info.value] = resolved;
+        }
+        if (info.current === info.catch) {
+            child_ctx[info.error] = resolved;
+        }
+        info.block.p(child_ctx, dirty);
     }
 
     const globals = (typeof window !== 'undefined'
@@ -38724,7 +38809,7 @@ var app = (function () {
     }
 
     function node_copy() {
-      return hierarchy(this).eachBefore(copyData$1);
+      return hierarchy(this).eachBefore(copyData);
     }
 
     function objectChildren(d) {
@@ -38735,7 +38820,7 @@ var app = (function () {
       return Array.isArray(d) ? d[1] : null;
     }
 
-    function copyData$1(node) {
+    function copyData(node) {
       if (node.data.value !== undefined) node.value = node.data.value;
       node.data = node.data.data;
     }
@@ -45904,13 +45989,13 @@ var app = (function () {
         ZoomTransform: Transform
     });
 
-    const dataPath$2 = '../data/composite-score.csv';
+    const dataPath$3 = '../data/composite-score.csv';
     // const parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
     // const parseDate = timeParse('%m/%d/%Y');
 
     const loadData = async () => {
 
-        const data = await csv(dataPath$2); // d3 load csv function
+        const data = await csv(dataPath$3); // d3 load csv function
 
         // create an array of objects for the six areas
         // ... China appears as the last country
@@ -45935,44 +46020,29 @@ var app = (function () {
         return({countries: data, areas: output});
     };
 
-    var copyData = [{"category":"main","label":"growth","name":"Financial System Development","title1":"","title2":"","definition":"A system that efficiently prices credit, allocates capital based on market signals, and provides foreign firms with access to financial services.","additional":"Open market economies rely on modern financial systems for the efficient pricing of risk and allocation of capital. Key pillars of modern financial systems are market-driven credit pricing, availability of a broad range of financial instruments, the absence of distortive administrative controls on credit price and quantity, and access for foreign firms to financial services and foreign exchange markets. ","summary":"China’s financial system is dominated by state-related banks and political considerations. This promoted faster growth in the past but imposes a heavy toll on efficiency, structural adjustment and market allocation of capital as the nation reaches higher income levels. Reliance on this system for growth and stability stymies reforms, capital market deepening, non-bank financial institution growth, and openness to foreign competition. Market-determined interest rates – fundamental to market economies – are missing, causing the system – and risks associated with it -- to balloon beyond other economies. This is increasingly seen abroad as distorting fair trade and competition, thus justifying anti-subsidies policies toward China. By trying too hard to prevent financial stress, the state has created it: the consequences of transitioning from the status quo are increasingly unpalatable to leaders.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"competition","name":"Market Competition","title1":"","title2":"","definition":"An environment where firms face low entry/exit barriers, market power abuses are disciplined, and distortive interventions are minimized.","additional":"Market economies rely on a pro-competitive environment where firms face low entry/exit barriers, market power abuses are disciplined, consumer interests are prioritized, government participation in the marketplace is limited and justified by clear pro-competitive principles. ","summary":"China transitioned since 1978 from a planned economy to a hybrid model that combines state and market forces. Beijing has pledged repeatedly to make further progress toward cementing the “decisive role” of markets in directing the allocation of economic resources over the past decades, but that convergence with economic liberalism has slowed. Competition is robust in some areas while others remain dominated by government direction and influence, and state reach into commerce has generally expanded in recent years. Subsidies, political directed lending rates and input costs, discriminatory regulation and other factors distort market outcomes and make it difficult to situate the boundary between state and market.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"innovation","name":"Modern Innovation System","title1":"","title2":"","definition":"A market-led system that fosters productivity through private-public cooperation and international collaboration.","additional":"Market economies rely on innovation to drive competition, increase productivity and create wealth. Innovation system designs vary across countries, but market economies generally employ systems that rely on government funding for basic research but emphasize private sector investment; encourage the commercial application of knowledge through the strong protection of intellectual property rights; and encourage collaboration with and participation of foreign firms and researchers.","summary":"While China has a storied history of invention and produces renowned innovators, its innovation system has diverged from advanced market economies in important ways throughout the modern era. Even as China is reaching middle income status, its innovation system continues to feature (1) compulsive technology policies; (2) preponderance of state intervention and industrial policies across a wide range of technologies; (3) strong biases in support of domestic firms and researchers; and (4) lax credit terms at volume in support of innovation. Under President Xi’s leadership, China has doubled down on these policies in recent years. This has led to global concerns about Chinese innovation mercantilism and possible negative impacts on global innovative capacity in the long run.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"trade","name":"Trade Openness","title1":"","title2":"","definition":"Goods and services trade free from discriminatory measures and restrictions.","additional":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","summary":"Free trade is a key feature of open market economies to facilitate specialization based on comparative advantage. We define trade openness as cross-border flow of market-priced goods and services free from discriminatory, excessively burdensome, or restrictive measures.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"fdi","name":"Direct Investment Openness","title1":"","title2":"","definition":"Fair access for foreign firms to domestic markets alongside minimal restrictions on local companies to invest abroad.","additional":"Foreign Direct Investment (FDI) openness refers to fair, non-discriminatory access for foreign firms to domestic markets and freedom for domestic companies to invest abroad without restrictions or political mandates. FDI openness is a key feature of open market economies to encourage competitive markets and facilitate the global division of labor based on comparative advantages.","summary":"Beijing has gradually opened to inbound FDI by moving from an approval-based system to a negative list-based system and reducing restricted sectors for foreign investment, but foreign and domestic investments are not treated equally in many sectors of the economy. Chinese companies continue to face major restrictions and political interventions for overseas investments, and those restrictions have increased since 2016.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"main","label":"portfolio","name":"Portfolio Investment Openness","title1":"","title2":"","definition":"Limited controls on cross-border investment into equities, debt and other financial instruments.","additional":"Portfolio investment openness refers to limited controls on two-way cross-border investment into equities, debt and other financial instruments. It is a key ingredient for financial market efficiency and market-driven exchange rate adjustments in open market economies.","summary":"China has historically tightly controlled portfolio investment flows to maintain control over its exchange rate and domestic interest rates. In the past three years Beijing has accelerated reforms to gradually reduce restrictions on portfolio flows. It scrapped its long-standing inbound quota system (QFII) and established “connect” schemes for foreigners to access stock and bond markets within pre-defined quotas. It has also made regulatory changes to facilitate the inclusion of onshore securities in major global indices. However, outbound flows remain tightly restricted and state-driven, and foreign investors lack sufficient hedging tools in onshore markets.","context":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet."},
-    {"category":"fdi","label":"1","name":"Inward FDI Stock as a Share of GDP (%)","title1":"Inward FDI","title2":"Stock as a share of GDP (%)","definition":"This measure is the value of the direct investments made by foreign investors into a country's economy. This indicator weighs the presence of foreign direct investment as a share of the domestic economy.","additional":"","summary":"","context":""},
-    {"category":"fdi","label":"2","name":"Outward FDI Stock to GDP Ratio (%)","title1":"Outward FDI","title2":"Stock to GDP Ratio (%)","definition":"This measure is the value of the direct investment made by a country's residents into foreign economies. This indicator shows the ability for domestic investors to invest in foreign economies.","additional":"","summary":"","context":""},
-    {"category":"fdi","label":"3","name":"Capital Controls: FDI Inflow Restrictions, 2020","title1":"Inflow Capital","title2":"FDI Inflow Restrictions, 2020","definition":"This index gauges the constraints a country’s laws place on FDI. The index measures foreign equity restrictions, discriminatory investment screening or approval mechanisms, restrictions on key foreign personnel, and operational restrictions for businesses","additional":"","summary":"","context":""},
-    {"category":"fdi","label":"4","name":"Capital Controls: FDI Outflow Restrictions, 2020","title1":"Outflow Capital","title2":"FDI Outflow Restrictions, 2020","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset and adapted from the IMF Annual Report on Exchange Arrangements and Exchange Restrictions, measures regulatory restrictions on inbound and outbound FDI flows on a scale of 0 (low) to 1 (high).","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"1","name":"Cross-Border Debt Assets and Liabilities as a Share of Gross Domestic Product, 2020 ","title1":"Debt","title2":"Assets and Liabilities Share of Gross Domestic Product, 2020","definition":"Cross-border debt assets and liabilities measure the value of domestic debt owned by foreigners and foreign debt owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"2","name":"Cross-Border Equity Assets and Liabilities as a Share  of GDP, 2020 ","title1":"Equity","title2":"Assets and Liabilities as a Share  of GDP, 2020","definition":"Cross-border equity assets and liabilities measure the value of domestic equity owned by foreigners and foreign equity owned by residents. It is represented as a ratio to GDP.","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"3","name":"Bond Inflows Restrictiveness","title1":"Bond Inflows","title2":"Restrictiveness","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in bond markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"4","name":"Bond Outflow Restrictiveness, FRKSU derived from AREAER","title1":"Bond Outflow","title2":"Restrictiveness, FRKSU derived from AREAER","definition":"This index, from the Fernandez-Klein-Rebucci-Schindler-Uribe capital controls dataset, measures policy restrictiveness on capital flows in equity markets on a scale from 0 (open) to 1 (closed).","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"5","name":"Equity Inflow Restrictiveness, FRKSU derived from AREAER","title1":"Equity Inflow","title2":"Restrictiveness, FRKSU derived from AREAER","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"portfolio","label":"6","name":"Equity Outflow Restrictiveness, FRKSU derived from AREAER","title1":"Equity Outflow","title2":"Restrictiveness, FRKSU derived from AREAER","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"1","name":"Country-level two-way goods trade as a share of global two-way goods trade","title1":"Goods Trade","title2":"As a share of global two-way goods trade","definition":"This measure shows the total value of imports and exports of goods trade with share of global trade as a denominator. It reflects the size of goods trade in the country's economy.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"2","name":"Country Two-Way Services Trade as a Share of Global Two-way Services Trade","title1":"Services Trade","title2":"As a Share of Global Two-way Services Trade","definition":"This measure shows the total value of imports and exports of a country’s services trade divided by the share of global trade. It reflects the size of services trade in the country's economy.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"3","name":"Tariff Rate, Most Favored Nation, Simple Mean, All Products (%)","title1":"Tariff Rate","title2":"Most Favored Nation, Simple Mean, All Products (%)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"4","name":"Services Trade Restrictiveness Index","title1":"Services Trade","title2":"Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"trade","label":"5","name":"Digital Services Trade Restrictiveness Index","title1":"Digital Services","title2":"Trade Restrictiveness Index","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"1","name":"Difference between Annual interest rate and Nominal GDP Growth rate ","title1":"Interest Rate","title2":"vs. Nominal GDP Growth Rate","definition":"This indicator subtracts annual nominal GDP growth from the average annual interest rate. The two should be relatively close in value, so significant negative results are a sign of subsidies to debtors.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"2","name":"Stock Market Capitalization as a Share of GDP, % ","title1":"Stock Market","title2":"Capitalization as a Share of GDP, %","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"3","name":"2020 Outstanding Debt Securities as a Share of GDP, %","title1":"Debt Securities","title2":"As a Share of GDP, %, 2020","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"4","name":"Incremental Capital Output Ratio","title1":"Incremental Capital","title2":"Output Ratio","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"5","name":"Banking assets controlled by the state, China vs Main Countries  ","title1":"Banking Assets","title2":"Controlled by the State","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"6","name":"Foreign Competition: Banking System's Assets in Foreign-Controlled Banks","title1":"Foreign Competition","title2":"Banking System's Assets in Foreign-Controlled Banks","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"growth","label":"7","name":"Financial Market Access","title1":"Lorem ipsum dolor sit amet, consectetur adipiscing elit","title2":"Lorem ipsum dolor sit amet, consectetur adipiscing elit","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"1","name":"Market Concentration - Herfindahl Hirschman Index","title1":"Market Concentration","title2":"Herfindahl Hirschman Index","definition":"The Herfindahl-Hirschman Index is a measure of market concentration and provides insight into market competition. It is measured on a scale of 0 (less concentration and thus highly competitive) to 1 (single firm dominance).","additional":"","summary":"","context":""},
-    {"category":"competition","label":"2","name":"Scope of SOEs Index (scale 0-6)","title1":"SOE Index","title2":"(Scale 0-6)","definition":"Total combined value of State-Owned Enterprises denoted in USD.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"3","name":"Rule of Law","title1":"Rule of Law","title2":"","definition":"Reflects perceptions of the extent to which agents have confidence in and abide by the rules of society, and in particular the quality of contract enforcement, property rights, the police, and the courts, as well as the likelihood of crime and violence.","additional":"","summary":"","context":""},
-    {"category":"competition","label":"4","name":"FDI Restrictiveness Index (Range from 0-1, where 0 is most restrictive and 1 is least restrictive)","title1":"FDI Restrictiveness","title2":"(Range from 0-1, where 0 is most restrictive and 1 is least restrictive)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"1","name":"R&D as share of domestic investment, %","title1":"R&D","title2":"As Share of Domestic Investment, %","definition":"This ratio measures gross domestic research and development expenditures as a percentage of GDP. R&D includes capital and current expenditures on basic research, applied research, and experimental development across business, government, academia, and non-profits.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"2","name":"Ratio of Business Enterprise Spending to Government Spending on Domestic R&D","title1":"Ratio of Business","title2":"Enterprise Spending to Government Spending on Domestic R&D","definition":"This indicator measures the ratio between business enterprise and government R&D spending","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"3","name":"Triadic Patent Families, controlled for GDP","title1":"Patent Families","title2":"Controlled for GDP","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"4","name":"Charges for the use of intellectual property, receipts (% of GDP)","title1":"IP Charges","title2":"Receipts (% of GDP)","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"5","name":"International IP Index ","title1":"IP Index","title2":"","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""},
-    {"category":"innovation","label":"6","name":"Percentage of gross expenditure on R&D financed by abroad i.e., with foreign financing","title1":"R&D Expenditure","title2":"With Foreign Financing, %","definition":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget commodo a amet, maecenas imperdiet nulla elit non. Fermentum nulla consectetur imperdiet malesuada nulla.","additional":"","summary":"","context":""}];
+    const dataPath$2 = '../data/copy.csv';
+
+    const loadCopyData = async () => {
+
+        const data = await csv(dataPath$2);
+
+        let output = [];
+        
+        data.forEach( (x) => { 
+            output.push({
+                "category": x.category,
+                "label": x.label,
+                "name": x.name,
+                "title1": x.title1,
+                "title2": x.title2,
+                "definition": x.definition,
+                "additional": x.additional,
+                "summary": x.summary
+            });
+        });
+
+        return output;
+    };
 
     function cubicOut(t) {
         const f = t - 1.0;
@@ -46376,7 +46446,7 @@ var app = (function () {
     }
 
     // (63:32) 
-    function create_if_block_7(ctx) {
+    function create_if_block_7$1(ctx) {
     	let svg;
     	let path;
 
@@ -46405,7 +46475,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_7.name,
+    		id: create_if_block_7$1.name,
     		type: "if",
     		source: "(63:32) ",
     		ctx
@@ -46864,7 +46934,7 @@ var app = (function () {
     		if (/*type*/ ctx[0] == "chevron-right") return create_if_block_4$1;
     		if (/*type*/ ctx[0] == "chevron-down") return create_if_block_5$1;
     		if (/*type*/ ctx[0] == "chevron-down-dark") return create_if_block_6$1;
-    		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_7;
+    		if (/*type*/ ctx[0] == "arrow-right") return create_if_block_7$1;
     		if (/*type*/ ctx[0] == "tooltip-caret-up") return create_if_block_8;
     		if (/*type*/ ctx[0] == "tooltip-caret-left") return create_if_block_9;
     		if (/*type*/ ctx[0] == "caret-down-light") return create_if_block_10;
@@ -49989,6 +50059,111 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$5 = "src/views/Landing.svelte";
 
+    // (1:0) <script>     // import * as d3 from 'd3';     import * as _ from 'lodash';     import html2canvas from 'html2canvas';     import { onMount }
+    function create_catch_block(ctx) {
+    	const block = {
+    		c: noop$4,
+    		m: noop$4,
+    		p: noop$4,
+    		i: noop$4,
+    		o: noop$4,
+    		d: noop$4
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_catch_block.name,
+    		type: "catch",
+    		source: "(1:0) <script>     // import * as d3 from 'd3';     import * as _ from 'lodash';     import html2canvas from 'html2canvas';     import { onMount }",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (94:4) {:then data}
+    function create_then_block(ctx) {
+    	let landingvisual;
+    	let current;
+
+    	landingvisual = new LandingVisual({
+    			props: {
+    				areaData: /*areaData*/ ctx[1],
+    				copyData: /*data*/ ctx[2].filter(func)
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(landingvisual.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(landingvisual, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const landingvisual_changes = {};
+    			if (dirty & /*areaData*/ 2) landingvisual_changes.areaData = /*areaData*/ ctx[1];
+    			landingvisual.$set(landingvisual_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(landingvisual.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(landingvisual.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(landingvisual, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block.name,
+    		type: "then",
+    		source: "(94:4) {:then data}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (92:26)          <p>Loading data...</p>     {:then data}
+    function create_pending_block(ctx) {
+    	let p;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			p.textContent = "Loading data...";
+    			add_location(p, file$5, 92, 8, 3164);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+    		p: noop$4,
+    		i: noop$4,
+    		o: noop$4,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_pending_block.name,
+    		type: "pending",
+    		source: "(92:26)          <p>Loading data...</p>     {:then data}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
     function create_fragment$5(ctx) {
     	let section;
     	let h1;
@@ -50011,7 +50186,6 @@ var app = (function () {
     	let socialbuttons;
     	let t11;
     	let div2;
-    	let landingvisual;
     	let current;
     	let mounted;
     	let dispose;
@@ -50028,13 +50202,19 @@ var app = (function () {
 
     	socialbuttons = new SocialButtons({ $$inline: true });
 
-    	landingvisual = new LandingVisual({
-    			props: {
-    				areaData: /*areaData*/ ctx[1],
-    				copyData: copyData.filter(func)
-    			},
-    			$$inline: true
-    		});
+    	let info = {
+    		ctx,
+    		current: null,
+    		token: null,
+    		hasCatch: false,
+    		pending: create_pending_block,
+    		then: create_then_block,
+    		catch: create_catch_block,
+    		value: 2,
+    		blocks: [,,,]
+    	};
+
+    	handle_promise(/*getCopyData*/ ctx[3](), info);
 
     	const block = {
     		c: function create() {
@@ -50063,26 +50243,26 @@ var app = (function () {
     			create_component(socialbuttons.$$.fragment);
     			t11 = space();
     			div2 = element("div");
-    			create_component(landingvisual.$$.fragment);
+    			info.block.c();
     			attr_dev(h1, "class", "svelte-10azjeh");
-    			add_location(h1, file$5, 59, 4, 1881);
+    			add_location(h1, file$5, 67, 4, 2110);
     			attr_dev(p, "class", "svelte-10azjeh");
-    			add_location(p, file$5, 60, 4, 1928);
+    			add_location(p, file$5, 68, 4, 2157);
     			attr_dev(section, "class", "intro svelte-10azjeh");
-    			add_location(section, file$5, 58, 0, 1853);
+    			add_location(section, file$5, 66, 0, 2082);
     			attr_dev(h2, "class", "svelte-10azjeh");
-    			add_location(h2, file$5, 70, 4, 2477);
+    			add_location(h2, file$5, 78, 4, 2706);
     			attr_dev(h3, "class", "svelte-10azjeh");
-    			add_location(h3, file$5, 71, 4, 2522);
-    			add_location(button, file$5, 75, 12, 2718);
+    			add_location(h3, file$5, 79, 4, 2751);
+    			add_location(button, file$5, 83, 12, 2947);
     			attr_dev(div0, "class", "social-sharing svelte-10azjeh");
-    			add_location(div0, file$5, 74, 8, 2677);
+    			add_location(div0, file$5, 82, 8, 2906);
     			attr_dev(div1, "class", "control-area svelte-10azjeh");
-    			add_location(div1, file$5, 72, 4, 2602);
+    			add_location(div1, file$5, 80, 4, 2831);
     			attr_dev(header, "class", "svelte-10azjeh");
-    			add_location(header, file$5, 69, 0, 2464);
+    			add_location(header, file$5, 77, 0, 2693);
     			attr_dev(div2, "class", "vis-container svelte-10azjeh");
-    			add_location(div2, file$5, 81, 0, 2871);
+    			add_location(div2, file$5, 89, 0, 3100);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -50109,35 +50289,41 @@ var app = (function () {
     			mount_component(socialbuttons, div0, null);
     			insert_dev(target, t11, anchor);
     			insert_dev(target, div2, anchor);
-    			mount_component(landingvisual, div2, null);
+    			info.block.m(div2, info.anchor = null);
+    			info.mount = () => div2;
+    			info.anchor = null;
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*downloadImage*/ ctx[2], false, false, false);
+    				dispose = listen_dev(button, "click", /*downloadImage*/ ctx[4], false, false, false);
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, [dirty]) {
+    		p: function update(new_ctx, [dirty]) {
+    			ctx = new_ctx;
     			const countryselect_changes = {};
     			if (dirty & /*countryNames*/ 1) countryselect_changes.countryNames = /*countryNames*/ ctx[0];
     			countryselect.$set(countryselect_changes);
-    			const landingvisual_changes = {};
-    			if (dirty & /*areaData*/ 2) landingvisual_changes.areaData = /*areaData*/ ctx[1];
-    			landingvisual.$set(landingvisual_changes);
+    			update_await_block_branch(info, ctx, dirty);
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(countryselect.$$.fragment, local);
     			transition_in(icon.$$.fragment, local);
     			transition_in(socialbuttons.$$.fragment, local);
-    			transition_in(landingvisual.$$.fragment, local);
+    			transition_in(info.block);
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(countryselect.$$.fragment, local);
     			transition_out(icon.$$.fragment, local);
     			transition_out(socialbuttons.$$.fragment, local);
-    			transition_out(landingvisual.$$.fragment, local);
+
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -50149,7 +50335,9 @@ var app = (function () {
     			destroy_component(socialbuttons);
     			if (detaching) detach_dev(t11);
     			if (detaching) detach_dev(div2);
-    			destroy_component(landingvisual);
+    			info.block.d();
+    			info.token = null;
+    			info = null;
     			mounted = false;
     			dispose();
     		}
@@ -50197,13 +50385,19 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Landing", slots, []);
     	let { showPrevious = false } = $$props;
-    	let data = [], countryNames = [], areaData = [];
+    	let data = [], countryNames = [], areaData = [], copyData = [];
 
     	onMount(async () => {
-    		data = await loadData();
+    		$$invalidate(2, data = await loadData());
     		$$invalidate(0, countryNames = data["countries"].filter(d => d.country !== "China" && d.country !== "Open Economy Avg"));
     		$$invalidate(1, areaData = data["areas"]);
     	});
+
+    	async function getCopyData() {
+    		return await loadCopyData().then(data => {
+    			return data;
+    		});
+    	}
 
     	function downloadImage(e) {
     		let chart = document.querySelector(".vis-container");
@@ -50221,7 +50415,7 @@ var app = (function () {
     	});
 
     	$$self.$$set = $$props => {
-    		if ("showPrevious" in $$props) $$invalidate(3, showPrevious = $$props.showPrevious);
+    		if ("showPrevious" in $$props) $$invalidate(5, showPrevious = $$props.showPrevious);
     	};
 
     	$$self.$capture_state = () => ({
@@ -50229,7 +50423,7 @@ var app = (function () {
     		html2canvas,
     		onMount,
     		loadData,
-    		copyData,
+    		loadCopyData,
     		LandingVisual,
     		Quarterly,
     		CountrySelect,
@@ -50239,8 +50433,10 @@ var app = (function () {
     		data,
     		countryNames,
     		areaData,
+    		copyData,
     		csv,
     		dataPath: dataPath$1,
+    		getCopyData,
     		downloadImage,
     		downloadImageClick: downloadImageClick$1,
     		clickLink: clickLink$1,
@@ -50248,23 +50444,24 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("showPrevious" in $$props) $$invalidate(3, showPrevious = $$props.showPrevious);
-    		if ("data" in $$props) data = $$props.data;
+    		if ("showPrevious" in $$props) $$invalidate(5, showPrevious = $$props.showPrevious);
+    		if ("data" in $$props) $$invalidate(2, data = $$props.data);
     		if ("countryNames" in $$props) $$invalidate(0, countryNames = $$props.countryNames);
     		if ("areaData" in $$props) $$invalidate(1, areaData = $$props.areaData);
+    		if ("copyData" in $$props) copyData = $$props.copyData;
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [countryNames, areaData, downloadImage, showPrevious];
+    	return [countryNames, areaData, data, getCopyData, downloadImage, showPrevious];
     }
 
     class Landing extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { showPrevious: 3 });
+    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { showPrevious: 5 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -50307,7 +50504,7 @@ var app = (function () {
 
             output.push({indicator: d, values: countries});
         });
-        console.log(output);
+
         return(output);
     };
 
@@ -51570,949 +51767,27 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[26] = list[i];
-    	child_ctx[28] = i;
+    	child_ctx[27] = list[i];
+    	child_ctx[29] = i;
     	return child_ctx;
     }
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[29] = list[i];
-    	child_ctx[28] = i;
+    	child_ctx[30] = list[i];
+    	child_ctx[29] = i;
     	return child_ctx;
     }
 
     function get_each_context_2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[29] = list[i];
-    	child_ctx[28] = i;
+    	child_ctx[30] = list[i];
+    	child_ctx[29] = i;
     	return child_ctx;
     }
 
-    // (168:16) {#if areaData}
-    function create_if_block_4(ctx) {
-    	let g;
-    	let text0;
-    	let t0;
-    	let text1;
-    	let t1;
-    	let line;
-    	let g_class_value;
-    	let g_transform_value;
-    	let current;
-    	let each_value_2 = /*graphData*/ ctx[10];
-    	validate_each_argument(each_value_2);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value_2.length; i += 1) {
-    		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
-    	}
-
-    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-    		each_blocks[i] = null;
-    	});
-
-    	const block = {
-    		c: function create() {
-    			g = svg_element("g");
-    			text0 = svg_element("text");
-    			t0 = text$1("Low");
-    			text1 = svg_element("text");
-    			t1 = text$1("High");
-    			line = svg_element("line");
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			attr_dev(text0, "x", "0");
-    			attr_dev(text0, "y", "0");
-    			attr_dev(text0, "font-size", "12px");
-    			attr_dev(text0, "fill", "#5E7B8A");
-    			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$1, 170, 24, 5143);
-    			attr_dev(text1, "x", /*areaWidth*/ ctx[11]);
-    			attr_dev(text1, "y", "0");
-    			attr_dev(text1, "text-anchor", "end");
-    			attr_dev(text1, "font-size", "12px");
-    			attr_dev(text1, "fill", "#5E7B8A");
-    			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$1, 171, 24, 5247);
-    			attr_dev(line, "class", "gridline svelte-kac76i");
-    			attr_dev(line, "x1", "0");
-    			attr_dev(line, "x2", /*$width*/ ctx[8]);
-    			attr_dev(line, "transform", "translate(0,5)");
-    			add_location(line, file$1, 173, 24, 5381);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-kac76i"));
-    			attr_dev(g, "transform", g_transform_value = "translate(0," + /*$margin*/ ctx[9] + ")");
-    			add_location(g, file$1, 168, 20, 5055);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, g, anchor);
-    			append_dev(g, text0);
-    			append_dev(text0, t0);
-    			append_dev(g, text1);
-    			append_dev(text1, t1);
-    			append_dev(g, line);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(g, null);
-    			}
-
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			if (!current || dirty[0] & /*$width*/ 256) {
-    				attr_dev(line, "x2", /*$width*/ ctx[8]);
-    			}
-
-    			if (dirty[0] & /*graphData, $hoveredCountry, $selectedCountry, mouseOver, mouseLeave, mouseClick*/ 58560) {
-    				each_value_2 = /*graphData*/ ctx[10];
-    				validate_each_argument(each_value_2);
-    				let i;
-
-    				for (i = 0; i < each_value_2.length; i += 1) {
-    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    						transition_in(each_blocks[i], 1);
-    					} else {
-    						each_blocks[i] = create_each_block_2(child_ctx);
-    						each_blocks[i].c();
-    						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(g, null);
-    					}
-    				}
-
-    				group_outros();
-
-    				for (i = each_value_2.length; i < each_blocks.length; i += 1) {
-    					out(i);
-    				}
-
-    				check_outros();
-    			}
-
-    			if (!current || dirty[0] & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-kac76i"))) {
-    				attr_dev(g, "class", g_class_value);
-    			}
-
-    			if (!current || dirty[0] & /*$margin*/ 512 && g_transform_value !== (g_transform_value = "translate(0," + /*$margin*/ ctx[9] + ")")) {
-    				attr_dev(g, "transform", g_transform_value);
-    			}
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-
-    			for (let i = 0; i < each_value_2.length; i += 1) {
-    				transition_in(each_blocks[i]);
-    			}
-
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			each_blocks = each_blocks.filter(Boolean);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				transition_out(each_blocks[i]);
-    			}
-
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(g);
-    			destroy_each(each_blocks, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_4.name,
-    		type: "if",
-    		source: "(168:16) {#if areaData}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (203:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
-    function create_if_block_5(ctx) {
-    	let current_block_type_index;
-    	let if_block;
-    	let if_block_anchor;
-    	let current;
-    	const if_block_creators = [create_if_block_6, create_else_block_2];
-    	const if_blocks = [];
-
-    	function select_block_type(ctx, dirty) {
-    		if (/*graph*/ ctx[29].id == "china" || /*graph*/ ctx[29].id == "open-economy-avg" || /*graph*/ ctx[29].id == "china-2010" || /*graph*/ ctx[29].id == "united-kingdom") return 0;
-    		return 1;
-    	}
-
-    	current_block_type_index = select_block_type(ctx);
-    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-
-    	const block = {
-    		c: function create() {
-    			if_block.c();
-    			if_block_anchor = empty$3();
-    		},
-    		m: function mount(target, anchor) {
-    			if_blocks[current_block_type_index].m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			if_block.p(ctx, dirty);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(if_block);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(if_block);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if_blocks[current_block_type_index].d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_5.name,
-    		type: "if",
-    		source: "(203:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (213:36) {:else}
-    function create_else_block_2(ctx) {
-    	let text_1;
-    	let t_value = /*graph*/ ctx[29].country + "";
-    	let t;
-    	let text_1_transition;
-    	let current;
-
-    	const block = {
-    		c: function create() {
-    			text_1 = svg_element("text");
-    			t = text$1(t_value);
-    			attr_dev(text_1, "class", "label level-2 svelte-kac76i");
-    			attr_dev(text_1, "y", "-27px");
-    			add_location(text_1, file$1, 213, 40, 7921);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, text_1, anchor);
-    			append_dev(text_1, t);
-    			current = true;
-    		},
-    		p: noop$4,
-    		i: function intro(local) {
-    			if (current) return;
-
-    			add_render_callback(() => {
-    				if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, true);
-    				text_1_transition.run(1);
-    			});
-
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, false);
-    			text_1_transition.run(0);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(text_1);
-    			if (detaching && text_1_transition) text_1_transition.end();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block_2.name,
-    		type: "else",
-    		source: "(213:36) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (205:36) {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010' ||  graph.id == 'united-kingdom'}
-    function create_if_block_6(ctx) {
-    	let text_1;
-    	let t_value = /*graph*/ ctx[29].country + "";
-    	let t;
-    	let text_1_transition;
-    	let current;
-
-    	const block = {
-    		c: function create() {
-    			text_1 = svg_element("text");
-    			t = text$1(t_value);
-    			attr_dev(text_1, "class", "label svelte-kac76i");
-    			attr_dev(text_1, "y", "-10px");
-    			add_location(text_1, file$1, 205, 40, 7481);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, text_1, anchor);
-    			append_dev(text_1, t);
-    			current = true;
-    		},
-    		p: noop$4,
-    		i: function intro(local) {
-    			if (current) return;
-
-    			add_render_callback(() => {
-    				if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, true);
-    				text_1_transition.run(1);
-    			});
-
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, false);
-    			text_1_transition.run(0);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(text_1);
-    			if (detaching && text_1_transition) text_1_transition.end();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_6.name,
-    		type: "if",
-    		source: "(205:36) {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010' ||  graph.id == 'united-kingdom'}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (176:24) {#each graphData as graph, i}
-    function create_each_block_2(ctx) {
-    	let g;
-    	let circle;
-    	let current;
-    	let mounted;
-    	let dispose;
-    	let if_block = (/*graph*/ ctx[29].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[29].id == "china" || /*graph*/ ctx[29].id == "open-economy-avg") && create_if_block_5(ctx);
-
-    	const block = {
-    		c: function create() {
-    			g = svg_element("g");
-    			circle = svg_element("circle");
-    			if (if_block) if_block.c();
-    			attr_dev(circle, "r", /*graph*/ ctx[29].r);
-    			attr_dev(circle, "class", "country-circle svelte-kac76i");
-    			add_location(circle, file$1, 186, 32, 6223);
-    			attr_dev(g, "class", "country " + /*graph*/ ctx[29].id + " svelte-kac76i");
-    			attr_dev(g, "data-x", /*graph*/ ctx[29].x);
-    			attr_dev(g, "data-y", /*graph*/ ctx[29].y);
-    			attr_dev(g, "data-id", /*graph*/ ctx[29].id);
-    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[29].x + "," + (/*graph*/ ctx[29].y + 5) + ")");
-    			toggle_class(g, "hovered", /*graph*/ ctx[29].id == /*$hoveredCountry*/ ctx[6]);
-    			toggle_class(g, "selected", /*graph*/ ctx[29].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[29].id == "china");
-    			toggle_class(g, "labelTestSelected", /*graph*/ ctx[29].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[29].id == "china" || /*graph*/ ctx[29].id == "open-economy-avg");
-    			add_location(g, file$1, 176, 28, 5539);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, g, anchor);
-    			append_dev(g, circle);
-    			if (if_block) if_block.m(g, null);
-    			current = true;
-
-    			if (!mounted) {
-    				dispose = [
-    					listen_dev(circle, "mouseover", /*mouseOver*/ ctx[13], false, false, false),
-    					listen_dev(circle, "mouseleave", /*mouseLeave*/ ctx[14], false, false, false),
-    					listen_dev(circle, "click", /*mouseClick*/ ctx[15], false, false, false)
-    				];
-
-    				mounted = true;
-    			}
-    		},
-    		p: function update(ctx, dirty) {
-    			if (/*graph*/ ctx[29].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[29].id == "china" || /*graph*/ ctx[29].id == "open-economy-avg") {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
-
-    					if (dirty[0] & /*$selectedCountry*/ 128) {
-    						transition_in(if_block, 1);
-    					}
-    				} else {
-    					if_block = create_if_block_5(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(g, null);
-    				}
-    			} else if (if_block) {
-    				group_outros();
-
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
-    				});
-
-    				check_outros();
-    			}
-
-    			if (dirty[0] & /*graphData, $hoveredCountry*/ 1088) {
-    				toggle_class(g, "hovered", /*graph*/ ctx[29].id == /*$hoveredCountry*/ ctx[6]);
-    			}
-
-    			if (dirty[0] & /*graphData, $selectedCountry*/ 1152) {
-    				toggle_class(g, "selected", /*graph*/ ctx[29].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[29].id == "china");
-    			}
-
-    			if (dirty[0] & /*graphData, $selectedCountry*/ 1152) {
-    				toggle_class(g, "labelTestSelected", /*graph*/ ctx[29].id == /*$selectedCountry*/ ctx[7] || /*graph*/ ctx[29].id == "china" || /*graph*/ ctx[29].id == "open-economy-avg");
-    			}
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(if_block);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(if_block);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(g);
-    			if (if_block) if_block.d();
-    			mounted = false;
-    			run_all(dispose);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block_2.name,
-    		type: "each",
-    		source: "(176:24) {#each graphData as graph, i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (229:12) {#if areaData}
-    function create_if_block_3(ctx) {
-    	let each_1_anchor;
-    	let current;
-    	let each_value_1 = /*graphData*/ ctx[10];
-    	validate_each_argument(each_value_1);
-    	let each_blocks = [];
-
-    	for (let i = 0; i < each_value_1.length; i += 1) {
-    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
-    	}
-
-    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
-    		each_blocks[i] = null;
-    	});
-
-    	const block = {
-    		c: function create() {
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
-    			}
-
-    			each_1_anchor = empty$3();
-    		},
-    		m: function mount(target, anchor) {
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(target, anchor);
-    			}
-
-    			insert_dev(target, each_1_anchor, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*isHovered, graphData*/ 1040) {
-    				each_value_1 = /*graphData*/ ctx[10];
-    				validate_each_argument(each_value_1);
-    				let i;
-
-    				for (i = 0; i < each_value_1.length; i += 1) {
-    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
-
-    					if (each_blocks[i]) {
-    						each_blocks[i].p(child_ctx, dirty);
-    						transition_in(each_blocks[i], 1);
-    					} else {
-    						each_blocks[i] = create_each_block_1(child_ctx);
-    						each_blocks[i].c();
-    						transition_in(each_blocks[i], 1);
-    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
-    					}
-    				}
-
-    				group_outros();
-
-    				for (i = each_value_1.length; i < each_blocks.length; i += 1) {
-    					out(i);
-    				}
-
-    				check_outros();
-    			}
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-
-    			for (let i = 0; i < each_value_1.length; i += 1) {
-    				transition_in(each_blocks[i]);
-    			}
-
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			each_blocks = each_blocks.filter(Boolean);
-
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				transition_out(each_blocks[i]);
-    			}
-
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(each_1_anchor);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_3.name,
-    		type: "if",
-    		source: "(229:12) {#if areaData}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (231:16) {#each graphData as graph, i}
-    function create_each_block_1(ctx) {
-    	let areatooltip;
-    	let current;
-
-    	areatooltip = new AreaTooltip({
-    			props: {
-    				isHovered: /*isHovered*/ ctx[4],
-    				graph: /*graph*/ ctx[29]
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(areatooltip.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(areatooltip, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const areatooltip_changes = {};
-    			if (dirty[0] & /*isHovered*/ 16) areatooltip_changes.isHovered = /*isHovered*/ ctx[4];
-    			areatooltip.$set(areatooltip_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(areatooltip.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(areatooltip.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(areatooltip, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block_1.name,
-    		type: "each",
-    		source: "(231:16) {#each graphData as graph, i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (239:4) {#if expanded}
-    function create_if_block_2(ctx) {
-    	let div;
-    	let p;
-    	let div_transition;
-    	let current;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			p = element("p");
-    			p.textContent = `${/*currentArea*/ ctx[12].summary}`;
-    			attr_dev(p, "class", "svelte-kac76i");
-    			add_location(p, file$1, 240, 12, 8832);
-    			attr_dev(div, "class", "summary svelte-kac76i");
-    			add_location(div, file$1, 239, 8, 8782);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, p);
-    			current = true;
-    		},
-    		p: noop$4,
-    		i: function intro(local) {
-    			if (current) return;
-
-    			add_render_callback(() => {
-    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
-    				div_transition.run(1);
-    			});
-
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
-    			div_transition.run(0);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			if (detaching && div_transition) div_transition.end();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_2.name,
-    		type: "if",
-    		source: "(239:4) {#if expanded}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (249:12) {:else}
-    function create_else_block_1(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text$1("View less");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block_1.name,
-    		type: "else",
-    		source: "(249:12) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (247:12) {#if !expanded}
-    function create_if_block_1(ctx) {
-    	let t;
-
-    	const block = {
-    		c: function create() {
-    			t = text$1("Expand to read more");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, t, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(t);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block_1.name,
-    		type: "if",
-    		source: "(247:12) {#if !expanded}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (283:16) {:else}
-    function create_else_block$1(ctx) {
-    	let indicatorvisual;
-    	let current;
-
-    	indicatorvisual = new IndicatorVisual({
-    			props: {
-    				indicator: /*indicator*/ ctx[26],
-    				class: "indicator-vis align-right"
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(indicatorvisual.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(indicatorvisual, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const indicatorvisual_changes = {};
-    			if (dirty[0] & /*indicatorsData*/ 1) indicatorvisual_changes.indicator = /*indicator*/ ctx[26];
-    			indicatorvisual.$set(indicatorvisual_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(indicatorvisual.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(indicatorvisual.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(indicatorvisual, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block$1.name,
-    		type: "else",
-    		source: "(283:16) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (281:16) {#if (i%2 == 0)}
+    // (149:0) {#if copyData}
     function create_if_block$1(ctx) {
-    	let indicatorvisual;
-    	let current;
-
-    	indicatorvisual = new IndicatorVisual({
-    			props: {
-    				indicator: /*indicator*/ ctx[26],
-    				class: "indicator-vis align-left"
-    			},
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			create_component(indicatorvisual.$$.fragment);
-    		},
-    		m: function mount(target, anchor) {
-    			mount_component(indicatorvisual, target, anchor);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			const indicatorvisual_changes = {};
-    			if (dirty[0] & /*indicatorsData*/ 1) indicatorvisual_changes.indicator = /*indicator*/ ctx[26];
-    			indicatorvisual.$set(indicatorvisual_changes);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(indicatorvisual.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(indicatorvisual.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			destroy_component(indicatorvisual, detaching);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block$1.name,
-    		type: "if",
-    		source: "(281:16) {#if (i%2 == 0)}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (277:4) {#each indicatorsData as indicator, i}
-    function create_each_block(ctx) {
-    	let div5;
-    	let current_block_type_index;
-    	let if_block;
-    	let t0;
-    	let div4;
-    	let div2;
-    	let div0;
-    	let t1;
-    	let div1;
-    	let t2;
-    	let h3;
-    	let t3_value = /*indicator*/ ctx[26].copy.name + "";
-    	let t3;
-    	let t4;
-    	let div3;
-    	let t5_value = /*indicator*/ ctx[26].copy.definition + "";
-    	let t5;
-    	let t6;
-    	let button;
-    	let t7;
-    	let icon;
-    	let t8;
-    	let current;
-    	let mounted;
-    	let dispose;
-    	const if_block_creators = [create_if_block$1, create_else_block$1];
-    	const if_blocks = [];
-
-    	function select_block_type_2(ctx, dirty) {
-    		if (/*i*/ ctx[28] % 2 == 0) return 0;
-    		return 1;
-    	}
-
-    	current_block_type_index = select_block_type_2(ctx);
-    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-
-    	icon = new Icon({
-    			props: { type: "download" },
-    			$$inline: true
-    		});
-
-    	const block = {
-    		c: function create() {
-    			div5 = element("div");
-    			if_block.c();
-    			t0 = space();
-    			div4 = element("div");
-    			div2 = element("div");
-    			div0 = element("div");
-    			t1 = space();
-    			div1 = element("div");
-    			t2 = space();
-    			h3 = element("h3");
-    			t3 = text$1(t3_value);
-    			t4 = space();
-    			div3 = element("div");
-    			t5 = text$1(t5_value);
-    			t6 = space();
-    			button = element("button");
-    			t7 = text$1("Download this chart");
-    			create_component(icon.$$.fragment);
-    			t8 = space();
-    			attr_dev(div0, "class", "leader-line svelte-kac76i");
-    			add_location(div0, file$1, 288, 24, 10684);
-    			attr_dev(div1, "class", "leader-circle svelte-kac76i");
-    			add_location(div1, file$1, 289, 24, 10740);
-    			attr_dev(div2, "class", "leader-container svelte-kac76i");
-    			add_location(div2, file$1, 287, 20, 10629);
-    			attr_dev(h3, "class", "svelte-kac76i");
-    			add_location(h3, file$1, 291, 20, 10821);
-    			attr_dev(div3, "class", "description svelte-kac76i");
-    			add_location(div3, file$1, 292, 20, 10872);
-    			attr_dev(button, "class", "svelte-kac76i");
-    			add_location(button, file$1, 293, 20, 10951);
-    			attr_dev(div4, "class", "indicator-text svelte-kac76i");
-    			toggle_class(div4, "text-right", /*i*/ ctx[28] % 2 == 0);
-    			toggle_class(div4, "text-left", /*i*/ ctx[28] % 2 !== 0);
-    			add_location(div4, file$1, 286, 16, 10520);
-    			attr_dev(div5, "class", "indicator-container svelte-kac76i");
-    			add_location(div5, file$1, 278, 8, 10218);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div5, anchor);
-    			if_blocks[current_block_type_index].m(div5, null);
-    			append_dev(div5, t0);
-    			append_dev(div5, div4);
-    			append_dev(div4, div2);
-    			append_dev(div2, div0);
-    			append_dev(div2, t1);
-    			append_dev(div2, div1);
-    			append_dev(div4, t2);
-    			append_dev(div4, h3);
-    			append_dev(h3, t3);
-    			append_dev(div4, t4);
-    			append_dev(div4, div3);
-    			append_dev(div3, t5);
-    			append_dev(div4, t6);
-    			append_dev(div4, button);
-    			append_dev(button, t7);
-    			mount_component(icon, button, null);
-    			append_dev(div5, t8);
-    			current = true;
-
-    			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*downloadImage*/ ctx[17], false, false, false);
-    				mounted = true;
-    			}
-    		},
-    		p: function update(ctx, dirty) {
-    			if_block.p(ctx, dirty);
-    			if ((!current || dirty[0] & /*indicatorsData*/ 1) && t3_value !== (t3_value = /*indicator*/ ctx[26].copy.name + "")) set_data_dev(t3, t3_value);
-    			if ((!current || dirty[0] & /*indicatorsData*/ 1) && t5_value !== (t5_value = /*indicator*/ ctx[26].copy.definition + "")) set_data_dev(t5, t5_value);
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(if_block);
-    			transition_in(icon.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(if_block);
-    			transition_out(icon.$$.fragment, local);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div5);
-    			if_blocks[current_block_type_index].d();
-    			destroy_component(icon);
-    			mounted = false;
-    			dispose();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_each_block.name,
-    		type: "each",
-    		source: "(277:4) {#each indicatorsData as indicator, i}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    function create_fragment$1(ctx) {
     	let button0;
     	let a0;
     	let t1;
@@ -52520,8 +51795,12 @@ var app = (function () {
     	let div2;
     	let div0;
     	let h1;
+    	let t2_value = /*currentArea*/ ctx[4].name + "";
+    	let t2;
     	let t3;
     	let p0;
+    	let t4_value = /*currentArea*/ ctx[4].definition + "";
+    	let t4;
     	let t5;
     	let div1;
     	let svg0;
@@ -52544,6 +51823,9 @@ var app = (function () {
     	let div8;
     	let header;
     	let h2;
+    	let t13;
+    	let t14_value = /*currentArea*/ ctx[4].name.toLowerCase() + "";
+    	let t14;
     	let t15;
     	let div7;
     	let countryselect;
@@ -52556,12 +51838,12 @@ var app = (function () {
     	let current;
     	let mounted;
     	let dispose;
-    	let if_block0 = /*areaData*/ ctx[1] && create_if_block_4(ctx);
-    	let if_block1 = /*areaData*/ ctx[1] && create_if_block_3(ctx);
-    	let if_block2 = /*expanded*/ ctx[3] && create_if_block_2(ctx);
+    	let if_block0 = /*areaData*/ ctx[1] && create_if_block_5(ctx);
+    	let if_block1 = /*areaData*/ ctx[1] && create_if_block_4(ctx);
+    	let if_block2 = /*expanded*/ ctx[5] && create_if_block_3(ctx);
 
     	function select_block_type_1(ctx, dirty) {
-    		if (!/*expanded*/ ctx[3]) return create_if_block_1;
+    		if (!/*expanded*/ ctx[5]) return create_if_block_2;
     		return create_else_block_1;
     	}
 
@@ -52574,7 +51856,7 @@ var app = (function () {
     		});
 
     	countryselect = new CountrySelect({
-    			props: { countryNames: /*countryNames*/ ctx[2] },
+    			props: { countryNames: /*countryNames*/ ctx[3] },
     			$$inline: true
     		});
 
@@ -52601,10 +51883,10 @@ var app = (function () {
     			div2 = element("div");
     			div0 = element("div");
     			h1 = element("h1");
-    			h1.textContent = `${/*currentArea*/ ctx[12].name}`;
+    			t2 = text$1(t2_value);
     			t3 = space();
     			p0 = element("p");
-    			p0.textContent = `${/*currentArea*/ ctx[12].definition}`;
+    			t4 = text$1(t4_value);
     			t5 = space();
     			div1 = element("div");
     			svg0 = svg_element("svg");
@@ -52629,7 +51911,8 @@ var app = (function () {
     			div8 = element("div");
     			header = element("header");
     			h2 = element("h2");
-    			h2.textContent = `Assessing ${/*currentArea*/ ctx[12].name.toLowerCase()}`;
+    			t13 = text$1("Assessing ");
+    			t14 = text$1(t14_value);
     			t15 = space();
     			div7 = element("div");
     			create_component(countryselect.$$.fragment);
@@ -52647,59 +51930,56 @@ var app = (function () {
 
     			attr_dev(a0, "href", "https://pathfinder.sevenmilemedia.com/");
     			attr_dev(a0, "class", "svelte-kac76i");
-    			add_location(a0, file$1, 151, 21, 4454);
+    			add_location(a0, file$1, 151, 21, 4462);
     			attr_dev(button0, "class", "back svelte-kac76i");
-    			add_location(button0, file$1, 151, 0, 4433);
+    			add_location(button0, file$1, 151, 0, 4441);
     			attr_dev(h1, "class", "svelte-kac76i");
-    			add_location(h1, file$1, 157, 12, 4674);
+    			add_location(h1, file$1, 157, 12, 4682);
     			attr_dev(p0, "class", "intro svelte-kac76i");
-    			add_location(p0, file$1, 158, 12, 4714);
+    			add_location(p0, file$1, 158, 12, 4722);
     			attr_dev(div0, "class", "area-text svelte-kac76i");
-    			add_location(div0, file$1, 156, 8, 4638);
-    			attr_dev(svg0, "viewBox", svg0_viewBox_value = "0 0 " + /*$width*/ ctx[8] + " " + /*$height*/ ctx[5]);
-    			attr_dev(svg0, "width", /*$width*/ ctx[8]);
-    			attr_dev(svg0, "height", svg0_height_value = /*$height*/ ctx[5] + 30);
-    			add_location(svg0, file$1, 163, 12, 4885);
+    			add_location(div0, file$1, 156, 8, 4646);
+    			attr_dev(svg0, "viewBox", svg0_viewBox_value = "0 0 " + /*$width*/ ctx[10] + " " + /*$height*/ ctx[7]);
+    			attr_dev(svg0, "width", /*$width*/ ctx[10]);
+    			attr_dev(svg0, "height", svg0_height_value = /*$height*/ ctx[7] + 30);
+    			add_location(svg0, file$1, 163, 12, 4893);
     			attr_dev(div1, "class", "area-vis svelte-kac76i");
-    			add_location(div1, file$1, 162, 8, 4850);
+    			add_location(div1, file$1, 162, 8, 4858);
     			attr_dev(div2, "class", "area-container svelte-kac76i");
-    			add_location(div2, file$1, 155, 4, 4601);
+    			add_location(div2, file$1, 155, 4, 4609);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#234462");
-    			add_location(path, file$1, 252, 16, 9223);
+    			add_location(path, file$1, 252, 16, 9231);
     			attr_dev(svg1, "class", "caret-down-dark svelte-kac76i");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
-    			add_location(svg1, file$1, 251, 12, 9122);
+    			add_location(svg1, file$1, 251, 12, 9130);
     			attr_dev(button1, "class", "expand svelte-kac76i");
-    			add_location(button1, file$1, 245, 8, 8929);
+    			add_location(button1, file$1, 245, 8, 8937);
     			attr_dev(a1, "href", "https://pathfinder.sevenmilemedia.com/methodology/");
     			attr_dev(a1, "class", "svelte-kac76i");
-    			add_location(a1, file$1, 256, 12, 9526);
+    			add_location(a1, file$1, 256, 12, 9534);
     			attr_dev(div3, "class", "methodology svelte-kac76i");
-    			add_location(div3, file$1, 255, 8, 9488);
+    			add_location(div3, file$1, 255, 8, 9496);
     			attr_dev(div4, "class", "area-footer svelte-kac76i");
-    			add_location(div4, file$1, 244, 4, 8895);
+    			add_location(div4, file$1, 244, 4, 8903);
     			attr_dev(div5, "class", "area-summary svelte-kac76i");
-    			toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
-    			add_location(div5, file$1, 153, 0, 4535);
+    			toggle_class(div5, "expanded", /*expanded*/ ctx[5] == true);
+    			add_location(div5, file$1, 153, 0, 4543);
     			attr_dev(h2, "class", "svelte-kac76i");
-    			add_location(h2, file$1, 264, 8, 9719);
+    			add_location(h2, file$1, 264, 8, 9727);
     			attr_dev(p1, "class", "svelte-kac76i");
-    			add_location(p1, file$1, 269, 16, 9994);
+    			add_location(p1, file$1, 269, 16, 10002);
     			attr_dev(div6, "class", "social-share svelte-kac76i");
-    			add_location(div6, file$1, 268, 12, 9951);
+    			add_location(div6, file$1, 268, 12, 9959);
     			attr_dev(div7, "class", "control-area svelte-kac76i");
-    			add_location(div7, file$1, 266, 8, 9868);
+    			add_location(div7, file$1, 266, 8, 9876);
     			attr_dev(header, "class", "svelte-kac76i");
-    			add_location(header, file$1, 263, 4, 9702);
+    			add_location(header, file$1, 263, 4, 9710);
     			attr_dev(div8, "class", "indicators");
-    			add_location(div8, file$1, 262, 0, 9673);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    			add_location(div8, file$1, 262, 0, 9681);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -52709,8 +51989,10 @@ var app = (function () {
     			append_dev(div5, div2);
     			append_dev(div2, div0);
     			append_dev(div0, h1);
+    			append_dev(h1, t2);
     			append_dev(div0, t3);
     			append_dev(div0, p0);
+    			append_dev(p0, t4);
     			append_dev(div2, t5);
     			append_dev(div2, div1);
     			append_dev(div1, svg0);
@@ -52735,6 +52017,8 @@ var app = (function () {
     			insert_dev(target, div8, anchor);
     			append_dev(div8, header);
     			append_dev(header, h2);
+    			append_dev(h2, t13);
+    			append_dev(h2, t14);
     			append_dev(header, t15);
     			append_dev(header, div7);
     			mount_component(countryselect, div7, null);
@@ -52752,11 +52036,14 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button1, "click", /*expandButtonClick*/ ctx[16], false, false, false);
+    				dispose = listen_dev(button1, "click", /*expandButtonClick*/ ctx[17], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
+    			if ((!current || dirty[0] & /*currentArea*/ 16) && t2_value !== (t2_value = /*currentArea*/ ctx[4].name + "")) set_data_dev(t2, t2_value);
+    			if ((!current || dirty[0] & /*currentArea*/ 16) && t4_value !== (t4_value = /*currentArea*/ ctx[4].definition + "")) set_data_dev(t4, t4_value);
+
     			if (/*areaData*/ ctx[1]) {
     				if (if_block0) {
     					if_block0.p(ctx, dirty);
@@ -52765,7 +52052,7 @@ var app = (function () {
     						transition_in(if_block0, 1);
     					}
     				} else {
-    					if_block0 = create_if_block_4(ctx);
+    					if_block0 = create_if_block_5(ctx);
     					if_block0.c();
     					transition_in(if_block0, 1);
     					if_block0.m(svg0, null);
@@ -52780,15 +52067,15 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (!current || dirty[0] & /*$width, $height*/ 288 && svg0_viewBox_value !== (svg0_viewBox_value = "0 0 " + /*$width*/ ctx[8] + " " + /*$height*/ ctx[5])) {
+    			if (!current || dirty[0] & /*$width, $height*/ 1152 && svg0_viewBox_value !== (svg0_viewBox_value = "0 0 " + /*$width*/ ctx[10] + " " + /*$height*/ ctx[7])) {
     				attr_dev(svg0, "viewBox", svg0_viewBox_value);
     			}
 
-    			if (!current || dirty[0] & /*$width*/ 256) {
-    				attr_dev(svg0, "width", /*$width*/ ctx[8]);
+    			if (!current || dirty[0] & /*$width*/ 1024) {
+    				attr_dev(svg0, "width", /*$width*/ ctx[10]);
     			}
 
-    			if (!current || dirty[0] & /*$height*/ 32 && svg0_height_value !== (svg0_height_value = /*$height*/ ctx[5] + 30)) {
+    			if (!current || dirty[0] & /*$height*/ 128 && svg0_height_value !== (svg0_height_value = /*$height*/ ctx[7] + 30)) {
     				attr_dev(svg0, "height", svg0_height_value);
     			}
 
@@ -52800,7 +52087,7 @@ var app = (function () {
     						transition_in(if_block1, 1);
     					}
     				} else {
-    					if_block1 = create_if_block_3(ctx);
+    					if_block1 = create_if_block_4(ctx);
     					if_block1.c();
     					transition_in(if_block1, 1);
     					if_block1.m(div1, null);
@@ -52815,15 +52102,15 @@ var app = (function () {
     				check_outros();
     			}
 
-    			if (/*expanded*/ ctx[3]) {
+    			if (/*expanded*/ ctx[5]) {
     				if (if_block2) {
     					if_block2.p(ctx, dirty);
 
-    					if (dirty[0] & /*expanded*/ 8) {
+    					if (dirty[0] & /*expanded*/ 32) {
     						transition_in(if_block2, 1);
     					}
     				} else {
-    					if_block2 = create_if_block_2(ctx);
+    					if_block2 = create_if_block_3(ctx);
     					if_block2.c();
     					transition_in(if_block2, 1);
     					if_block2.m(div5, t8);
@@ -52848,15 +52135,16 @@ var app = (function () {
     				}
     			}
 
-    			if (dirty[0] & /*expanded*/ 8) {
-    				toggle_class(div5, "expanded", /*expanded*/ ctx[3] == true);
+    			if (dirty[0] & /*expanded*/ 32) {
+    				toggle_class(div5, "expanded", /*expanded*/ ctx[5] == true);
     			}
 
+    			if ((!current || dirty[0] & /*currentArea*/ 16) && t14_value !== (t14_value = /*currentArea*/ ctx[4].name.toLowerCase() + "")) set_data_dev(t14, t14_value);
     			const countryselect_changes = {};
-    			if (dirty[0] & /*countryNames*/ 4) countryselect_changes.countryNames = /*countryNames*/ ctx[2];
+    			if (dirty[0] & /*countryNames*/ 8) countryselect_changes.countryNames = /*countryNames*/ ctx[3];
     			countryselect.$set(countryselect_changes);
 
-    			if (dirty[0] & /*downloadImage, indicatorsData*/ 131073) {
+    			if (dirty[0] & /*downloadImage, indicatorsData*/ 262145) {
     				each_value = /*indicatorsData*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -52935,6 +52223,1002 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_if_block$1.name,
+    		type: "if",
+    		source: "(149:0) {#if copyData}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (168:16) {#if areaData}
+    function create_if_block_5(ctx) {
+    	let g;
+    	let text0;
+    	let t0;
+    	let text1;
+    	let t1;
+    	let line;
+    	let g_class_value;
+    	let g_transform_value;
+    	let current;
+    	let each_value_2 = /*graphData*/ ctx[12];
+    	validate_each_argument(each_value_2);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			g = svg_element("g");
+    			text0 = svg_element("text");
+    			t0 = text$1("Low");
+    			text1 = svg_element("text");
+    			t1 = text$1("High");
+    			line = svg_element("line");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			attr_dev(text0, "x", "0");
+    			attr_dev(text0, "y", "0");
+    			attr_dev(text0, "font-size", "12px");
+    			attr_dev(text0, "fill", "#5E7B8A");
+    			attr_dev(text0, "fill-opacity", "0.7");
+    			add_location(text0, file$1, 170, 24, 5151);
+    			attr_dev(text1, "x", /*areaWidth*/ ctx[13]);
+    			attr_dev(text1, "y", "0");
+    			attr_dev(text1, "text-anchor", "end");
+    			attr_dev(text1, "font-size", "12px");
+    			attr_dev(text1, "fill", "#5E7B8A");
+    			attr_dev(text1, "fill-opacity", "0.7");
+    			add_location(text1, file$1, 171, 24, 5255);
+    			attr_dev(line, "class", "gridline svelte-kac76i");
+    			attr_dev(line, "x1", "0");
+    			attr_dev(line, "x2", /*$width*/ ctx[10]);
+    			attr_dev(line, "transform", "translate(0,5)");
+    			add_location(line, file$1, 173, 24, 5389);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-kac76i"));
+    			attr_dev(g, "transform", g_transform_value = "translate(0," + /*$margin*/ ctx[11] + ")");
+    			add_location(g, file$1, 168, 20, 5063);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			append_dev(g, text0);
+    			append_dev(text0, t0);
+    			append_dev(g, text1);
+    			append_dev(text1, t1);
+    			append_dev(g, line);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(g, null);
+    			}
+
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (!current || dirty[0] & /*$width*/ 1024) {
+    				attr_dev(line, "x2", /*$width*/ ctx[10]);
+    			}
+
+    			if (dirty[0] & /*graphData, $hoveredCountry, $selectedCountry, mouseOver, mouseLeave, mouseClick*/ 119552) {
+    				each_value_2 = /*graphData*/ ctx[12];
+    				validate_each_argument(each_value_2);
+    				let i;
+
+    				for (i = 0; i < each_value_2.length; i += 1) {
+    					const child_ctx = get_each_context_2(ctx, each_value_2, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block_2(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(g, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value_2.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+
+    			if (!current || dirty[0] & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-kac76i"))) {
+    				attr_dev(g, "class", g_class_value);
+    			}
+
+    			if (!current || dirty[0] & /*$margin*/ 2048 && g_transform_value !== (g_transform_value = "translate(0," + /*$margin*/ ctx[11] + ")")) {
+    				attr_dev(g, "transform", g_transform_value);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value_2.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_5.name,
+    		type: "if",
+    		source: "(168:16) {#if areaData}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (203:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
+    function create_if_block_6(ctx) {
+    	let current_block_type_index;
+    	let if_block;
+    	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block_7, create_else_block_2];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (/*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg" || /*graph*/ ctx[30].id == "china-2010" || /*graph*/ ctx[30].id == "united-kingdom") return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty$3();
+    		},
+    		m: function mount(target, anchor) {
+    			if_blocks[current_block_type_index].m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if_block.p(ctx, dirty);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if_blocks[current_block_type_index].d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_6.name,
+    		type: "if",
+    		source: "(203:32) {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (213:36) {:else}
+    function create_else_block_2(ctx) {
+    	let text_1;
+    	let t_value = /*graph*/ ctx[30].country + "";
+    	let t;
+    	let text_1_transition;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(text_1, "class", "label level-2 svelte-kac76i");
+    			attr_dev(text_1, "y", "-27px");
+    			add_location(text_1, file$1, 213, 40, 7929);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, text_1, anchor);
+    			append_dev(text_1, t);
+    			current = true;
+    		},
+    		p: noop$4,
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, true);
+    				text_1_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, false);
+    			text_1_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(text_1);
+    			if (detaching && text_1_transition) text_1_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block_2.name,
+    		type: "else",
+    		source: "(213:36) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (205:36) {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010' ||  graph.id == 'united-kingdom'}
+    function create_if_block_7(ctx) {
+    	let text_1;
+    	let t_value = /*graph*/ ctx[30].country + "";
+    	let t;
+    	let text_1_transition;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			text_1 = svg_element("text");
+    			t = text$1(t_value);
+    			attr_dev(text_1, "class", "label svelte-kac76i");
+    			attr_dev(text_1, "y", "-10px");
+    			add_location(text_1, file$1, 205, 40, 7489);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, text_1, anchor);
+    			append_dev(text_1, t);
+    			current = true;
+    		},
+    		p: noop$4,
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, true);
+    				text_1_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!text_1_transition) text_1_transition = create_bidirectional_transition(text_1, fly, { y: 10, duration: 200 }, false);
+    			text_1_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(text_1);
+    			if (detaching && text_1_transition) text_1_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_7.name,
+    		type: "if",
+    		source: "(205:36) {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010' ||  graph.id == 'united-kingdom'}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (176:24) {#each graphData as graph, i}
+    function create_each_block_2(ctx) {
+    	let g;
+    	let circle;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let if_block = (/*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg") && create_if_block_6(ctx);
+
+    	const block = {
+    		c: function create() {
+    			g = svg_element("g");
+    			circle = svg_element("circle");
+    			if (if_block) if_block.c();
+    			attr_dev(circle, "r", /*graph*/ ctx[30].r);
+    			attr_dev(circle, "class", "country-circle svelte-kac76i");
+    			add_location(circle, file$1, 186, 32, 6231);
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[30].id + " svelte-kac76i");
+    			attr_dev(g, "data-x", /*graph*/ ctx[30].x);
+    			attr_dev(g, "data-y", /*graph*/ ctx[30].y);
+    			attr_dev(g, "data-id", /*graph*/ ctx[30].id);
+    			attr_dev(g, "transform", "translate(" + /*graph*/ ctx[30].x + "," + (/*graph*/ ctx[30].y + 5) + ")");
+    			toggle_class(g, "hovered", /*graph*/ ctx[30].id == /*$hoveredCountry*/ ctx[8]);
+    			toggle_class(g, "selected", /*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[30].id == "china");
+    			toggle_class(g, "labelTestSelected", /*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg");
+    			add_location(g, file$1, 176, 28, 5547);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, g, anchor);
+    			append_dev(g, circle);
+    			if (if_block) if_block.m(g, null);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(circle, "mouseover", /*mouseOver*/ ctx[14], false, false, false),
+    					listen_dev(circle, "mouseleave", /*mouseLeave*/ ctx[15], false, false, false),
+    					listen_dev(circle, "click", /*mouseClick*/ ctx[16], false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg") {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty[0] & /*$selectedCountry*/ 512) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_6(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(g, null);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+
+    			if (dirty[0] & /*graphData, $hoveredCountry*/ 4352) {
+    				toggle_class(g, "hovered", /*graph*/ ctx[30].id == /*$hoveredCountry*/ ctx[8]);
+    			}
+
+    			if (dirty[0] & /*graphData, $selectedCountry*/ 4608) {
+    				toggle_class(g, "selected", /*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[30].id == "china");
+    			}
+
+    			if (dirty[0] & /*graphData, $selectedCountry*/ 4608) {
+    				toggle_class(g, "labelTestSelected", /*graph*/ ctx[30].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[30].id == "china" || /*graph*/ ctx[30].id == "open-economy-avg");
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(g);
+    			if (if_block) if_block.d();
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_2.name,
+    		type: "each",
+    		source: "(176:24) {#each graphData as graph, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (229:12) {#if areaData}
+    function create_if_block_4(ctx) {
+    	let each_1_anchor;
+    	let current;
+    	let each_value_1 = /*graphData*/ ctx[12];
+    	validate_each_argument(each_value_1);
+    	let each_blocks = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	const out = i => transition_out(each_blocks[i], 1, 1, () => {
+    		each_blocks[i] = null;
+    	});
+
+    	const block = {
+    		c: function create() {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			each_1_anchor = empty$3();
+    		},
+    		m: function mount(target, anchor) {
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(target, anchor);
+    			}
+
+    			insert_dev(target, each_1_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (dirty[0] & /*isHovered, graphData*/ 4160) {
+    				each_value_1 = /*graphData*/ ctx[12];
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(child_ctx, dirty);
+    						transition_in(each_blocks[i], 1);
+    					} else {
+    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i].c();
+    						transition_in(each_blocks[i], 1);
+    						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value_1.length; i < each_blocks.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value_1.length; i += 1) {
+    				transition_in(each_blocks[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks = each_blocks.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				transition_out(each_blocks[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(each_1_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_4.name,
+    		type: "if",
+    		source: "(229:12) {#if areaData}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (231:16) {#each graphData as graph, i}
+    function create_each_block_1(ctx) {
+    	let areatooltip;
+    	let current;
+
+    	areatooltip = new AreaTooltip({
+    			props: {
+    				isHovered: /*isHovered*/ ctx[6],
+    				graph: /*graph*/ ctx[30]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(areatooltip.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(areatooltip, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const areatooltip_changes = {};
+    			if (dirty[0] & /*isHovered*/ 64) areatooltip_changes.isHovered = /*isHovered*/ ctx[6];
+    			areatooltip.$set(areatooltip_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(areatooltip.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(areatooltip.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(areatooltip, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(231:16) {#each graphData as graph, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (239:4) {#if expanded}
+    function create_if_block_3(ctx) {
+    	let div;
+    	let p;
+    	let t_value = /*currentArea*/ ctx[4].summary + "";
+    	let t;
+    	let div_transition;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			p = element("p");
+    			t = text$1(t_value);
+    			attr_dev(p, "class", "svelte-kac76i");
+    			add_location(p, file$1, 240, 12, 8840);
+    			attr_dev(div, "class", "summary svelte-kac76i");
+    			add_location(div, file$1, 239, 8, 8790);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, p);
+    			append_dev(p, t);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if ((!current || dirty[0] & /*currentArea*/ 16) && t_value !== (t_value = /*currentArea*/ ctx[4].summary + "")) set_data_dev(t, t_value);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
+    				div_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
+    			div_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if (detaching && div_transition) div_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_3.name,
+    		type: "if",
+    		source: "(239:4) {#if expanded}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (249:12) {:else}
+    function create_else_block_1(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text$1("View less");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block_1.name,
+    		type: "else",
+    		source: "(249:12) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (247:12) {#if !expanded}
+    function create_if_block_2(ctx) {
+    	let t;
+
+    	const block = {
+    		c: function create() {
+    			t = text$1("Expand to read more");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, t, anchor);
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(t);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_2.name,
+    		type: "if",
+    		source: "(247:12) {#if !expanded}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (283:16) {:else}
+    function create_else_block$1(ctx) {
+    	let indicatorvisual;
+    	let current;
+
+    	indicatorvisual = new IndicatorVisual({
+    			props: {
+    				indicator: /*indicator*/ ctx[27],
+    				class: "indicator-vis align-right"
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(indicatorvisual.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(indicatorvisual, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const indicatorvisual_changes = {};
+    			if (dirty[0] & /*indicatorsData*/ 1) indicatorvisual_changes.indicator = /*indicator*/ ctx[27];
+    			indicatorvisual.$set(indicatorvisual_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicatorvisual.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicatorvisual.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(indicatorvisual, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block$1.name,
+    		type: "else",
+    		source: "(283:16) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (281:16) {#if (i%2 == 0)}
+    function create_if_block_1(ctx) {
+    	let indicatorvisual;
+    	let current;
+
+    	indicatorvisual = new IndicatorVisual({
+    			props: {
+    				indicator: /*indicator*/ ctx[27],
+    				class: "indicator-vis align-left"
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(indicatorvisual.$$.fragment);
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(indicatorvisual, target, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			const indicatorvisual_changes = {};
+    			if (dirty[0] & /*indicatorsData*/ 1) indicatorvisual_changes.indicator = /*indicator*/ ctx[27];
+    			indicatorvisual.$set(indicatorvisual_changes);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(indicatorvisual.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(indicatorvisual.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(indicatorvisual, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(281:16) {#if (i%2 == 0)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (277:4) {#each indicatorsData as indicator, i}
+    function create_each_block(ctx) {
+    	let div5;
+    	let current_block_type_index;
+    	let if_block;
+    	let t0;
+    	let div4;
+    	let div2;
+    	let div0;
+    	let t1;
+    	let div1;
+    	let t2;
+    	let h3;
+    	let t3_value = /*indicator*/ ctx[27].copy.name + "";
+    	let t3;
+    	let t4;
+    	let div3;
+    	let t5_value = /*indicator*/ ctx[27].copy.definition + "";
+    	let t5;
+    	let t6;
+    	let button;
+    	let t7;
+    	let icon;
+    	let t8;
+    	let current;
+    	let mounted;
+    	let dispose;
+    	const if_block_creators = [create_if_block_1, create_else_block$1];
+    	const if_blocks = [];
+
+    	function select_block_type_2(ctx, dirty) {
+    		if (/*i*/ ctx[29] % 2 == 0) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type_2(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	icon = new Icon({
+    			props: { type: "download" },
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			div5 = element("div");
+    			if_block.c();
+    			t0 = space();
+    			div4 = element("div");
+    			div2 = element("div");
+    			div0 = element("div");
+    			t1 = space();
+    			div1 = element("div");
+    			t2 = space();
+    			h3 = element("h3");
+    			t3 = text$1(t3_value);
+    			t4 = space();
+    			div3 = element("div");
+    			t5 = text$1(t5_value);
+    			t6 = space();
+    			button = element("button");
+    			t7 = text$1("Download this chart");
+    			create_component(icon.$$.fragment);
+    			t8 = space();
+    			attr_dev(div0, "class", "leader-line svelte-kac76i");
+    			add_location(div0, file$1, 288, 24, 10692);
+    			attr_dev(div1, "class", "leader-circle svelte-kac76i");
+    			add_location(div1, file$1, 289, 24, 10748);
+    			attr_dev(div2, "class", "leader-container svelte-kac76i");
+    			add_location(div2, file$1, 287, 20, 10637);
+    			attr_dev(h3, "class", "svelte-kac76i");
+    			add_location(h3, file$1, 291, 20, 10829);
+    			attr_dev(div3, "class", "description svelte-kac76i");
+    			add_location(div3, file$1, 292, 20, 10880);
+    			attr_dev(button, "class", "svelte-kac76i");
+    			add_location(button, file$1, 293, 20, 10959);
+    			attr_dev(div4, "class", "indicator-text svelte-kac76i");
+    			toggle_class(div4, "text-right", /*i*/ ctx[29] % 2 == 0);
+    			toggle_class(div4, "text-left", /*i*/ ctx[29] % 2 !== 0);
+    			add_location(div4, file$1, 286, 16, 10528);
+    			attr_dev(div5, "class", "indicator-container svelte-kac76i");
+    			add_location(div5, file$1, 278, 8, 10226);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div5, anchor);
+    			if_blocks[current_block_type_index].m(div5, null);
+    			append_dev(div5, t0);
+    			append_dev(div5, div4);
+    			append_dev(div4, div2);
+    			append_dev(div2, div0);
+    			append_dev(div2, t1);
+    			append_dev(div2, div1);
+    			append_dev(div4, t2);
+    			append_dev(div4, h3);
+    			append_dev(h3, t3);
+    			append_dev(div4, t4);
+    			append_dev(div4, div3);
+    			append_dev(div3, t5);
+    			append_dev(div4, t6);
+    			append_dev(div4, button);
+    			append_dev(button, t7);
+    			mount_component(icon, button, null);
+    			append_dev(div5, t8);
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*downloadImage*/ ctx[18], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, dirty) {
+    			if_block.p(ctx, dirty);
+    			if ((!current || dirty[0] & /*indicatorsData*/ 1) && t3_value !== (t3_value = /*indicator*/ ctx[27].copy.name + "")) set_data_dev(t3, t3_value);
+    			if ((!current || dirty[0] & /*indicatorsData*/ 1) && t5_value !== (t5_value = /*indicator*/ ctx[27].copy.definition + "")) set_data_dev(t5, t5_value);
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			transition_in(icon.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			transition_out(icon.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div5);
+    			if_blocks[current_block_type_index].d();
+    			destroy_component(icon);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(277:4) {#each indicatorsData as indicator, i}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment$1(ctx) {
+    	let if_block_anchor;
+    	let current;
+    	let if_block = /*copyData*/ ctx[2] && create_if_block$1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty$3();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*copyData*/ ctx[2]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty[0] & /*copyData*/ 4) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block$1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_fragment$1.name,
     		type: "component",
     		source: "",
@@ -52969,29 +53253,37 @@ var app = (function () {
 
     function instance$1($$self, $$props, $$invalidate) {
     	let $height;
-    	let $areaInView;
     	let $hoveredCountry;
     	let $selectedCountry;
+    	let $areaInView;
     	let $view;
     	let $width;
     	let $margin;
     	validate_store(height, "height");
-    	component_subscribe($$self, height, $$value => $$invalidate(5, $height = $$value));
-    	validate_store(areaInView, "areaInView");
-    	component_subscribe($$self, areaInView, $$value => $$invalidate(18, $areaInView = $$value));
+    	component_subscribe($$self, height, $$value => $$invalidate(7, $height = $$value));
     	validate_store(hoveredCountry, "hoveredCountry");
-    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(6, $hoveredCountry = $$value));
+    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(8, $hoveredCountry = $$value));
     	validate_store(selectedCountry, "selectedCountry");
-    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(7, $selectedCountry = $$value));
+    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(9, $selectedCountry = $$value));
+    	validate_store(areaInView, "areaInView");
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(19, $areaInView = $$value));
     	validate_store(view, "view");
-    	component_subscribe($$self, view, $$value => $$invalidate(20, $view = $$value));
+    	component_subscribe($$self, view, $$value => $$invalidate(21, $view = $$value));
     	validate_store(width, "width");
-    	component_subscribe($$self, width, $$value => $$invalidate(8, $width = $$value));
+    	component_subscribe($$self, width, $$value => $$invalidate(10, $width = $$value));
     	validate_store(margin, "margin");
-    	component_subscribe($$self, margin, $$value => $$invalidate(9, $margin = $$value));
+    	component_subscribe($$self, margin, $$value => $$invalidate(11, $margin = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("Indicators", slots, []);
-    	let data = [], indicatorsData = [], countryNames = [], areaData, graphData = [];
+
+    	let data = [],
+    		indicatorsData = [],
+    		countryNames = [],
+    		areaData,
+    		graphData = [],
+    		currentArea,
+    		copyData;
+
     	let expanded = false;
 
     	// set area visual width
@@ -52999,23 +53291,16 @@ var app = (function () {
 
     	let areaMargin = 20;
     	set_store_value(height, $height = 100, $height);
-
-    	// // TODO - dev only, delete these lines for production
-    	// if (!$areaInView) { 
-    	//     $areaInView = 'fdi'; // pulled from /stores/view
-    	// }
-    	const currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0];
-
     	let isHovered = false;
 
     	function mouseOver(e) {
-    		$$invalidate(4, isHovered = true);
+    		$$invalidate(6, isHovered = true);
     		set_store_value(hoveredCountry, $hoveredCountry = e.path[1].dataset.id, $hoveredCountry);
     		select(e.path[1]).raise();
     	}
 
     	function mouseLeave(e) {
-    		$$invalidate(4, isHovered = false);
+    		$$invalidate(6, isHovered = false);
     		set_store_value(hoveredCountry, $hoveredCountry = "", $hoveredCountry);
     	}
 
@@ -53026,9 +53311,9 @@ var app = (function () {
     	// event handlers
     	function expandButtonClick() {
     		if (expanded == true) {
-    			$$invalidate(3, expanded = false);
+    			$$invalidate(5, expanded = false);
     		} else {
-    			$$invalidate(3, expanded = true);
+    			$$invalidate(5, expanded = true);
     		}
     	}
 
@@ -53047,8 +53332,9 @@ var app = (function () {
     	// load data
     	onMount(async () => {
     		data = await loadData();
+    		$$invalidate(2, copyData = await loadCopyData());
     		$$invalidate(0, indicatorsData = await loadIndicatorsData($areaInView));
-    		$$invalidate(2, countryNames = data["countries"].filter(d => d.country !== "China" && d.country !== "Open Economy Avg"));
+    		$$invalidate(3, countryNames = data["countries"].filter(d => d.country !== "China" && d.country !== "Open Economy Avg"));
     		$$invalidate(1, areaData = data["areas"].filter(d => d.area == $areaInView)[0]);
     	});
 
@@ -53088,7 +53374,7 @@ var app = (function () {
     		chartWidth,
     		hoveredCountry,
     		selectedCountry,
-    		copyData,
+    		loadCopyData,
     		Icon,
     		CountrySelect,
     		IndicatorVisual,
@@ -53099,10 +53385,11 @@ var app = (function () {
     		countryNames,
     		areaData,
     		graphData,
+    		currentArea,
+    		copyData,
     		expanded,
     		areaWidth,
     		areaMargin,
-    		currentArea,
     		isHovered,
     		mouseOver,
     		mouseLeave,
@@ -53117,9 +53404,9 @@ var app = (function () {
     		clickLink,
     		accountForFirefox,
     		$height,
-    		$areaInView,
     		$hoveredCountry,
     		$selectedCountry,
+    		$areaInView,
     		$view,
     		$width,
     		$margin
@@ -53128,13 +53415,15 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ("data" in $$props) data = $$props.data;
     		if ("indicatorsData" in $$props) $$invalidate(0, indicatorsData = $$props.indicatorsData);
-    		if ("countryNames" in $$props) $$invalidate(2, countryNames = $$props.countryNames);
+    		if ("countryNames" in $$props) $$invalidate(3, countryNames = $$props.countryNames);
     		if ("areaData" in $$props) $$invalidate(1, areaData = $$props.areaData);
-    		if ("graphData" in $$props) $$invalidate(10, graphData = $$props.graphData);
-    		if ("expanded" in $$props) $$invalidate(3, expanded = $$props.expanded);
-    		if ("areaWidth" in $$props) $$invalidate(11, areaWidth = $$props.areaWidth);
-    		if ("areaMargin" in $$props) $$invalidate(21, areaMargin = $$props.areaMargin);
-    		if ("isHovered" in $$props) $$invalidate(4, isHovered = $$props.isHovered);
+    		if ("graphData" in $$props) $$invalidate(12, graphData = $$props.graphData);
+    		if ("currentArea" in $$props) $$invalidate(4, currentArea = $$props.currentArea);
+    		if ("copyData" in $$props) $$invalidate(2, copyData = $$props.copyData);
+    		if ("expanded" in $$props) $$invalidate(5, expanded = $$props.expanded);
+    		if ("areaWidth" in $$props) $$invalidate(13, areaWidth = $$props.areaWidth);
+    		if ("areaMargin" in $$props) $$invalidate(22, areaMargin = $$props.areaMargin);
+    		if ("isHovered" in $$props) $$invalidate(6, isHovered = $$props.isHovered);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -53142,8 +53431,14 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*areaData*/ 2) {
+    		if ($$self.$$.dirty[0] & /*copyData, $areaInView*/ 524292) {
     			// parse data
+    			if (copyData) {
+    				$$invalidate(4, currentArea = copyData.filter(d => d.category == "main" && d.label == $areaInView)[0]);
+    			}
+    		}
+
+    		if ($$self.$$.dirty[0] & /*areaData*/ 2) {
     			if (areaData) {
     				const xScale = linear().domain([0, 10]).range([areaMargin * 3, areaWidth - areaMargin * 3]);
 
@@ -53160,7 +53455,7 @@ var app = (function () {
     			}
     		}
 
-    		if ($$self.$$.dirty[0] & /*indicatorsData, $areaInView*/ 262145) {
+    		if ($$self.$$.dirty[0] & /*indicatorsData, copyData, $areaInView*/ 524293) {
     			if (indicatorsData) {
     				indicatorsData.forEach((d, i) => {
     					let indicatorCopy = copyData.filter(x => x.category == $areaInView);
@@ -53182,7 +53477,9 @@ var app = (function () {
     	return [
     		indicatorsData,
     		areaData,
+    		copyData,
     		countryNames,
+    		currentArea,
     		expanded,
     		isHovered,
     		$height,
@@ -53192,7 +53489,6 @@ var app = (function () {
     		$margin,
     		graphData,
     		areaWidth,
-    		currentArea,
     		mouseOver,
     		mouseLeave,
     		mouseClick,
@@ -53319,7 +53615,7 @@ var app = (function () {
     			main = element("main");
     			if_block.c();
     			attr_dev(main, "class", "svelte-x54a9");
-    			add_location(main, file, 32, 0, 954);
+    			add_location(main, file, 32, 0, 888);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

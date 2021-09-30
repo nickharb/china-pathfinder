@@ -10,27 +10,21 @@
     import {view, areaInView} from '../stores/view';
     import {width, height, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
-    import copyData from "../data/copy";
+    // import copyData from "../data/copy";
+    import loadCopyData from "../data/load-copy-data.js";
     import Icon from '../components/Icon.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
     import IndicatorVisual from '../components/IndicatorVisual.svelte';
     import AreaTooltip from '../components/AreaTooltip.svelte';
     import SocialButtons from '../components/SocialButtons.svelte';
 
-    let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[];
+    let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData;
     let expanded = false;
 
     // set area visual width
     let areaWidth = 750;
     let areaMargin = 20;
     $height = 100;
-
-    // // TODO - dev only, delete these lines for production
-    // if (!$areaInView) { 
-    //     $areaInView = 'fdi'; // pulled from /stores/view
-    // }
-
-    const currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
 
     let isHovered = false;
 
@@ -75,12 +69,17 @@
 
     onMount(async()=>{
         data = await loadData();
+        copyData = await loadCopyData();
         indicatorsData = await loadIndicatorsData($areaInView);
         countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
         areaData = (data['areas']).filter(d=> d.area == $areaInView)[0];
     });
 
     // parse data
+
+    $: if (copyData) {
+        currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
+    }
 
     $: if (areaData) {
         const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, areaWidth-areaMargin*3]);
@@ -147,6 +146,7 @@
 </script>
 
 
+{#if copyData}
 
 <!-- <button class='back' on:click|self={()=> switchView('main')}>Back to Dashboard</button> -->
 <button class='back'><a href="https://pathfinder.sevenmilemedia.com/">Back to Dashboard</a></button>
@@ -299,6 +299,7 @@
     {/each}
 </div>
 
+{/if}
 
 
 <style>

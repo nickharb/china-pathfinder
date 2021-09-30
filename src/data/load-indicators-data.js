@@ -23,7 +23,7 @@ const loadIndicatorsData = async (indicatorName) => {
 
         output.push({indicator: d, values: countries});
     })
-    console.log(output)
+
     return(output);
 };
 
