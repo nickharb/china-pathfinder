@@ -26,7 +26,7 @@
     // $areaInView = 'innovation';
     // $areaInView = 'trade';
     // $areaInView = 'fdi';
-    $areaInView = 'portfolio';
+    // $areaInView = 'portfolio';
 
     // set area visual width
     let areaWidth = 750;

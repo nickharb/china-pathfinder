@@ -1,5 +1,6 @@
 <script>
     import * as d3 from 'd3';
+    import * as _ from 'lodash';
     import { onMount } from "svelte";
     import { fly } from 'svelte/transition';
     import {width, height, margin, scaleFactor} from '../stores/dimensions';
@@ -14,6 +15,23 @@
 
     let descriptionWidth = 380;
     let offsetLeft = [];
+    let labelPositions = {
+        'australia': '-10px',
+        'canada': '-10px',
+        'china': '-10px',
+        'china-2010': '-10px',
+        'france': '-10px',
+        'germany': '-10px',
+        'italy': '-10px',
+        'japan': '-10px',
+        'open-economy-avg': '-10px',
+        'south-korea': '-10px',
+        'spain': '-10px',
+        'united-kingdom': '-10px',
+        'united-states': '-10px'
+    }
+
+    $selectedCountry = 'south-korea';
 
     // const url = {
     //     'growth': 'http://localhost:10003/portfolio-investment-openness',
@@ -42,33 +60,6 @@
         $areaInView = area;
     }
 
-    // setTimeout(positionLabels, 500);
-
-    // function positionLabels() {
-    //     let edges = [];
-    //     let selected = d3.selectAll('.country.header.selected');
-
-    //     selected.each(function(label, i) {
-    //         let box = d3.select(this).select('text').node().getBBox();
-    //         let width = box.width;
-    //         let x = parseFloat(this.dataset.x);
-    //         let id = this.dataset.id;
-    //         console.log(width)
-    //         console.log(x)
-
-    //         edges.push({
-    //             id: id,
-    //             left: x - (width/2),
-    //             right: x + (width/2)
-    //         });
-    //     });
-
-    //     if (edges[0].left > edges[1].right || edges[0].right > edges[1].left) {
-    //         d3.select('.canada.header.selected').select('text')
-    //             .attr('y', -25);
-    //     }
-    // }
-
     // event handlers
     
     let isHovered = false;
@@ -89,12 +80,10 @@
     }
 
     function mouseClick(e) {
-
         $selectedCountry = e.path[1].dataset.id;
         $selectedArea = e.path[1].dataset.area;
 
         d3.selectAll('.'+$selectedCountry).raise(); // raises selected country circles
-        // positionLabels();
     }
 
     function infoMouseOver(e) {
@@ -108,9 +97,11 @@
     }
 
     // parse data
-
     $: if (areaData) {
         parseData();
+        if (areaData.length > 0) {
+            setTimeout(positionLabels, 500);
+        }
     }
 
     function parseData() {
@@ -135,11 +126,14 @@
                     
                     let path = utils.cubicBezier(points[0], points[1], 10);
 
+                    let id = d.countries[n].trim().toLowerCase().split(" ").join("-")
+
                     return {
-                        id : d.countries[n].trim().toLowerCase().split(" ").join("-"),
+                        id : id,
                         x : xScale(m),
                         y : 0,
                         r : 6,
+                        labelY: '-10px',
                         country : d.countries[n],
                         path: path,
                         score: d.comps[n]
@@ -148,6 +142,54 @@
             }
         });
     }
+
+
+
+    // reposition labels if they overlap
+
+    function positionLabels() {
+        
+        let labelBounds = [];
+        let selected = document.querySelectorAll('.country text');
+        let chinaLabel = document.querySelector('.china text');
+        let oecdLabel = document.querySelector('.open-economy-avg text');
+
+        let china = {
+            'left': chinaLabel.getBoundingClientRect().left,
+            'right': chinaLabel.getBoundingClientRect().right,
+            'width': chinaLabel.getBBox().width
+        };
+        let oecd = {
+            'left': oecdLabel.getBoundingClientRect().left,
+            'right': oecdLabel.getBoundingClientRect().right,
+            'width': oecdLabel.getBBox().width
+        };
+
+        selected.forEach(function(country, i) {
+            if (country.dataset.id !== 'china' && country.dataset.id !== 'open-economy-avg') {
+                labelBounds.push({
+                    'left': country.getBoundingClientRect().left,
+                    'right': country.getBoundingClientRect().right,
+                    'width': country.getBBox().width,
+                    'id': country.dataset.id
+                });
+            }
+        });
+
+        for (let i in labelBounds) {
+            let country = labelBounds[i];
+            let id = country.id;
+
+            if (country.left < china.right && country.right > china.right || country.right > china.left && country.left < china.left || country.left > china.left && country.right < china.right) {
+                labelPositions[id] = '-27px';
+            } else if (country.left < oecd.right && country.right > oecd.right || country.right > oecd.left && country.left < oecd.left || country.left > oecd.left && country.right < oecd.right) {
+                labelPositions[id] = '-27px';
+            } else {
+                labelPositions[id] = '-10px';
+            }
+        }
+    }
+
 </script>
 
 <!-- area header -->
@@ -189,6 +231,7 @@
     {/each}
 </div>
 
+<!-- {#if areaData.length < 0} -->
 <!-- composite visual -->
 <div class='vis-wrapper' bind:clientWidth={$width}>
     <svg viewBox="0 0 {$width} {$height}"
@@ -206,7 +249,7 @@
 
                 <line class='gridline' x2={$width}></line>
 
-                {#each area.graphData as graph}
+                {#each area.graphData as graph, x}
 
                     <g class='country {graph.id}'
                         data-x='{graph.x}'
@@ -217,9 +260,20 @@
                         class:selected='{graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}'
                         class:header='{i == 0}'
                     >
+
+                        {#if i == 0}
+                        <!-- {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'} -->
+                            <text
+                                class='label'
+                                data-id='{graph.id}'
+                                y='{labelPositions[graph.id]}'
+                            >
+                                {graph.country}
+                            </text>
+                        {/if}
+
                         <!-- top country labels -->
-                        {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
-                            <!-- conditional for label spacing -->
+                        <!-- {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
                             {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010'  || graph.id == 'germany' ||  graph.id == 'united-kingdom'}
                                 <text
                                     class='label'
@@ -237,9 +291,11 @@
                                     {graph.country}
                                 </text>
                             {/if}
-                        {/if}
+                        {/if} -->
+
                         <!-- country path -->
                         <path d={graph.path}></path>
+
                         <!-- country circle -->
                         <circle
                             r={graph.r}
@@ -264,6 +320,8 @@
         {/each}
     {/each}
 </div>
+
+<!-- {/if} -->
 
 
 
@@ -468,42 +526,37 @@
     /* country label */
 
     text.label {
-        fill: #444444;
         text-anchor: middle;
         pointer-events: none;
-    }
-
-    g.selected text.label {
         fill: #234462;
         font-weight: bold;
+        opacity: 0;
+        transform: translate(0,10px);
+        transition: opacity 300ms, transform 300ms;
     }
+
+    .selected text.label {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+
+    /*g.selected text.label {
+        fill: #234462;
+        font-weight: bold;
+    }*/
 
     g.china text.label {
         fill: #D13F36;
-        font-weight: bold;
+        opacity: 1;
     }
 
     g.china-2010 text.label {
         fill: #A13F36;
-        font-weight: bold;
     }
 
     g.open-economy-avg text.label {
         fill: #D18B36;
-        font-weight: bold;
-    }
-    /*here we modify the label spacing for mobile*/
-    @media(max-width: 768px){
-        .level-2{
-            transform:translateY(17px);
-
-        }
-        .country.open-economy-avg text{
-            transform:translateY(-20px);
-        }
-        .country.italy text{
-            transform: none;
-        }
+        opacity: 1;
     }
 </style>
 
