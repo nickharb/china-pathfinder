@@ -15,6 +15,7 @@
     let isTablet = (window.innerWidth < 1080) ? true : false;
 
     // $chartWidth = 200;
+    const radius = 300;
     $innerRadius = 40;
 
     if (isMobile) {
@@ -31,6 +32,7 @@
     let offsetHeight;
     let minRadius = $innerRadius + 20;
     let maxRadius = $chartWidth/2-$innerRadius-20;
+    let anglePadding = 0.15;
 
     let x = d3.scaleBand()
         .domain(indicator.values.map(d => d.country))
@@ -39,6 +41,8 @@
     let y = d3.scalePow()
         .domain(d3.extent(indicator.values.map(d => parseFloat(d.value))))
         .range([minRadius, maxRadius])
+
+    let outerRadiusMax = y(indicator.values[0].value);
 
     indicator.values.forEach((d,i) => {
         let startAngle = x(d.country);
@@ -49,35 +53,76 @@
             .innerRadius($innerRadius)
             .outerRadius(outerRadius)
             .cornerRadius(0)
-            .startAngle(startAngle + 0.20) // 0.15
+            .startAngle(startAngle + anglePadding)
+            // .startAngle(startAngle)
             .endAngle(endAngle)
-            .padAngle(0) // 2.48
-            .padRadius(0)(); // 5
+            .padAngle(0)
+            .padRadius(0)();
+
+        var outerArc = d3.arc()
+            .outerRadius(outerRadiusMax + 10)
+            .innerRadius(outerRadiusMax + 10)
+            .startAngle(startAngle)
+            .endAngle(endAngle)
+            .padAngle(0)
+            .padRadius(0)();
 
         // adapted from d3 centroid function
         function centroid() {
             let r = ($innerRadius + outerRadius) / 2,
-                a = (startAngle + endAngle) / 2 - Math.PI / 2;
+                a = (startAngle + anglePadding + endAngle) / 2 - Math.PI / 2;
             return [Math.cos(a) * r, Math.sin(a) * r];
         };
 
+        function centroidInner() {
+            let padding = 10;
+            let r = (outerRadius + outerRadius + padding) / 2,
+                a = (startAngle + anglePadding + endAngle) / 2 - Math.PI / 2;
+            return [Math.cos(a) * r, Math.sin(a) * r];
+        };
+
+        function centroidOuter() {
+            let padding;
+            if (outerRadius < 70) {
+                padding = 150;
+            } else {
+                padding = 50;
+            }
+
+            let r = (outerRadius + outerRadius + padding) / 2,
+                a = (startAngle + anglePadding + endAngle) / 2 - Math.PI / 2;
+            return [Math.cos(a) * r, Math.sin(a) * r];
+        };
+
+        // function centroidOuterMax() {
+        //     let r = (outerRadiusMax + outerRadiusMax) / 2,
+        //         a = (startAngle + endAngle) / 2 - Math.PI / 2;
+        //     return [Math.cos(a) * r, Math.sin(a) * r];
+        // };
+
         d.path = arc;
+        d.outerPath = outerArc;
         d.centroid = centroid();
-        
-        d.rotateAngle = (x(d.country) + x.bandwidth()/2) * 180 / Math.PI-90;
 
-        d.tooltipX = d.rotateAngle;
-        d.tooltipY = d.rotateAngle;
+        // calculate line positions
 
-        // computes if the text should be on the right or left of the bar
-        if (i >= indicator.values.length/2) {
-            d.textRotate = 180; 
-            d.textAnchor = 'end';
-        } else{
-            d.textRotate = 0;
-            d.textAnchor = 'start';
-        }
-        d.barLength = y(d.value)+10;
+        var innerPoint = centroidInner();
+        var outerPoint = centroidOuter();
+
+        // d.points = ['150,20', innerPoint[0]+','+innerPoint[1]];
+        d.points = [innerPoint[0]+','+innerPoint[1], outerPoint[0]+','+outerPoint[1]];
+
+        d.translate = 'translate(' + (outerPoint[0]*1.03) + ',' + (outerPoint[1]*1.03) + ')';
+        d.anchor = (midAngle()) < Math.PI ? 'start' : 'end';
+
+        // .attr('transform', function(d) {
+        //             var pos = outerArc.centroid(d);
+        //             pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+        //             return 'translate(' + pos + ')';
+        //         })
+
+        function midAngle() { return startAngle + (endAngle - startAngle + anglePadding) / 2; } 
+
     });
 
     let isHovered = false;
@@ -153,8 +198,22 @@
                         on:click={mouseClick}
                     ></path>
 
-                    <!-- country labels -->
-                    {#if country.id == $selectedCountry || country.id == 'china' || country.id == 'open-economy-avg'}
+                    <g class='labels'>
+                        <text
+                            text-anchor={country.anchor}
+                            transform={country.translate}
+                        >{country.country}</text>
+                    </g>
+
+                    <!-- <g class='lines'>
+                        <path
+                            d={country.outerPath}
+                        ></path>
+                    </g> -->
+
+                    <polyline points="{country.points[0]} {country.points[1]}" fill="none" stroke="#84A9BC" />
+
+                    <!-- {#if country.id == $selectedCountry || country.id == 'china' || country.id == 'open-economy-avg'}
                         <g transition:fly="{{ y: 10, duration: 200 }}" transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
                             <text 
                                 transform='rotate({country.rotateAngle*-1})'
@@ -163,7 +222,7 @@
                                 {country.country}
                             </text>
                         </g>
-                    {/if}
+                    {/if} -->
                 </g>
             {/each}
 
@@ -310,19 +369,30 @@
     /* country label */
 
     .country text {
-        fill: #444444;
-        text-anchor: middle;
-        pointer-events: none;
-    }
-
-    .country.selected text {
         fill: #234462;
         font-weight: bold;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+
+    .country polyline {
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+
+    g.selected text {
+        opacity: 1;
+    }
+
+    g.selected polyline {
+        opacity: 1;
     }
 
     .country.china text {
         fill: #D13F36;
         font-weight: bold;
+        opacity: 1;
     }
 
     .country.china-2010 text {
@@ -333,6 +403,7 @@
     .country.open-economy-avg text {
         fill: #D18B36;
         font-weight: bold;
+        opacity: 1;
     }
 
     /* indicator middle labels */

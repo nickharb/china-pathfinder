@@ -37,9 +37,9 @@
     }
 
     // $areaInView = 'growth';
-    $areaInView = 'competition';
+    // $areaInView = 'competition';
     // $areaInView = 'innovation';
-    // $areaInView = 'trade';
+    $areaInView = 'trade';
     // $areaInView = 'fdi';
     // $areaInView = 'portfolio';
 
@@ -150,7 +150,6 @@
         let selected = document.querySelectorAll('.country text');
         let chinaLabel = document.querySelector('.china text');
         let oecdLabel = document.querySelector('.open-economy-avg text');
-        console.log(chinaLabel)
 
         let china = {
             'left': chinaLabel.getBoundingClientRect().left,
