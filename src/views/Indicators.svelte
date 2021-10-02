@@ -20,9 +20,24 @@
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData;
     let expanded = false;
+    let labelPositions = {
+        'australia': '-10px',
+        'canada': '-10px',
+        'china': '-10px',
+        'china-2010': '-10px',
+        'france': '-10px',
+        'germany': '-10px',
+        'italy': '-10px',
+        'japan': '-10px',
+        'open-economy-avg': '-10px',
+        'south-korea': '-10px',
+        'spain': '-10px',
+        'united-kingdom': '-10px',
+        'united-states': '-10px'
+    }
 
     // $areaInView = 'growth';
-    // $areaInView = 'competition';
+    $areaInView = 'competition';
     // $areaInView = 'innovation';
     // $areaInView = 'trade';
     // $areaInView = 'fdi';
@@ -47,7 +62,10 @@
     }
 
     function mouseClick(e) {
-        $selectedCountry = e.path[1].dataset.id;
+        if (e.path[1].dataset.id !== 'china' && e.path[1].dataset.id !== 'open-economy-avg') {
+            $selectedCountry = e.path[1].dataset.id;
+            d3.selectAll('.'+$selectedCountry).raise();
+        }
     }
 
     // event handlers
@@ -101,6 +119,9 @@
                 value: d
             });
         });
+
+        // fix label overlap
+        setTimeout(positionLabels, 500);
     }
 
     $: if (indicatorsData) {
@@ -120,6 +141,54 @@
         $view = targetView;
         $areaInView = area;
     }
+
+    // reposition labels if they overlap
+
+    function positionLabels() {
+        
+        let labelBounds = [];
+        let selected = document.querySelectorAll('.country text');
+        let chinaLabel = document.querySelector('.china text');
+        let oecdLabel = document.querySelector('.open-economy-avg text');
+        console.log(chinaLabel)
+
+        let china = {
+            'left': chinaLabel.getBoundingClientRect().left,
+            'right': chinaLabel.getBoundingClientRect().right,
+            'width': chinaLabel.getBBox().width
+        };
+        let oecd = {
+            'left': oecdLabel.getBoundingClientRect().left,
+            'right': oecdLabel.getBoundingClientRect().right,
+            'width': oecdLabel.getBBox().width
+        };
+
+        selected.forEach(function(country, i) {
+            if (country.dataset.id !== 'china' && country.dataset.id !== 'open-economy-avg') {
+                labelBounds.push({
+                    'left': country.getBoundingClientRect().left,
+                    'right': country.getBoundingClientRect().right,
+                    'width': country.getBBox().width,
+                    'id': country.dataset.id
+                });
+            }
+        });
+
+        for (let i in labelBounds) {
+            let country = labelBounds[i];
+            let id = country.id;
+
+            if (country.left < china.right && country.right > china.right || country.right > china.left && country.left < china.left || country.left > china.left && country.right < china.right) {
+                labelPositions[id] = '-27px';
+            } else if (country.left < oecd.right && country.right > oecd.right || country.right > oecd.left && country.left < oecd.left || country.left > oecd.left && country.right < oecd.right) {
+                labelPositions[id] = '-27px';
+            } else {
+                labelPositions[id] = '-10px';
+            }
+        }
+    }
+
+    // download chart functions
 
     function downloadImage(e) {
         let chart = e.path[2];
@@ -190,6 +259,14 @@
                                 class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
                                 class:labelTestSelected='{graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}'
                             >
+
+                                <text
+                                    class='label'
+                                    data-id='{graph.id}'
+                                    y='{labelPositions[graph.id]}'
+                                >
+                                    {graph.country}
+                                </text>
                                 
                                 <circle
                                     r={graph.r}
@@ -198,35 +275,6 @@
                                     on:mouseleave={mouseLeave}
                                     on:click={mouseClick}
                                 ></circle>
-
-                                <!-- <text class='label' y='-10px'>{graph.country}</text> -->
-
-                                <!-- top country labels -->
-                                <!-- {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
-                                    <text class='label' y='-12px' transition:fly="{{ y: 10, duration: 200 }}">{graph.country}</text>
-                                {/if} -->
-
-                                <!-- top country labels -->
-                                {#if graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}
-                                    <!-- conditional for label spacing -->
-                                    {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010' ||  graph.id == 'united-kingdom'}
-                                        <text
-                                            class='label'
-                                            y='-10px'
-                                            transition:fly="{{ y: 10, duration: 200 }}"
-                                        >
-                                            {graph.country}
-                                        </text>
-                                    {:else}
-                                        <text
-                                            class='label level-2'
-                                            y='-27px'
-                                            transition:fly="{{ y: 10, duration: 200 }}"
-                                        >
-                                            {graph.country}
-                                        </text>
-                                    {/if}
-                                {/if}
                             </g>
                         {/each}
                     </g>
@@ -728,29 +776,34 @@
     /* country label */
 
     text.label {
-        fill: #444444;
         text-anchor: middle;
         pointer-events: none;
-    }
-
-    g.selected text.label {
         fill: #234462;
         font-weight: bold;
+        opacity: 0;
+        transform: translate(0,10px);
+        transition: opacity 300ms, transform 300ms;
+    }
+
+    .selected text.label {
+        opacity: 1;
+        transform: translate(0,0);
     }
 
     g.china text.label {
         fill: #D13F36;
-        font-weight: bold;
+        opacity: 1;
+        transform: translate(0,0);
     }
 
     g.china-2010 text.label {
         fill: #A13F36;
-        font-weight: bold;
     }
 
     g.open-economy-avg text.label {
         fill: #D18B36;
-        font-weight: bold;
+        opacity: 1;
+        transform: translate(0,0);
     }
 
     /* buttons */
@@ -758,9 +811,6 @@
     button {
         margin-top: 20px;
     }
-
-    /* temporary back button */
-    /* TODO - change this to close button */
     
     button.back {
         display: block;

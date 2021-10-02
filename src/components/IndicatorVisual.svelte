@@ -94,7 +94,9 @@
     }
 
     function mouseClick(e) {
-        $selectedCountry = e.path[1].dataset.id;
+        if (e.path[1].dataset.id !== 'china' && e.path[1].dataset.id !== 'open-economy-avg') {
+            $selectedCountry = e.path[1].dataset.id;
+        }
     }
 
     // function pathMouseOver(e) {

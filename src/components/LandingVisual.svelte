@@ -80,10 +80,11 @@
     }
 
     function mouseClick(e) {
-        $selectedCountry = e.path[1].dataset.id;
-        $selectedArea = e.path[1].dataset.area;
-
-        d3.selectAll('.'+$selectedCountry).raise(); // raises selected country circles
+        if (e.path[1].dataset.id !== 'china' && e.path[1].dataset.id !== 'open-economy-avg') {
+            $selectedCountry = e.path[1].dataset.id;
+            $selectedArea = e.path[1].dataset.area;
+            d3.selectAll('.'+$selectedCountry).raise();
+        }
     }
 
     function infoMouseOver(e) {
@@ -492,7 +493,6 @@
     g.china.selected path {
         stroke: #D13F36;
         stroke-width: 2px;
-        /*stroke-opacity: 1;*/
     }
 
     g.china-2010.selected circle {
@@ -504,7 +504,6 @@
     g.china-2010.selected path {
         stroke: #A13F36;
         stroke-width: 2px;
-        /*stroke-opacity: 1;*/
     }
 
     g.open-economy-avg.selected circle {
@@ -516,7 +515,6 @@
     g.open-economy-avg.selected path {
         stroke: #D18B36;
         stroke-width: 2px;
-        /*stroke-opacity: 1;*/
     }
 
     .gridline {
@@ -539,11 +537,6 @@
         opacity: 1;
         transform: translate(0,0);
     }
-
-    /*g.selected text.label {
-        fill: #234462;
-        font-weight: bold;
-    }*/
 
     g.china text.label {
         fill: #D13F36;
