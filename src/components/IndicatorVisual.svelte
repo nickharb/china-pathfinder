@@ -17,6 +17,8 @@
     // $chartWidth = 200;
     const radius = 300;
     $innerRadius = 40;
+    $margin = 100;
+    let labelHidden = {};
 
     if (isMobile) {
         $chartWidth = 300;
@@ -68,18 +70,18 @@
             .padRadius(0)();
 
         // adapted from d3 centroid function
-        function centroid() {
+        function centroidTooltip() {
             let r = ($innerRadius + outerRadius) / 2,
                 a = (startAngle + anglePadding + endAngle) / 2 - Math.PI / 2;
             return [Math.cos(a) * r, Math.sin(a) * r];
-        };
+        }
 
         function centroidInner() {
             let padding = 10;
             let r = (outerRadius + outerRadius + padding) / 2,
                 a = (startAngle + anglePadding + endAngle) / 2 - Math.PI / 2;
             return [Math.cos(a) * r, Math.sin(a) * r];
-        };
+        }
 
         function centroidOuter() {
             let padding;
@@ -92,43 +94,80 @@
             let r = (outerRadius + outerRadius + padding) / 2,
                 a = (startAngle + anglePadding + endAngle) / 2 - Math.PI / 2;
             return [Math.cos(a) * r, Math.sin(a) * r];
-        };
+        }
 
-        // function centroidOuterMax() {
-        //     let r = (outerRadiusMax + outerRadiusMax) / 2,
-        //         a = (startAngle + endAngle) / 2 - Math.PI / 2;
-        //     return [Math.cos(a) * r, Math.sin(a) * r];
-        // };
+        function midAngle() {
+            return startAngle + (endAngle - startAngle + anglePadding) / 2;
+        } 
 
         d.path = arc;
         d.outerPath = outerArc;
-        d.centroid = centroid();
+        d.centroid = centroidTooltip();
 
         // calculate line positions
 
         var innerPoint = centroidInner();
         var outerPoint = centroidOuter();
 
-        // d.points = ['150,20', innerPoint[0]+','+innerPoint[1]];
         d.points = [innerPoint[0]+','+innerPoint[1], outerPoint[0]+','+outerPoint[1]];
 
         d.translate = 'translate(' + (outerPoint[0]*1.03) + ',' + (outerPoint[1]*1.03) + ')';
         d.anchor = (midAngle()) < Math.PI ? 'start' : 'end';
-
-        // .attr('transform', function(d) {
-        //             var pos = outerArc.centroid(d);
-        //             pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
-        //             return 'translate(' + pos + ')';
-        //         })
-
-        function midAngle() { return startAngle + (endAngle - startAngle + anglePadding) / 2; } 
-
+        d.hidden = false;
     });
 
+    function positionLabels() {
+        
+        let labelBounds = [];
+        let svgContainer = document.getElementById(indicator.indicator);
+        let svg = svgContainer.getBoundingClientRect();
+
+        // let l = [];
+        let labels = svgContainer.querySelectorAll('.label-container');
+
+        // console.log(labels)
+
+        labels.forEach(function(label, i) {
+            labelBounds.push({
+                'left': label.getBoundingClientRect().left,
+                'right': label.getBoundingClientRect().right,
+                'top': label.getBoundingClientRect().top,
+                'bottom': label.getBoundingClientRect().bottom,
+                'width': label.getBBox().width,
+                'id': label.dataset.id
+            });
+        });
+
+        // labelBounds.push(l);
+
+        // console.log(labelBounds)
+
+        // let svgBounds = {
+        //     'left': chinaLabel.getBoundingClientRect().left,
+        //     'right': chinaLabel.getBoundingClientRect().right,
+        //     'width': chinaLabel.getBBox().width
+        // };
+
+        labelBounds.forEach(function(label, i) {
+            let id = label.id;
+
+            if (label.left < svg.left || label.right > svg.right) {
+                labelHidden[id] = true;
+            } else if (label.top > svg.top || label.bottom < svg.bottom) {
+                // labelHidden[id] = true;
+            } else {
+                labelHidden[id] = false;
+            }
+        });
+    }
+
+    // fix label overlap
+    setTimeout(positionLabels, 500);
+
     let isHovered = false;
-    // let indicatorIsHovered = false;
 
     function mouseOver(e) {
+        console.log(e)
         isHovered = true;
         $hoveredCountry = e.path[1].dataset.id;
     }
@@ -144,30 +183,11 @@
         }
     }
 
-    // function pathMouseOver(e) {
-    //     $hoveredCountry = e.path[1].dataset.id;
-    // }
-
-    // function pathMouseOut(e) {
-    //     $hoveredCountry = '';
-    // }
-
-    // function pathClick(e) {
-    //     $selectedCountry = e.path[1].dataset.id;
-    // }
-
-    // onMount(function() {
-    //     let indicators = d3.selectAll('.indicator');
-    //     indicators.each(function(el, i) {
-    //         let box = d3.select(this).node().getBBox();
-    //         console.log(box);
-    //     });
-    // });
-
 
 </script>
 
-<div class={$$props.class} bind:clientWidth={$chartWidth}>
+<!-- <div class={$$props.class} bind:clientWidth={$chartWidth}> -->
+<div class={$$props.class}>
 
     <!-- <svg viewBox="0 0 {$chartWidth} {$chartWidth}" width={$chartWidth} height={$chartWidth}> -->
         <!-- <g class="indicator" transform='translate({$chartWidth/2},{$chartWidth/2})'> -->
@@ -176,11 +196,11 @@
         width={$chartWidth}
         height={$height}> -->
 
-    <svg viewBox="0 0 {$chartWidth} {$chartWidth}"
-        width={$chartWidth}
-        height={$chartWidth}>
+    <svg id="{indicator.indicator}" viewBox="0 0 {$chartWidth+$margin} {$chartWidth+$margin}"
+        width={$chartWidth+$margin}
+        height={$chartWidth+$margin}>
 
-        <g class="indicator" transform='translate({$chartWidth/2},{$chartWidth/2})'>
+        <g class="indicator" transform='translate({($chartWidth+$margin)/2},{($chartWidth+$margin)/2})'>
 
             {#each indicator.values as country}
                 <g class='country {country.id}'
@@ -198,11 +218,15 @@
                         on:click={mouseClick}
                     ></path>
 
-                    <g class='labels'>
+                    <g class='label-container'
+                        class:hidden='{labelHidden[country.id] == true}'
+                        data-id='{country.id}'
+                    >
                         <text
                             text-anchor={country.anchor}
                             transform={country.translate}
                         >{country.country}</text>
+                        <polyline points="{country.points[0]} {country.points[1]}" fill="none" stroke="#84A9BC" />
                     </g>
 
                     <!-- <g class='lines'>
@@ -211,7 +235,7 @@
                         ></path>
                     </g> -->
 
-                    <polyline points="{country.points[0]} {country.points[1]}" fill="none" stroke="#84A9BC" />
+                    
 
                     <!-- {#if country.id == $selectedCountry || country.id == 'china' || country.id == 'open-economy-avg'}
                         <g transition:fly="{{ y: 10, duration: 200 }}" transform='rotate({country.rotateAngle})translate({country.barLength},0)'>
@@ -257,8 +281,8 @@
 
 <style>
 
-    svg {
-        /*border: 1px solid lightpink;*/
+    .hidden {
+        display: none;
     }
 
     /* indicator tooltips */

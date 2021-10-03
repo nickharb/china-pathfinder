@@ -20,6 +20,7 @@
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData;
     let expanded = false;
+    let chinaHidden = false;
     let labelPositions = {
         'australia': '-10px',
         'canada': '-10px',
@@ -45,8 +46,9 @@
 
     // set area visual width
     let areaWidth = 750;
-    let areaMargin = 20;
+    let areaMargin = 40;
     $height = 100;
+    // $margin = 20;
 
     let isHovered = false;
 
@@ -185,6 +187,11 @@
                 labelPositions[id] = '-10px';
             }
         }
+
+        // check if china and oecd labels overlap
+        if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
+            chinaHidden = true;
+        }
     }
 
     // download chart functions
@@ -241,7 +248,7 @@
                 height={$height+30}
             >
                 {#if areaData}
-                    <g class="{areaData.area}" transform='translate(0,{$margin})'>
+                    <g class="{areaData.area}" transform='translate(0,{areaMargin})'>
 
                         <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
                         <text x='{$width}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
@@ -261,6 +268,7 @@
 
                                 <text
                                     class='label'
+                                    class:hidden='{graph.id == 'china' && chinaHidden == true}'
                                     data-id='{graph.id}'
                                     y='{labelPositions[graph.id]}'
                                 >
@@ -357,6 +365,10 @@
 
 
 <style>
+
+    .hidden {
+        display: none;
+    }
 
     .social-share {
         display: flex;
@@ -483,7 +495,7 @@
         .text-left {
             border-right: 1px solid #84A9BC;
             padding-right: 40px;
-            margin-right: 40px;
+            margin-right: 80px;
         }
     }
 
@@ -497,7 +509,7 @@
         .text-right {
             border-left: 1px solid #84A9BC;
             padding-left: 40px;
-            margin-left: 40px;
+            margin-left: 80px;
         }
     }
 
@@ -670,54 +682,6 @@
         font-size: 14px;
         text-transform: uppercase;
     }
-
-    /* tooltip */
-
-    /*.tooltip {
-        opacity: 0;
-        position: absolute;
-        z-index: 999;
-        padding: 5px 10px;
-        background-color: white;
-        border-radius: 2px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        pointer-events: none;
-        transition: opacity 300ms, transform 300ms ease;
-        transform: translate(-10px, 0);
-        height: 18px;
-        margin-top: -9px;
-        margin-left: 20px;
-    }
-
-    .tooltip.hovered {
-        opacity: 1;
-        transform: translate(0, 0);
-    }
-
-    .tooltip p {
-        margin: 0;
-        font-size: 16px;
-        font-weight: normal;
-        text-align: center;
-        color: #234462;
-        line-height: 1.2;
-        white-space: nowrap;
-    }
-
-    .tooltip p.value {
-        display: none;
-        font-weight: bold;
-        font-size: 14px;
-    }
-
-    .tooltip.selected {
-        height: 36px;
-        margin-top: -18px;
-    }
-
-    .tooltip.selected p.value {
-        display: block;
-    }*/
 
     /* area vis */
 

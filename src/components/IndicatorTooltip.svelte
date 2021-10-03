@@ -1,10 +1,9 @@
 <script>
     import { fade } from 'svelte/transition';
     import { fly } from 'svelte/transition';
-    import {chartWidth} from '../stores/dimensions';
+    import {margin, chartWidth} from '../stores/dimensions';
     import {hoveredCountry, hoveredArea, selectedCountry, selectedArea} from '../stores/country-store.js';
     import Icon from './Icon.svelte';
-    // export let area;
     export let graph;
     export let isHovered;
 
@@ -19,7 +18,7 @@
         class:open-economy-avg="{graph.id == 'open-economy-avg'}"
         transition:fly="{{ y: -5, duration: 200 }}"
         bind:clientWidth={offsetWidth}
-        style="left: {graph.centroid[0]+($chartWidth/2)+5}px; top: {graph.centroid[1]+($chartWidth/2)+20}px; margin-left: {-offsetWidth/2}px;"
+        style="top: {graph.centroid[1]+($chartWidth/2)+($margin/2)}px; margin-left: -{(offsetWidth)/2}px; left: {graph.centroid[0]+($chartWidth/2)+($margin/2)}px;"
     >
         <svg class="tooltip-caret-up" width="12" height="6" viewBox="0 0 12 6" fill="none">
             <path d="M6 0L11.1962 6L0.803848 6L6 0Z" />
