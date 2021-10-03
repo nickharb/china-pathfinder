@@ -48,6 +48,7 @@
         letter-spacing: 0.03em;
         color: #122431;
         box-sizing: border-box;
+        position: relative;
         /*max-width: 1280px;*/
         /*margin: 0 auto;*/
         /*padding: 40px 20px;*/

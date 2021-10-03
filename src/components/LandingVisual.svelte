@@ -551,6 +551,10 @@
         fill: #D18B36;
         opacity: 1;
     }
+
+    .chart-download .description {
+        opacity: 0 !important;
+    }
 </style>
 
 
