@@ -23,7 +23,7 @@
     let loading = false;
     let fadeDuration = 200;
 
-    let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData;
+    let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData, title;
     let expanded = false;
     let chinaHidden = false;
     let labelPositions = {
@@ -111,6 +111,7 @@
 
     $: if (copyData) {
         currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
+        title = copyData.filter(d=> (d.category=='title' && d.label == $areaInView))[0];
     }
 
     $: if (areaData) {
@@ -337,8 +338,7 @@
 
 <div class='indicators'>
     <header>
-        <h2>Assessing {currentArea.name.toLowerCase()}</h2>
-        <!-- <h3>Lorem ipsum dolor sit amet consectetur adipiscing elit commodo</h3> -->
+        <h2>{title.name}</h2>
         <div class='control-area'>
             <CountrySelect {countryNames}/>
             <div class="social-share">

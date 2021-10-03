@@ -14,7 +14,7 @@
     import Loading from '../components/Loading.svelte';
     import SocialButtons from '../components/SocialButtons.svelte';
     export let showPrevious = false;
-    let data = [], countryNames = [], areaData = [], copyData = [];
+    let data = [], countryNames = [], areaData = [], copyData = [], introTitle, compositeTitle;
 
     import { csv } from 'd3';
     const dataPath = '../data/composite-score.csv';
@@ -31,6 +31,8 @@
     async function getCopyData() {
         return await loadCopyData()
             .then((data) => {
+                introTitle = data.filter(d=> (d.category=='title' && d.label == 'intro'))[0];
+                compositeTitle = data.filter(d=> (d.category=='title' && d.label == 'composite'))[0];
                 return data;
             });
     }
@@ -77,19 +79,22 @@
 
 </script>
 
+{#await getCopyData()}
+    <Loading />
+{:then copyData}
+
 <section class='intro'>
-    <h1>Where Does China’s Economy Stand?</h1>
-    <p>China is a global economic powerhouse, but its system remains opaque. Policymakers and financial experts disagree on basic facts about what is happening inside the country. To create a shared language for understanding the Chinese economy, the China Pathfinder project scores China and other open market economies across six key areas and presents an objective picture of China relative to the world.</p>
+    <h1>{introTitle.name}</h1>
+    <p>{introTitle.definition}</p>
 </section>
         
 <!-- <section class='latest'>
     <Quarterly />
 </section> -->
 
-<!-- todo - make these headers dynamic -->
 <header>
-    <h2>2020 Annual Economic Benchmarks</h2>
-    <h3>How Does China's Economic System Compare to Open Market Economies?</h3>
+    <h2>{compositeTitle.name}</h2>
+    <h3>{compositeTitle.definition}</h3>
     <div class='control-area'>
         <CountrySelect {countryNames}/>
         <div class="social-sharing">
@@ -104,14 +109,10 @@
 </header>
 
 <div class='vis-container' class:chart-download={chartDownload == true}>
-
-    {#await getCopyData()}
-        <p>Loading data...</p>
-    {:then data}
-        <LandingVisual areaData={areaData} copyData={data.filter(d=>(d.category == 'main'))}/>
-    {/await}
-
+    <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
 </div>
+
+{/await}
 
 {#if loading == true}
     <Loading />
