@@ -37,10 +37,10 @@
         'united-states': '-10px'
     }
 
-    // $areaInView = 'growth';
+    $areaInView = 'growth';
     // $areaInView = 'competition';
     // $areaInView = 'innovation';
-    $areaInView = 'trade';
+    // $areaInView = 'trade';
     // $areaInView = 'fdi';
     // $areaInView = 'portfolio';
 
@@ -330,7 +330,11 @@
             <CountrySelect {countryNames}/>
             <div class="social-share">
                 <p>Share:</p>
-                <SocialButtons />
+                <SocialButtons
+                    socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
+                    socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
+                    socialLink={document.querySelector("meta[property='og:url']").getAttribute('content')}
+                />
             </div>
             <!-- <button>Share this page<Icon type='share' /></button> -->
         </div>

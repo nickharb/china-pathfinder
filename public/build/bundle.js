@@ -49724,18 +49724,21 @@ var app = (function () {
     	let div0;
     	let svg0;
     	let path0;
+    	let a0_href_value;
     	let t0;
     	let a1;
     	let div3;
     	let div2;
     	let svg1;
     	let path1;
+    	let a1_href_value;
     	let t1;
     	let a2;
     	let div5;
     	let div4;
     	let svg2;
     	let path2;
+    	let a2_href_value;
 
     	const block = {
     		c: function create() {
@@ -49759,60 +49762,60 @@ var app = (function () {
     			svg2 = svg_element("svg");
     			path2 = svg_element("path");
     			attr_dev(path0, "d", "M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z");
-    			add_location(path0, file$6, 19, 68, 1112);
+    			add_location(path0, file$6, 21, 68, 973);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 24 24");
     			attr_dev(svg0, "class", "svelte-mli005");
-    			add_location(svg0, file$6, 19, 8, 1052);
+    			add_location(svg0, file$6, 21, 8, 913);
     			attr_dev(div0, "aria-hidden", "true");
     			attr_dev(div0, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-mli005");
-    			add_location(div0, file$6, 18, 95, 952);
+    			add_location(div0, file$6, 20, 95, 813);
     			attr_dev(div1, "class", "resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small svelte-mli005");
-    			add_location(div1, file$6, 18, 6, 863);
+    			add_location(div1, file$6, 20, 6, 724);
     			attr_dev(a0, "class", "resp-sharing-button__link svelte-mli005");
-    			attr_dev(a0, "href", "https://twitter.com/intent/tweet/?text=Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetuer%20adipiscing%20elit.%20Donec%20odio.%20Quisque%20volutpat%20mattis%20eros.%20Nullam%20malesuada%20erat%20ut%20turpis.&url=https%3A%2F%2Fpathfinder.sevenmilemedia.com%2F");
+    			attr_dev(a0, "href", a0_href_value = "https://twitter.com/intent/tweet/?text=" + /*socialText*/ ctx[0] + "&url=" + /*socialLink*/ ctx[1]);
     			attr_dev(a0, "target", "_blank");
     			attr_dev(a0, "rel", "noopener");
     			attr_dev(a0, "aria-label", "");
-    			add_location(a0, file$6, 17, 4, 502);
+    			add_location(a0, file$6, 19, 4, 555);
     			attr_dev(path1, "d", "M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z");
-    			add_location(path1, file$6, 27, 68, 2526);
+    			add_location(path1, file$6, 29, 68, 1927);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 24 24");
     			attr_dev(svg1, "class", "svelte-mli005");
-    			add_location(svg1, file$6, 27, 8, 2466);
+    			add_location(svg1, file$6, 29, 8, 1867);
     			attr_dev(div2, "aria-hidden", "true");
     			attr_dev(div2, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-mli005");
-    			add_location(div2, file$6, 26, 96, 2366);
+    			add_location(div2, file$6, 28, 96, 1767);
     			attr_dev(div3, "class", "resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small svelte-mli005");
-    			add_location(div3, file$6, 26, 6, 2276);
+    			add_location(div3, file$6, 28, 6, 1677);
     			attr_dev(a1, "class", "resp-sharing-button__link svelte-mli005");
-    			attr_dev(a1, "href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fpathfinder.sevenmilemedia.com%2F&title=Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetuer%20adipiscing%20elit.%20Donec%20odio.%20Quisque%20volutpat%20mattis%20eros.%20Nullam%20malesuada%20erat%20ut%20turpis.&summary=Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetuer%20adipiscing%20elit.%20Donec%20odio.%20Quisque%20volutpat%20mattis%20eros.%20Nullam%20malesuada%20erat%20ut%20turpis.&source=https%3A%2F%2Fpathfinder.sevenmilemedia.com%2F");
+    			attr_dev(a1, "href", a1_href_value = "https://www.linkedin.com/sharing/share-offsite/?url=" + /*socialLink*/ ctx[1]);
     			attr_dev(a1, "target", "_blank");
     			attr_dev(a1, "rel", "noopener");
     			attr_dev(a1, "aria-label", "");
-    			add_location(a1, file$6, 25, 4, 1655);
+    			add_location(a1, file$6, 27, 4, 1516);
     			attr_dev(path2, "d", "M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z");
-    			add_location(path2, file$6, 35, 68, 3398);
+    			add_location(path2, file$6, 37, 68, 2621);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 24 24");
     			attr_dev(svg2, "class", "svelte-mli005");
-    			add_location(svg2, file$6, 35, 8, 3338);
+    			add_location(svg2, file$6, 37, 8, 2561);
     			attr_dev(div4, "aria-hidden", "true");
     			attr_dev(div4, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-mli005");
-    			add_location(div4, file$6, 34, 93, 3238);
+    			add_location(div4, file$6, 36, 93, 2461);
     			attr_dev(div5, "class", "resp-sharing-button resp-sharing-button--email resp-sharing-button--small svelte-mli005");
-    			add_location(div5, file$6, 34, 6, 3151);
+    			add_location(div5, file$6, 36, 6, 2374);
     			attr_dev(a2, "class", "resp-sharing-button__link svelte-mli005");
-    			attr_dev(a2, "href", "mailto:?subject=Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetuer%20adipiscing%20elit.%20Donec%20odio.%20Quisque%20volutpat%20mattis%20eros.%20Nullam%20malesuada%20erat%20ut%20turpis.&body=https%3A%2F%2Fpathfinder.sevenmilemedia.com%2F");
+    			attr_dev(a2, "href", a2_href_value = "mailto:?subject=" + /*socialTitle*/ ctx[2] + "&body=" + /*socialText*/ ctx[0] + " " + /*socialLink*/ ctx[1]);
     			attr_dev(a2, "target", "_self");
     			attr_dev(a2, "rel", "noopener");
     			attr_dev(a2, "aria-label", "");
-    			add_location(a2, file$6, 33, 4, 2813);
+    			add_location(a2, file$6, 35, 4, 2214);
     			attr_dev(div6, "class", "button-container svelte-mli005");
-    			add_location(div6, file$6, 15, 4, 432);
+    			add_location(div6, file$6, 17, 4, 485);
     			attr_dev(div7, "class", "social-buttons svelte-mli005");
-    			add_location(div7, file$6, 12, 0, 371);
+    			add_location(div7, file$6, 14, 0, 424);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49838,7 +49841,19 @@ var app = (function () {
     			append_dev(div4, svg2);
     			append_dev(svg2, path2);
     		},
-    		p: noop$4,
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*socialText, socialLink*/ 3 && a0_href_value !== (a0_href_value = "https://twitter.com/intent/tweet/?text=" + /*socialText*/ ctx[0] + "&url=" + /*socialLink*/ ctx[1])) {
+    				attr_dev(a0, "href", a0_href_value);
+    			}
+
+    			if (dirty & /*socialLink*/ 2 && a1_href_value !== (a1_href_value = "https://www.linkedin.com/sharing/share-offsite/?url=" + /*socialLink*/ ctx[1])) {
+    				attr_dev(a1, "href", a1_href_value);
+    			}
+
+    			if (dirty & /*socialTitle, socialText, socialLink*/ 7 && a2_href_value !== (a2_href_value = "mailto:?subject=" + /*socialTitle*/ ctx[2] + "&body=" + /*socialText*/ ctx[0] + " " + /*socialLink*/ ctx[1])) {
+    				attr_dev(a2, "href", a2_href_value);
+    			}
+    		},
     		i: noop$4,
     		o: noop$4,
     		d: function destroy(detaching) {
@@ -49857,22 +49872,48 @@ var app = (function () {
     	return block;
     }
 
-    function instance$6($$self, $$props) {
+    function instance$6($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("SocialButtons", slots, []);
-    	const writable_props = [];
+    	let { socialText } = $$props;
+    	let { socialLink } = $$props;
+    	let { socialTitle } = $$props;
+    	const writable_props = ["socialText", "socialLink", "socialTitle"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<SocialButtons> was created with unknown prop '${key}'`);
     	});
 
-    	return [];
+    	$$self.$$set = $$props => {
+    		if ("socialText" in $$props) $$invalidate(0, socialText = $$props.socialText);
+    		if ("socialLink" in $$props) $$invalidate(1, socialLink = $$props.socialLink);
+    		if ("socialTitle" in $$props) $$invalidate(2, socialTitle = $$props.socialTitle);
+    	};
+
+    	$$self.$capture_state = () => ({ socialText, socialLink, socialTitle });
+
+    	$$self.$inject_state = $$props => {
+    		if ("socialText" in $$props) $$invalidate(0, socialText = $$props.socialText);
+    		if ("socialLink" in $$props) $$invalidate(1, socialLink = $$props.socialLink);
+    		if ("socialTitle" in $$props) $$invalidate(2, socialTitle = $$props.socialTitle);
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [socialText, socialLink, socialTitle];
     }
 
     class SocialButtons extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, {});
+
+    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, {
+    			socialText: 0,
+    			socialLink: 1,
+    			socialTitle: 2
+    		});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -49880,6 +49921,45 @@ var app = (function () {
     			options,
     			id: create_fragment$6.name
     		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || {};
+
+    		if (/*socialText*/ ctx[0] === undefined && !("socialText" in props)) {
+    			console.warn("<SocialButtons> was created without expected prop 'socialText'");
+    		}
+
+    		if (/*socialLink*/ ctx[1] === undefined && !("socialLink" in props)) {
+    			console.warn("<SocialButtons> was created without expected prop 'socialLink'");
+    		}
+
+    		if (/*socialTitle*/ ctx[2] === undefined && !("socialTitle" in props)) {
+    			console.warn("<SocialButtons> was created without expected prop 'socialTitle'");
+    		}
+    	}
+
+    	get socialText() {
+    		throw new Error("<SocialButtons>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set socialText(value) {
+    		throw new Error("<SocialButtons>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get socialLink() {
+    		throw new Error("<SocialButtons>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set socialLink(value) {
+    		throw new Error("<SocialButtons>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get socialTitle() {
+    		throw new Error("<SocialButtons>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set socialTitle(value) {
+    		throw new Error("<SocialButtons>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
@@ -49910,7 +49990,7 @@ var app = (function () {
     	return block;
     }
 
-    // (93:4) {:then data}
+    // (97:4) {:then data}
     function create_then_block(ctx) {
     	let landingvisual;
     	let current;
@@ -49954,14 +50034,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(93:4) {:then data}",
+    		source: "(97:4) {:then data}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (91:26)          <p>Loading data...</p>     {:then data}
+    // (95:26)          <p>Loading data...</p>     {:then data}
     function create_pending_block(ctx) {
     	let p;
 
@@ -49969,7 +50049,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Loading data...";
-    			add_location(p, file$5, 91, 8, 3163);
+    			add_location(p, file$5, 95, 8, 3495);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -49986,7 +50066,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(91:26)          <p>Loading data...</p>     {:then data}",
+    		source: "(95:26)          <p>Loading data...</p>     {:then data}",
     		ctx
     	});
 
@@ -50029,7 +50109,14 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	socialbuttons = new SocialButtons({ $$inline: true });
+    	socialbuttons = new SocialButtons({
+    			props: {
+    				socialTitle: document.querySelector("meta[property='og:title']").getAttribute("content"),
+    				socialText: document.querySelector("meta[property='og:description']").getAttribute("content"),
+    				socialLink: document.querySelector("meta[property='og:url']").getAttribute("content")
+    			},
+    			$$inline: true
+    		});
 
     	let info = {
     		ctx,
@@ -50091,7 +50178,7 @@ var app = (function () {
     			attr_dev(header, "class", "svelte-10azjeh");
     			add_location(header, file$5, 76, 0, 2692);
     			attr_dev(div2, "class", "vis-container svelte-10azjeh");
-    			add_location(div2, file$5, 88, 0, 3099);
+    			add_location(div2, file$5, 92, 0, 3431);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -51700,7 +51787,15 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	socialbuttons = new SocialButtons({ $$inline: true });
+    	socialbuttons = new SocialButtons({
+    			props: {
+    				socialTitle: document.querySelector("meta[property='og:title']").getAttribute("content"),
+    				socialText: document.querySelector("meta[property='og:description']").getAttribute("content"),
+    				socialLink: document.querySelector("meta[property='og:url']").getAttribute("content")
+    			},
+    			$$inline: true
+    		});
+
     	let each_value = /*indicatorsData*/ ctx[0];
     	validate_each_argument(each_value);
     	let each_blocks = [];
@@ -52532,7 +52627,7 @@ var app = (function () {
     	return block;
     }
 
-    // (345:16) {:else}
+    // (349:16) {:else}
     function create_else_block$1(ctx) {
     	let indicatorvisual;
     	let current;
@@ -52576,14 +52671,14 @@ var app = (function () {
     		block,
     		id: create_else_block$1.name,
     		type: "else",
-    		source: "(345:16) {:else}",
+    		source: "(349:16) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (343:16) {#if (i%2 == 0)}
+    // (347:16) {#if (i%2 == 0)}
     function create_if_block_1(ctx) {
     	let indicatorvisual;
     	let current;
@@ -52627,14 +52722,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(343:16) {#if (i%2 == 0)}",
+    		source: "(347:16) {#if (i%2 == 0)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (339:4) {#each indicatorsData as indicator, i}
+    // (343:4) {#each indicatorsData as indicator, i}
     function create_each_block(ctx) {
     	let div5;
     	let current_block_type_index;
@@ -52699,23 +52794,23 @@ var app = (function () {
     			create_component(icon.$$.fragment);
     			t8 = space();
     			attr_dev(div0, "class", "leader-line svelte-1vkepta");
-    			add_location(div0, file$1, 350, 24, 12397);
+    			add_location(div0, file$1, 354, 24, 12745);
     			attr_dev(div1, "class", "leader-circle svelte-1vkepta");
-    			add_location(div1, file$1, 351, 24, 12453);
+    			add_location(div1, file$1, 355, 24, 12801);
     			attr_dev(div2, "class", "leader-container svelte-1vkepta");
-    			add_location(div2, file$1, 349, 20, 12342);
+    			add_location(div2, file$1, 353, 20, 12690);
     			attr_dev(h3, "class", "svelte-1vkepta");
-    			add_location(h3, file$1, 353, 20, 12534);
+    			add_location(h3, file$1, 357, 20, 12882);
     			attr_dev(div3, "class", "description svelte-1vkepta");
-    			add_location(div3, file$1, 354, 20, 12585);
+    			add_location(div3, file$1, 358, 20, 12933);
     			attr_dev(button, "class", "svelte-1vkepta");
-    			add_location(button, file$1, 355, 20, 12664);
+    			add_location(button, file$1, 359, 20, 13012);
     			attr_dev(div4, "class", "indicator-text svelte-1vkepta");
     			toggle_class(div4, "text-right", /*i*/ ctx[32] % 2 == 0);
     			toggle_class(div4, "text-left", /*i*/ ctx[32] % 2 !== 0);
-    			add_location(div4, file$1, 348, 16, 12233);
+    			add_location(div4, file$1, 352, 16, 12581);
     			attr_dev(div5, "class", "indicator-container svelte-1vkepta");
-    			add_location(div5, file$1, 340, 8, 11931);
+    			add_location(div5, file$1, 344, 8, 12279);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div5, anchor);
@@ -52773,7 +52868,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(339:4) {#each indicatorsData as indicator, i}",
+    		source: "(343:4) {#each indicatorsData as indicator, i}",
     		ctx
     	});
 
@@ -52920,11 +53015,11 @@ var app = (function () {
     		"united-states": "-10px"
     	};
 
-    	// $areaInView = 'growth';
+    	set_store_value(areaInView, $areaInView = "growth", $areaInView);
+
     	// $areaInView = 'competition';
     	// $areaInView = 'innovation';
-    	set_store_value(areaInView, $areaInView = "trade", $areaInView);
-
+    	// $areaInView = 'trade';
     	// $areaInView = 'fdi';
     	// $areaInView = 'portfolio';
     	// set area visual width
@@ -53390,8 +53485,9 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "indicators", $view);
+    	set_store_value(view, $view = "main", $view);
 
+    	// $view = 'indicators';
     	// let showQuarterly = false; // set to true if you want to show
     	// let showNews = true; // set to true if you want to show
     	function switchView(targetView, area) {

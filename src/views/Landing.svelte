@@ -81,7 +81,11 @@
         <CountrySelect {countryNames}/>
         <div class="social-sharing">
             <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
-            <SocialButtons />
+            <SocialButtons
+                socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
+                socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
+                socialLink={document.querySelector("meta[property='og:url']").getAttribute('content')}
+            />
         </div>
     </div>
 </header>
