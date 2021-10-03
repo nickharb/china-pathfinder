@@ -17,6 +17,11 @@
     import IndicatorVisual from '../components/IndicatorVisual.svelte';
     import AreaTooltip from '../components/AreaTooltip.svelte';
     import SocialButtons from '../components/SocialButtons.svelte';
+    import Loading from '../components/Loading.svelte';
+
+    let chartDownload = false;
+    let loading = false;
+    let fadeDuration = 200;
 
     let data = [], indicatorsData = [], countryNames = [], areaData, graphData=[], currentArea, copyData;
     let expanded = false;
@@ -197,10 +202,18 @@
     // download chart functions
 
     function downloadImage(e) {
-        let chart = e.path[2];
-        html2canvas(chart).then(canvas => {
-            downloadImageClick(canvas.toDataURL(), 'chart-download.png');
-        });
+        let chart = document.querySelector('.indicator-container');
+        loading = true;
+        setTimeout(function() {
+            chartDownload = true;
+            setTimeout(function() {
+                html2canvas(chart).then(canvas => {
+                    downloadImageClick(canvas.toDataURL(), 'chart-download.png');
+                });
+                chartDownload = false;
+                loading = false;
+            },1000);
+        }, fadeDuration);
     }
 
     function downloadImageClick(uri, filename) {
@@ -342,7 +355,7 @@
 
     {#each indicatorsData as indicator, i}
 
-        <div class='indicator-container'>
+        <div class='indicator-container' class:chart-download={chartDownload == true}>
 
                 {#if (i%2 == 0)}
                     <IndicatorVisual {indicator} class="indicator-vis align-left" />
@@ -364,6 +377,10 @@
 
     {/each}
 </div>
+
+{#if loading == true}
+    <Loading />
+{/if}
 
 {/if}
 
@@ -789,6 +806,16 @@
         color: #fff;
         text-decoration: none;
         font-weight: 600;
+    }
+
+    /* chart download */
+
+    .chart-download {
+        padding: 60px 20px 0;
+    }
+
+    .chart-download button {
+        opacity: 0 !important;
     }
 
 
