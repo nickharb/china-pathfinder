@@ -3,12 +3,10 @@
     import Landing from './views/Landing.svelte';
     import Indicators from './views/Indicators.svelte';
     import Icon from './components/Icon.svelte';
-    // import IndicatorTest from './views/IndicatorTest.svelte';
-    // import News from './views/News.svelte';
     import {view} from './stores/view';
 
-    $view = 'main';
-    // $view = 'indicators';
+    // $view = 'main';
+    $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
     // let showNews = true; // set to true if you want to show
@@ -18,17 +16,6 @@
     }
 
 </script>
-
-<!-- <header>
-    <div class="logo-container" on:click|self={()=> switchView('main')}>
-        <Icon type="logo" />
-    </div>
-    <ul class="navigation">
-        <li>Dashboard</li>
-        <li>Publications</li>
-        <li>About</li>
-    </ul>
-</header> -->
 
 <main>
     {#if $view == 'main'}
@@ -49,15 +36,6 @@
         color: #122431;
         box-sizing: border-box;
         position: relative;
-        /*max-width: 1280px;*/
-        /*margin: 0 auto;*/
-        /*padding: 40px 20px;*/
-    }
-
-    @media (min-width: 768px) {
-        main {
-            /*padding: 80px 40px;*/
-        }
     }
 
     :global(button) {

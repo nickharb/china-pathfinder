@@ -9,7 +9,7 @@
     export let copyData;
     import {areaInView, view} from '../stores/view';
     import {hoveredCountry, hoveredArea, selectedCountry, selectedArea, hoveredInfo} from '../stores/country-store.js';
-    import {baseUrl, quarterlyUrl} from '../stores/urls.js';
+    import {baseUrl} from '../stores/urls.js';
     import Icon from './Icon.svelte';
     import Tooltip from './Tooltip.svelte';
     import InfoTooltip from './InfoTooltip.svelte';
@@ -84,7 +84,8 @@
 
     function infoMouseOver(e) {
         infoIsHovered = true;
-        $hoveredInfo = e.path[0].dataset.area;
+        let path = e.composedPath()[0];
+        $hoveredInfo = path.dataset.area;
     }
 
     function infoMouseLeave(e) {
@@ -509,13 +510,15 @@
         fill: #234462;
         font-weight: bold;
         opacity: 0;
-        transform: translate(0,10px);
+        /*transform: translate(0,10px);
+        -webkit-transform: translate(0,10px);*/
         transition: opacity 300ms, transform 300ms;
     }
 
     .selected text.label {
         opacity: 1;
-        transform: translate(0,0);
+        /*transform: translate(0,0);
+        -webkit-transform: translate(0,0);*/
     }
 
     g.china text.label {

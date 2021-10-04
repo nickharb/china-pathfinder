@@ -134,10 +134,7 @@
         let svgContainer = document.getElementById(indicator.indicator);
         let svg = svgContainer.getBoundingClientRect();
 
-        // let l = [];
         let labels = svgContainer.querySelectorAll('.label-container');
-
-        // console.log(labels)
 
         labels.forEach(function(label, i) {
             labelBounds.push({
@@ -149,16 +146,6 @@
                 'id': label.dataset.id
             });
         });
-
-        // labelBounds.push(l);
-
-        // console.log(labelBounds)
-
-        // let svgBounds = {
-        //     'left': chinaLabel.getBoundingClientRect().left,
-        //     'right': chinaLabel.getBoundingClientRect().right,
-        //     'width': chinaLabel.getBBox().width
-        // };
 
         labelBounds.forEach(function(label, i) {
             let id = label.id;
@@ -179,9 +166,9 @@
     let isHovered = false;
 
     function mouseOver(e) {
-        console.log(e)
         isHovered = true;
-        $hoveredCountry = e.path[1].dataset.id;
+        let path = e.composedPath()[1];
+        $hoveredCountry = path.dataset.id;
     }
 
     function mouseLeave(e) {
@@ -190,13 +177,11 @@
     }
 
     function mouseClick(e) {
-        if (e.path[1].dataset.id !== 'china' && e.path[1].dataset.id !== 'open-economy-avg') {
-            $selectedCountry = e.path[1].dataset.id;
+        let path = e.composedPath()[1];
+        if (path.dataset.id !== 'china' && path.dataset.id !== 'open-economy-avg') {
+            $selectedCountry = path.dataset.id;
         }
     }
-
-    console.log(indicator)
-
 
 </script>
 

@@ -9,7 +9,7 @@
     import {view, areaInView} from '../stores/view';
     import {width, height, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
-    import {baseUrl, quarterlyUrl} from '../stores/urls.js';
+    import {baseUrl} from '../stores/urls.js';
     import loadCopyData from "../data/load-copy-data.js";
     import Icon from '../components/Icon.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
@@ -41,7 +41,7 @@
         'united-states': '-10px'
     }
 
-    $areaInView = 'growth';
+    // $areaInView = 'growth';
     // $areaInView = 'competition';
     // $areaInView = 'innovation';
     // $areaInView = 'trade';
@@ -59,8 +59,9 @@
 
     function mouseOver(e) {
         isHovered = true;
-        $hoveredCountry = e.path[1].dataset.id;
-        d3.select(e.path[1]).raise();
+        let path = e.composedPath()[1];
+        $hoveredCountry = path.dataset.id;
+        d3.select(path).raise();
     }
 
     function mouseLeave(e) {
@@ -69,8 +70,9 @@
     }
 
     function mouseClick(e) {
-        if (e.path[1].dataset.id !== 'china' && e.path[1].dataset.id !== 'open-economy-avg') {
-            $selectedCountry = e.path[1].dataset.id;
+        let path = e.composedPath()[1];
+        if (path.dataset.id !== 'china' && path.dataset.id !== 'open-economy-avg') {
+            $selectedCountry = path.dataset.id;
             d3.selectAll('.'+$selectedCountry).raise();
         }
     }
@@ -86,7 +88,8 @@
     }
 
     function circleMouseOver(e) {
-        $hoveredCountry = e.path[1].dataset.id;
+        let path = e.composedPath()[1];
+        $hoveredCountry = path.dataset.id;
     }
 
     function circleMouseOut(e) {
@@ -94,7 +97,8 @@
     }
 
     function circleClick(e) {
-        $selectedCountry = e.path[1].dataset.id;
+        let path = e.composedPath()[1];
+        $selectedCountry = path.dataset.id;
     }
 
     // load data
@@ -110,13 +114,11 @@
     // parse data
 
     $: if (copyData) {
-        console.log(copyData);
         currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
         title = copyData.filter(d=> (d.category=='title' && d.label == $areaInView))[0];
     }
 
     $: if (areaData) {
-        console.log(areaData);
         const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, $width-areaMargin*3]);
 
         areaData.comps.forEach((d,i)=>{
@@ -806,19 +808,23 @@
         fill: #234462;
         font-weight: bold;
         opacity: 0;
-        transform: translate(0,10px);
-        transition: opacity 300ms, transform 300ms;
+        transition: opacity 300ms;
+        /*transform: translate(0,10px);
+        -webkit-transform: translate(0,10px);
+        transition: opacity 300ms, transform 300ms;*/
     }
 
     .selected text.label {
         opacity: 1;
-        transform: translate(0,0);
+        /*transform: translate(0,0);
+        -webkit-transform: translate(0,0);*/
     }
 
     g.china text.label {
         fill: #D13F36;
         opacity: 1;
-        transform: translate(0,0);
+        /*transform: translate(0,0);
+        -webkit-transform: translate(0,0);*/
     }
 
     g.china-2010 text.label {
@@ -828,7 +834,8 @@
     g.open-economy-avg text.label {
         fill: #D18B36;
         opacity: 1;
-        transform: translate(0,0);
+        /*transform: translate(0,0);
+        -webkit-transform: translate(0,0);*/
     }
 
     /* buttons */
