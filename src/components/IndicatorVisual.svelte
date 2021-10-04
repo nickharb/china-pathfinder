@@ -10,24 +10,36 @@
 
     // $chartWidth = window.innerWidth * 0.2;
 
-    let isMobile = (window.innerWidth < 450) ? true : false;
-    let isLargeMobile = (window.innerWidth < 768) ? true : false;
-    let isTablet = (window.innerWidth < 1080) ? true : false;
+    let isMobile = (window.innerWidth <= 450) ? true : false;
+    let isLargeMobile = (window.innerWidth <= 768) ? true : false;
+    let isTablet = (window.innerWidth <= 1024) ? true : false;
+    let isLaptop = (window.innerWidth <= 1280) ? true : false;
 
     // $chartWidth = 200;
     const radius = 300;
-    $innerRadius = 40;
-    $margin = 100;
+    
     let labelHidden = {};
 
     if (isMobile) {
-        $chartWidth = 300;
+        $chartWidth = 350;
+        $innerRadius = 20;
+        $margin = 10;
     } else if (isLargeMobile) {
-        $chartWidth = 400;
-    } else if (isTablet) {
         $chartWidth = 300;
-    } else {
+        $innerRadius = 20;
+        $margin = 10;
+    } else if (isTablet) {
+        $chartWidth = 400;
+        $innerRadius = 30;
+        $margin = 10;
+    } else if (isLaptop) {
         $chartWidth = 500;
+        $innerRadius = 40;
+        $margin = 10;
+    } else {
+        $chartWidth = 600;
+        $innerRadius = 40;
+        $margin = 50;
     }
 
     let offsetWidth;
@@ -182,6 +194,8 @@
             $selectedCountry = e.path[1].dataset.id;
         }
     }
+
+    console.log(indicator)
 
 
 </script>

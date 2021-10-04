@@ -6,11 +6,10 @@
     import { fade } from 'svelte/transition';
     import loadData from "../data/load-data.js";
     import loadIndicatorsData from "../data/load-indicators-data.js";
-    // import runLabeler from "../labeler.js";
     import {view, areaInView} from '../stores/view';
     import {width, height, margin, scaleFactor, chartWidth} from '../stores/dimensions';
     import {hoveredCountry, selectedCountry} from '../stores/country-store.js';
-    // import copyData from "../data/copy";
+    import {baseUrl, quarterlyUrl} from '../stores/urls.js';
     import loadCopyData from "../data/load-copy-data.js";
     import Icon from '../components/Icon.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
@@ -48,6 +47,7 @@
     // $areaInView = 'trade';
     // $areaInView = 'fdi';
     // $areaInView = 'portfolio';
+
 
     // set area visual width
     let areaWidth = 750;
@@ -110,11 +110,13 @@
     // parse data
 
     $: if (copyData) {
+        console.log(copyData);
         currentArea = copyData.filter(d=> (d.category=='main' && d.label == $areaInView))[0];
         title = copyData.filter(d=> (d.category=='title' && d.label == $areaInView))[0];
     }
 
     $: if (areaData) {
+        console.log(areaData);
         const xScale = d3.scaleLinear().domain([0,10]).range([areaMargin*3, $width-areaMargin*3]);
 
         areaData.comps.forEach((d,i)=>{
@@ -244,148 +246,163 @@
 
 {#if copyData}
 
-<!-- <button class='back' on:click|self={()=> switchView('main')}>Back to Dashboard</button> -->
-<button class='back'><a href="https://pathfinder.sevenmilemedia.com/">Back to Dashboard</a></button>
+    <button class='back'><a href="{$baseUrl}">Back to Dashboard</a></button>
 
-<div class='area-summary' class:expanded={expanded == true}>
+    <div class='area-summary' class:expanded={expanded == true}>
 
-    <div class="area-container">
-        <div class='area-text'>
-            <h1>{currentArea.name}</h1>
-            <p class='intro'>{currentArea.definition}</p>
-        </div>
-
-        <div class='area-vis' bind:clientWidth={$width}>
-        <!-- <div class='area-vis'> -->
-            <svg viewBox="0 0 {$width} {$height}"
-                width={$width}
-                height={$height+30}
-            >
-                {#if areaData}
-                    <g class="{areaData.area}" transform='translate(0,{areaMargin})'>
-
-                        <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
-                        <text x='{$width}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
-
-                        <line class='gridline' x1=0 x2={$width} transform='translate(0,5)'></line>
-
-                        {#each graphData as graph, i}
-                            <g class='country {graph.id}'
-                                data-x='{graph.x}'
-                                data-y='{graph.y}'
-                                data-id='{graph.id}'
-                                transform='translate({graph.x},{graph.y+5})'
-                                class:hovered='{graph.id == $hoveredCountry}'
-                                class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
-                                class:labelTestSelected='{graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}'
-                            >
-
-                                <text
-                                    class='label'
-                                    class:hidden='{graph.id == 'china' && chinaHidden == true}'
-                                    data-id='{graph.id}'
-                                    y='{labelPositions[graph.id]}'
-                                >
-                                    {graph.country}
-                                </text>
-                                
-                                <circle
-                                    r={graph.r}
-                                    class='country-circle'
-                                    on:mouseover={mouseOver}
-                                    on:mouseleave={mouseLeave}
-                                    on:click={mouseClick}
-                                ></circle>
-                            </g>
-                        {/each}
-                    </g>
-                {/if}
-            </svg>
-
-            {#if areaData}
-                <!-- area vis tooltips -->
-                {#each graphData as graph, i}
-                    <AreaTooltip isHovered={isHovered} graph={graph} />
-                {/each}
-
-            {/if}
-        </div>
-    </div>
-
-    {#if expanded}
-        <div class="summary" transition:fade>
-            <p>{currentArea.summary}</p>
-        </div>
-    {/if}
-    
-    <div class="area-footer">
-        <button class="expand" on:click={expandButtonClick}>
-            {#if !expanded}
-                Expand to read more
-            {:else}
-                View less
-            {/if}
-            <svg class="caret-down-dark" width="13" height="11" viewBox="0 0 13 11" fill="none">
-                <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" fill="#234462"/>
-            </svg>
-        </button>
-        <div class="methodology">
-            <a href="https://pathfinder.sevenmilemedia.com/methodology/">Methodology<Icon type="arrow-right" /></a>
-        </div>
-        
-    </div>
-</div>
-
-<div class='indicators'>
-    <header>
-        <h2>{title.name}</h2>
-        <div class='control-area'>
-            <CountrySelect {countryNames}/>
-            <div class="social-share">
-                <p>Share:</p>
-                <SocialButtons
-                    socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
-                    socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
-                    socialLink={document.querySelector("meta[property='og:url']").getAttribute('content')}
-                />
+        <div class="area-container">
+            <div class='area-text'>
+                <h1>{currentArea.name}</h1>
+                <p class='intro'>{currentArea.definition}</p>
             </div>
-            <!-- <button>Share this page<Icon type='share' /></button> -->
-        </div>
-    </header>
 
-    {#each indicatorsData as indicator, i}
+            <div class='area-vis' bind:clientWidth={$width}>
 
-        <div class='indicator-container' class:chart-download={chartDownload == true}>
+                <svg viewBox="0 0 {$width} {$height}"
+                    width={$width}
+                    height={$height+30}
+                >
+                    {#if areaData}
+                        <g class="{areaData.area}" transform='translate(0,{areaMargin})'>
 
-                {#if (i%2 == 0)}
-                    <IndicatorVisual {indicator} class="indicator-vis align-left" />
-                {:else}
-                    <IndicatorVisual {indicator} class="indicator-vis align-right" />
+                            <text x='0' y='0' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
+                            <text x='{$width}' y='0' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
+
+                            <line class='gridline' x1=0 x2={$width} transform='translate(0,5)'></line>
+
+                            {#each graphData as graph, i}
+                                <g class='country {graph.id}'
+                                    data-x='{graph.x}'
+                                    data-y='{graph.y}'
+                                    data-id='{graph.id}'
+                                    transform='translate({graph.x},{graph.y+5})'
+                                    class:hovered='{graph.id == $hoveredCountry}'
+                                    class:selected='{graph.id == $selectedCountry || graph.id == 'china'}'
+                                    class:labelTestSelected='{graph.id == $selectedCountry || graph.id == 'china' || graph.id == 'open-economy-avg'}'
+                                >
+
+                                    <text
+                                        class='label'
+                                        class:hidden='{graph.id == 'china' && chinaHidden == true}'
+                                        data-id='{graph.id}'
+                                        y='{labelPositions[graph.id]}'
+                                    >
+                                        {graph.country}
+                                    </text>
+                                    
+                                    <circle
+                                        r={graph.r}
+                                        class='country-circle'
+                                        on:mouseover={mouseOver}
+                                        on:mouseleave={mouseLeave}
+                                        on:click={mouseClick}
+                                    ></circle>
+                                </g>
+                            {/each}
+                        </g>
+                    {/if}
+                </svg>
+
+                {#if areaData}
+                    <!-- area vis tooltips -->
+                    {#each graphData as graph, i}
+                        <AreaTooltip isHovered={isHovered} graph={graph} />
+                    {/each}
+
                 {/if}
+            </div>
+        </div>
 
-                <div class='indicator-text' class:text-right='{i%2 == 0}' class:text-left='{i%2 !== 0}'>
-                    <div class="leader-container">
-                        <div class="leader-line"></div>
-                        <div class="leader-circle"></div>
-                    </div>
-                    <h3>{indicator.copy.name}</h3>
-                    <div class='description'>{indicator.copy.definition}</div>
-                    <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
+        {#if expanded}
+            <div class="summary" transition:fade>
+                <p>{currentArea.summary}</p>
+            </div>
+        {/if}
+        
+        <div class="area-footer">
+            <button class="expand" on:click={expandButtonClick}>
+                {#if !expanded}
+                    Expand to read more
+                {:else}
+                    View less
+                {/if}
+                <svg class="caret-down-dark" width="13" height="11" viewBox="0 0 13 11" fill="none">
+                    <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" fill="#234462"/>
+                </svg>
+            </button>
+            <div class="methodology">
+                <a href="{$baseUrl}/methodology/">Methodology<Icon type="arrow-right" /></a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class='indicators'>
+        <header>
+            <h2>{title.name}</h2>
+            <div class='control-area'>
+                <CountrySelect {countryNames}/>
+                <div class="social-share">
+                    <p>Share:</p>
+                    <SocialButtons
+                        socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
+                        socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
+                        socialLink={document.querySelector("meta[property='og:url']").getAttribute('content')}
+                    />
+                </div>
+                <!-- <button>Share this page<Icon type='share' /></button> -->
+            </div>
+        </header>
+
+        {#if (indicatorsData)}
+            {#each indicatorsData as indicator, i}
+
+                <div class='indicator-container' class:chart-download={chartDownload == true}>
+
+                        {#if (i%2 == 0)}
+                            <IndicatorVisual {indicator} class="indicator-vis align-left" />
+                        {:else}
+                            <IndicatorVisual {indicator} class="indicator-vis align-right" />
+                        {/if}
+
+                        <div class='indicator-text' class:text-right='{i%2 == 0}' class:text-left='{i%2 !== 0}'>
+                            <div class="leader-container">
+                                <div class="leader-line"></div>
+                                <div class="leader-circle"></div>
+                            </div>
+                            <h3>{indicator.copy.name}</h3>
+                            <div class='description'>{indicator.copy.definition}</div>
+                            <button class='download' on:click={downloadImage}>Download this chart<Icon type='download' /></button>
+                        </div>
+
                 </div>
 
-        </div>
+            {/each}
+        {/if}
+    </div>
 
-    {/each}
-</div>
-
-{#if loading == true}
-    <Loading />
-{/if}
+    {#if loading == true}
+        <Loading />
+    {/if}
 
 {/if}
 
 
 <style>
+
+    .indicators header {
+        z-index: 999;
+    }
+
+    .download {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .download {
+            display: block;
+        }
+    }
 
     .hidden {
         display: none;
@@ -410,12 +427,10 @@
     .indicator-container {
         display: flex;
         flex-wrap: wrap;
-        /*margin-top: -50px;*/
-    }
-
-    .indicator-container:first-of-type {
         margin-top: 0;
     }
+
+        
 
     @media (min-width: 768px) {
         .indicator-container {
@@ -424,16 +439,33 @@
             align-items: center;
             margin-top: 20px;
         }
-    }
 
-    @media (min-width: 1080px) {
-        .indicator-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -60px;
+        .indicator-container:first-of-type {
+            margin-top: 0;
         }
     }
+
+    @media (min-width: 1024px) {
+        .indicator-container {
+            margin-top: -40px;
+        }
+
+        .indicator-container:first-of-type {
+            margin-top: -20px;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .indicator-container {
+            margin-top: -100px;
+        }
+
+        .indicator-container:first-of-type {
+            margin-top: -50px;
+        }
+    }
+
+    /* indicator text */
 
     .indicator-text {
         position: relative;
@@ -441,6 +473,7 @@
         padding-bottom: 50px;
         margin-bottom: 10px;
         width: 100%;
+        z-index: 999;
     }
 
     @media (min-width: 768px) {
@@ -460,9 +493,9 @@
         }
     }
 
-    @media (min-width: 1080px) {
+    @media (min-width: 1024px) {
         .indicator-text {
-            width: 350px;
+            max-width: 350px;
         }
     }
 
@@ -506,11 +539,7 @@
         top: -6px;
     }
 
-    .text-left {
-        /*border-right: 1px solid #84A9BC;
-        padding-right: 40px;
-        margin-right: 40px;*/
-    }
+    /* text left */
 
     @media (min-width: 768px) {
         .text-left {
@@ -520,17 +549,29 @@
         }
     }
 
-    .text-right {
-        /*border-left: 1px solid #84A9BC;
-        padding-left: 40px;
-        margin-left: 40px;*/
+    @media (min-width: 1024px) {
+        .text-left {
+            border-right: 1px solid #84A9BC;
+            padding-right: 60px;
+            margin-right: 120px;
+        }
     }
+
+    /* text right */
 
     @media (min-width: 768px) {
         .text-right {
             border-left: 1px solid #84A9BC;
             padding-left: 40px;
             margin-left: 80px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .text-right {
+            border-left: 1px solid #84A9BC;
+            padding-left: 60px;
+            margin-left: 120px;
         }
     }
 

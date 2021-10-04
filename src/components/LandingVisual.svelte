@@ -9,12 +9,14 @@
     export let copyData;
     import {areaInView, view} from '../stores/view';
     import {hoveredCountry, hoveredArea, selectedCountry, selectedArea, hoveredInfo} from '../stores/country-store.js';
+    import {baseUrl, quarterlyUrl} from '../stores/urls.js';
     import Icon from './Icon.svelte';
     import Tooltip from './Tooltip.svelte';
     import InfoTooltip from './InfoTooltip.svelte';
 
     let descriptionWidth = 380;
     let offsetLeft = [];
+    let chinaHidden = false;
     let labelPositions = {
         'australia': '-10px',
         'canada': '-10px',
@@ -33,22 +35,13 @@
 
     $selectedCountry = 'south-korea';
 
-    // const url = {
-    //     'growth': 'http://localhost:10003/portfolio-investment-openness',
-    //     'competition': 'http://localhost:10003/portfolio-investment-openness',
-    //     'innovation': 'http://localhost:10003/portfolio-investment-openness',
-    //     'trade': 'http://localhost:10003/portfolio-investment-openness',
-    //     'fdi': 'http://localhost:10003/portfolio-investment-openness',
-    //     'portfolio': 'http://localhost:10003/portfolio-investment-openness'
-    // }
-
     const url = {
-        'growth': 'https://pathfinder.sevenmilemedia.com/financial-system-development/',
-        'competition': 'https://pathfinder.sevenmilemedia.com/market-competition/',
-        'innovation': 'https://pathfinder.sevenmilemedia.com/modern-innovation-system/',
-        'trade': 'https://pathfinder.sevenmilemedia.com/trade-openness/',
-        'fdi': 'https://pathfinder.sevenmilemedia.com/direct-investment-openness/',
-        'portfolio': 'https://pathfinder.sevenmilemedia.com/portfolio-investment-openness/',
+        'growth': $baseUrl + '/financial-system-development',
+        'competition': $baseUrl + '/market-competition',
+        'innovation': $baseUrl + '/modern-innovation-system',
+        'trade': $baseUrl + '/trade-openness',
+        'fdi': $baseUrl + '/direct-investment-openness',
+        'portfolio': $baseUrl + '/portfolio-investment-openness'
     }
 
     function switchView(targetView, area) {
@@ -67,10 +60,11 @@
 
     function mouseOver(e) {
         isHovered = true;
-        $hoveredCountry = e.path[1].dataset.id;
-        $hoveredArea = e.path[1].dataset.area;
+        let path = e.composedPath()[1];
+        $hoveredCountry = path.dataset.id;
+        $hoveredArea = path.dataset.area;
         d3.selectAll('.country.selected').raise(); // raises selected country circles
-        d3.select(e.path[1]).raise(); // raises hovered circle
+        d3.select(path).raise(); // raises hovered circle
     }
 
     function mouseLeave(e) {
@@ -80,9 +74,10 @@
     }
 
     function mouseClick(e) {
-        if (e.path[1].dataset.id !== 'china' && e.path[1].dataset.id !== 'open-economy-avg') {
-            $selectedCountry = e.path[1].dataset.id;
-            $selectedArea = e.path[1].dataset.area;
+        let path = e.composedPath()[1];
+        if (path.dataset.id !== 'china' && path.dataset.id !== 'open-economy-avg') {
+            $selectedCountry = path.dataset.id;
+            $selectedArea = path.dataset.area;
             d3.selectAll('.'+$selectedCountry).raise();
         }
     }
@@ -98,12 +93,11 @@
     }
 
     // parse data
-    $: if (areaData) {
+
+    onMount(async()=>{
         parseData();
-        if (areaData.length > 0) {
-            setTimeout(positionLabels, 500);
-        }
-    }
+        setTimeout(positionLabels, 500);
+    });
 
     function parseData() {
         const xScale = d3.scaleLinear().domain([0,10]).range([$margin*3, $width-$margin*3]);
@@ -122,19 +116,15 @@
                     let points = i<5 ? ([
                         [0 , 0],
                         [distance, textRect.bottom - textRect.top + $margin + 12]
-                        // [distance, textRect.bottom - textRect.top + $margin*2]
                     ]) : ([[0,0],[0,0]]);
                     
                     let path = utils.cubicBezier(points[0], points[1], 10);
 
-                    let id = d.countries[n].trim().toLowerCase().split(" ").join("-")
-
                     return {
-                        id : id,
+                        id : d.countries[n].trim().toLowerCase().split(" ").join("-"),
                         x : xScale(m),
                         y : 0,
                         r : 6,
-                        labelY: '-10px',
                         country : d.countries[n],
                         path: path,
                         score: d.comps[n]
@@ -189,18 +179,20 @@
                 labelPositions[id] = '-10px';
             }
         }
+
+        // check if china and oecd labels overlap
+        if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
+            chinaHidden = true;
+        }
     }
 
 </script>
 
-<!-- area header -->
+
 <div class='text-wrapper'  bind:clientHeight={$height}>
     {#each copyData as area, i}
         <div class={'area '+area.label.toLowerCase()}>
             <header>
-                <!-- <h2 on:click|self={()=> switchView('indicators',area.label.toLowerCase())} bind:clientWidth={offsetLeft[i]}>
-                    {area.name}
-                </h2> -->
                 <h2 bind:clientWidth={offsetLeft[i]}>
                     <a href="{url[area.label.toLowerCase()]}">{area.name}</a>
                 </h2>
@@ -217,10 +209,6 @@
             </header>
             <div class='description'>
                 <p>{area.definition}</p>
-                <!-- <button on:click|self={()=> switchView('indicators', area.label.toLowerCase())}>
-                    Explore data
-                    <Icon type='chevron-right' />
-                </button> -->
                 <button>
                     <a href="{url[area.label.toLowerCase()]}">
                         Explore data
@@ -232,8 +220,7 @@
     {/each}
 </div>
 
-<!-- {#if areaData.length < 0} -->
-<!-- composite visual -->
+{#if areaData}
 <div class='vis-wrapper' bind:clientWidth={$width}>
     <svg viewBox="0 0 {$width} {$height}"
         width={$width}
@@ -243,6 +230,8 @@
 
         {#each areaData as area, i}
 
+            {#if area.graphData}
+
             <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
 
                 <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
@@ -250,6 +239,7 @@
 
                 <line class='gridline' x2={$width}></line>
 
+                
                 {#each area.graphData as graph, x}
 
                     <g class='country {graph.id}'
@@ -263,9 +253,9 @@
                     >
 
                         {#if i == 0}
-                        <!-- {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'} -->
                             <text
                                 class='label'
+                                class:hidden='{graph.id == 'china' && chinaHidden == true}'
                                 data-id='{graph.id}'
                                 y='{labelPositions[graph.id]}'
                             >
@@ -273,31 +263,8 @@
                             </text>
                         {/if}
 
-                        <!-- top country labels -->
-                        <!-- {#if i == 0 && graph.id == $selectedCountry || i == 0 && graph.id == 'china' || i == 0 && graph.id == 'open-economy-avg'}
-                            {#if graph.id == 'china' || graph.id == 'open-economy-avg' ||  graph.id == 'china-2010'  || graph.id == 'germany' ||  graph.id == 'united-kingdom'}
-                                <text
-                                    class='label'
-                                    y='-10px'
-                                    transition:fly="{{ y: 10, duration: 200 }}"
-                                >
-                                    {graph.country}
-                                </text>
-                            {:else}
-                                <text
-                                    class='label level-2'
-                                    y='-27px'
-                                    transition:fly="{{ y: 10, duration: 200 }}"
-                                >
-                                    {graph.country}
-                                </text>
-                            {/if}
-                        {/if} -->
-
-                        <!-- country path -->
                         <path d={graph.path}></path>
 
-                        <!-- country circle -->
                         <circle
                             r={graph.r}
                             class='country-circle'
@@ -311,27 +278,40 @@
 
             </g>
 
+            {/if}
+
         {/each}
+        
     </svg>
 
-    <!-- area vis tooltips -->
     {#each areaData as area, i}
-        {#each area.graphData as graph, i}
-            <Tooltip isHovered={isHovered} graph={graph} area={area} />
-        {/each}
+        {#if area.graphData}
+            {#each area.graphData as graph, i}
+                <Tooltip isHovered={isHovered} graph={graph} area={area} />
+            {/each}
+        {/if}
     {/each}
 </div>
 
-<!-- {/if} -->
+{/if}
 
 
 
 
 <style>
+    
+    .hidden {
+        display: none;
+    }
+
     .info {
-        cursor: pointer;
-        display: block;
-        padding-right: 5px;
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .info {
+            display: block;
+        }
     }
 
     .text-wrapper {
@@ -388,7 +368,7 @@
 
     .description:after {
         content: ' ';
-        padding: 10px;
+        padding: 20px;
     }
 
     @media (min-width: 768px) {

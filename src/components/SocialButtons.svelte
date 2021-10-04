@@ -47,7 +47,12 @@
     .social-buttons {
         display: flex;
         align-items: center;
-        margin-left: 8px;
+    }
+
+    @media (min-width: 768px) {
+        .social-buttons {
+            margin-left: 8px;
+        }
     }
 
     .social-buttons p {

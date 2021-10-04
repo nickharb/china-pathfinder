@@ -42,16 +42,17 @@
     .country-select-container {
         font-weight: bold;
         color: #122431;
-        font-size: 16px;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
+        font-size: 14px;
+        margin-bottom: 30px;
+        z-index: 100;
     }
 
     @media (min-width: 768px) {
         .country-select-container {
             font-size: 20px;
             margin-bottom: 0;
+            display: flex;
+            align-items: center;
         }
     }
 

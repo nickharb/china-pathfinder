@@ -4,37 +4,43 @@
     import html2canvas from 'html2canvas';
     import { onMount } from "svelte";
     import loadData from "../data/load-data.js";
-    // import copyData from "../data/copy";
     import loadCopyData from "../data/load-copy-data.js";
     import LandingVisual from "../components/LandingVisual.svelte";
-    // import ForceLayoutTest from "../components/ForceLayoutTest.svelte";
     import Quarterly from './Quarterly.svelte';
     import CountrySelect from '../components/CountrySelect.svelte';
     import Icon from '../components/Icon.svelte';
     import Loading from '../components/Loading.svelte';
     import SocialButtons from '../components/SocialButtons.svelte';
     export let showPrevious = false;
-    let data = [], countryNames = [], areaData = [], copyData = [], introTitle, compositeTitle;
+    let data = [], countryNames = [], areaData, copyData, introTitle, compositeTitle, cData;
 
     import { csv } from 'd3';
-    const dataPath = '../data/composite-score.csv';
+    // const dataPath = '../data/composite-score.csv';
     let chartDownload = false;
     let loading = false;
     let fadeDuration = 200;
 
+    // onMount(async()=>{
+    //     data = await loadData();
+    //     countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
+    //     areaData = data['areas'];
+    // });
+
     onMount(async()=>{
         data = await loadData();
+        cData = await loadCopyData();
         countryNames = data['countries'].filter(d => d.country!=='China' && d.country!=='Open Economy Avg');
         areaData = data['areas'];
+        copyData = cData;
+        // introTitle = copyData.filter(d=> (d.category=='title' && d.label == 'intro'))[0];
+        // compositeTitle = copyData.filter(d=> (d.category=='title' && d.label == 'composite'))[0];
     });
 
-    async function getCopyData() {
-        return await loadCopyData()
-            .then((data) => {
-                introTitle = data.filter(d=> (d.category=='title' && d.label == 'intro'))[0];
-                compositeTitle = data.filter(d=> (d.category=='title' && d.label == 'composite'))[0];
-                return data;
-            });
+    // parse data
+
+    $: if (copyData) {
+        introTitle = copyData.filter(d=> (d.category=='title' && d.label == 'intro'))[0];
+        compositeTitle = copyData.filter(d=> (d.category=='title' && d.label == 'composite'))[0];
     }
 
     // chart image download
@@ -79,47 +85,63 @@
 
 </script>
 
-{#await getCopyData()}
-    <Loading />
-{:then copyData}
+{#if copyData}
 
-<section class='intro'>
-    <h1>{introTitle.name}</h1>
-    <p>{introTitle.definition}</p>
-</section>
-        
-<!-- <section class='latest'>
-    <Quarterly />
-</section> -->
+    <!-- {#await getCopyData()}
+        <Loading />
+    {:then copyData} -->
 
-<header>
-    <h2>{compositeTitle.name}</h2>
-    <h3>{compositeTitle.definition}</h3>
-    <div class='control-area'>
-        <CountrySelect {countryNames}/>
-        <div class="social-sharing">
-            <button on:click={downloadImage}>Download this chart<Icon type='download' /></button>
-            <SocialButtons
-                socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
-                socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
-                socialLink={document.querySelector("meta[property='og:url']").getAttribute('content')}
-            />
+    <section class='intro'>
+        <h1>{introTitle.name}</h1>
+        <p>{introTitle.definition}</p>
+    </section>
+            
+    <!-- <section class='latest'>
+        <Quarterly />
+    </section> -->
+
+    <header>
+        <h2>{compositeTitle.name}</h2>
+        <h3>{compositeTitle.definition}</h3>
+        <div class='control-area'>
+            <CountrySelect {countryNames}/>
+            <div class="social-sharing">
+                <button class="download" on:click={downloadImage}>Download this chart<Icon type='download' /></button>
+                <SocialButtons
+                    socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
+                    socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
+                    socialLink={document.querySelector("meta[property='og:url']").getAttribute('content')}
+                />
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<div class='vis-container' class:chart-download={chartDownload == true}>
-    <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
-</div>
+    {#if areaData}
+        <div class='vis-container' class:chart-download={chartDownload == true}>
+            <LandingVisual areaData={areaData} copyData={copyData.filter(d=>(d.category == 'main'))}/>
+        </div>
+    {/if}
 
-{/await}
+    <!-- {/await} -->
 
-{#if loading == true}
-    <Loading />
+    {#if loading == true}
+        <Loading />
+    {/if}
+
 {/if}
 
 <style>
     /* intro section */
+
+    .download {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .download {
+            display: block;
+        }
+    }
 
     .intro {
         margin-bottom: 50px;
@@ -135,11 +157,17 @@
     }
 
     .intro h1 {
-        font-size: 32px;
         margin-bottom: 20px;
+        font-size: 28px;
     }
 
     @media (min-width: 768px) {
+        .intro h1 {
+            max-width: 260px;
+        }
+    }
+
+    @media (min-width: 1024px) {
         .intro h1 {
             max-width: 350px;
             font-size: 38px;
@@ -149,14 +177,24 @@
     .intro p {
         margin: 0;
         margin-top: 4px;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: 0.02em;
-        line-height: 1.8;
+        line-height: 1.4;
     }
 
     @media (min-width: 768px) {
         .intro p {
             width: 61%;
+            line-height: 1.6;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .intro p {
+            font-size: 18px;
+            letter-spacing: 0.02em;
+            line-height: 1.8;
+            /*width: 61%;*/
         }
     }
 
