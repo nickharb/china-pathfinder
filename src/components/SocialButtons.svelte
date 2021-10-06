@@ -15,7 +15,7 @@
 
     function openRequestedPopup(e) {
         e.preventDefault();
-        windowObjectReference = window.open(linkedInUrl, 'SocialPopupWindow', 'width=800,height=600');
+        windowObjectReference = window.open(linkedInUrl, 'SocialPopupWindow', 'width=650,height=500');
         return false;
     }
 </script>

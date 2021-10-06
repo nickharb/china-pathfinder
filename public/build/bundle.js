@@ -50192,7 +50192,7 @@ var app = (function () {
 
     	function openRequestedPopup(e) {
     		e.preventDefault();
-    		windowObjectReference = window.open(linkedInUrl, "SocialPopupWindow", "width=800,height=600");
+    		windowObjectReference = window.open(linkedInUrl, "SocialPopupWindow", "width=650,height=500");
     		return false;
     	}
 
@@ -54183,8 +54183,9 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "indicators", $view);
+    	set_store_value(view, $view = "main", $view);
 
+    	// $view = 'indicators';
     	// let showQuarterly = false; // set to true if you want to show
     	// let showNews = true; // set to true if you want to show
     	function switchView(targetView, area) {
@@ -54226,8 +54227,8 @@ var app = (function () {
 
     document.addEventListener("DOMContentLoaded", function() {
         new App({
-            target: document.body
-            // target: document.getElementById('pathfinder-dashboard-container')
+            // target: document.body
+            target: document.getElementById('pathfinder-dashboard-container')
         });
     });
 

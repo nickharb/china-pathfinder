@@ -44,9 +44,9 @@
     // $areaInView = 'growth';
     // $areaInView = 'competition';
     // $areaInView = 'innovation';
-    // $areaInView = 'trade';
+    $areaInView = 'trade';
     // $areaInView = 'fdi';
-    $areaInView = 'portfolio';
+    // $areaInView = 'portfolio';
 
 
     // set area visual width
