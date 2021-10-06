@@ -33,7 +33,7 @@
         'united-states': '-10px'
     }
 
-    $selectedCountry = 'south-korea';
+    // $selectedCountry = 'south-korea';
 
     const url = {
         'growth': $baseUrl + '/financial-system-development',

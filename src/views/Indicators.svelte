@@ -46,7 +46,7 @@
     // $areaInView = 'innovation';
     // $areaInView = 'trade';
     // $areaInView = 'fdi';
-    // $areaInView = 'portfolio';
+    $areaInView = 'portfolio';
 
 
     // set area visual width
@@ -207,7 +207,8 @@
     // download chart functions
 
     function downloadImage(e) {
-        let chart = document.querySelector('.indicator-container');
+        let chart = e.composedPath()[2];
+        // let chart = document.querySelector(path);
         loading = true;
         setTimeout(function() {
             chartDownload = true;

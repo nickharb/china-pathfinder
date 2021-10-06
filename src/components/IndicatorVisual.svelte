@@ -168,6 +168,7 @@
     function mouseOver(e) {
         isHovered = true;
         let path = e.composedPath()[1];
+        console.log(path)
         $hoveredCountry = path.dataset.id;
     }
 
