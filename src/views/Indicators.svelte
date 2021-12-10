@@ -200,8 +200,14 @@
 
         // check if china and oecd labels overlap
         if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
-            chinaHidden = true;
+            // chinaHidden = true;
+            labelPositions['china'] = '20px';
         }
+
+        // raise china, china 2010 and oecd
+        d3.selectAll('.china').raise();
+        d3.selectAll('.china-2010').raise();
+        d3.selectAll('.open-economy-avg').raise();
     }
 
     // download chart functions
