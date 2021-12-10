@@ -38,10 +38,10 @@ export default {
         // file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/growth/bundle.js'
         // file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/competition/bundle.js'
         // file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/innovation/bundle.js'
-        file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/trade/bundle.js'
+        // file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/trade/bundle.js'
         // file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/fdi/bundle.js'
         // file: '../../wordpress/pathfinderlocal/app/public/wp-content/themes/pathfinder-child/dashboard/portfolio/bundle.js'
-        // file: 'public/build/bundle.js'
+        file: 'public/build/bundle.js'
     },
     plugins: [
         svelte({

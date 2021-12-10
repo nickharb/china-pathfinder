@@ -1,56 +1,27 @@
-
-<script type="text/javascript">
-    const quarterlyData = [
-        {
-            title: 'Market Competition',
-            value: 'closer',
-            class: 'closer'
-        },
-        {
-            title: 'Trade Openness',
-            value: 'further',
-            class: 'further'
-        },
-        {
-            title: 'Portfolio Investment Openness',
-            value: 'no change',
-            class: 'no-change'
-        },
-        {
-            title: 'Modern Innovation System',
-            value: 'no change',
-            class: 'no-change'
-        },
-        {
-            title: 'Direct Investment Openness',
-            value: 'no change',
-            class: 'no-change'
-        },
-        {
-            title: 'Financial System Development',
-            value: 'no change',
-            class: 'no-change'
-        }
-    ];
+<script>
+    export let quarterlyData;
 </script>
 
 <div class='quarterly'>
-    <h2>Policy Changes: Q3 2021 Update</h2>
-    <p>Did China move closer or further from OECD norms?</p>
+    <h2>{quarterlyData.title}</h2>
+    <p>{quarterlyData.subtitle}</p>
     <ul>
-        {#each quarterlyData as quarter}
-            <li class='{quarter.class}'><span>{quarter.value}</span><h4>{quarter.title}</h4></li>
-        {/each}
+        <li class='{quarterlyData.fdi}'><span>{quarterlyData.fdiLabel}</span><h4>Direct Investment Openness</h4></li>
+        <li class='{quarterlyData.portfolio}'><span>{quarterlyData.portfolioLabel}</span><h4>Portfolio Investment Openness</h4></li>
+        <li class='{quarterlyData.trade}'><span>{quarterlyData.tradeLabel}</span><h4>Trade Openness</h4></li>
+        <li class='{quarterlyData.growth}'><span>{quarterlyData.growthLabel}</span><h4>Financial System Development</h4></li>
+        <li class='{quarterlyData.competition}'><span>{quarterlyData.competitionLabel}</span><h4>Market Competition</h4></li>
+        <li class='{quarterlyData.innovation}'><span>{quarterlyData.innovationLabel}</span><h4>Modern Innovation System</h4></li>
     </ul>
     <div class="latest">
-        <span>Read the quarterly update:</span>
-        <a href="#">Lorem ipsum dolor sit amet consectetuer adipi</a>
+        <span>Latest info:</span>
+        <a href="{quarterlyData.postLink}">{quarterlyData.postTitle}</a>
     </div>
 </div>
 
 <style type="text/css">
     .quarterly {
-        margin: 40px auto 80px;
+        margin: 40px auto 60px;
         border-radius: 4px;
         background-color: #EFF4F8;
         padding: 25px;
@@ -71,6 +42,7 @@
         text-decoration: underline;
         font-weight: bold;
         font-size: 14px;
+        color: #234462;
     }
 
     h2 {
@@ -83,7 +55,7 @@
         font-size: 16px;
         text-align: center;
         color: #122431;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         margin-top: 5px;
     }
 
@@ -93,25 +65,27 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-bottom: 20px;
     }
 
     li {
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         font-size: 14px;
         display: flex;
         align-items: center;
+        padding: 0;
     }
 
-    @media (min-width: 512px) {
+    @media (min-width: 570px) {
         li {
             width: 50%;
         }
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 800px) {
         li {
-            width: 28%;
+            width: 30%;
         }
     }
 
@@ -123,8 +97,8 @@
         text-transform: uppercase;
         font-size: 12px;
         border-radius: 4px;
-        width: 70px;
         text-align: center;
+        flex: 0 0 70px;
     }
 
     li h4 {
@@ -132,7 +106,9 @@
         font-size: 14px;
         font-weight: normal;
         margin: 0;
-        max-width: 150px;
+        line-height: 1.2;
+        color: #122431;
+        margin-right: 10px;
     }
 
     @media (min-width: 768px) {
@@ -141,7 +117,7 @@
         }
     }
 
-    li.no-change span {
+    li.nochange span {
         color: #234462;
         background-color: #C4D6E6;
     }

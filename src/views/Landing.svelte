@@ -12,7 +12,7 @@
     import Loading from '../components/Loading.svelte';
     import SocialButtons from '../components/SocialButtons.svelte';
     export let showPrevious = false;
-    let data = [], countryNames = [], areaData, copyData, introTitle, compositeTitle, cData;
+    let data = [], countryNames = [], areaData, copyData, introTitle, compositeTitle, cData, quarterlyData = {};
 
     import { csv } from 'd3';
     // const dataPath = '../data/composite-score.csv';
@@ -41,6 +41,25 @@
     $: if (copyData) {
         introTitle = copyData.filter(d=> (d.category=='title' && d.label == 'intro'))[0];
         compositeTitle = copyData.filter(d=> (d.category=='title' && d.label == 'composite'))[0];
+
+        // quarterly data
+        quarterlyData.display = copyData.filter(d=> (d.category=='quarterly' && d.label == 'display'))[0].name;
+        quarterlyData.title = copyData.filter(d=> (d.category=='quarterly' && d.label == 'title'))[0].name;
+        quarterlyData.subtitle = copyData.filter(d=> (d.category=='quarterly' && d.label == 'subtitle'))[0].name;
+        quarterlyData.postTitle = copyData.filter(d=> (d.category=='quarterly' && d.label == 'posttitle'))[0].name;
+        quarterlyData.postLink = copyData.filter(d=> (d.category=='quarterly' && d.label == 'postlink'))[0].name;
+        quarterlyData.fdi = copyData.filter(d=> (d.category=='quarterly' && d.label == 'fdi'))[0].name;
+        quarterlyData.portfolio = copyData.filter(d=> (d.category=='quarterly' && d.label == 'portfolio'))[0].name;
+        quarterlyData.trade = copyData.filter(d=> (d.category=='quarterly' && d.label == 'trade'))[0].name;
+        quarterlyData.growth = copyData.filter(d=> (d.category=='quarterly' && d.label == 'growth'))[0].name;
+        quarterlyData.competition = copyData.filter(d=> (d.category=='quarterly' && d.label == 'competition'))[0].name;
+        quarterlyData.innovation = copyData.filter(d=> (d.category=='quarterly' && d.label == 'innovation'))[0].name;
+        quarterlyData.fdiLabel = copyData.filter(d=> (d.category=='quarterly' && d.label == 'fdi'))[0].definition;
+        quarterlyData.portfolioLabel = copyData.filter(d=> (d.category=='quarterly' && d.label == 'portfolio'))[0].definition;
+        quarterlyData.tradeLabel = copyData.filter(d=> (d.category=='quarterly' && d.label == 'trade'))[0].definition;
+        quarterlyData.growthLabel = copyData.filter(d=> (d.category=='quarterly' && d.label == 'growth'))[0].definition;
+        quarterlyData.competitionLabel = copyData.filter(d=> (d.category=='quarterly' && d.label == 'competition'))[0].definition;
+        quarterlyData.innovationLabel = copyData.filter(d=> (d.category=='quarterly' && d.label == 'innovation'))[0].definition;
     }
 
     // chart image download
@@ -95,10 +114,12 @@
         <h1>{introTitle.name}</h1>
         <p>{introTitle.definition}</p>
     </section>
-            
-    <!-- <section class='latest'>
-        <Quarterly />
-    </section> -->
+
+    {#if quarterlyData.display == 'TRUE' || quarterlyData.display == 'true' || quarterlyData.display == true}
+        <section class='latest'>
+            <Quarterly quarterlyData={quarterlyData} />
+        </section>
+    {/if}
 
     <header>
         <h2>{compositeTitle.name}</h2>
