@@ -208,6 +208,7 @@
         if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
             // chinaHidden = true;
             labelPositions['china'] = '18px';
+            labelPositions['china-2010'] = '-10px';
         }
 
         // raise china, china 2010 and oecd

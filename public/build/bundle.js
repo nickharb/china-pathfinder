@@ -47779,7 +47779,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (241:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
+    // (242:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
     function create_default_slot(ctx) {
     	let t_value = /*area*/ ctx[33].additional + "";
     	let t;
@@ -47803,14 +47803,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(241:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
+    		source: "(242:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (223:4) {#each copyData as area, i}
+    // (224:4) {#each copyData as area, i}
     function create_each_block_4(ctx) {
     	let div2;
     	let header;
@@ -47896,35 +47896,35 @@ var app = (function () {
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#234462");
     			attr_dev(path, "class", "svelte-fglob3");
-    			add_location(path, file$a, 229, 28, 8132);
+    			add_location(path, file$a, 230, 28, 8184);
     			attr_dev(svg, "class", "caret-down-dark svelte-fglob3");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
     			attr_dev(svg, "fill", "none");
-    			add_location(svg, file$a, 228, 24, 8019);
+    			add_location(svg, file$a, 229, 24, 8071);
     			attr_dev(a0, "href", a0_href_value = /*url*/ ctx[12][/*area*/ ctx[33].label.toLowerCase()]);
     			attr_dev(a0, "class", "svelte-fglob3");
-    			add_location(a0, file$a, 226, 20, 7916);
+    			add_location(a0, file$a, 227, 20, 7968);
     			attr_dev(h2, "class", "svelte-fglob3");
     			add_render_callback(() => h2_elementresize_handler.call(h2));
-    			add_location(h2, file$a, 225, 16, 7858);
+    			add_location(h2, file$a, 226, 16, 7910);
     			attr_dev(div0, "class", "info svelte-fglob3");
     			attr_dev(div0, "data-area", div0_data_area_value = /*area*/ ctx[33].name);
-    			add_location(div0, file$a, 234, 16, 8463);
+    			add_location(div0, file$a, 235, 16, 8515);
     			attr_dev(header, "class", "svelte-fglob3");
-    			add_location(header, file$a, 224, 12, 7833);
+    			add_location(header, file$a, 225, 12, 7885);
     			attr_dev(p, "class", "svelte-fglob3");
-    			add_location(p, file$a, 245, 16, 8934);
+    			add_location(p, file$a, 246, 16, 8986);
     			attr_dev(a1, "href", a1_href_value = /*url*/ ctx[12][/*area*/ ctx[33].label.toLowerCase()]);
     			attr_dev(a1, "class", "svelte-fglob3");
-    			add_location(a1, file$a, 247, 20, 9004);
+    			add_location(a1, file$a, 248, 20, 9056);
     			attr_dev(button, "class", "svelte-fglob3");
-    			add_location(button, file$a, 246, 16, 8975);
+    			add_location(button, file$a, 247, 16, 9027);
     			attr_dev(div1, "class", "description svelte-fglob3");
-    			add_location(div1, file$a, 244, 12, 8892);
+    			add_location(div1, file$a, 245, 12, 8944);
     			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[33].label.toLowerCase()) + " svelte-fglob3"));
-    			add_location(div2, file$a, 223, 8, 7774);
+    			add_location(div2, file$a, 224, 8, 7826);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -48022,14 +48022,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(223:4) {#each copyData as area, i}",
+    		source: "(224:4) {#each copyData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (258:0) {#if areaData}
+    // (259:0) {#if areaData}
     function create_if_block$6(ctx) {
     	let div;
     	let svg;
@@ -48078,15 +48078,15 @@ var app = (function () {
     			attr_dev(rect, "y", "0");
     			attr_dev(rect, "width", /*$width*/ ctx[10]);
     			attr_dev(rect, "height", /*$height*/ ctx[6]);
-    			add_location(rect, file$a, 263, 8, 9410);
+    			add_location(rect, file$a, 264, 8, 9462);
     			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[10] + " " + /*$height*/ ctx[6]);
     			attr_dev(svg, "width", /*$width*/ ctx[10]);
     			attr_dev(svg, "height", /*$height*/ ctx[6]);
     			attr_dev(svg, "class", "svelte-fglob3");
-    			add_location(svg, file$a, 259, 4, 9314);
+    			add_location(svg, file$a, 260, 4, 9366);
     			attr_dev(div, "class", "vis-wrapper svelte-fglob3");
     			add_render_callback(() => /*div_elementresize_handler_1*/ ctx[20].call(div));
-    			add_location(div, file$a, 258, 0, 9258);
+    			add_location(div, file$a, 259, 0, 9310);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -48209,14 +48209,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(258:0) {#if areaData}",
+    		source: "(259:0) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (268:12) {#if area.graphData}
+    // (269:12) {#if area.graphData}
     function create_if_block_2$2(ctx) {
     	let g;
     	let text0;
@@ -48253,20 +48253,20 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$a, 271, 16, 9646);
+    			add_location(text0, file$a, 272, 16, 9698);
     			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[10] - /*area*/ ctx[33].offsetX);
     			attr_dev(text1, "y", "-5");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$a, 272, 16, 9743);
+    			add_location(text1, file$a, 273, 16, 9795);
     			attr_dev(line, "class", "gridline svelte-fglob3");
     			attr_dev(line, "x2", /*$width*/ ctx[10]);
-    			add_location(line, file$a, 274, 16, 9880);
+    			add_location(line, file$a, 275, 16, 9932);
     			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[33].area) + " svelte-fglob3"));
     			attr_dev(g, "transform", g_transform_value = "translate(" + /*area*/ ctx[33].offsetX + "," + /*area*/ ctx[33].offsetY + ")");
-    			add_location(g, file$a, 269, 12, 9552);
+    			add_location(g, file$a, 270, 12, 9604);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48331,14 +48331,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(268:12) {#if area.graphData}",
+    		source: "(269:12) {#if area.graphData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (290:24) {#if i == 0}
+    // (291:24) {#if i == 0}
     function create_if_block_3$2(ctx) {
     	let text_1;
     	let t_value = /*graph*/ ctx[36].country + "";
@@ -48354,7 +48354,7 @@ var app = (function () {
     			attr_dev(text_1, "data-id", text_1_data_id_value = /*graph*/ ctx[36].id);
     			attr_dev(text_1, "y", text_1_y_value = /*labelPositions*/ ctx[3][/*graph*/ ctx[36].id]);
     			toggle_class(text_1, "hidden", /*graph*/ ctx[36].id == "china" && /*chinaHidden*/ ctx[11] == true);
-    			add_location(text_1, file$a, 290, 28, 10610);
+    			add_location(text_1, file$a, 291, 28, 10662);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text_1, anchor);
@@ -48384,14 +48384,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$2.name,
     		type: "if",
-    		source: "(290:24) {#if i == 0}",
+    		source: "(291:24) {#if i == 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (278:16) {#each area.graphData as graph, x}
+    // (279:16) {#each area.graphData as graph, x}
     function create_each_block_3(ctx) {
     	let g;
     	let path;
@@ -48415,10 +48415,10 @@ var app = (function () {
     			circle = svg_element("circle");
     			attr_dev(path, "d", path_d_value = /*graph*/ ctx[36].path);
     			attr_dev(path, "class", "svelte-fglob3");
-    			add_location(path, file$a, 300, 24, 11039);
+    			add_location(path, file$a, 301, 24, 11091);
     			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[36].r);
     			attr_dev(circle, "class", "country-circle svelte-fglob3");
-    			add_location(circle, file$a, 302, 24, 11093);
+    			add_location(circle, file$a, 303, 24, 11145);
     			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[36].id + " svelte-fglob3");
     			attr_dev(g, "data-x", g_data_x_value = /*graph*/ ctx[36].x);
     			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[36].id);
@@ -48427,7 +48427,7 @@ var app = (function () {
     			toggle_class(g, "hovered", /*graph*/ ctx[36].id == /*$hoveredCountry*/ ctx[7] && /*area*/ ctx[33].area == /*$hoveredArea*/ ctx[8]);
     			toggle_class(g, "selected", /*graph*/ ctx[36].id == /*$selectedCountry*/ ctx[9] || /*graph*/ ctx[36].id == "china" || /*graph*/ ctx[36].id == "open-economy-avg");
     			toggle_class(g, "header", /*i*/ ctx[35] == 0);
-    			add_location(g, file$a, 279, 20, 10013);
+    			add_location(g, file$a, 280, 20, 10065);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48500,14 +48500,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(278:16) {#each area.graphData as graph, x}",
+    		source: "(279:16) {#each area.graphData as graph, x}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (266:8) {#each areaData as area, i}
+    // (267:8) {#each areaData as area, i}
     function create_each_block_2$1(ctx) {
     	let if_block_anchor;
     	let if_block = /*area*/ ctx[33].graphData && create_if_block_2$2(ctx);
@@ -48545,14 +48545,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(266:8) {#each areaData as area, i}",
+    		source: "(267:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (323:8) {#if area.graphData}
+    // (324:8) {#if area.graphData}
     function create_if_block_1$2(ctx) {
     	let each_1_anchor;
     	let current;
@@ -48641,14 +48641,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(323:8) {#if area.graphData}",
+    		source: "(324:8) {#if area.graphData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (324:12) {#each area.graphData as graph, i}
+    // (325:12) {#each area.graphData as graph, i}
     function create_each_block_1$2(ctx) {
     	let tooltip;
     	let current;
@@ -48695,14 +48695,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(324:12) {#each area.graphData as graph, i}",
+    		source: "(325:12) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (322:4) {#each areaData as area, i}
+    // (323:4) {#each areaData as area, i}
     function create_each_block$3(ctx) {
     	let if_block_anchor;
     	let current;
@@ -48761,7 +48761,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(322:4) {#each areaData as area, i}",
+    		source: "(323:4) {#each areaData as area, i}",
     		ctx
     	});
 
@@ -48801,7 +48801,7 @@ var app = (function () {
     			if_block_anchor = empty$3();
     			attr_dev(div, "class", "text-wrapper svelte-fglob3");
     			add_render_callback(() => /*div_elementresize_handler*/ ctx[19].call(div));
-    			add_location(div, file$a, 221, 0, 7678);
+    			add_location(div, file$a, 222, 0, 7730);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49142,6 +49142,8 @@ var app = (function () {
     		if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
     			// chinaHidden = true;
     			$$invalidate(3, labelPositions["china"] = "18px", labelPositions);
+
+    			$$invalidate(3, labelPositions["china-2010"] = "-10px", labelPositions);
     		}
 
     		// raise china, china 2010 and oecd
