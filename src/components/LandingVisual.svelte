@@ -154,11 +154,17 @@
         let selected = document.querySelectorAll('.country text');
         let chinaLabel = document.querySelector('.china text');
         let oecdLabel = document.querySelector('.open-economy-avg text');
+        let china2010Label = document.querySelector('.china-2010 text');
 
         let china = {
             'left': chinaLabel.getBoundingClientRect().left,
             'right': chinaLabel.getBoundingClientRect().right,
             'width': chinaLabel.getBBox().width
+        };
+        let china2010 = {
+            'left': china2010Label.getBoundingClientRect().left,
+            'right': china2010Label.getBoundingClientRect().right,
+            'width': china2010Label.getBBox().width
         };
         let oecd = {
             'left': oecdLabel.getBoundingClientRect().left,
@@ -182,21 +188,43 @@
             let id = country.id;
 
             if (country.left < china.right && country.right > china.right || country.right > china.left && country.left < china.left || country.left > china.left && country.right < china.right) {
-                // labelPositions[id] = '-27px';
-                labelPositions[id] = '16px';
+                if (isMobile) {
+                    // labelPositions[id] = '16px';
+                } else {
+                    labelPositions[id] = '-27px';
+                }
             } else if (country.left < oecd.right && country.right > oecd.right || country.right > oecd.left && country.left < oecd.left || country.left > oecd.left && country.right < oecd.right) {
-                // labelPositions[id] = '-27px';
-                labelPositions[id] = '16px';
+                if (isMobile) {
+                    labelPositions[id] = '18px';
+                } else {
+                    labelPositions[id] = '-27px';
+                }
             } else {
-                labelPositions[id] = '-10px';
-                // labelPositions[id] = '20px';
+                if (isMobile) {
+                    labelPositions[id] = '-10px';
+                    // labelPositions[id] = '20px';
+                } else {
+                    // labelPositions[id] = '20px';
+                }
             }
         }
 
         // check if china and oecd labels overlap
         if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
-            chinaHidden = true;
-            // labelPositions['china'] = '20px';
+            // chinaHidden = true;
+            labelPositions['china'] = '16px';
+        }
+
+        // check if china 2010 and oecd labels overlap
+        if (china2010.left < oecd.right && china2010.right > oecd.right || china2010.right > oecd.left && china2010.left < oecd.left || china2010.left > oecd.left && china2010.right < oecd.right) {
+            labelPositions['china-2010'] = '-20px';
+        }
+
+        // check if china and china 2010 overlap
+        if (china.left < china2010.right && china.right > china2010.right || china.right > china2010.left && china.left < china2010.left || china.left > china2010.left && china.right < china2010.right) {
+            if (isMobile) {
+                labelPositions['china'] = '18px';
+            }
         }
 
         // raise china, china 2010 and oecd
@@ -215,7 +243,7 @@
                 <h2 bind:clientWidth={offsetLeft[i]}>
                     <a href="{url[area.label.toLowerCase()]}">
                         {area.name}
-                        <svg class="caret-down-dark" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                        <svg class="caret-down-dark" width="13" height="11" viewBox="0 0 13 11" fill="none">
                             <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" fill="#234462"/>
                         </svg>
                     </a>
@@ -421,8 +449,14 @@
     .area h2 svg {
         display: inline-block;
         transform: rotate(-90deg);
-        margin-left: 2px;
-        vertical-align: middle;
+        /*margin-left: 2px;*/
+        /*vertical-align: middle;*/
+    }
+
+    @media (min-width: 768px) {
+        .area h2 svg {
+            display: none;
+        }
     }
 
     .area button a {
@@ -610,6 +644,12 @@
 
     .chart-download .description {
         opacity: 0 !important;
+    }
+
+    .caret-down-dark {
+        height: 10px;
+        width: 12px;
+        margin: 0;
     }
 </style>
 

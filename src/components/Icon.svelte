@@ -93,8 +93,9 @@
     }
     
     .info {
-        margin-top: 4px;
+        margin-top: 2px;
         margin-left: 7px;
+        vertical-align: top;
     }
 
     .tooltip-caret-up {

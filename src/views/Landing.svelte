@@ -308,6 +308,7 @@
             height: inherit;
             width: inherit;
             margin: 0;
+            padding: 5px 10px;
         }
     }
 
