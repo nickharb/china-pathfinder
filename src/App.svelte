@@ -5,8 +5,8 @@
     import Icon from './components/Icon.svelte';
     import {view} from './stores/view';
 
-    $view = 'main';
-    // $view = 'indicators';
+    // $view = 'main';
+    $view = 'indicators';
 
     // let showQuarterly = false; // set to true if you want to show
     // let showNews = true; // set to true if you want to show

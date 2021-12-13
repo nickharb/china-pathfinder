@@ -423,12 +423,13 @@
     }
 
     .social-share p {
-        margin: 0;
-        padding: 0;
-        margin-right: 2px;
-        font-size: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .social-share p {
+            display: block;
+        }
     }
 
     /* indicator visual */
@@ -624,16 +625,19 @@
 
     .control-area {
         margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    @media (min-width: 768px) {
+    /*@media (min-width: 768px) {
         .control-area {
             margin: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-    }
+    }*/
 
     .area-summary {
         background-color: #EFF4F8;

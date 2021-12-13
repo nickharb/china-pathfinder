@@ -52636,57 +52636,57 @@ var app = (function () {
     			if (if_block5) if_block5.c();
     			if_block5_anchor = empty$3();
     			attr_dev(a0, "href", /*$baseUrl*/ ctx[15]);
-    			attr_dev(a0, "class", "svelte-3o9xhl");
+    			attr_dev(a0, "class", "svelte-7gdqfv");
     			add_location(a0, file$1, 257, 25, 8322);
-    			attr_dev(button0, "class", "back svelte-3o9xhl");
+    			attr_dev(button0, "class", "back svelte-7gdqfv");
     			add_location(button0, file$1, 257, 4, 8301);
-    			attr_dev(h1, "class", "svelte-3o9xhl");
+    			attr_dev(h1, "class", "svelte-7gdqfv");
     			add_location(h1, file$1, 263, 16, 8530);
-    			attr_dev(p0, "class", "intro svelte-3o9xhl");
+    			attr_dev(p0, "class", "intro svelte-7gdqfv");
     			add_location(p0, file$1, 264, 16, 8574);
-    			attr_dev(div0, "class", "area-text svelte-3o9xhl");
+    			attr_dev(div0, "class", "area-text svelte-7gdqfv");
     			add_location(div0, file$1, 262, 12, 8490);
     			attr_dev(svg0, "viewBox", svg0_viewBox_value = "0 0 " + /*$width*/ ctx[3] + " " + /*$height*/ ctx[12]);
     			attr_dev(svg0, "width", /*$width*/ ctx[3]);
     			attr_dev(svg0, "height", svg0_height_value = /*$height*/ ctx[12] + 30);
     			add_location(svg0, file$1, 269, 16, 8718);
-    			attr_dev(div1, "class", "area-vis svelte-3o9xhl");
+    			attr_dev(div1, "class", "area-vis svelte-7gdqfv");
     			add_render_callback(() => /*div1_elementresize_handler*/ ctx[25].call(div1));
     			add_location(div1, file$1, 267, 12, 8652);
-    			attr_dev(div2, "class", "area-container svelte-3o9xhl");
+    			attr_dev(div2, "class", "area-container svelte-7gdqfv");
     			add_location(div2, file$1, 261, 8, 8449);
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#234462");
     			add_location(path, file$1, 338, 20, 11937);
-    			attr_dev(svg1, "class", "caret-down-dark svelte-3o9xhl");
+    			attr_dev(svg1, "class", "caret-down-dark svelte-7gdqfv");
     			attr_dev(svg1, "width", "13");
     			attr_dev(svg1, "height", "11");
     			attr_dev(svg1, "viewBox", "0 0 13 11");
     			attr_dev(svg1, "fill", "none");
     			add_location(svg1, file$1, 337, 16, 11832);
-    			attr_dev(button1, "class", "expand svelte-3o9xhl");
+    			attr_dev(button1, "class", "expand svelte-7gdqfv");
     			add_location(button1, file$1, 331, 12, 11615);
     			attr_dev(a1, "href", a1_href_value = "" + (/*$baseUrl*/ ctx[15] + "/methodology/"));
-    			attr_dev(a1, "class", "svelte-3o9xhl");
+    			attr_dev(a1, "class", "svelte-7gdqfv");
     			add_location(a1, file$1, 342, 16, 12256);
-    			attr_dev(div3, "class", "methodology svelte-3o9xhl");
+    			attr_dev(div3, "class", "methodology svelte-7gdqfv");
     			add_location(div3, file$1, 341, 12, 12214);
-    			attr_dev(div4, "class", "area-footer svelte-3o9xhl");
+    			attr_dev(div4, "class", "area-footer svelte-7gdqfv");
     			add_location(div4, file$1, 330, 8, 11577);
-    			attr_dev(div5, "class", "area-summary svelte-3o9xhl");
+    			attr_dev(div5, "class", "area-summary svelte-7gdqfv");
     			toggle_class(div5, "expanded", /*expanded*/ ctx[9] == true);
     			add_location(div5, file$1, 259, 4, 8379);
-    			attr_dev(h2, "class", "svelte-3o9xhl");
+    			attr_dev(h2, "class", "svelte-7gdqfv");
     			add_location(h2, file$1, 350, 12, 12450);
-    			attr_dev(p1, "class", "svelte-3o9xhl");
+    			attr_dev(p1, "class", "svelte-7gdqfv");
     			add_location(p1, file$1, 354, 20, 12622);
-    			attr_dev(div6, "class", "social-share svelte-3o9xhl");
+    			attr_dev(div6, "class", "social-share svelte-7gdqfv");
     			add_location(div6, file$1, 353, 16, 12575);
-    			attr_dev(div7, "class", "control-area svelte-3o9xhl");
+    			attr_dev(div7, "class", "control-area svelte-7gdqfv");
     			add_location(div7, file$1, 351, 12, 12484);
-    			attr_dev(header, "class", "svelte-3o9xhl");
+    			attr_dev(header, "class", "svelte-7gdqfv");
     			add_location(header, file$1, 349, 8, 12429);
-    			attr_dev(div8, "class", "indicators svelte-3o9xhl");
+    			attr_dev(div8, "class", "indicators svelte-7gdqfv");
     			add_location(div8, file$1, 348, 4, 12396);
     		},
     		m: function mount(target, anchor) {
@@ -52992,12 +52992,12 @@ var app = (function () {
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
     			add_location(text1, file$1, 277, 28, 9111);
-    			attr_dev(line, "class", "gridline svelte-3o9xhl");
+    			attr_dev(line, "class", "gridline svelte-7gdqfv");
     			attr_dev(line, "x1", "0");
     			attr_dev(line, "x2", /*$width*/ ctx[3]);
     			attr_dev(line, "transform", "translate(0,5)");
     			add_location(line, file$1, 279, 28, 9246);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-3o9xhl"));
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-7gdqfv"));
     			attr_dev(g, "transform", "translate(0," + /*areaMargin*/ ctx[18] + ")");
     			add_location(g, file$1, 274, 24, 8908);
     		},
@@ -53046,7 +53046,7 @@ var app = (function () {
     				each_blocks.length = each_value_2.length;
     			}
 
-    			if (dirty[0] & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-3o9xhl"))) {
+    			if (dirty[0] & /*areaData*/ 2 && g_class_value !== (g_class_value = "" + (null_to_empty(/*areaData*/ ctx[1].area) + " svelte-7gdqfv"))) {
     				attr_dev(g, "class", g_class_value);
     			}
     		},
@@ -53084,15 +53084,15 @@ var app = (function () {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
     			circle = svg_element("circle");
-    			attr_dev(text_1, "class", "label svelte-3o9xhl");
+    			attr_dev(text_1, "class", "label svelte-7gdqfv");
     			attr_dev(text_1, "data-id", /*graph*/ ctx[38].id);
     			attr_dev(text_1, "y", text_1_y_value = /*labelPositions*/ ctx[10][/*graph*/ ctx[38].id]);
     			toggle_class(text_1, "hidden", /*graph*/ ctx[38].id == "china" && /*chinaHidden*/ ctx[17] == true);
     			add_location(text_1, file$1, 292, 36, 10100);
     			attr_dev(circle, "r", /*graph*/ ctx[38].r);
-    			attr_dev(circle, "class", "country-circle svelte-3o9xhl");
+    			attr_dev(circle, "class", "country-circle svelte-7gdqfv");
     			add_location(circle, file$1, 301, 36, 10603);
-    			attr_dev(g, "class", "country " + /*graph*/ ctx[38].id + " svelte-3o9xhl");
+    			attr_dev(g, "class", "country " + /*graph*/ ctx[38].id + " svelte-7gdqfv");
     			attr_dev(g, "data-x", /*graph*/ ctx[38].x);
     			attr_dev(g, "data-y", /*graph*/ ctx[38].y);
     			attr_dev(g, "data-id", /*graph*/ ctx[38].id);
@@ -53314,9 +53314,9 @@ var app = (function () {
     			div = element("div");
     			p = element("p");
     			t = text$1(t_value);
-    			attr_dev(p, "class", "svelte-3o9xhl");
+    			attr_dev(p, "class", "svelte-7gdqfv");
     			add_location(p, file$1, 326, 16, 11498);
-    			attr_dev(div, "class", "summary svelte-3o9xhl");
+    			attr_dev(div, "class", "summary svelte-7gdqfv");
     			add_location(div, file$1, 325, 12, 11444);
     		},
     		m: function mount(target, anchor) {
@@ -53676,23 +53676,23 @@ var app = (function () {
     			t7 = text$1("Download this chart");
     			create_component(icon.$$.fragment);
     			t8 = space();
-    			attr_dev(div0, "class", "leader-line svelte-3o9xhl");
+    			attr_dev(div0, "class", "leader-line svelte-7gdqfv");
     			add_location(div0, file$1, 378, 32, 13852);
-    			attr_dev(div1, "class", "leader-circle svelte-3o9xhl");
+    			attr_dev(div1, "class", "leader-circle svelte-7gdqfv");
     			add_location(div1, file$1, 379, 32, 13916);
-    			attr_dev(div2, "class", "leader-container svelte-3o9xhl");
+    			attr_dev(div2, "class", "leader-container svelte-7gdqfv");
     			add_location(div2, file$1, 377, 28, 13789);
-    			attr_dev(h3, "class", "svelte-3o9xhl");
+    			attr_dev(h3, "class", "svelte-7gdqfv");
     			add_location(h3, file$1, 381, 28, 14013);
-    			attr_dev(div3, "class", "description svelte-3o9xhl");
+    			attr_dev(div3, "class", "description svelte-7gdqfv");
     			add_location(div3, file$1, 382, 28, 14072);
-    			attr_dev(button, "class", "download svelte-3o9xhl");
+    			attr_dev(button, "class", "download svelte-7gdqfv");
     			add_location(button, file$1, 383, 28, 14159);
-    			attr_dev(div4, "class", "indicator-text svelte-3o9xhl");
+    			attr_dev(div4, "class", "indicator-text svelte-7gdqfv");
     			toggle_class(div4, "text-right", /*i*/ ctx[37] % 2 == 0);
     			toggle_class(div4, "text-left", /*i*/ ctx[37] % 2 !== 0);
     			add_location(div4, file$1, 376, 24, 13672);
-    			attr_dev(div5, "class", "indicator-container svelte-3o9xhl");
+    			attr_dev(div5, "class", "indicator-container svelte-7gdqfv");
     			toggle_class(div5, "chart-download", /*chartDownload*/ ctx[4] == true);
     			add_location(div5, file$1, 368, 16, 13277);
     		},
@@ -54464,9 +54464,8 @@ var app = (function () {
     	component_subscribe($$self, view, $$value => $$invalidate(0, $view = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	set_store_value(view, $view = "main", $view);
+    	set_store_value(view, $view = "indicators", $view);
 
-    	// $view = 'indicators';
     	// let showQuarterly = false; // set to true if you want to show
     	// let showNews = true; // set to true if you want to show
     	function switchView(targetView, area) {
