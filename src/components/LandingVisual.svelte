@@ -14,7 +14,7 @@
     import Tooltip from './Tooltip.svelte';
     import InfoTooltip from './InfoTooltip.svelte';
 
-    let isMobile = (window.innerWidth <= 786) ? true : false;
+    let isMobile = (window.innerWidth <= 768) ? true : false;
 
     $height = 600;
 
