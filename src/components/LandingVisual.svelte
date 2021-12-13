@@ -189,42 +189,25 @@
 
             if (country.left < china.right && country.right > china.right || country.right > china.left && country.left < china.left || country.left > china.left && country.right < china.right) {
                 if (isMobile) {
-                    // labelPositions[id] = '16px';
+                    labelPositions[id] = '-19px';
                 } else {
                     labelPositions[id] = '-27px';
                 }
             } else if (country.left < oecd.right && country.right > oecd.right || country.right > oecd.left && country.left < oecd.left || country.left > oecd.left && country.right < oecd.right) {
                 if (isMobile) {
-                    labelPositions[id] = '18px';
+                    labelPositions[id] = '-19px';
                 } else {
                     labelPositions[id] = '-27px';
                 }
             } else {
-                if (isMobile) {
-                    labelPositions[id] = '-10px';
-                    // labelPositions[id] = '20px';
-                } else {
-                    // labelPositions[id] = '20px';
-                }
+                labelPositions[id] = '-10px';
             }
         }
 
         // check if china and oecd labels overlap
         if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
             // chinaHidden = true;
-            labelPositions['china'] = '16px';
-        }
-
-        // check if china 2010 and oecd labels overlap
-        if (china2010.left < oecd.right && china2010.right > oecd.right || china2010.right > oecd.left && china2010.left < oecd.left || china2010.left > oecd.left && china2010.right < oecd.right) {
-            labelPositions['china-2010'] = '-20px';
-        }
-
-        // check if china and china 2010 overlap
-        if (china.left < china2010.right && china.right > china2010.right || china.right > china2010.left && china.left < china2010.left || china.left > china2010.left && china.right < china2010.right) {
-            if (isMobile) {
-                labelPositions['china'] = '18px';
-            }
+            labelPositions['china'] = '18px';
         }
 
         // raise china, china 2010 and oecd
