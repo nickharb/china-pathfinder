@@ -19,6 +19,9 @@
     let chartDownload = false;
     let loading = false;
     let fadeDuration = 200;
+    let isMobile = (window.innerWidth <= 786) ? true : false;
+
+    let downloadLabel = (isMobile) ? '' : 'Download this chart'
 
     // onMount(async()=>{
     //     data = await loadData();
@@ -127,7 +130,7 @@
         <div class='control-area'>
             <CountrySelect {countryNames}/>
             <div class="social-sharing">
-                <button class="download" on:click={downloadImage}>Download this chart<Icon type='download' /></button>
+                <button class="download" on:click={downloadImage}>{downloadLabel}<Icon type='download' /></button>
                 <SocialButtons
                     socialTitle={document.querySelector("meta[property='og:title']").getAttribute('content')}
                     socialText={document.querySelector("meta[property='og:description']").getAttribute('content')}
@@ -152,20 +155,21 @@
 {/if}
 
 <style>
+
     /* intro section */
 
     .download {
-        display: none;
+        /*display: none;*/
     }
 
     @media (min-width: 768px) {
         .download {
-            display: block;
+            /*display: block;*/
         }
     }
 
     .intro {
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
 
     @media (min-width: 768px) {
@@ -179,12 +183,14 @@
 
     .intro h1 {
         margin-bottom: 20px;
+        margin-top: 20px;
         font-size: 28px;
     }
 
     @media (min-width: 768px) {
         .intro h1 {
             max-width: 260px;
+            margin-top: 0;
         }
     }
 
@@ -232,33 +238,77 @@
     }
 
     header h2 {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         margin: 0;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+        header h2 {
+            font-size: 24px;
+        }
     }
 
     header h3 {
-        font-size: 18px;
+        font-size: 14px;
+        line-height: 1.2;
         font-weight: normal;
         margin: 0;
         margin-bottom: 20px;
     }
 
-    .control-area {
-        margin: 0;
+    @media (min-width: 768px) {
+        header h3 {
+            font-size: 18px;
+            line-height: 1.2;
+        }
     }
 
-    @media (min-width: 768px) {
+    .control-area {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /*@media (min-width: 768px) {
         .control-area {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-    }
+    }*/
 
     .social-sharing {
         display: flex;
+        flex-wrap: nowrap;
+        /*width: 120px;*/
+    }
+
+    @media (min-width: 768px) {
+        .social-sharing {
+            /*flex-wrap: nowrap;*/
+            width: inherit;
+        }
+    }
+
+    .download {
+        font-size: 12px;
+        height: 26px;
+        width: 26px;
+        margin-right: 6px;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+    }
+
+    @media (min-width: 768px) {
+        .download {
+            font-size: 14px;
+            height: inherit;
+            width: inherit;
+            margin: 0;
+        }
     }
 
     .vis-container {
@@ -266,7 +316,13 @@
         display: flex;
         text-align: left;
         margin: 1em auto;
-        padding: 1em 0;
+        padding: 5px 0;
+    }
+
+    @media (min-width: 768px) {
+        .vis-container {
+            padding: 1em 0;
+        }
     }
 
     /* chart download */

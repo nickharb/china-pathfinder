@@ -92,20 +92,32 @@
     .resp-sharing-button__link {
         text-decoration: none;
         color: #fff;
-        margin: 0 4px;
+        margin: 0 2px;
+    }
+
+    @media (min-width: 768px) {
+        .resp-sharing-button__link {
+            margin: 0 4px;
+        }
     }
 
     .resp-sharing-button {
         border-radius: 4px;
         transition: 200ms;
-        /*padding: 5px;*/
-        height: 28px;
-        width: 28px;
+        height: 26px;
+        width: 26px;
         background-color: #122431;
         transition: background-color 200ms;
         display: flex;
         vertical-align: center;
         justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+        .resp-sharing-button {
+            height: 28px;
+            width: 28px;
+        }
     }
 
     .resp-sharing-button:hover {
@@ -118,10 +130,18 @@
     }
 
     .resp-sharing-button__icon svg {
-        width: 1em;
-        height: 1em;
-        margin-right: 0.4em;
+        margin-right: 2px;
         vertical-align: top;
+        width: 13px;
+        height: 13px;
+    }
+
+    @media (min-width: 768px) {
+        .resp-sharing-button__icon svg {
+            width: 1em;
+            height: 1em;
+            margin-right: 5px;
+        }
     }
 
     .resp-sharing-button--small svg {

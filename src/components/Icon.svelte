@@ -133,7 +133,17 @@
 
     .download {
         transform: rotate(180deg);
+        margin: 0;
+        height: 13px;
+        width: 12px;
     }
+
+    @media (min-width: 768px) {
+        .download {
+            margin-left: 10px;
+        }
+    }
+
 </style>
 
 

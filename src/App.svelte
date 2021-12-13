@@ -28,6 +28,56 @@
 
 <style>
 
+    /* global buttons */
+
+    :global(button) {
+        font-family: inherit;
+        font-size: inherit;
+        -webkit-padding: 5px 10px;
+        padding: 5px 10px;
+        margin: 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        color: #234462;
+        background-color: #E7EDF3;
+        font-weight: bold;
+    }
+
+    :global(button) {
+        background-color: #122431;
+        outline: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #fff;
+        border-radius: 4px;
+        border: none;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 300ms;
+    }
+
+    :global(button svg) {
+        margin-left: 20px;
+    }
+
+    :global(button:hover) {
+        background-color: #234462;
+    }
+
+    :global(button:active) {
+        background-color: #122431;
+    }
+
+    /* global styles */
+
+    :global(body) {
+        margin: 0;
+    }
+
     main {
         font-family: 'Source Sans Pro', sans-serif;
         font-size: 16px;
@@ -36,6 +86,7 @@
         color: #122431;
         box-sizing: border-box;
         position: relative;
+        padding: 15px;
     }
 
     :global(button) {

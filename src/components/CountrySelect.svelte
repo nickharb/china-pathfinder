@@ -45,12 +45,14 @@
         font-size: 14px;
         margin-bottom: 30px;
         z-index: 100;
+        margin-right: 20px;
     }
 
     @media (min-width: 768px) {
         .country-select-container {
             font-size: 20px;
             margin-bottom: 0;
+            margin-right: 0;
             display: flex;
             align-items: center;
         }

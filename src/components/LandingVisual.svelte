@@ -14,6 +14,12 @@
     import Tooltip from './Tooltip.svelte';
     import InfoTooltip from './InfoTooltip.svelte';
 
+    let isMobile = (window.innerWidth <= 786) ? true : false;
+
+    $height = 600;
+
+    let lineHeight = (isMobile) ? 70 : 12;
+
     let descriptionWidth = 380;
     let offsetLeft = [];
     let chinaHidden = false;
@@ -108,6 +114,8 @@
 
                 const textRect = d3.select('.text-wrapper .'+d.area).node().getBoundingClientRect();
 
+                d.offsetX = (isMobile) ? 0 : $margin;
+
                 d.offsetY = textRect.top 
                     - d3.select('.text-wrapper').node().getBoundingClientRect().top
                     + $margin*2;
@@ -116,7 +124,8 @@
                     let distance = i<5 ? (xScale(areaData[i+1]['comps'][n]) - xScale(m)) : 0;
                     let points = i<5 ? ([
                         [0 , 0],
-                        [distance, textRect.bottom - textRect.top + $margin + 12]
+                        // [distance, textRect.bottom - textRect.top + $margin + 12]
+                        [distance, textRect.bottom - textRect.top + $margin + lineHeight]
                     ]) : ([[0,0],[0,0]]);
                     
                     let path = utils.cubicBezier(points[0], points[1], 10);
@@ -173,18 +182,21 @@
             let id = country.id;
 
             if (country.left < china.right && country.right > china.right || country.right > china.left && country.left < china.left || country.left > china.left && country.right < china.right) {
-                labelPositions[id] = '-27px';
+                // labelPositions[id] = '-27px';
+                labelPositions[id] = '16px';
             } else if (country.left < oecd.right && country.right > oecd.right || country.right > oecd.left && country.left < oecd.left || country.left > oecd.left && country.right < oecd.right) {
-                labelPositions[id] = '-27px';
+                // labelPositions[id] = '-27px';
+                labelPositions[id] = '16px';
             } else {
                 labelPositions[id] = '-10px';
+                // labelPositions[id] = '20px';
             }
         }
 
         // check if china and oecd labels overlap
         if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
-            // chinaHidden = true;
-            labelPositions['china'] = '20px';
+            chinaHidden = true;
+            // labelPositions['china'] = '20px';
         }
 
         // raise china, china 2010 and oecd
@@ -201,7 +213,12 @@
         <div class={'area '+area.label.toLowerCase()}>
             <header>
                 <h2 bind:clientWidth={offsetLeft[i]}>
-                    <a href="{url[area.label.toLowerCase()]}">{area.name}</a>
+                    <a href="{url[area.label.toLowerCase()]}">
+                        {area.name}
+                        <svg class="caret-down-dark" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                            <path d="M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z" fill="#234462"/>
+                        </svg>
+                    </a>
                 </h2>
                 
                 <div
@@ -239,10 +256,10 @@
 
             {#if area.graphData}
 
-            <g class="{area.area}" transform='translate({$margin},{area.offsetY})'>
+            <g class="{area.area}" transform='translate({area.offsetX},{area.offsetY})'>
 
                 <text x='0' y='-5' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>Low</text>
-                <text x='{$width-$margin}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
+                <text x='{$width-area.offsetX}' y='-5' text-anchor='end' font-size='12px' fill='#5E7B8A' fill-opacity='0.7'>High</text>
 
                 <line class='gridline' x2={$width}></line>
 
@@ -323,10 +340,12 @@
 
     .text-wrapper {
         width: 380px;
+        /*height: 690px;*/
         margin-right: 20px;
         position: relative;
         z-index: 100;
-        margin-top: 40px;
+        /*margin-top: 40px;*/
+        margin-top: -10px;
     }
 
     @media (min-width: 768px) {
@@ -336,7 +355,14 @@
     }
 
     .area {
-        margin-bottom: 30px;
+        /*margin-bottom: 30px;*/
+        margin-bottom: 90px;
+    }
+
+    @media (min-width: 768px) {
+        .area {
+            margin-bottom: 30px;
+        }
     }
 
     .area header {
@@ -348,8 +374,15 @@
         margin: 0;
         position: relative;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 16px;
         flex: 0 0 auto;
+        margin-top: -1px;
+    }
+
+    @media (min-width: 768px) {
+        .area h2 {
+            font-size: 16px;
+        }
     }
 
     .area a {
@@ -358,11 +391,38 @@
     }
 
     .area h2 a {
-        color: #122431;
+        color: #234462;
+    }
+
+    @media (min-width: 768px) {
+        .area h2 a {
+            color: #122431;
+        }
     }
 
     .area h2 a:hover {
         color: #234462;
+    }
+
+    /* mobile caret */
+    /*.area h2 a:after {
+        content: ' ';
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 6px;
+
+        width: 0; 
+        height: 0; 
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+        border-left: 6px solid #234462;
+    }*/
+
+    .area h2 svg {
+        display: inline-block;
+        transform: rotate(-90deg);
+        margin-left: 2px;
+        vertical-align: middle;
     }
 
     .area button a {
@@ -404,12 +464,12 @@
     .description button {
         height: 24px;
         font-size: 12px;
-        /*margin-bottom: 20px;*/
+        display: none;
     }
 
     @media (min-width: 768px) {
         .description button {
-            /*margin-bottom: 20px;*/
+            display: block;
         }
     }
 
@@ -457,7 +517,7 @@
     g.selected path {
         stroke: #234462;
         stroke-width: 2px;
-        /*stroke-opacity: 1;*/
+        stroke-opacity: 0.5;
     }
 
     @media (min-width: 768px) {
@@ -516,9 +576,16 @@
         fill: #234462;
         font-weight: bold;
         opacity: 0;
+        font-size: 11px;
         /*transform: translate(0,10px);
         -webkit-transform: translate(0,10px);*/
         transition: opacity 300ms, transform 300ms;
+    }
+
+    @media (min-width: 768px) {
+        text.label {
+            font-size: inherit;
+        }
     }
 
     .selected text.label {

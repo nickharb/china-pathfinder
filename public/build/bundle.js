@@ -46213,7 +46213,7 @@ var app = (function () {
     			attr_dev(svg, "height", "13");
     			attr_dev(svg, "viewBox", "0 0 15 13");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			attr_dev(svg, "class", "svelte-hs9lez");
     			add_location(svg, file$d, 83, 4, 14055);
     		},
     		m: function mount(target, anchor) {
@@ -46247,7 +46247,7 @@ var app = (function () {
     			path = svg_element("path");
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			add_location(path, file$d, 80, 8, 13802);
-    			attr_dev(svg, "class", "caret-down-dark svelte-6dg4uv");
+    			attr_dev(svg, "class", "caret-down-dark svelte-hs9lez");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
@@ -46286,7 +46286,7 @@ var app = (function () {
     			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
     			attr_dev(path, "fill", "#ffffff");
     			add_location(path, file$d, 76, 8, 13437);
-    			attr_dev(svg, "class", "caret-down-light svelte-6dg4uv");
+    			attr_dev(svg, "class", "caret-down-light svelte-hs9lez");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "11");
     			attr_dev(svg, "viewBox", "0 0 13 11");
@@ -46325,7 +46325,7 @@ var app = (function () {
     			attr_dev(path, "d", "M-2.62268e-07 6L6 0.803848L6 11.1962L-2.62268e-07 6Z");
     			attr_dev(path, "fill", "white");
     			add_location(path, file$d, 72, 8, 13212);
-    			attr_dev(svg, "class", "tooltip-caret-left svelte-6dg4uv");
+    			attr_dev(svg, "class", "tooltip-caret-left svelte-hs9lez");
     			attr_dev(svg, "width", "6");
     			attr_dev(svg, "height", "12");
     			attr_dev(svg, "viewBox", "0 0 6 12");
@@ -46364,7 +46364,7 @@ var app = (function () {
     			attr_dev(path, "d", "M6 0L11.1962 6L0.803848 6L6 0Z");
     			attr_dev(path, "fill", "#E7EDF3");
     			add_location(path, file$d, 68, 8, 13005);
-    			attr_dev(svg, "class", "tooltip-caret-up svelte-6dg4uv");
+    			attr_dev(svg, "class", "tooltip-caret-up svelte-hs9lez");
     			attr_dev(svg, "width", "12");
     			attr_dev(svg, "height", "6");
     			attr_dev(svg, "viewBox", "0 0 12 6");
@@ -46403,7 +46403,7 @@ var app = (function () {
     			attr_dev(path, "d", "M20.9135 4.77906L16.4865 0.0915601C16.3712 -0.03052 16.1844 -0.03052 16.0691 0.0915601C15.9538 0.21364 15.9538 0.411394 16.0691 0.533445L19.9924 4.68751H0.705058C0.541921 4.68751 0.409912 4.82728 0.409912 5.00002C0.409912 5.17275 0.541921 5.31253 0.705058 5.31253H19.9924L16.0691 9.46656C15.9538 9.58864 15.9538 9.7864 16.0691 9.90845C16.1268 9.96947 16.2023 10 16.2778 10C16.3533 10 16.4288 9.96947 16.4865 9.90845L20.9135 5.22095C21.0288 5.0989 21.0288 4.90114 20.9135 4.77906Z");
     			attr_dev(path, "fill", "#122431");
     			add_location(path, file$d, 64, 8, 12353);
-    			attr_dev(svg, "class", "arrow-right svelte-6dg4uv");
+    			attr_dev(svg, "class", "arrow-right svelte-hs9lez");
     			attr_dev(svg, "width", "21");
     			attr_dev(svg, "height", "10");
     			attr_dev(svg, "viewBox", "0 0 21 10");
@@ -46444,7 +46444,7 @@ var app = (function () {
     			attr_dev(path, "d", "M1.30975 0.779354C1.06418 0.511695 0.666015 0.511695 0.420438 0.779354C0.174861 1.04701 0.174861 1.48097 0.420438 1.74863L4.0138 5.6651C4.25938 5.93276 4.65754 5.93276 4.90312 5.6651L8.49648 1.74863C8.74206 1.48097 8.74206 1.04701 8.49648 0.779355C8.2509 0.511696 7.85275 0.511696 7.60717 0.779354L4.45674 4.21306L1.30975 0.779354Z");
     			attr_dev(path, "fill", "black");
     			add_location(path, file$d, 60, 8, 11819);
-    			attr_dev(svg, "class", "chevron-down-dark svelte-6dg4uv");
+    			attr_dev(svg, "class", "chevron-down-dark svelte-hs9lez");
     			attr_dev(svg, "width", "15");
     			attr_dev(svg, "height", "12");
     			attr_dev(svg, "viewBox", "0 0 15 12");
@@ -46489,7 +46489,7 @@ var app = (function () {
     			attr_dev(svg, "height", "6");
     			attr_dev(svg, "viewBox", "0 0 9 6");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			attr_dev(svg, "class", "svelte-hs9lez");
     			add_location(svg, file$d, 55, 4, 11208);
     		},
     		m: function mount(target, anchor) {
@@ -46530,7 +46530,7 @@ var app = (function () {
     			attr_dev(svg, "height", "9");
     			attr_dev(svg, "viewBox", "0 0 7 9");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			attr_dev(svg, "class", "svelte-hs9lez");
     			add_location(svg, file$d, 51, 4, 10695);
     		},
     		m: function mount(target, anchor) {
@@ -46570,7 +46570,7 @@ var app = (function () {
     			attr_dev(path1, "d", "M11.4512 3.29997C11.2119 3.07266 10.9241 2.89317 10.6058 2.77273C10.2876 2.65228 9.94573 2.59347 9.60163 2.59997V3.39997C10.0345 3.39997 10.4496 3.55801 10.7556 3.83931C11.0617 4.12062 11.2336 4.50215 11.2336 4.89997V10.7C11.2345 11.1075 11.0661 11.5001 10.7628 11.7974C10.4595 12.0947 10.0442 12.2745 9.60163 12.3H3.29123C2.84866 12.2745 2.43334 12.0947 2.13005 11.7974C1.82676 11.5001 1.65837 11.1075 1.65923 10.7V4.89997C1.65923 4.50215 1.83118 4.12062 2.13724 3.83931C2.4433 3.55801 2.8584 3.39997 3.29123 3.39997V2.59997C2.94714 2.59347 2.60528 2.65228 2.28703 2.77273C1.96878 2.89317 1.68099 3.07266 1.44163 3.29997C1.1913 3.49636 0.992705 3.74239 0.860787 4.01953C0.728868 4.29667 0.667067 4.59771 0.680035 4.89997V10.8C0.667067 11.1022 0.728868 11.4033 0.860787 11.6804C0.992705 11.9576 1.1913 12.2036 1.44163 12.4C1.68099 12.6273 1.96878 12.8068 2.28703 12.9272C2.60528 13.0477 2.94714 13.1065 3.29123 13.1H9.60163C10.2757 13.1005 10.9239 12.8614 11.4106 12.4327C11.8973 12.0041 12.1847 11.419 12.2128 10.8V4.89997C12.1866 4.29766 11.9147 3.72647 11.4512 3.29997Z");
     			attr_dev(path1, "fill", "white");
     			add_location(path1, file$d, 48, 8, 9547);
-    			attr_dev(svg, "class", "download svelte-6dg4uv");
+    			attr_dev(svg, "class", "download svelte-hs9lez");
     			attr_dev(svg, "width", "13");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 13 14");
@@ -46619,7 +46619,7 @@ var app = (function () {
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 13 14");
     			attr_dev(svg, "fill", "none");
-    			attr_dev(svg, "class", "svelte-6dg4uv");
+    			attr_dev(svg, "class", "svelte-hs9lez");
     			add_location(svg, file$d, 41, 4, 7887);
     		},
     		m: function mount(target, anchor) {
@@ -46655,7 +46655,7 @@ var app = (function () {
     			attr_dev(path, "d", "M6.9997 0C3.13422 0 0 3.13422 0 6.9997C0 10.8652 3.13422 14 6.9997 14C10.8652 14 14 10.8652 14 6.9997C14 3.13422 10.8652 0 6.9997 0ZM8.45689 10.8486C8.09659 10.9908 7.80978 11.0987 7.59467 11.1733C7.38015 11.248 7.13067 11.2853 6.84681 11.2853C6.41067 11.2853 6.07111 11.1787 5.82933 10.9659C5.58756 10.7532 5.46726 10.4836 5.46726 10.1559C5.46726 10.0284 5.47615 9.89807 5.49393 9.76533C5.5123 9.63259 5.54133 9.48326 5.58104 9.31556L6.032 7.72267C6.0717 7.56978 6.10607 7.42459 6.13333 7.28948C6.16059 7.15318 6.17363 7.02815 6.17363 6.91437C6.17363 6.7117 6.13156 6.56948 6.048 6.48948C5.96326 6.40948 5.80385 6.37037 5.56622 6.37037C5.45007 6.37037 5.33037 6.38756 5.2077 6.4237C5.08622 6.46104 4.98074 6.49481 4.89422 6.528L5.01333 6.03733C5.30844 5.91704 5.59111 5.81393 5.86074 5.72859C6.13037 5.64207 6.38519 5.59941 6.62519 5.59941C7.05837 5.59941 7.39259 5.70489 7.62785 5.91348C7.86193 6.12267 7.97985 6.39467 7.97985 6.72889C7.97985 6.79822 7.97156 6.9203 7.95556 7.09452C7.93956 7.26933 7.90933 7.42874 7.86548 7.57511L7.41689 9.16326C7.38015 9.29067 7.34756 9.43644 7.31793 9.59941C7.28889 9.76237 7.27467 9.88682 7.27467 9.97037C7.27467 10.1813 7.32148 10.3253 7.4163 10.4018C7.50993 10.4782 7.67407 10.5167 7.90637 10.5167C8.016 10.5167 8.13867 10.4972 8.27733 10.4593C8.41481 10.4213 8.51437 10.3876 8.57719 10.3585L8.45689 10.8486ZM8.37748 4.40237C8.1683 4.59674 7.91644 4.69393 7.62193 4.69393C7.328 4.69393 7.07437 4.59674 6.86341 4.40237C6.65363 4.208 6.54756 3.97156 6.54756 3.69541C6.54756 3.41985 6.65422 3.18281 6.86341 2.98667C7.07437 2.78993 7.328 2.69215 7.62193 2.69215C7.91644 2.69215 8.16889 2.78993 8.37748 2.98667C8.58667 3.18281 8.69156 3.41985 8.69156 3.69541C8.69156 3.97215 8.58667 4.208 8.37748 4.40237Z");
     			attr_dev(path, "fill", "#122431");
     			add_location(path, file$d, 38, 8, 6076);
-    			attr_dev(svg, "class", "info svelte-6dg4uv");
+    			attr_dev(svg, "class", "info svelte-hs9lez");
     			attr_dev(svg, "width", "14");
     			attr_dev(svg, "height", "14");
     			attr_dev(svg, "viewBox", "0 0 14 14");
@@ -46817,7 +46817,7 @@ var app = (function () {
     			attr_dev(clipPath, "id", "clip0");
     			add_location(clipPath, file$d, 31, 12, 5802);
     			add_location(defs, file$d, 30, 8, 5783);
-    			attr_dev(svg, "class", "logo svelte-6dg4uv");
+    			attr_dev(svg, "class", "logo svelte-hs9lez");
     			attr_dev(svg, "width", "560");
     			attr_dev(svg, "height", "120");
     			attr_dev(svg, "viewBox", "0 0 560 120");
@@ -47745,43 +47745,43 @@ var app = (function () {
 
     function get_each_context$3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[31] = list[i];
-    	child_ctx[33] = i;
+    	child_ctx[33] = list[i];
+    	child_ctx[35] = i;
     	return child_ctx;
     }
 
     function get_each_context_1$2(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[34] = list[i];
-    	child_ctx[33] = i;
+    	child_ctx[36] = list[i];
+    	child_ctx[35] = i;
     	return child_ctx;
     }
 
     function get_each_context_2$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[31] = list[i];
-    	child_ctx[33] = i;
+    	child_ctx[33] = list[i];
+    	child_ctx[35] = i;
     	return child_ctx;
     }
 
     function get_each_context_3(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[34] = list[i];
-    	child_ctx[38] = i;
+    	child_ctx[36] = list[i];
+    	child_ctx[40] = i;
     	return child_ctx;
     }
 
     function get_each_context_4(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[31] = list[i];
-    	child_ctx[39] = list;
-    	child_ctx[33] = i;
+    	child_ctx[33] = list[i];
+    	child_ctx[41] = list;
+    	child_ctx[35] = i;
     	return child_ctx;
     }
 
-    // (213:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
+    // (230:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>
     function create_default_slot(ctx) {
-    	let t_value = /*area*/ ctx[31].additional + "";
+    	let t_value = /*area*/ ctx[33].additional + "";
     	let t;
 
     	const block = {
@@ -47792,7 +47792,7 @@ var app = (function () {
     			insert_dev(target, t, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*copyData*/ 2 && t_value !== (t_value = /*area*/ ctx[31].additional + "")) set_data_dev(t, t_value);
+    			if (dirty[0] & /*copyData*/ 2 && t_value !== (t_value = /*area*/ ctx[33].additional + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(t);
@@ -47803,57 +47803,60 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(213:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
+    		source: "(230:16) <InfoTooltip isHovered={infoIsHovered} area={area.name} offsetLeft={offsetLeft[i]}>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (200:4) {#each copyData as area, i}
+    // (212:4) {#each copyData as area, i}
     function create_each_block_4(ctx) {
     	let div2;
     	let header;
     	let h2;
     	let a0;
-    	let t0_value = /*area*/ ctx[31].name + "";
+    	let t0_value = /*area*/ ctx[33].name + "";
     	let t0;
+    	let t1;
+    	let svg;
+    	let path;
     	let a0_href_value;
     	let h2_resize_listener;
-    	let t1;
+    	let t2;
     	let div0;
     	let icon0;
     	let div0_data_area_value;
-    	let t2;
-    	let infotooltip;
     	let t3;
+    	let infotooltip;
+    	let t4;
     	let div1;
     	let p;
-    	let t4_value = /*area*/ ctx[31].definition + "";
-    	let t4;
+    	let t5_value = /*area*/ ctx[33].definition + "";
     	let t5;
+    	let t6;
     	let button;
     	let a1;
-    	let t6;
+    	let t7;
     	let icon1;
     	let a1_href_value;
-    	let t7;
+    	let t8;
     	let div2_class_value;
     	let current;
     	let mounted;
     	let dispose;
 
     	function h2_elementresize_handler() {
-    		/*h2_elementresize_handler*/ ctx[19].call(h2, /*i*/ ctx[33]);
+    		/*h2_elementresize_handler*/ ctx[18].call(h2, /*i*/ ctx[35]);
     	}
 
     	icon0 = new Icon({ props: { type: "info" }, $$inline: true });
 
     	infotooltip = new InfoTooltip({
     			props: {
-    				isHovered: /*infoIsHovered*/ ctx[5],
-    				area: /*area*/ ctx[31].name,
-    				offsetLeft: /*offsetLeft*/ ctx[2][/*i*/ ctx[33]],
+    				isHovered: /*infoIsHovered*/ ctx[6],
+    				area: /*area*/ ctx[33].name,
+    				offsetLeft: /*offsetLeft*/ ctx[2][/*i*/ ctx[35]],
     				$$slots: { default: [create_default_slot] },
     				$$scope: { ctx }
     			},
@@ -47873,42 +47876,55 @@ var app = (function () {
     			a0 = element("a");
     			t0 = text$1(t0_value);
     			t1 = space();
+    			svg = svg_element("svg");
+    			path = svg_element("path");
+    			t2 = space();
     			div0 = element("div");
     			create_component(icon0.$$.fragment);
-    			t2 = space();
-    			create_component(infotooltip.$$.fragment);
     			t3 = space();
+    			create_component(infotooltip.$$.fragment);
+    			t4 = space();
     			div1 = element("div");
     			p = element("p");
-    			t4 = text$1(t4_value);
-    			t5 = space();
+    			t5 = text$1(t5_value);
+    			t6 = space();
     			button = element("button");
     			a1 = element("a");
-    			t6 = text$1("Explore data\n                        ");
+    			t7 = text$1("Explore data\n                        ");
     			create_component(icon1.$$.fragment);
-    			t7 = space();
-    			attr_dev(a0, "href", a0_href_value = /*url*/ ctx[13][/*area*/ ctx[31].label.toLowerCase()]);
-    			attr_dev(a0, "class", "svelte-1lwxcn8");
-    			add_location(a0, file$a, 203, 20, 7089);
-    			attr_dev(h2, "class", "svelte-1lwxcn8");
+    			t8 = space();
+    			attr_dev(path, "d", "M7.36602 10.5C6.98112 11.1667 6.01887 11.1667 5.63397 10.5L0.870834 2.25C0.485934 1.58333 0.96706 0.75 1.73686 0.75L11.2631 0.750001C12.0329 0.750001 12.5141 1.58333 12.1292 2.25L7.36602 10.5Z");
+    			attr_dev(path, "fill", "#234462");
+    			attr_dev(path, "class", "svelte-n8uz33");
+    			add_location(path, file$a, 218, 28, 7724);
+    			attr_dev(svg, "class", "caret-down-dark svelte-n8uz33");
+    			attr_dev(svg, "width", "12");
+    			attr_dev(svg, "height", "10");
+    			attr_dev(svg, "viewBox", "0 0 12 10");
+    			attr_dev(svg, "fill", "none");
+    			add_location(svg, file$a, 217, 24, 7611);
+    			attr_dev(a0, "href", a0_href_value = /*url*/ ctx[12][/*area*/ ctx[33].label.toLowerCase()]);
+    			attr_dev(a0, "class", "svelte-n8uz33");
+    			add_location(a0, file$a, 215, 20, 7508);
+    			attr_dev(h2, "class", "svelte-n8uz33");
     			add_render_callback(() => h2_elementresize_handler.call(h2));
-    			add_location(h2, file$a, 202, 16, 7031);
-    			attr_dev(div0, "class", "info svelte-1lwxcn8");
-    			attr_dev(div0, "data-area", div0_data_area_value = /*area*/ ctx[31].name);
-    			add_location(div0, file$a, 206, 16, 7202);
-    			attr_dev(header, "class", "svelte-1lwxcn8");
-    			add_location(header, file$a, 201, 12, 7006);
-    			attr_dev(p, "class", "svelte-1lwxcn8");
-    			add_location(p, file$a, 217, 16, 7673);
-    			attr_dev(a1, "href", a1_href_value = /*url*/ ctx[13][/*area*/ ctx[31].label.toLowerCase()]);
-    			attr_dev(a1, "class", "svelte-1lwxcn8");
-    			add_location(a1, file$a, 219, 20, 7743);
-    			attr_dev(button, "class", "svelte-1lwxcn8");
-    			add_location(button, file$a, 218, 16, 7714);
-    			attr_dev(div1, "class", "description svelte-1lwxcn8");
-    			add_location(div1, file$a, 216, 12, 7631);
-    			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[31].label.toLowerCase()) + " svelte-1lwxcn8"));
-    			add_location(div2, file$a, 200, 8, 6947);
+    			add_location(h2, file$a, 214, 16, 7450);
+    			attr_dev(div0, "class", "info svelte-n8uz33");
+    			attr_dev(div0, "data-area", div0_data_area_value = /*area*/ ctx[33].name);
+    			add_location(div0, file$a, 223, 16, 8055);
+    			attr_dev(header, "class", "svelte-n8uz33");
+    			add_location(header, file$a, 213, 12, 7425);
+    			attr_dev(p, "class", "svelte-n8uz33");
+    			add_location(p, file$a, 234, 16, 8526);
+    			attr_dev(a1, "href", a1_href_value = /*url*/ ctx[12][/*area*/ ctx[33].label.toLowerCase()]);
+    			attr_dev(a1, "class", "svelte-n8uz33");
+    			add_location(a1, file$a, 236, 20, 8596);
+    			attr_dev(button, "class", "svelte-n8uz33");
+    			add_location(button, file$a, 235, 16, 8567);
+    			attr_dev(div1, "class", "description svelte-n8uz33");
+    			add_location(div1, file$a, 233, 12, 8484);
+    			attr_dev(div2, "class", div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[33].label.toLowerCase()) + " svelte-n8uz33"));
+    			add_location(div2, file$a, 212, 8, 7366);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -47916,28 +47932,31 @@ var app = (function () {
     			append_dev(header, h2);
     			append_dev(h2, a0);
     			append_dev(a0, t0);
+    			append_dev(a0, t1);
+    			append_dev(a0, svg);
+    			append_dev(svg, path);
     			h2_resize_listener = add_resize_listener(h2, h2_elementresize_handler.bind(h2));
-    			append_dev(header, t1);
+    			append_dev(header, t2);
     			append_dev(header, div0);
     			mount_component(icon0, div0, null);
-    			append_dev(header, t2);
+    			append_dev(header, t3);
     			mount_component(infotooltip, header, null);
-    			append_dev(div2, t3);
+    			append_dev(div2, t4);
     			append_dev(div2, div1);
     			append_dev(div1, p);
-    			append_dev(p, t4);
-    			append_dev(div1, t5);
+    			append_dev(p, t5);
+    			append_dev(div1, t6);
     			append_dev(div1, button);
     			append_dev(button, a1);
-    			append_dev(a1, t6);
+    			append_dev(a1, t7);
     			mount_component(icon1, a1, null);
-    			append_dev(div2, t7);
+    			append_dev(div2, t8);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(div0, "mouseover", /*infoMouseOver*/ ctx[17], false, false, false),
-    					listen_dev(div0, "mouseleave", /*infoMouseLeave*/ ctx[18], false, false, false)
+    					listen_dev(div0, "mouseover", /*infoMouseOver*/ ctx[16], false, false, false),
+    					listen_dev(div0, "mouseleave", /*infoMouseLeave*/ ctx[17], false, false, false)
     				];
 
     				mounted = true;
@@ -47945,33 +47964,33 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if ((!current || dirty[0] & /*copyData*/ 2) && t0_value !== (t0_value = /*area*/ ctx[31].name + "")) set_data_dev(t0, t0_value);
+    			if ((!current || dirty[0] & /*copyData*/ 2) && t0_value !== (t0_value = /*area*/ ctx[33].name + "")) set_data_dev(t0, t0_value);
 
-    			if (!current || dirty[0] & /*copyData*/ 2 && a0_href_value !== (a0_href_value = /*url*/ ctx[13][/*area*/ ctx[31].label.toLowerCase()])) {
+    			if (!current || dirty[0] & /*copyData*/ 2 && a0_href_value !== (a0_href_value = /*url*/ ctx[12][/*area*/ ctx[33].label.toLowerCase()])) {
     				attr_dev(a0, "href", a0_href_value);
     			}
 
-    			if (!current || dirty[0] & /*copyData*/ 2 && div0_data_area_value !== (div0_data_area_value = /*area*/ ctx[31].name)) {
+    			if (!current || dirty[0] & /*copyData*/ 2 && div0_data_area_value !== (div0_data_area_value = /*area*/ ctx[33].name)) {
     				attr_dev(div0, "data-area", div0_data_area_value);
     			}
 
     			const infotooltip_changes = {};
-    			if (dirty[0] & /*infoIsHovered*/ 32) infotooltip_changes.isHovered = /*infoIsHovered*/ ctx[5];
-    			if (dirty[0] & /*copyData*/ 2) infotooltip_changes.area = /*area*/ ctx[31].name;
-    			if (dirty[0] & /*offsetLeft*/ 4) infotooltip_changes.offsetLeft = /*offsetLeft*/ ctx[2][/*i*/ ctx[33]];
+    			if (dirty[0] & /*infoIsHovered*/ 64) infotooltip_changes.isHovered = /*infoIsHovered*/ ctx[6];
+    			if (dirty[0] & /*copyData*/ 2) infotooltip_changes.area = /*area*/ ctx[33].name;
+    			if (dirty[0] & /*offsetLeft*/ 4) infotooltip_changes.offsetLeft = /*offsetLeft*/ ctx[2][/*i*/ ctx[35]];
 
-    			if (dirty[0] & /*copyData*/ 2 | dirty[1] & /*$$scope*/ 512) {
+    			if (dirty[0] & /*copyData*/ 2 | dirty[1] & /*$$scope*/ 2048) {
     				infotooltip_changes.$$scope = { dirty, ctx };
     			}
 
     			infotooltip.$set(infotooltip_changes);
-    			if ((!current || dirty[0] & /*copyData*/ 2) && t4_value !== (t4_value = /*area*/ ctx[31].definition + "")) set_data_dev(t4, t4_value);
+    			if ((!current || dirty[0] & /*copyData*/ 2) && t5_value !== (t5_value = /*area*/ ctx[33].definition + "")) set_data_dev(t5, t5_value);
 
-    			if (!current || dirty[0] & /*copyData*/ 2 && a1_href_value !== (a1_href_value = /*url*/ ctx[13][/*area*/ ctx[31].label.toLowerCase()])) {
+    			if (!current || dirty[0] & /*copyData*/ 2 && a1_href_value !== (a1_href_value = /*url*/ ctx[12][/*area*/ ctx[33].label.toLowerCase()])) {
     				attr_dev(a1, "href", a1_href_value);
     			}
 
-    			if (!current || dirty[0] & /*copyData*/ 2 && div2_class_value !== (div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[31].label.toLowerCase()) + " svelte-1lwxcn8"))) {
+    			if (!current || dirty[0] & /*copyData*/ 2 && div2_class_value !== (div2_class_value = "" + (null_to_empty("area " + /*area*/ ctx[33].label.toLowerCase()) + " svelte-n8uz33"))) {
     				attr_dev(div2, "class", div2_class_value);
     			}
     		},
@@ -48003,14 +48022,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(200:4) {#each copyData as area, i}",
+    		source: "(212:4) {#each copyData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (230:0) {#if areaData}
+    // (247:0) {#if areaData}
     function create_if_block$6(ctx) {
     	let div;
     	let svg;
@@ -48057,17 +48076,17 @@ var app = (function () {
 
     			attr_dev(rect, "x", "0");
     			attr_dev(rect, "y", "0");
-    			attr_dev(rect, "width", /*$width*/ ctx[10]);
-    			attr_dev(rect, "height", /*$height*/ ctx[11]);
-    			add_location(rect, file$a, 235, 8, 8149);
-    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[10] + " " + /*$height*/ ctx[11]);
-    			attr_dev(svg, "width", /*$width*/ ctx[10]);
-    			attr_dev(svg, "height", /*$height*/ ctx[11]);
-    			attr_dev(svg, "class", "svelte-1lwxcn8");
-    			add_location(svg, file$a, 231, 4, 8053);
-    			attr_dev(div, "class", "vis-wrapper svelte-1lwxcn8");
-    			add_render_callback(() => /*div_elementresize_handler_1*/ ctx[21].call(div));
-    			add_location(div, file$a, 230, 0, 7997);
+    			attr_dev(rect, "width", /*$width*/ ctx[11]);
+    			attr_dev(rect, "height", /*$height*/ ctx[7]);
+    			add_location(rect, file$a, 252, 8, 9002);
+    			attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " + /*$width*/ ctx[11] + " " + /*$height*/ ctx[7]);
+    			attr_dev(svg, "width", /*$width*/ ctx[11]);
+    			attr_dev(svg, "height", /*$height*/ ctx[7]);
+    			attr_dev(svg, "class", "svelte-n8uz33");
+    			add_location(svg, file$a, 248, 4, 8906);
+    			attr_dev(div, "class", "vis-wrapper svelte-n8uz33");
+    			add_render_callback(() => /*div_elementresize_handler_1*/ ctx[20].call(div));
+    			add_location(div, file$a, 247, 0, 8850);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -48084,19 +48103,19 @@ var app = (function () {
     				each_blocks[i].m(div, null);
     			}
 
-    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler_1*/ ctx[21].bind(div));
+    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler_1*/ ctx[20].bind(div));
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!current || dirty[0] & /*$width*/ 1024) {
-    				attr_dev(rect, "width", /*$width*/ ctx[10]);
+    			if (!current || dirty[0] & /*$width*/ 2048) {
+    				attr_dev(rect, "width", /*$width*/ ctx[11]);
     			}
 
-    			if (!current || dirty[0] & /*$height*/ 2048) {
-    				attr_dev(rect, "height", /*$height*/ ctx[11]);
+    			if (!current || dirty[0] & /*$height*/ 128) {
+    				attr_dev(rect, "height", /*$height*/ ctx[7]);
     			}
 
-    			if (dirty[0] & /*areaData, $margin, $hoveredCountry, $hoveredArea, $selectedCountry, mouseOver, mouseLeave, mouseClick, labelPositions, chinaHidden, $width*/ 120777) {
+    			if (dirty[0] & /*areaData, $hoveredCountry, $hoveredArea, $selectedCountry, mouseOver, mouseLeave, mouseClick, labelPositions, chinaHidden, $width*/ 61209) {
     				each_value_2 = /*areaData*/ ctx[0];
     				validate_each_argument(each_value_2);
     				let i;
@@ -48120,19 +48139,19 @@ var app = (function () {
     				each_blocks_1.length = each_value_2.length;
     			}
 
-    			if (!current || dirty[0] & /*$width, $height*/ 3072 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[10] + " " + /*$height*/ ctx[11])) {
+    			if (!current || dirty[0] & /*$width, $height*/ 2176 && svg_viewBox_value !== (svg_viewBox_value = "0 0 " + /*$width*/ ctx[11] + " " + /*$height*/ ctx[7])) {
     				attr_dev(svg, "viewBox", svg_viewBox_value);
     			}
 
-    			if (!current || dirty[0] & /*$width*/ 1024) {
-    				attr_dev(svg, "width", /*$width*/ ctx[10]);
+    			if (!current || dirty[0] & /*$width*/ 2048) {
+    				attr_dev(svg, "width", /*$width*/ ctx[11]);
     			}
 
-    			if (!current || dirty[0] & /*$height*/ 2048) {
-    				attr_dev(svg, "height", /*$height*/ ctx[11]);
+    			if (!current || dirty[0] & /*$height*/ 128) {
+    				attr_dev(svg, "height", /*$height*/ ctx[7]);
     			}
 
-    			if (dirty[0] & /*areaData, isHovered*/ 17) {
+    			if (dirty[0] & /*areaData, isHovered*/ 33) {
     				each_value = /*areaData*/ ctx[0];
     				validate_each_argument(each_value);
     				let i;
@@ -48190,14 +48209,14 @@ var app = (function () {
     		block,
     		id: create_if_block$6.name,
     		type: "if",
-    		source: "(230:0) {#if areaData}",
+    		source: "(247:0) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (240:12) {#if area.graphData}
+    // (257:12) {#if area.graphData}
     function create_if_block_2$2(ctx) {
     	let g;
     	let text0;
@@ -48208,7 +48227,7 @@ var app = (function () {
     	let line;
     	let g_class_value;
     	let g_transform_value;
-    	let each_value_3 = /*area*/ ctx[31].graphData;
+    	let each_value_3 = /*area*/ ctx[33].graphData;
     	validate_each_argument(each_value_3);
     	let each_blocks = [];
 
@@ -48234,20 +48253,20 @@ var app = (function () {
     			attr_dev(text0, "font-size", "12px");
     			attr_dev(text0, "fill", "#5E7B8A");
     			attr_dev(text0, "fill-opacity", "0.7");
-    			add_location(text0, file$a, 243, 16, 8380);
-    			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[10] - /*$margin*/ ctx[9]);
+    			add_location(text0, file$a, 260, 16, 9238);
+    			attr_dev(text1, "x", text1_x_value = /*$width*/ ctx[11] - /*area*/ ctx[33].offsetX);
     			attr_dev(text1, "y", "-5");
     			attr_dev(text1, "text-anchor", "end");
     			attr_dev(text1, "font-size", "12px");
     			attr_dev(text1, "fill", "#5E7B8A");
     			attr_dev(text1, "fill-opacity", "0.7");
-    			add_location(text1, file$a, 244, 16, 8477);
-    			attr_dev(line, "class", "gridline svelte-1lwxcn8");
-    			attr_dev(line, "x2", /*$width*/ ctx[10]);
-    			add_location(line, file$a, 246, 16, 8609);
-    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[31].area) + " svelte-1lwxcn8"));
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*$margin*/ ctx[9] + "," + /*area*/ ctx[31].offsetY + ")");
-    			add_location(g, file$a, 241, 12, 8291);
+    			add_location(text1, file$a, 261, 16, 9335);
+    			attr_dev(line, "class", "gridline svelte-n8uz33");
+    			attr_dev(line, "x2", /*$width*/ ctx[11]);
+    			add_location(line, file$a, 263, 16, 9472);
+    			attr_dev(g, "class", g_class_value = "" + (null_to_empty(/*area*/ ctx[33].area) + " svelte-n8uz33"));
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*area*/ ctx[33].offsetX + "," + /*area*/ ctx[33].offsetY + ")");
+    			add_location(g, file$a, 258, 12, 9144);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48262,16 +48281,16 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*$width, $margin*/ 1536 && text1_x_value !== (text1_x_value = /*$width*/ ctx[10] - /*$margin*/ ctx[9])) {
+    			if (dirty[0] & /*$width, areaData*/ 2049 && text1_x_value !== (text1_x_value = /*$width*/ ctx[11] - /*area*/ ctx[33].offsetX)) {
     				attr_dev(text1, "x", text1_x_value);
     			}
 
-    			if (dirty[0] & /*$width*/ 1024) {
-    				attr_dev(line, "x2", /*$width*/ ctx[10]);
+    			if (dirty[0] & /*$width*/ 2048) {
+    				attr_dev(line, "x2", /*$width*/ ctx[11]);
     			}
 
-    			if (dirty[0] & /*areaData, $hoveredCountry, $hoveredArea, $selectedCountry, mouseOver, mouseLeave, mouseClick, labelPositions, chinaHidden*/ 119241) {
-    				each_value_3 = /*area*/ ctx[31].graphData;
+    			if (dirty[0] & /*areaData, $hoveredCountry, $hoveredArea, $selectedCountry, mouseOver, mouseLeave, mouseClick, labelPositions, chinaHidden*/ 59161) {
+    				each_value_3 = /*area*/ ctx[33].graphData;
     				validate_each_argument(each_value_3);
     				let i;
 
@@ -48294,11 +48313,11 @@ var app = (function () {
     				each_blocks.length = each_value_3.length;
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[31].area) + " svelte-1lwxcn8"))) {
+    			if (dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "" + (null_to_empty(/*area*/ ctx[33].area) + " svelte-n8uz33"))) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty[0] & /*$margin, areaData*/ 513 && g_transform_value !== (g_transform_value = "translate(" + /*$margin*/ ctx[9] + "," + /*area*/ ctx[31].offsetY + ")")) {
+    			if (dirty[0] & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*area*/ ctx[33].offsetX + "," + /*area*/ ctx[33].offsetY + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
     		},
@@ -48312,17 +48331,17 @@ var app = (function () {
     		block,
     		id: create_if_block_2$2.name,
     		type: "if",
-    		source: "(240:12) {#if area.graphData}",
+    		source: "(257:12) {#if area.graphData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (262:24) {#if i == 0}
+    // (279:24) {#if i == 0}
     function create_if_block_3$2(ctx) {
     	let text_1;
-    	let t_value = /*graph*/ ctx[34].country + "";
+    	let t_value = /*graph*/ ctx[36].country + "";
     	let t;
     	let text_1_data_id_value;
     	let text_1_y_value;
@@ -48331,29 +48350,29 @@ var app = (function () {
     		c: function create() {
     			text_1 = svg_element("text");
     			t = text$1(t_value);
-    			attr_dev(text_1, "class", "label svelte-1lwxcn8");
-    			attr_dev(text_1, "data-id", text_1_data_id_value = /*graph*/ ctx[34].id);
-    			attr_dev(text_1, "y", text_1_y_value = /*labelPositions*/ ctx[3][/*graph*/ ctx[34].id]);
-    			toggle_class(text_1, "hidden", /*graph*/ ctx[34].id == "china" && /*chinaHidden*/ ctx[12] == true);
-    			add_location(text_1, file$a, 262, 28, 9339);
+    			attr_dev(text_1, "class", "label svelte-n8uz33");
+    			attr_dev(text_1, "data-id", text_1_data_id_value = /*graph*/ ctx[36].id);
+    			attr_dev(text_1, "y", text_1_y_value = /*labelPositions*/ ctx[4][/*graph*/ ctx[36].id]);
+    			toggle_class(text_1, "hidden", /*graph*/ ctx[36].id == "china" && /*chinaHidden*/ ctx[3] == true);
+    			add_location(text_1, file$a, 279, 28, 10202);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, text_1, anchor);
     			append_dev(text_1, t);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*areaData*/ 1 && t_value !== (t_value = /*graph*/ ctx[34].country + "")) set_data_dev(t, t_value);
+    			if (dirty[0] & /*areaData*/ 1 && t_value !== (t_value = /*graph*/ ctx[36].country + "")) set_data_dev(t, t_value);
 
-    			if (dirty[0] & /*areaData*/ 1 && text_1_data_id_value !== (text_1_data_id_value = /*graph*/ ctx[34].id)) {
+    			if (dirty[0] & /*areaData*/ 1 && text_1_data_id_value !== (text_1_data_id_value = /*graph*/ ctx[36].id)) {
     				attr_dev(text_1, "data-id", text_1_data_id_value);
     			}
 
-    			if (dirty[0] & /*labelPositions, areaData*/ 9 && text_1_y_value !== (text_1_y_value = /*labelPositions*/ ctx[3][/*graph*/ ctx[34].id])) {
+    			if (dirty[0] & /*labelPositions, areaData*/ 17 && text_1_y_value !== (text_1_y_value = /*labelPositions*/ ctx[4][/*graph*/ ctx[36].id])) {
     				attr_dev(text_1, "y", text_1_y_value);
     			}
 
-    			if (dirty[0] & /*areaData, chinaHidden*/ 4097) {
-    				toggle_class(text_1, "hidden", /*graph*/ ctx[34].id == "china" && /*chinaHidden*/ ctx[12] == true);
+    			if (dirty[0] & /*areaData, chinaHidden*/ 9) {
+    				toggle_class(text_1, "hidden", /*graph*/ ctx[36].id == "china" && /*chinaHidden*/ ctx[3] == true);
     			}
     		},
     		d: function destroy(detaching) {
@@ -48365,14 +48384,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$2.name,
     		type: "if",
-    		source: "(262:24) {#if i == 0}",
+    		source: "(279:24) {#if i == 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (250:16) {#each area.graphData as graph, x}
+    // (267:16) {#each area.graphData as graph, x}
     function create_each_block_3(ctx) {
     	let g;
     	let path;
@@ -48386,7 +48405,7 @@ var app = (function () {
     	let g_transform_value;
     	let mounted;
     	let dispose;
-    	let if_block = /*i*/ ctx[33] == 0 && create_if_block_3$2(ctx);
+    	let if_block = /*i*/ ctx[35] == 0 && create_if_block_3$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -48394,21 +48413,21 @@ var app = (function () {
     			if (if_block) if_block.c();
     			path = svg_element("path");
     			circle = svg_element("circle");
-    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[34].path);
-    			attr_dev(path, "class", "svelte-1lwxcn8");
-    			add_location(path, file$a, 272, 24, 9768);
-    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[34].r);
-    			attr_dev(circle, "class", "country-circle svelte-1lwxcn8");
-    			add_location(circle, file$a, 274, 24, 9822);
-    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[34].id + " svelte-1lwxcn8");
-    			attr_dev(g, "data-x", g_data_x_value = /*graph*/ ctx[34].x);
-    			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[34].id);
-    			attr_dev(g, "data-area", g_data_area_value = /*area*/ ctx[31].area);
-    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[34].x + "," + /*graph*/ ctx[34].y + ")");
-    			toggle_class(g, "hovered", /*graph*/ ctx[34].id == /*$hoveredCountry*/ ctx[6] && /*area*/ ctx[31].area == /*$hoveredArea*/ ctx[7]);
-    			toggle_class(g, "selected", /*graph*/ ctx[34].id == /*$selectedCountry*/ ctx[8] || /*graph*/ ctx[34].id == "china" || /*graph*/ ctx[34].id == "open-economy-avg");
-    			toggle_class(g, "header", /*i*/ ctx[33] == 0);
-    			add_location(g, file$a, 251, 20, 8742);
+    			attr_dev(path, "d", path_d_value = /*graph*/ ctx[36].path);
+    			attr_dev(path, "class", "svelte-n8uz33");
+    			add_location(path, file$a, 289, 24, 10631);
+    			attr_dev(circle, "r", circle_r_value = /*graph*/ ctx[36].r);
+    			attr_dev(circle, "class", "country-circle svelte-n8uz33");
+    			add_location(circle, file$a, 291, 24, 10685);
+    			attr_dev(g, "class", g_class_value = "country " + /*graph*/ ctx[36].id + " svelte-n8uz33");
+    			attr_dev(g, "data-x", g_data_x_value = /*graph*/ ctx[36].x);
+    			attr_dev(g, "data-id", g_data_id_value = /*graph*/ ctx[36].id);
+    			attr_dev(g, "data-area", g_data_area_value = /*area*/ ctx[33].area);
+    			attr_dev(g, "transform", g_transform_value = "translate(" + /*graph*/ ctx[36].x + "," + /*graph*/ ctx[36].y + ")");
+    			toggle_class(g, "hovered", /*graph*/ ctx[36].id == /*$hoveredCountry*/ ctx[8] && /*area*/ ctx[33].area == /*$hoveredArea*/ ctx[9]);
+    			toggle_class(g, "selected", /*graph*/ ctx[36].id == /*$selectedCountry*/ ctx[10] || /*graph*/ ctx[36].id == "china" || /*graph*/ ctx[36].id == "open-economy-avg");
+    			toggle_class(g, "header", /*i*/ ctx[35] == 0);
+    			add_location(g, file$a, 268, 20, 9605);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, g, anchor);
@@ -48418,55 +48437,55 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(circle, "mouseover", /*mouseOver*/ ctx[14], false, false, false),
-    					listen_dev(circle, "mouseleave", /*mouseLeave*/ ctx[15], false, false, false),
-    					listen_dev(circle, "click", /*mouseClick*/ ctx[16], false, false, false)
+    					listen_dev(circle, "mouseover", /*mouseOver*/ ctx[13], false, false, false),
+    					listen_dev(circle, "mouseleave", /*mouseLeave*/ ctx[14], false, false, false),
+    					listen_dev(circle, "click", /*mouseClick*/ ctx[15], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (/*i*/ ctx[33] == 0) if_block.p(ctx, dirty);
+    			if (/*i*/ ctx[35] == 0) if_block.p(ctx, dirty);
 
-    			if (dirty[0] & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[34].path)) {
+    			if (dirty[0] & /*areaData*/ 1 && path_d_value !== (path_d_value = /*graph*/ ctx[36].path)) {
     				attr_dev(path, "d", path_d_value);
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[34].r)) {
+    			if (dirty[0] & /*areaData*/ 1 && circle_r_value !== (circle_r_value = /*graph*/ ctx[36].r)) {
     				attr_dev(circle, "r", circle_r_value);
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[34].id + " svelte-1lwxcn8")) {
+    			if (dirty[0] & /*areaData*/ 1 && g_class_value !== (g_class_value = "country " + /*graph*/ ctx[36].id + " svelte-n8uz33")) {
     				attr_dev(g, "class", g_class_value);
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && g_data_x_value !== (g_data_x_value = /*graph*/ ctx[34].x)) {
+    			if (dirty[0] & /*areaData*/ 1 && g_data_x_value !== (g_data_x_value = /*graph*/ ctx[36].x)) {
     				attr_dev(g, "data-x", g_data_x_value);
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && g_data_id_value !== (g_data_id_value = /*graph*/ ctx[34].id)) {
+    			if (dirty[0] & /*areaData*/ 1 && g_data_id_value !== (g_data_id_value = /*graph*/ ctx[36].id)) {
     				attr_dev(g, "data-id", g_data_id_value);
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && g_data_area_value !== (g_data_area_value = /*area*/ ctx[31].area)) {
+    			if (dirty[0] & /*areaData*/ 1 && g_data_area_value !== (g_data_area_value = /*area*/ ctx[33].area)) {
     				attr_dev(g, "data-area", g_data_area_value);
     			}
 
-    			if (dirty[0] & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[34].x + "," + /*graph*/ ctx[34].y + ")")) {
+    			if (dirty[0] & /*areaData*/ 1 && g_transform_value !== (g_transform_value = "translate(" + /*graph*/ ctx[36].x + "," + /*graph*/ ctx[36].y + ")")) {
     				attr_dev(g, "transform", g_transform_value);
     			}
 
-    			if (dirty[0] & /*areaData, areaData, $hoveredCountry, $hoveredArea*/ 193) {
-    				toggle_class(g, "hovered", /*graph*/ ctx[34].id == /*$hoveredCountry*/ ctx[6] && /*area*/ ctx[31].area == /*$hoveredArea*/ ctx[7]);
+    			if (dirty[0] & /*areaData, areaData, $hoveredCountry, $hoveredArea*/ 769) {
+    				toggle_class(g, "hovered", /*graph*/ ctx[36].id == /*$hoveredCountry*/ ctx[8] && /*area*/ ctx[33].area == /*$hoveredArea*/ ctx[9]);
     			}
 
-    			if (dirty[0] & /*areaData, areaData, $selectedCountry*/ 257) {
-    				toggle_class(g, "selected", /*graph*/ ctx[34].id == /*$selectedCountry*/ ctx[8] || /*graph*/ ctx[34].id == "china" || /*graph*/ ctx[34].id == "open-economy-avg");
+    			if (dirty[0] & /*areaData, areaData, $selectedCountry*/ 1025) {
+    				toggle_class(g, "selected", /*graph*/ ctx[36].id == /*$selectedCountry*/ ctx[10] || /*graph*/ ctx[36].id == "china" || /*graph*/ ctx[36].id == "open-economy-avg");
     			}
 
     			if (dirty[0] & /*areaData*/ 1) {
-    				toggle_class(g, "header", /*i*/ ctx[33] == 0);
+    				toggle_class(g, "header", /*i*/ ctx[35] == 0);
     			}
     		},
     		d: function destroy(detaching) {
@@ -48481,17 +48500,17 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(250:16) {#each area.graphData as graph, x}",
+    		source: "(267:16) {#each area.graphData as graph, x}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (238:8) {#each areaData as area, i}
+    // (255:8) {#each areaData as area, i}
     function create_each_block_2$1(ctx) {
     	let if_block_anchor;
-    	let if_block = /*area*/ ctx[31].graphData && create_if_block_2$2(ctx);
+    	let if_block = /*area*/ ctx[33].graphData && create_if_block_2$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -48503,7 +48522,7 @@ var app = (function () {
     			insert_dev(target, if_block_anchor, anchor);
     		},
     		p: function update(ctx, dirty) {
-    			if (/*area*/ ctx[31].graphData) {
+    			if (/*area*/ ctx[33].graphData) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
@@ -48526,18 +48545,18 @@ var app = (function () {
     		block,
     		id: create_each_block_2$1.name,
     		type: "each",
-    		source: "(238:8) {#each areaData as area, i}",
+    		source: "(255:8) {#each areaData as area, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (295:8) {#if area.graphData}
+    // (312:8) {#if area.graphData}
     function create_if_block_1$2(ctx) {
     	let each_1_anchor;
     	let current;
-    	let each_value_1 = /*area*/ ctx[31].graphData;
+    	let each_value_1 = /*area*/ ctx[33].graphData;
     	validate_each_argument(each_value_1);
     	let each_blocks = [];
 
@@ -48566,8 +48585,8 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*isHovered, areaData*/ 17) {
-    				each_value_1 = /*area*/ ctx[31].graphData;
+    			if (dirty[0] & /*isHovered, areaData*/ 33) {
+    				each_value_1 = /*area*/ ctx[33].graphData;
     				validate_each_argument(each_value_1);
     				let i;
 
@@ -48622,23 +48641,23 @@ var app = (function () {
     		block,
     		id: create_if_block_1$2.name,
     		type: "if",
-    		source: "(295:8) {#if area.graphData}",
+    		source: "(312:8) {#if area.graphData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (296:12) {#each area.graphData as graph, i}
+    // (313:12) {#each area.graphData as graph, i}
     function create_each_block_1$2(ctx) {
     	let tooltip;
     	let current;
 
     	tooltip = new Tooltip({
     			props: {
-    				isHovered: /*isHovered*/ ctx[4],
-    				graph: /*graph*/ ctx[34],
-    				area: /*area*/ ctx[31]
+    				isHovered: /*isHovered*/ ctx[5],
+    				graph: /*graph*/ ctx[36],
+    				area: /*area*/ ctx[33]
     			},
     			$$inline: true
     		});
@@ -48653,9 +48672,9 @@ var app = (function () {
     		},
     		p: function update(ctx, dirty) {
     			const tooltip_changes = {};
-    			if (dirty[0] & /*isHovered*/ 16) tooltip_changes.isHovered = /*isHovered*/ ctx[4];
-    			if (dirty[0] & /*areaData*/ 1) tooltip_changes.graph = /*graph*/ ctx[34];
-    			if (dirty[0] & /*areaData*/ 1) tooltip_changes.area = /*area*/ ctx[31];
+    			if (dirty[0] & /*isHovered*/ 32) tooltip_changes.isHovered = /*isHovered*/ ctx[5];
+    			if (dirty[0] & /*areaData*/ 1) tooltip_changes.graph = /*graph*/ ctx[36];
+    			if (dirty[0] & /*areaData*/ 1) tooltip_changes.area = /*area*/ ctx[33];
     			tooltip.$set(tooltip_changes);
     		},
     		i: function intro(local) {
@@ -48676,18 +48695,18 @@ var app = (function () {
     		block,
     		id: create_each_block_1$2.name,
     		type: "each",
-    		source: "(296:12) {#each area.graphData as graph, i}",
+    		source: "(313:12) {#each area.graphData as graph, i}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (294:4) {#each areaData as area, i}
+    // (311:4) {#each areaData as area, i}
     function create_each_block$3(ctx) {
     	let if_block_anchor;
     	let current;
-    	let if_block = /*area*/ ctx[31].graphData && create_if_block_1$2(ctx);
+    	let if_block = /*area*/ ctx[33].graphData && create_if_block_1$2(ctx);
 
     	const block = {
     		c: function create() {
@@ -48700,7 +48719,7 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (/*area*/ ctx[31].graphData) {
+    			if (/*area*/ ctx[33].graphData) {
     				if (if_block) {
     					if_block.p(ctx, dirty);
 
@@ -48742,7 +48761,7 @@ var app = (function () {
     		block,
     		id: create_each_block$3.name,
     		type: "each",
-    		source: "(294:4) {#each areaData as area, i}",
+    		source: "(311:4) {#each areaData as area, i}",
     		ctx
     	});
 
@@ -48780,9 +48799,9 @@ var app = (function () {
     			t = space();
     			if (if_block) if_block.c();
     			if_block_anchor = empty$3();
-    			attr_dev(div, "class", "text-wrapper svelte-1lwxcn8");
-    			add_render_callback(() => /*div_elementresize_handler*/ ctx[20].call(div));
-    			add_location(div, file$a, 198, 0, 6851);
+    			attr_dev(div, "class", "text-wrapper svelte-n8uz33");
+    			add_render_callback(() => /*div_elementresize_handler*/ ctx[19].call(div));
+    			add_location(div, file$a, 210, 0, 7270);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -48794,14 +48813,14 @@ var app = (function () {
     				each_blocks[i].m(div, null);
     			}
 
-    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler*/ ctx[20].bind(div));
+    			div_resize_listener = add_resize_listener(div, /*div_elementresize_handler*/ ctx[19].bind(div));
     			insert_dev(target, t, anchor);
     			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*copyData, url, infoIsHovered, offsetLeft, infoMouseOver, infoMouseLeave*/ 401446) {
+    			if (dirty[0] & /*copyData, url, infoIsHovered, offsetLeft, infoMouseOver, infoMouseLeave*/ 200774) {
     				each_value_4 = /*copyData*/ ctx[1];
     				validate_each_argument(each_value_4);
     				let i;
@@ -48894,6 +48913,7 @@ var app = (function () {
     }
 
     function instance$a($$self, $$props, $$invalidate) {
+    	let $height;
     	let $baseUrl;
     	let $view;
     	let $areaInView;
@@ -48904,33 +48924,35 @@ var app = (function () {
     	let $hoveredInfo;
     	let $margin;
     	let $width;
-    	let $height;
-    	validate_store(baseUrl, "baseUrl");
-    	component_subscribe($$self, baseUrl, $$value => $$invalidate(22, $baseUrl = $$value));
-    	validate_store(view, "view");
-    	component_subscribe($$self, view, $$value => $$invalidate(23, $view = $$value));
-    	validate_store(areaInView, "areaInView");
-    	component_subscribe($$self, areaInView, $$value => $$invalidate(24, $areaInView = $$value));
-    	validate_store(hoveredCountry, "hoveredCountry");
-    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(6, $hoveredCountry = $$value));
-    	validate_store(hoveredArea, "hoveredArea");
-    	component_subscribe($$self, hoveredArea, $$value => $$invalidate(7, $hoveredArea = $$value));
-    	validate_store(selectedCountry, "selectedCountry");
-    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(8, $selectedCountry = $$value));
-    	validate_store(selectedArea, "selectedArea");
-    	component_subscribe($$self, selectedArea, $$value => $$invalidate(25, $selectedArea = $$value));
-    	validate_store(hoveredInfo, "hoveredInfo");
-    	component_subscribe($$self, hoveredInfo, $$value => $$invalidate(26, $hoveredInfo = $$value));
-    	validate_store(margin, "margin");
-    	component_subscribe($$self, margin, $$value => $$invalidate(9, $margin = $$value));
-    	validate_store(width, "width");
-    	component_subscribe($$self, width, $$value => $$invalidate(10, $width = $$value));
     	validate_store(height, "height");
-    	component_subscribe($$self, height, $$value => $$invalidate(11, $height = $$value));
+    	component_subscribe($$self, height, $$value => $$invalidate(7, $height = $$value));
+    	validate_store(baseUrl, "baseUrl");
+    	component_subscribe($$self, baseUrl, $$value => $$invalidate(21, $baseUrl = $$value));
+    	validate_store(view, "view");
+    	component_subscribe($$self, view, $$value => $$invalidate(22, $view = $$value));
+    	validate_store(areaInView, "areaInView");
+    	component_subscribe($$self, areaInView, $$value => $$invalidate(23, $areaInView = $$value));
+    	validate_store(hoveredCountry, "hoveredCountry");
+    	component_subscribe($$self, hoveredCountry, $$value => $$invalidate(8, $hoveredCountry = $$value));
+    	validate_store(hoveredArea, "hoveredArea");
+    	component_subscribe($$self, hoveredArea, $$value => $$invalidate(9, $hoveredArea = $$value));
+    	validate_store(selectedCountry, "selectedCountry");
+    	component_subscribe($$self, selectedCountry, $$value => $$invalidate(10, $selectedCountry = $$value));
+    	validate_store(selectedArea, "selectedArea");
+    	component_subscribe($$self, selectedArea, $$value => $$invalidate(24, $selectedArea = $$value));
+    	validate_store(hoveredInfo, "hoveredInfo");
+    	component_subscribe($$self, hoveredInfo, $$value => $$invalidate(25, $hoveredInfo = $$value));
+    	validate_store(margin, "margin");
+    	component_subscribe($$self, margin, $$value => $$invalidate(26, $margin = $$value));
+    	validate_store(width, "width");
+    	component_subscribe($$self, width, $$value => $$invalidate(11, $width = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("LandingVisual", slots, []);
     	let { areaData } = $$props;
     	let { copyData } = $$props;
+    	let isMobile = window.innerWidth <= 786 ? true : false;
+    	set_store_value(height, $height = 600, $height);
+    	let lineHeight = isMobile ? 70 : 12;
     	let descriptionWidth = 380;
     	let offsetLeft = [];
     	let chinaHidden = false;
@@ -48979,7 +49001,7 @@ var app = (function () {
     	let infoIsHovered = false;
 
     	function mouseOver(e) {
-    		$$invalidate(4, isHovered = true);
+    		$$invalidate(5, isHovered = true);
     		let path = e.composedPath()[1];
     		set_store_value(hoveredCountry, $hoveredCountry = path.dataset.id, $hoveredCountry);
     		set_store_value(hoveredArea, $hoveredArea = path.dataset.area, $hoveredArea);
@@ -48988,7 +49010,7 @@ var app = (function () {
     	}
 
     	function mouseLeave(e) {
-    		$$invalidate(4, isHovered = false);
+    		$$invalidate(5, isHovered = false);
     		set_store_value(hoveredCountry, $hoveredCountry = "", $hoveredCountry);
     		set_store_value(hoveredArea, $hoveredArea = "", $hoveredArea);
     	}
@@ -49004,13 +49026,13 @@ var app = (function () {
     	}
 
     	function infoMouseOver(e) {
-    		$$invalidate(5, infoIsHovered = true);
+    		$$invalidate(6, infoIsHovered = true);
     		let path = e.composedPath()[0];
     		set_store_value(hoveredInfo, $hoveredInfo = path.dataset.area, $hoveredInfo);
     	}
 
     	function infoMouseLeave(e) {
-    		$$invalidate(5, infoIsHovered = false);
+    		$$invalidate(6, infoIsHovered = false);
     		set_store_value(hoveredInfo, $hoveredInfo = "", $hoveredInfo);
     	}
 
@@ -49026,6 +49048,7 @@ var app = (function () {
     		areaData.forEach((d, i) => {
     			if (select(".text-wrapper ." + d.area).size() > 0) {
     				const textRect = select(".text-wrapper ." + d.area).node().getBoundingClientRect();
+    				d.offsetX = isMobile ? 0 : $margin;
     				d.offsetY = textRect.top - select(".text-wrapper").node().getBoundingClientRect().top + $margin * 2;
 
     				d.graphData = d.comps.map((m, n) => {
@@ -49034,7 +49057,11 @@ var app = (function () {
     					: 0;
 
     					let points = i < 5
-    					? [[0, 0], [distance, textRect.bottom - textRect.top + $margin + 12]]
+    					? [
+    							[0, 0],
+    							// [distance, textRect.bottom - textRect.top + $margin + 12]
+    							[distance, textRect.bottom - textRect.top + $margin + lineHeight]
+    						]
     					: [[0, 0], [0, 0]];
 
     					let path = utils.cubicBezier(points[0], points[1], 10);
@@ -49088,19 +49115,20 @@ var app = (function () {
     			let id = country.id;
 
     			if (country.left < china.right && country.right > china.right || country.right > china.left && country.left < china.left || country.left > china.left && country.right < china.right) {
-    				$$invalidate(3, labelPositions[id] = "-27px", labelPositions);
+    				// labelPositions[id] = '-27px';
+    				$$invalidate(4, labelPositions[id] = "16px", labelPositions);
     			} else if (country.left < oecd.right && country.right > oecd.right || country.right > oecd.left && country.left < oecd.left || country.left > oecd.left && country.right < oecd.right) {
-    				$$invalidate(3, labelPositions[id] = "-27px", labelPositions);
+    				// labelPositions[id] = '-27px';
+    				$$invalidate(4, labelPositions[id] = "16px", labelPositions);
     			} else {
-    				$$invalidate(3, labelPositions[id] = "-10px", labelPositions);
-    			}
+    				$$invalidate(4, labelPositions[id] = "-10px", labelPositions);
+    			} // labelPositions[id] = '20px';
     		}
 
     		// check if china and oecd labels overlap
     		if (china.left < oecd.right && china.right > oecd.right || china.right > oecd.left && china.left < oecd.left || china.left > oecd.left && china.right < oecd.right) {
-    			// chinaHidden = true;
-    			$$invalidate(3, labelPositions["china"] = "20px", labelPositions);
-    		}
+    			$$invalidate(3, chinaHidden = true);
+    		} // labelPositions['china'] = '20px';
 
     		// raise china, china 2010 and oecd
     		selectAll(".china").raise();
@@ -49158,6 +49186,8 @@ var app = (function () {
     		Icon,
     		Tooltip,
     		InfoTooltip,
+    		isMobile,
+    		lineHeight,
     		descriptionWidth,
     		offsetLeft,
     		chinaHidden,
@@ -49173,6 +49203,7 @@ var app = (function () {
     		infoMouseLeave,
     		parseData,
     		positionLabels,
+    		$height,
     		$baseUrl,
     		$view,
     		$areaInView,
@@ -49182,19 +49213,20 @@ var app = (function () {
     		$selectedArea,
     		$hoveredInfo,
     		$margin,
-    		$width,
-    		$height
+    		$width
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("areaData" in $$props) $$invalidate(0, areaData = $$props.areaData);
     		if ("copyData" in $$props) $$invalidate(1, copyData = $$props.copyData);
+    		if ("isMobile" in $$props) isMobile = $$props.isMobile;
+    		if ("lineHeight" in $$props) lineHeight = $$props.lineHeight;
     		if ("descriptionWidth" in $$props) descriptionWidth = $$props.descriptionWidth;
     		if ("offsetLeft" in $$props) $$invalidate(2, offsetLeft = $$props.offsetLeft);
-    		if ("chinaHidden" in $$props) $$invalidate(12, chinaHidden = $$props.chinaHidden);
-    		if ("labelPositions" in $$props) $$invalidate(3, labelPositions = $$props.labelPositions);
-    		if ("isHovered" in $$props) $$invalidate(4, isHovered = $$props.isHovered);
-    		if ("infoIsHovered" in $$props) $$invalidate(5, infoIsHovered = $$props.infoIsHovered);
+    		if ("chinaHidden" in $$props) $$invalidate(3, chinaHidden = $$props.chinaHidden);
+    		if ("labelPositions" in $$props) $$invalidate(4, labelPositions = $$props.labelPositions);
+    		if ("isHovered" in $$props) $$invalidate(5, isHovered = $$props.isHovered);
+    		if ("infoIsHovered" in $$props) $$invalidate(6, infoIsHovered = $$props.infoIsHovered);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -49205,16 +49237,15 @@ var app = (function () {
     		areaData,
     		copyData,
     		offsetLeft,
+    		chinaHidden,
     		labelPositions,
     		isHovered,
     		infoIsHovered,
+    		$height,
     		$hoveredCountry,
     		$hoveredArea,
     		$selectedCountry,
-    		$margin,
     		$width,
-    		$height,
-    		chinaHidden,
     		url,
     		mouseOver,
     		mouseLeave,
@@ -49385,56 +49416,56 @@ var app = (function () {
     			t23 = space();
     			a = element("a");
     			t24 = text$1(t24_value);
-    			attr_dev(h2, "class", "svelte-29t4q7");
+    			attr_dev(h2, "class", "svelte-npw25t");
     			add_location(h2, file$9, 5, 4, 78);
-    			attr_dev(p, "class", "svelte-29t4q7");
+    			attr_dev(p, "class", "svelte-npw25t");
     			add_location(p, file$9, 6, 4, 113);
-    			attr_dev(span0, "class", "svelte-29t4q7");
+    			attr_dev(span0, "class", "svelte-npw25t");
     			add_location(span0, file$9, 8, 40, 194);
-    			attr_dev(h40, "class", "svelte-29t4q7");
+    			attr_dev(h40, "class", "svelte-npw25t");
     			add_location(h40, file$9, 8, 77, 231);
-    			attr_dev(li0, "class", li0_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].fdi) + " svelte-29t4q7"));
+    			attr_dev(li0, "class", li0_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].fdi) + " svelte-npw25t"));
     			add_location(li0, file$9, 8, 8, 162);
-    			attr_dev(span1, "class", "svelte-29t4q7");
+    			attr_dev(span1, "class", "svelte-npw25t");
     			add_location(span1, file$9, 9, 46, 318);
-    			attr_dev(h41, "class", "svelte-29t4q7");
+    			attr_dev(h41, "class", "svelte-npw25t");
     			add_location(h41, file$9, 9, 89, 361);
-    			attr_dev(li1, "class", li1_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].portfolio) + " svelte-29t4q7"));
+    			attr_dev(li1, "class", li1_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].portfolio) + " svelte-npw25t"));
     			add_location(li1, file$9, 9, 8, 280);
-    			attr_dev(span2, "class", "svelte-29t4q7");
+    			attr_dev(span2, "class", "svelte-npw25t");
     			add_location(span2, file$9, 10, 42, 447);
-    			attr_dev(h42, "class", "svelte-29t4q7");
+    			attr_dev(h42, "class", "svelte-npw25t");
     			add_location(h42, file$9, 10, 81, 486);
-    			attr_dev(li2, "class", li2_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].trade) + " svelte-29t4q7"));
+    			attr_dev(li2, "class", li2_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].trade) + " svelte-npw25t"));
     			add_location(li2, file$9, 10, 8, 413);
-    			attr_dev(span3, "class", "svelte-29t4q7");
+    			attr_dev(span3, "class", "svelte-npw25t");
     			add_location(span3, file$9, 11, 43, 558);
-    			attr_dev(h43, "class", "svelte-29t4q7");
+    			attr_dev(h43, "class", "svelte-npw25t");
     			add_location(h43, file$9, 11, 83, 598);
-    			attr_dev(li3, "class", li3_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].growth) + " svelte-29t4q7"));
+    			attr_dev(li3, "class", li3_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].growth) + " svelte-npw25t"));
     			add_location(li3, file$9, 11, 8, 523);
-    			attr_dev(span4, "class", "svelte-29t4q7");
+    			attr_dev(span4, "class", "svelte-npw25t");
     			add_location(span4, file$9, 12, 48, 689);
-    			attr_dev(h44, "class", "svelte-29t4q7");
+    			attr_dev(h44, "class", "svelte-npw25t");
     			add_location(h44, file$9, 12, 93, 734);
-    			attr_dev(li4, "class", li4_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].competition) + " svelte-29t4q7"));
+    			attr_dev(li4, "class", li4_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].competition) + " svelte-npw25t"));
     			add_location(li4, file$9, 12, 8, 649);
-    			attr_dev(span5, "class", "svelte-29t4q7");
+    			attr_dev(span5, "class", "svelte-npw25t");
     			add_location(span5, file$9, 13, 47, 814);
-    			attr_dev(h45, "class", "svelte-29t4q7");
+    			attr_dev(h45, "class", "svelte-npw25t");
     			add_location(h45, file$9, 13, 91, 858);
-    			attr_dev(li5, "class", li5_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].innovation) + " svelte-29t4q7"));
+    			attr_dev(li5, "class", li5_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].innovation) + " svelte-npw25t"));
     			add_location(li5, file$9, 13, 8, 775);
-    			attr_dev(ul, "class", "svelte-29t4q7");
+    			attr_dev(ul, "class", "svelte-npw25t");
     			add_location(ul, file$9, 7, 4, 149);
-    			attr_dev(span6, "class", "svelte-29t4q7");
+    			attr_dev(span6, "class", "svelte-npw25t");
     			add_location(span6, file$9, 16, 8, 940);
     			attr_dev(a, "href", a_href_value = /*quarterlyData*/ ctx[0].postLink);
-    			attr_dev(a, "class", "svelte-29t4q7");
+    			attr_dev(a, "class", "svelte-npw25t");
     			add_location(a, file$9, 17, 8, 974);
-    			attr_dev(div0, "class", "latest svelte-29t4q7");
+    			attr_dev(div0, "class", "latest svelte-npw25t");
     			add_location(div0, file$9, 15, 4, 911);
-    			attr_dev(div1, "class", "quarterly svelte-29t4q7");
+    			attr_dev(div1, "class", "quarterly svelte-npw25t");
     			add_location(div1, file$9, 4, 0, 50);
     		},
     		l: function claim(nodes) {
@@ -49490,37 +49521,37 @@ var app = (function () {
     			if (dirty & /*quarterlyData*/ 1 && t2_value !== (t2_value = /*quarterlyData*/ ctx[0].subtitle + "")) set_data_dev(t2, t2_value);
     			if (dirty & /*quarterlyData*/ 1 && t4_value !== (t4_value = /*quarterlyData*/ ctx[0].fdiLabel + "")) set_data_dev(t4, t4_value);
 
-    			if (dirty & /*quarterlyData*/ 1 && li0_class_value !== (li0_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].fdi) + " svelte-29t4q7"))) {
+    			if (dirty & /*quarterlyData*/ 1 && li0_class_value !== (li0_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].fdi) + " svelte-npw25t"))) {
     				attr_dev(li0, "class", li0_class_value);
     			}
 
     			if (dirty & /*quarterlyData*/ 1 && t7_value !== (t7_value = /*quarterlyData*/ ctx[0].portfolioLabel + "")) set_data_dev(t7, t7_value);
 
-    			if (dirty & /*quarterlyData*/ 1 && li1_class_value !== (li1_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].portfolio) + " svelte-29t4q7"))) {
+    			if (dirty & /*quarterlyData*/ 1 && li1_class_value !== (li1_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].portfolio) + " svelte-npw25t"))) {
     				attr_dev(li1, "class", li1_class_value);
     			}
 
     			if (dirty & /*quarterlyData*/ 1 && t10_value !== (t10_value = /*quarterlyData*/ ctx[0].tradeLabel + "")) set_data_dev(t10, t10_value);
 
-    			if (dirty & /*quarterlyData*/ 1 && li2_class_value !== (li2_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].trade) + " svelte-29t4q7"))) {
+    			if (dirty & /*quarterlyData*/ 1 && li2_class_value !== (li2_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].trade) + " svelte-npw25t"))) {
     				attr_dev(li2, "class", li2_class_value);
     			}
 
     			if (dirty & /*quarterlyData*/ 1 && t13_value !== (t13_value = /*quarterlyData*/ ctx[0].growthLabel + "")) set_data_dev(t13, t13_value);
 
-    			if (dirty & /*quarterlyData*/ 1 && li3_class_value !== (li3_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].growth) + " svelte-29t4q7"))) {
+    			if (dirty & /*quarterlyData*/ 1 && li3_class_value !== (li3_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].growth) + " svelte-npw25t"))) {
     				attr_dev(li3, "class", li3_class_value);
     			}
 
     			if (dirty & /*quarterlyData*/ 1 && t16_value !== (t16_value = /*quarterlyData*/ ctx[0].competitionLabel + "")) set_data_dev(t16, t16_value);
 
-    			if (dirty & /*quarterlyData*/ 1 && li4_class_value !== (li4_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].competition) + " svelte-29t4q7"))) {
+    			if (dirty & /*quarterlyData*/ 1 && li4_class_value !== (li4_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].competition) + " svelte-npw25t"))) {
     				attr_dev(li4, "class", li4_class_value);
     			}
 
     			if (dirty & /*quarterlyData*/ 1 && t19_value !== (t19_value = /*quarterlyData*/ ctx[0].innovationLabel + "")) set_data_dev(t19, t19_value);
 
-    			if (dirty & /*quarterlyData*/ 1 && li5_class_value !== (li5_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].innovation) + " svelte-29t4q7"))) {
+    			if (dirty & /*quarterlyData*/ 1 && li5_class_value !== (li5_class_value = "" + (null_to_empty(/*quarterlyData*/ ctx[0].innovation) + " svelte-npw25t"))) {
     				attr_dev(li5, "class", li5_class_value);
     			}
 
@@ -49756,14 +49787,14 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(span, "class", "svelte-nmn7o3");
+    			attr_dev(span, "class", "svelte-1q4e5a5");
     			add_location(span, file$8, 30, 12, 760);
     			attr_dev(select, "id", "country-select");
     			if (/*$selectedCountry*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[2].call(select));
     			add_location(select, file$8, 32, 8, 848);
-    			attr_dev(div0, "class", div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-nmn7o3");
+    			attr_dev(div0, "class", div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-1q4e5a5");
     			add_location(div0, file$8, 31, 4, 788);
-    			attr_dev(div1, "class", "country-select-container svelte-nmn7o3");
+    			attr_dev(div1, "class", "country-select-container svelte-1q4e5a5");
     			add_location(div1, file$8, 29, 0, 709);
     		},
     		l: function claim(nodes) {
@@ -49817,7 +49848,7 @@ var app = (function () {
     				select_option(select, /*$selectedCountry*/ ctx[1]);
     			}
 
-    			if (dirty & /*$selectedCountry, countryNames*/ 3 && div0_class_value !== (div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-nmn7o3")) {
+    			if (dirty & /*$selectedCountry, countryNames*/ 3 && div0_class_value !== (div0_class_value = "country-toggle-box " + /*$selectedCountry*/ ctx[1] + " svelte-1q4e5a5")) {
     				attr_dev(div0, "class", div0_class_value);
     			}
     		},
@@ -50124,14 +50155,14 @@ var app = (function () {
     			add_location(path0, file$6, 29, 72, 1402);
     			attr_dev(svg0, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg0, "viewBox", "0 0 24 24");
-    			attr_dev(svg0, "class", "svelte-1xiiy2f");
+    			attr_dev(svg0, "class", "svelte-by5hrg");
     			add_location(svg0, file$6, 29, 12, 1342);
     			attr_dev(div0, "aria-hidden", "true");
-    			attr_dev(div0, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-1xiiy2f");
+    			attr_dev(div0, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-by5hrg");
     			add_location(div0, file$6, 28, 99, 1238);
-    			attr_dev(div1, "class", "resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small svelte-1xiiy2f");
+    			attr_dev(div1, "class", "resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small svelte-by5hrg");
     			add_location(div1, file$6, 28, 10, 1149);
-    			attr_dev(a0, "class", "resp-sharing-button__link svelte-1xiiy2f");
+    			attr_dev(a0, "class", "resp-sharing-button__link svelte-by5hrg");
     			attr_dev(a0, "href", a0_href_value = "https://twitter.com/intent/tweet/?text=" + /*socialText*/ ctx[0] + "&url=" + /*socialLink*/ ctx[1]);
     			attr_dev(a0, "target", "_blank");
     			attr_dev(a0, "rel", "noopener");
@@ -50141,14 +50172,14 @@ var app = (function () {
     			add_location(path1, file$6, 43, 72, 3115);
     			attr_dev(svg1, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg1, "viewBox", "0 0 24 24");
-    			attr_dev(svg1, "class", "svelte-1xiiy2f");
+    			attr_dev(svg1, "class", "svelte-by5hrg");
     			add_location(svg1, file$6, 43, 12, 3055);
     			attr_dev(div2, "aria-hidden", "true");
-    			attr_dev(div2, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-1xiiy2f");
+    			attr_dev(div2, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-by5hrg");
     			add_location(div2, file$6, 42, 100, 2951);
-    			attr_dev(div3, "class", "resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small svelte-1xiiy2f");
+    			attr_dev(div3, "class", "resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small svelte-by5hrg");
     			add_location(div3, file$6, 42, 10, 2861);
-    			attr_dev(a1, "class", "resp-sharing-button__link svelte-1xiiy2f");
+    			attr_dev(a1, "class", "resp-sharing-button__link svelte-by5hrg");
     			attr_dev(a1, "href", a1_href_value = "https://www.linkedin.com/sharing/share-offsite/?url=" + /*socialLink*/ ctx[1]);
     			attr_dev(a1, "target", "_blank");
     			attr_dev(a1, "aria-label", "");
@@ -50157,22 +50188,22 @@ var app = (function () {
     			add_location(path2, file$6, 51, 72, 3837);
     			attr_dev(svg2, "xmlns", "http://www.w3.org/2000/svg");
     			attr_dev(svg2, "viewBox", "0 0 24 24");
-    			attr_dev(svg2, "class", "svelte-1xiiy2f");
+    			attr_dev(svg2, "class", "svelte-by5hrg");
     			add_location(svg2, file$6, 51, 12, 3777);
     			attr_dev(div4, "aria-hidden", "true");
-    			attr_dev(div4, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-1xiiy2f");
+    			attr_dev(div4, "class", "resp-sharing-button__icon resp-sharing-button__icon--solid svelte-by5hrg");
     			add_location(div4, file$6, 50, 97, 3673);
-    			attr_dev(div5, "class", "resp-sharing-button resp-sharing-button--email resp-sharing-button--small svelte-1xiiy2f");
+    			attr_dev(div5, "class", "resp-sharing-button resp-sharing-button--email resp-sharing-button--small svelte-by5hrg");
     			add_location(div5, file$6, 50, 10, 3586);
-    			attr_dev(a2, "class", "resp-sharing-button__link svelte-1xiiy2f");
+    			attr_dev(a2, "class", "resp-sharing-button__link svelte-by5hrg");
     			attr_dev(a2, "href", a2_href_value = "mailto:?subject=" + /*socialTitle*/ ctx[2] + "&body=" + /*socialText*/ ctx[0] + " " + /*socialLink*/ ctx[1]);
     			attr_dev(a2, "target", "_self");
     			attr_dev(a2, "rel", "noopener");
     			attr_dev(a2, "aria-label", "");
     			add_location(a2, file$6, 49, 8, 3422);
-    			attr_dev(div6, "class", "button-container svelte-1xiiy2f");
+    			attr_dev(div6, "class", "button-container svelte-by5hrg");
     			add_location(div6, file$6, 25, 8, 898);
-    			attr_dev(div7, "class", "social-buttons svelte-1xiiy2f");
+    			attr_dev(div7, "class", "social-buttons svelte-by5hrg");
     			add_location(div7, file$6, 23, 4, 860);
     		},
     		m: function mount(target, anchor) {
@@ -50396,7 +50427,7 @@ var app = (function () {
     /* src/views/Landing.svelte generated by Svelte v3.38.2 */
     const file$5 = "src/views/Landing.svelte";
 
-    // (107:0) {#if copyData}
+    // (110:0) {#if copyData}
     function create_if_block$4(ctx) {
     	let section;
     	let h1;
@@ -50479,7 +50510,7 @@ var app = (function () {
     			t9 = space();
     			div0 = element("div");
     			button = element("button");
-    			t10 = text$1("Download this chart");
+    			t10 = text$1(/*downloadLabel*/ ctx[8]);
     			create_component(icon.$$.fragment);
     			t11 = space();
     			create_component(socialbuttons.$$.fragment);
@@ -50488,24 +50519,24 @@ var app = (function () {
     			t13 = space();
     			if (if_block2) if_block2.c();
     			if_block2_anchor = empty$3();
-    			attr_dev(h1, "class", "svelte-j42pe3");
-    			add_location(h1, file$5, 113, 8, 5120);
-    			attr_dev(p, "class", "svelte-j42pe3");
-    			add_location(p, file$5, 114, 8, 5155);
-    			attr_dev(section, "class", "intro svelte-j42pe3");
-    			add_location(section, file$5, 112, 4, 5088);
-    			attr_dev(h2, "class", "svelte-j42pe3");
-    			add_location(h2, file$5, 124, 8, 5452);
-    			attr_dev(h3, "class", "svelte-j42pe3");
-    			add_location(h3, file$5, 125, 8, 5491);
-    			attr_dev(button, "class", "download svelte-j42pe3");
-    			add_location(button, file$5, 129, 16, 5664);
-    			attr_dev(div0, "class", "social-sharing svelte-j42pe3");
-    			add_location(div0, file$5, 128, 12, 5619);
-    			attr_dev(div1, "class", "control-area svelte-j42pe3");
-    			add_location(div1, file$5, 126, 8, 5536);
-    			attr_dev(header, "class", "svelte-j42pe3");
-    			add_location(header, file$5, 123, 4, 5435);
+    			attr_dev(h1, "class", "svelte-1irdpqc");
+    			add_location(h1, file$5, 116, 8, 5247);
+    			attr_dev(p, "class", "svelte-1irdpqc");
+    			add_location(p, file$5, 117, 8, 5282);
+    			attr_dev(section, "class", "intro svelte-1irdpqc");
+    			add_location(section, file$5, 115, 4, 5215);
+    			attr_dev(h2, "class", "svelte-1irdpqc");
+    			add_location(h2, file$5, 127, 8, 5579);
+    			attr_dev(h3, "class", "svelte-1irdpqc");
+    			add_location(h3, file$5, 128, 8, 5618);
+    			attr_dev(button, "class", "download svelte-1irdpqc");
+    			add_location(button, file$5, 132, 16, 5791);
+    			attr_dev(div0, "class", "social-sharing svelte-1irdpqc");
+    			add_location(div0, file$5, 131, 12, 5746);
+    			attr_dev(div1, "class", "control-area svelte-1irdpqc");
+    			add_location(div1, file$5, 129, 8, 5663);
+    			attr_dev(header, "class", "svelte-1irdpqc");
+    			add_location(header, file$5, 126, 4, 5562);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -50541,7 +50572,7 @@ var app = (function () {
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*downloadImage*/ ctx[8], false, false, false);
+    				dispose = listen_dev(button, "click", /*downloadImage*/ ctx[9], false, false, false);
     				mounted = true;
     			}
     		},
@@ -50664,14 +50695,14 @@ var app = (function () {
     		block,
     		id: create_if_block$4.name,
     		type: "if",
-    		source: "(107:0) {#if copyData}",
+    		source: "(110:0) {#if copyData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (118:4) {#if quarterlyData.display == 'TRUE' || quarterlyData.display == 'true' || quarterlyData.display == true}
+    // (121:4) {#if quarterlyData.display == 'TRUE' || quarterlyData.display == 'true' || quarterlyData.display == true}
     function create_if_block_3$1(ctx) {
     	let section;
     	let quarterly;
@@ -50687,7 +50718,7 @@ var app = (function () {
     			section = element("section");
     			create_component(quarterly.$$.fragment);
     			attr_dev(section, "class", "latest");
-    			add_location(section, file$5, 118, 8, 5320);
+    			add_location(section, file$5, 121, 8, 5447);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, section, anchor);
@@ -50718,14 +50749,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3$1.name,
     		type: "if",
-    		source: "(118:4) {#if quarterlyData.display == 'TRUE' || quarterlyData.display == 'true' || quarterlyData.display == true}",
+    		source: "(121:4) {#if quarterlyData.display == 'TRUE' || quarterlyData.display == 'true' || quarterlyData.display == true}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (140:4) {#if areaData}
+    // (143:4) {#if areaData}
     function create_if_block_2$1(ctx) {
     	let div;
     	let landingvisual;
@@ -50743,9 +50774,9 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(landingvisual.$$.fragment);
-    			attr_dev(div, "class", "vis-container svelte-j42pe3");
+    			attr_dev(div, "class", "vis-container svelte-1irdpqc");
     			toggle_class(div, "chart-download", /*chartDownload*/ ctx[6] == true);
-    			add_location(div, file$5, 140, 8, 6225);
+    			add_location(div, file$5, 143, 8, 6348);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -50781,14 +50812,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2$1.name,
     		type: "if",
-    		source: "(140:4) {#if areaData}",
+    		source: "(143:4) {#if areaData}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (148:4) {#if loading == true}
+    // (151:4) {#if loading == true}
     function create_if_block_1$1(ctx) {
     	let loading_1;
     	let current;
@@ -50820,7 +50851,7 @@ var app = (function () {
     		block,
     		id: create_if_block_1$1.name,
     		type: "if",
-    		source: "(148:4) {#if loading == true}",
+    		source: "(151:4) {#if loading == true}",
     		ctx
     	});
 
@@ -50939,6 +50970,8 @@ var app = (function () {
 
     	let loading = false;
     	let fadeDuration = 200;
+    	let isMobile = window.innerWidth <= 786 ? true : false;
+    	let downloadLabel = isMobile ? "" : "Download this chart";
 
     	// onMount(async()=>{
     	//     data = await loadData();
@@ -50986,7 +51019,7 @@ var app = (function () {
     	});
 
     	$$self.$$set = $$props => {
-    		if ("showPrevious" in $$props) $$invalidate(9, showPrevious = $$props.showPrevious);
+    		if ("showPrevious" in $$props) $$invalidate(10, showPrevious = $$props.showPrevious);
     	};
 
     	$$self.$capture_state = () => ({
@@ -51014,6 +51047,8 @@ var app = (function () {
     		chartDownload,
     		loading,
     		fadeDuration,
+    		isMobile,
+    		downloadLabel,
     		downloadImage,
     		downloadImageClick: downloadImageClick$1,
     		clickLink: clickLink$1,
@@ -51021,7 +51056,7 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("showPrevious" in $$props) $$invalidate(9, showPrevious = $$props.showPrevious);
+    		if ("showPrevious" in $$props) $$invalidate(10, showPrevious = $$props.showPrevious);
     		if ("data" in $$props) data = $$props.data;
     		if ("countryNames" in $$props) $$invalidate(1, countryNames = $$props.countryNames);
     		if ("areaData" in $$props) $$invalidate(2, areaData = $$props.areaData);
@@ -51033,6 +51068,8 @@ var app = (function () {
     		if ("chartDownload" in $$props) $$invalidate(6, chartDownload = $$props.chartDownload);
     		if ("loading" in $$props) $$invalidate(7, loading = $$props.loading);
     		if ("fadeDuration" in $$props) fadeDuration = $$props.fadeDuration;
+    		if ("isMobile" in $$props) isMobile = $$props.isMobile;
+    		if ("downloadLabel" in $$props) $$invalidate(8, downloadLabel = $$props.downloadLabel);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -51078,6 +51115,7 @@ var app = (function () {
     		quarterlyData,
     		chartDownload,
     		loading,
+    		downloadLabel,
     		downloadImage,
     		showPrevious
     	];
@@ -51086,7 +51124,7 @@ var app = (function () {
     class Landing extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { showPrevious: 9 });
+    		init$1(this, options, instance$5, create_fragment$5, safe_not_equal, { showPrevious: 10 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -54333,7 +54371,7 @@ var app = (function () {
     		c: function create() {
     			main = element("main");
     			if_block.c();
-    			attr_dev(main, "class", "svelte-1u1deyo");
+    			attr_dev(main, "class", "svelte-k48484");
     			add_location(main, file, 19, 0, 516);
     		},
     		l: function claim(nodes) {

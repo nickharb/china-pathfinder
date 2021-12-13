@@ -21,7 +21,7 @@
 
 <style type="text/css">
     .quarterly {
-        margin: 40px auto 60px;
+        margin: 40px auto;
         border-radius: 4px;
         background-color: #EFF4F8;
         padding: 25px;
@@ -29,6 +29,7 @@
 
     .latest {
         text-align: center;
+        line-height: 1.2;
     }
 
     .latest span {
@@ -48,29 +49,51 @@
     h2 {
         text-align: center;
         margin-bottom: 0;
-        font-size: 22px;
+        font-size: 20px;
+        margin-top: 0;
+    }
+
+    @media (min-width: 768px) {
+        h2 {
+            font-size: 22px;
+            margin-top: 10px;
+        }
     }
 
     p {
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
         color: #122431;
         margin-bottom: 20px;
-        margin-top: 5px;
+        margin-top: 10px;
+        line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+        p {
+            font-size: 16px;
+        }
     }
 
     ul {
         list-style: none;
-        padding: 0 40px;
+        padding: 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+        ul {
+            padding: 0 40px;
+            margin-bottom: 20px;
+        }
     }
 
     li {
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-size: 14px;
         display: flex;
         align-items: center;
@@ -86,34 +109,42 @@
     @media (min-width: 800px) {
         li {
             width: 30%;
+            margin-bottom: 20px;
         }
     }
 
     li span {
         display: inline-block;
-        padding: 6px 20px;
+        padding: 3px 10px;
         margin-right: 15px;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: 11px;
         border-radius: 4px;
         text-align: center;
         flex: 0 0 70px;
     }
 
+    @media (min-width: 768px) {
+        li span {
+            padding: 6px 20px;
+            flex: 0 0 70px;
+        }
+    }
+
     li h4 {
         display: inline-block;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: normal;
         margin: 0;
         line-height: 1.2;
         color: #122431;
-        margin-right: 10px;
     }
 
     @media (min-width: 768px) {
         li h4 {
-            max-width: inherit;
+            margin-right: 10px;
+            font-size: 14px;
         }
     }
 
