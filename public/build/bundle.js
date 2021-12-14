@@ -53948,11 +53948,11 @@ var app = (function () {
     		"united-states": "-10px"
     	};
 
-    	// $areaInView = 'growth';
+    	set_store_value(areaInView, $areaInView = "growth", $areaInView);
+
     	// $areaInView = 'competition';
     	// $areaInView = 'innovation';
-    	set_store_value(areaInView, $areaInView = "trade", $areaInView);
-
+    	// $areaInView = 'trade';
     	// $areaInView = 'fdi';
     	// $areaInView = 'portfolio';
     	// set area visual width
