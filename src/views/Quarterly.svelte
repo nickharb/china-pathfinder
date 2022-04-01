@@ -159,6 +159,11 @@
     }
 
     li.further span {
+        background-color: #F6D9D7;
+        color: #D13F36;
+    }
+
+    li.mixed span {
         background-color: #F6E8D7;
         color: #D18B36;
     }
